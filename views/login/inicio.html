@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/54b3975121.js" crossorigin="anonymous"></script>
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="/inicio/diseño2.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>INICIAR SESION</h2>
+        <form method="post">
+            <div class="input-group">
+                <label for="username"><i class="fas fa-user"></i> Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
+            </div>
+            <div class="input-group">
+                <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <a href="/recuperar/inicio.html" class="recuper">¿Olvidastes tu Contraseña?</a>
+            </div>
+            <a href="/registro/registro.html" class="create-account">Crear Cuenta</a>
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
