@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('login/repartidor');
+  res.render('login/a_y_r');
 });
 
 module.exports = router;
