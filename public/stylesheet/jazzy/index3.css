@@ -1,4 +1,5 @@
-h1{
-    color: aqua;
-    width: 19px;  
-    }
+body{
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #821010, #a3690d);
+}
