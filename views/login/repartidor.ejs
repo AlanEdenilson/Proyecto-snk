@@ -28,13 +28,34 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
             <div class="input-group">
-                <label for="confirm-password"><i class="fas fa-lock"></i> Repetir Contraseña</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Repetir Contraseña" required>
+                <p id="message"></p>
+                <label for="confirmpassword"><i class="fas fa-lock"></i> Repetir Contraseña</label>
+                <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Repetir Contraseña" required>
             </div>
             <a href="/inicio/inicio2.html" class="login-link">Ya tienes cuenta?</a>
-            <button type="submit" class="register-button">Registrarse</button>
+            <button onclick="verifyPasswords()" " type="submit" class="register-button">Registrarse</button>
         </form>
     </div>
+
+    <script>
+        function verifyPasswords() {
+            var password = document.getElementById("password").value;
+            var confirmpassword = document.getElementById("confirmpassword").value;
+            var messageElement = document.getElementById("message");
+
+            if (password === confirmpassword) {
+                messageElement.innerHTML = "Las contraseñas coinciden.";
+                messageElement.style.color = "green";
+                window.location.href = "gmail.ejs";
+            } else {
+                messageElement.innerHTML = "Las contraseñas no coinciden.";
+                messageElement.style.color = "red";
+            }
+        }
+    </script>
+    
+
+
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
