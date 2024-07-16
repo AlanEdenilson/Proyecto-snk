@@ -4,10 +4,7 @@ body{
     background: linear-gradient(135deg, #821010, #a3690d);
 }
 a{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-     
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    width: 50px; 
 }
 
-nav{
-    background-color: #821010;
-}
