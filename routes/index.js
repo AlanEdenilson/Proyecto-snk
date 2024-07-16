@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/piola', function(req, res, next) {
-  res.render('login/index');
+  res.render('login/admin');
 });
 
 module.exports = router;
