@@ -1,5 +1,5 @@
-a{
-   font-family: Georgia, 'Times New Roman', Times, serif;  
- 
+body{
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #821010, #a3690d);
 }
-
