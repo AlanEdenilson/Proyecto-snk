@@ -18,8 +18,8 @@ router.get('/inicioo', function(req, res, next) {
   res.render('login/inicio');
 });
 
-router.get('repar', function(req, res, next) {
-  res.render('login/repar');
+router.get('/repart', function(req, res, next) {
+  res.render('login/repartidor');
 })
 
 
