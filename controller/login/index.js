@@ -25,6 +25,10 @@ module.exports={
     },
     crearcuenta2:function(req, res){
         res.render('login/repartidor');
+    },
+
+    recuperarContra:function(req, res){
+        res.render('login/recuperar_contraseña');
     }
 
     

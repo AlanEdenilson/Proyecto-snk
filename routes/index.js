@@ -21,6 +21,8 @@ router.get('/repartidor',controlador.crearcuenta2);
 
 router.post('/repartidor', controlador.verificarCuenta);
 
+router.get('/recuperar',controlador.recuperarContra)
+
 /*router.post('/', (req, res) => {
   const nombre = req.body.username;
   const contraseña = req.body.password;
