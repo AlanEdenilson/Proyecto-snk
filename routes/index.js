@@ -9,21 +9,17 @@ router.get('/',controlador.login);
 
 router.post('/',controlador.verificar);
 
-router.get('/piola', function(req, res, next) {
-  res.render('login/gmail');
-});
-
-router.get('/admin', function(req, res, next) {
-  res.render('login/admin');
-});
-
 router.get('/a_y_r', function(req, res, next) {
   res.render('login/a_y_r');
 })
 
-router.get('/repartidor', function(req, res, next) {
-  res.render('login/repartidor');
-})
+router.get('/admin',controlador.crearcuenta1);
+
+router.post('/admin',controlador.verificarCuenta );
+
+router.get('/repartidor',controlador.crearcuenta2);
+
+router.post('/repartidor', controlador.verificarCuenta);
 
 /*router.post('/', (req, res) => {
   const nombre = req.body.username;
