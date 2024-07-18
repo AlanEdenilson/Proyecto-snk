@@ -1,9 +1,10 @@
 var express = require('express');
+const { default: nodemon } = require('nodemon');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('login/a_y_r');
+  res.render('login/inicio');
 });
 
 router.get('/piola', function(req, res, next) {
@@ -14,13 +15,17 @@ router.get('/admin', function(req, res, next) {
   res.render('login/admin');
 });
 
-router.get('/inicioo', function(req, res, next) {
-  res.render('login/inicio');
-});
 
 router.get('/repart', function(req, res, next) {
   res.render('login/repartidor');
 })
+
+router.post('/', (req, res) => {
+  const nombre = req.body.username;
+  const contraseña = req.body.password;
+  console.log(`Nombre: ${nombre}, Correo: ${contraseña}`);
+});
+
 
 
 
