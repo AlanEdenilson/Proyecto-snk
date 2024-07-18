@@ -1,5 +1,6 @@
 var express = require('express');
 var controlador=require('../controller/login/index')
+
 const { default: nodemon } = require('nodemon');
 var router = express.Router();
 
@@ -26,6 +27,7 @@ router.get('/recuperar',controlador.recuperarContra);
 router.post('/recuperar_contra', controlador.enviarCorreo);
 
 router.post('/codigo',controlador.confirmar)
+
 
 /*router.post('/', (req, res) => {
   const nombre = req.body.username;

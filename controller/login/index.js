@@ -1,4 +1,6 @@
-var random = require('../login/generarcodigo')
+
+var email=require('../login/enviargmail');
+var random=require('../login/generarcodigo');
 
 let r;
 
@@ -36,27 +38,29 @@ module.exports={
         res.render('login/recuperar_contraseña');
     },
     enviarCorreo:function(req, res){
-    
-        r= random.generarcodigo(5);
+        r = random.generarcodigo(5);
+        var correo = req.body.email;
+        email.enviaremail(correo,r);
+        
         console.log("codigo aleatorio: ",r)
-        console.log(req.body);
+        console.log("tu correo es ",correo);
+        console.log("codigo aleatorio: ", r)
+
         res.render('login/codigo')
 
         
     },
     confirmar:function(req, res){
-        console.log("funciona",req.body);
-        console.log(r);
 
-        if ( req.body.codigo === r) {
-            res.render('login/nuevacontra');
-        } else {
-            res.send("codigo incorrecto");
+        if (req.body.codigo===r) {
+            res.render("login/nuevacontra");
+        }else{
+            res.send("codigo invalido");
         }
-            
-    },
+        }
+        
 
-}
+    }
 
     
 
