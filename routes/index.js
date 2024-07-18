@@ -25,6 +25,8 @@ router.get('/recuperar',controlador.recuperarContra);
 
 router.post('/recuperar_contra', controlador.enviarCorreo);
 
+router.post('/codigo',controlador.confirmar)
+
 /*router.post('/', (req, res) => {
   const nombre = req.body.username;
   const contraseña = req.body.password;

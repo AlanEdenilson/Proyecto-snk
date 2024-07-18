@@ -10,10 +10,10 @@
     <div class="forgot-password-container">
         <h2>codigo de verificacion</h2>
         <p>Por favor, introduce el codigo para restablecer la contraseña.</p>
-        <form method="get" action="/recuperar_contraseña">
+        <form method="post" action="/codigo">
             <div class="input-group">
                 <label for="password"><i class="fas fa-envelope"></i> codigo de verificacion</label>
-                <input type="password" id="email" name="password" placeholder="Introduce el codigo de verificacion" required>
+                <input type="password" id="email" name="codigo" placeholder="Introduce el codigo de verificacion" required>
             </div>
             <button type="submit" class="reset-button">Enviar</button>
         </form>

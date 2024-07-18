@@ -1,6 +1,6 @@
 var random = require('../login/generarcodigo')
 
-
+let r;
 
 module.exports={
 
@@ -36,14 +36,28 @@ module.exports={
         res.render('login/recuperar_contraseña');
     },
     enviarCorreo:function(req, res){
-        let r= random.generarcodigo(5);
+    
+        r= random.generarcodigo(5);
         console.log("codigo aleatorio: ",r)
+        console.log(req.body);
+        res.render('login/codigo')
 
         
-        console.log(req.body);
-    }
+    },
+    confirmar:function(req, res){
+        console.log("funciona",req.body);
+        console.log(r);
 
-    
+        if ( req.body.codigo === r) {
+            res.render('login/nuevacontra');
+        } else {
+            res.send("codigo incorrecto");
+        }
+            
+    },
 
-    
 }
+
+    
+
+    
