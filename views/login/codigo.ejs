@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olvidaste tu Contraseña</title>
+    <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/codigo.css">
+</head>
+<body>
+    <div class="forgot-password-container">
+        <h2>codigo de verificacion</h2>
+        <p>Por favor, introduce el codigo para restablecer la contraseña.</p>
+        <form method="get" action="/recuperar_contraseña">
+            <div class="input-group">
+                <label for="password"><i class="fas fa-envelope"></i> codigo de verificacion</label>
+                <input type="password" id="email" name="password" placeholder="Introduce el codigo de verificacion" required>
+            </div>
+            <button type="submit" class="reset-button">Enviar</button>
+        </form>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
