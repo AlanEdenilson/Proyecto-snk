@@ -10,8 +10,24 @@ body{
     background-color: #dc6521;
     border: 2px solid #dc6521;
      text-align: left; 
+     justify-content: space-around;
     line-height: 65px; 
      color: #fff; 
     font-size: 22px; 
    
 }
+.imagen-1 img:hover {
+    width: 70px; /* Ancho deseado de la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+    transition: transform 0.3s ease; /* Transición suave */
+    transform: scale(1.2);
+}
+.imagen-2 img:hover {
+    width: 70px; /* Ancho deseado de la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+    transition: transform 0.3s ease; /* Transición suave */
+    transform: scale(1.2);
+
+}
+
+
