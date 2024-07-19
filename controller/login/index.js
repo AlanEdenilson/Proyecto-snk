@@ -2,8 +2,8 @@
 var email=require('../login/enviargmail');
 var random=require('../login/generarcodigo');
 var conexion = require('../../config/conexion');
-var gtoken=require('./Gtoken')
-
+//var gtoken=require('../Gtoken')
+var gtoken=require('../Gtoken')
 ;
 let r;
 
@@ -15,17 +15,30 @@ module.exports={
          //res.redirect('/admin');
         },
     verificar:function(req, res, next){
-        console.log(req.body);
-
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1];
+        if (token == null) return res.sendStatus(401);
+        else{
+             res.json(token);
+        }
     },
     crearcuenta1:function(req, res){
         res.render('login/admin');
     },
-    verificarCuenta:function(req, res){
-        
+    verificarCuenta:function(req, res){ 
+
         if (req.body.rol === "1") {
-            console.log("bienvenido administrador tus datos son");
             console.log(req.body);
+            const payload = {
+                rol:req.body.rol,
+                nombre:req.body.fullname,
+                email:req.body.email,
+                password:req.body.password
+            }
+            const token = gtoken.generarToken(payload);
+            res.cookie('token', token);
+            res.json({ token });
+
         } if (req.body.rol==="2") {
             console.log("bienvenido repartidor tus datos son");
             console.log(req.body);
