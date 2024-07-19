@@ -17,7 +17,7 @@ conexion.connect(
     }
 );
 
-const consulta = "select * FROM usuario"
+const consulta = "SELECT * FROM usuario"
 conexion.query(consulta, function (error, datos){
     if(error){
         throw error;
