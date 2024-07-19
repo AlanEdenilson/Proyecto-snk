@@ -1,5 +1,33 @@
 body{
     height:100vh;
-    margin:0;
+    margin:auto;
     background:linear-gradient(135deg, #821010, #a3690d);
+    
 }
+.Rectangulo{
+    width: 65;
+    height: 60px;    
+    background-color: #dc6521;
+    border: 2px solid #dc6521;
+     text-align: left; 
+     justify-content: space-around;
+    line-height: 65px; 
+     color: #fff; 
+    font-size: 22px; 
+   
+}
+.imagen-1 img:hover {
+    width: 70px; 
+    height: auto; 
+    transition: transform 0.3s ease;
+    transform: scale(1.2);
+}
+.imagen-2 img:hover {
+    width: 70px; 
+    height: auto; 
+    transition: transform 0.3s ease; 
+    transform: scale(1.2);
+
+}
+
+
