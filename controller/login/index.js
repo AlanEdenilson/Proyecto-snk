@@ -4,6 +4,7 @@ var random=require('../login/generarcodigo');
 var conexion = require('../../config/conexion');
 //var gtoken=require('../Gtoken')
 const jwt = require('jsonwebtoken');
+
 const Gtoken = require('../Gtoken');
 
 let r;
@@ -19,14 +20,20 @@ module.exports={
 
     //-----------------------------------------|
     verificar:function(req, res, next){
+
+        //extraendo la cookie
         const token = req.cookies.authToken;
+
+        //verificando si no hay cokkie
         if (!token) {
             res.send(" no tienes token "); // Si no hay token, devuelve un error 401
         } else{
+            //verificando si el token es valido
             try {
                 const validarPayload=Gtoken.validarToken(token)
                 console.log("tu token es ", validarPayload)
                 res.send("bienvenido admin tu token es valido")
+                // si hay pero no es valido 
             } catch (error) {
                 res.send("tu token no es valido")
                 
@@ -80,6 +87,8 @@ module.exports={
     },
     //-----------------------------------------|
 
+     // funcion para mandar corrreo y codigo generado 
+
     //-----------------------------------------|
     enviarCorreo:function(req, res){
         r = random.generarcodigo(5);
@@ -89,6 +98,8 @@ module.exports={
         console.log("codigo aleatorio: ",r)
         console.log("tu correo es ",correo);
         console.log("codigo aleatorio: ", r)
+
+        //mandarlo ala pagina para recibir el codigo
 
         res.render('login/codigo')
 
