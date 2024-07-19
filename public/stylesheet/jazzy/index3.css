@@ -5,9 +5,8 @@ body{
     
 }
 .Rectangulo{
-    margin: auto;
-    width: 200px;
-    height: 65px; 
+    width: 65;
+    height: 60px;    
     background-color: #dc6521;
     border: 2px solid #dc6521;
      text-align: left; 
