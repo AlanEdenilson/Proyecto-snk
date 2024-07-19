@@ -4,8 +4,9 @@ var random=require('../login/generarcodigo');
 var conexion = require('../../config/conexion');
 //var gtoken=require('../Gtoken')
 const jwt = require('jsonwebtoken');
-
 const Gtoken = require('../Gtoken');
+const model = require('../../model');
+
 
 let r;
 
@@ -13,6 +14,9 @@ module.exports={
 
     login:function(req,res){
          res.render('login/inicio'); 
+         const respuesta = model.buscarusuario(conexion)
+         console.log(respuesta)
+         
        
          //res.redirect('/admin');
         },
