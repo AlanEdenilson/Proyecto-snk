@@ -4,6 +4,8 @@ var controlador=require('../controller/login/index')
 
 
 
+
+
 var router = express.Router();
 
 /* GET home page. */
