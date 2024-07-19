@@ -1,19 +1,28 @@
-var mysql = require("mysql");
-var con = mysql.createConnection({
-    host: 'localhost',
+const { error } = require("console");
+const mysql = require("mysql")
+const conexion = mysql.createConnection({
+    host:'localhost',
     user: 'root',
     password: '',
     database: 'prueba'
 });
 
-con.connect(
-
-    (err)=>{
-        if(!err){
-            console.log('conexion establecida');
-        } else{
-            console.log('error en la conexion')
+conexion.connect(
+    (error) => {
+        if (!error){
+            console.log("CONEXION EXITOSA");
+        }else{
+            console.log("La conexion ha fallado...........");
         }
     }
 );
-module.exports = con;
+
+const consulta = "select * FROM usuario"
+conexion.query(consulta, function (error, datos){
+    if(error){
+        throw error;
+    }else{
+        console.log(datos);
+    }
+});
+conexion.end();
