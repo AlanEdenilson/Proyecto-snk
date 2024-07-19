@@ -1,7 +1,9 @@
 
 var email=require('../login/enviargmail');
 var random=require('../login/generarcodigo');
+var conexion = require('../../config/conexion');
 
+;
 let r;
 
 module.exports={
