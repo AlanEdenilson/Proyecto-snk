@@ -1,5 +1,18 @@
 body{
     height:100vh;
-    margin:0;
+    margin:auto;
     background:linear-gradient(135deg, #821010, #a3690d);
+    
+}
+.Rectangulo{
+    margin: auto;
+    width: 200px;
+    height: 65px; 
+    background-color: #dc6521;
+    border: 2px solid #dc6521;
+     text-align: left; 
+    line-height: 65px; 
+     color: #fff; 
+    font-size: 22px; 
+   
 }
