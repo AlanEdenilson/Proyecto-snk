@@ -20,7 +20,7 @@ router.get('/a_y_r', function(req, res, next) {
 
 router.get('/admin',controlador.crearcuenta1);
 
-router.post('/admin',controlador.verificarCuenta );
+router.post('/admin',controlador.verificarCuenta);
 
 router.get('/repartidor',controlador.crearcuenta2);
 

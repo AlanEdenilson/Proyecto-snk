@@ -15,6 +15,9 @@ module.exports={
        
          //res.redirect('/admin');
         },
+     //-----------------------------------------|
+
+    //-----------------------------------------|
     verificar:function(req, res, next){
         const token = req.cookies.authToken;
         if (!token) {
@@ -34,38 +37,50 @@ module.exports={
     crearcuenta1:function(req, res){
         res.render('login/admin');
     },
+    //-----------------------------------------|
+
+    //-----------------------------------------|
     verificarCuenta:function(req, res){ 
 
-        if (req.body.rol === "1") {
-            console.log(req.body);
-            const payload = {
-                rol:req.body.rol,
-                nombre:req.body.fullname,
-                email:req.body.email,
-                password:req.body.password
-            }
-            const token = Gtoken.generarToken(payload);
-            res.cookie('authToken', token, {
-                httpOnly: true,
-                secure: true, // Cambia esto a true en producción con HTTPS
-                maxAge: 3600000 // 1 hora
-            });
-            res.render('login/ventanaAdmin')
+        //crenado los datos a almacenar en la cokkie 
 
-        } if (req.body.rol==="2") {
-            console.log("bienvenido repartidor tus datos son");
-            console.log(req.body);
-        } else {
-            
+        const payload = {
+            rol:req.body.rol,
+            nombre:req.body.fullname,
+            email:req.body.email,
+            password:req.body.password
+        }
+        // generarando token y almacenando lo en la cokkie
+        const token = Gtoken.generarToken(payload);
+        res.cookie('authToken', token, {
+            httpOnly: true,
+            secure: true, // Cambia esto a true en producción con HTTPS
+            maxAge: 3600000 // 1 hora
+        });
+
+        if (req.body.rol==="1") {
+            res.render('login/ventanaAdmin');
+        }
+        else if (req.body.rol==="2") {
+            res.render('login/ventanaRpartidor');
         }
     },
+
+    //-----------------------------------------|
     crearcuenta2:function(req, res){
         res.render('login/repartidor');
-    },
+    },                                        
+
+    //-----------------------------------------|
+
+    //-----------------------------------------|
 
     recuperarContra:function(req, res){
         res.render('login/recuperar_contraseña');
     },
+    //-----------------------------------------|
+
+    //-----------------------------------------|
     enviarCorreo:function(req, res){
         r = random.generarcodigo(5);
         var correo = req.body.email;
@@ -79,6 +94,9 @@ module.exports={
 
         
     },
+    //-----------------------------------------|
+
+    //-----------------------------------------|
     confirmar:function(req, res){
 
         if (req.body.codigo===r) {
@@ -87,9 +105,19 @@ module.exports={
             res.send("codigo invalido");
         }
         }
-        
-
     }
+    //-----------------------------------------|
+
+
+    //funciones que no se exportan 
+
+   
+       
+    
+    //-----------------------------------------|
+
+    //-----------------------------------------|
+   
 
 
 
