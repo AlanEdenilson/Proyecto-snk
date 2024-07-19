@@ -1,10 +1,10 @@
-const { error } = require("console");
+
 const mysql = require("mysql")
 const conexion = mysql.createConnection({
     host:'localhost',
     user: 'root',
     password: '',
-    database: 'prueba'
+    database:'pruebas'
 });
 
 conexion.connect(
@@ -17,7 +17,7 @@ conexion.connect(
     }
 );
 
-const consulta = "SELECT * FROM usuario"
+/*const consulta = "SELECT * FROM usuario"
 conexion.query(consulta, function (error, datos){
     if(error){
         throw error;
@@ -25,4 +25,4 @@ conexion.query(consulta, function (error, datos){
         console.log(datos);
     }
 });
-conexion.end();
+conexion.end();*/

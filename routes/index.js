@@ -1,7 +1,9 @@
 var express = require('express');
 var controlador=require('../controller/login/index')
 
-const { default: nodemon } = require('nodemon');
+
+
+
 var router = express.Router();
 
 /* GET home page. */
