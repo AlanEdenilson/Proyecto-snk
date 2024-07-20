@@ -13,6 +13,10 @@ let r;
 module.exports={
 
     login:function(req,res){
+
+        
+
+
         res.render('login/inicio');
         /*
         var validarPayload;
