@@ -17,7 +17,7 @@ conexion.connect(
     }
 );
 
-const consulta = "SELECT usuario, correo FROM usuario WHERE usuario = 'Aaron' && correo = '323456@.com'";
+/*const consulta = "SELECT usuario, correo FROM usuario WHERE usuario = 'Alancita' && correo = 'alancita@.com'";
 
 conexion.query(consulta, function (error, datos) {
     if (error) {
@@ -32,6 +32,31 @@ conexion.query(consulta, function (error, datos) {
             console.log("No se encontró ningún usuario con el nombre o correo especificado.");
         }
     }
-});
+});*/
+
+function insertarUsuario(id_rol, usuario, correo, contraseña) {
+    const consulta = 'INSERT INTO usuario (id_rol, usuario, correo, contraseña) VALUES (?, ?, ?, ?)';
+    const valores = [id_rol, usuario, correo, contraseña];
+
+    conexion.query(consulta, valores, (error, resultados) => {
+        if (error) {
+            console.error('Error insertando datos:', error.stack);
+            return;
+        }
+        console.log('Datos insertados con éxito:', resultados.insertId);
+    });
+}
+
+insertarUsuario(1, 'Aroncito', 'aroncito@.com', '87654321');
+
+setTimeout(() => {
+    conexion.end((err) => {
+        if (err) {
+            console.error('Error cerrando la conexión:', err.stack);
+            return;
+        }
+        console.log('Conexión cerrada.');
+    });
+}, 2000);
 
 module.exports = conexion;
