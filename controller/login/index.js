@@ -13,9 +13,33 @@ let r;
 module.exports={
 
     login:function(req,res){
-         res.render('login/inicio'); 
-         const respuesta = model.buscarusuario(conexion)
-         console.log(respuesta)
+        res.render('login/inicio');
+        /*
+        var validarPayload;
+        const token = req.cookies.authToken;
+        if (!token) {
+            res.render('login/inicio'); // Si no hay token, devuelve un error 401
+        } else{
+            //verificando si el token es valido
+            try {
+                validarPayload=Gtoken.validarToken(token)
+                console.log("tu token es ", validarPayload)
+                if (validarPayload.rol==="1") {
+                    res.send("tu token es valido tienes los privilegios de un admin")
+                   // res.render('login/ventanaAdmin');
+                }else if(validarPayload.rol==="2"){
+                    res.send("tu token es valido tienes los privilegios de un repartidor")
+                   // res.render('login/ventanaRpartidor');
+                }
+                // si hay pero no es valido 
+            } catch (error) {
+                res.send("tu token no es valido")
+                
+            }
+        }*/
+          
+        // const respuesta = model.buscarusuario(conexion)
+         //console.log(respuesta)
          
        
          //res.redirect('/admin');
