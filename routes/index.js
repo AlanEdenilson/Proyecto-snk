@@ -1,7 +1,16 @@
 var express = require('express');
 var controlador=require('../controller/login/index')
 
+function verificarCredenciales(req,res,next) {
+  const contraseña = req.body.password;
 
+  if (contraseña.len) {
+    next();
+  } else {
+    res.send('Contraseña incorrecta');
+  }
+  
+}
 
 
 
@@ -20,7 +29,7 @@ router.get('/a_y_r', function(req, res, next) {
 
 router.get('/admin',controlador.crearcuenta1);
 
-router.post('/admin',controlador.verificarCuenta);
+router.post('/admin',verificarCredenciales,controlador.verificarCuenta);
 
 router.get('/repartidor',controlador.crearcuenta2);
 
