@@ -17,7 +17,7 @@ conexion.connect(
     }
 );
 
-const consulta = "SELECT usuario, correo FROM usuario WHERE usuario = 'Aaron' && correo = '323456@.com'";
+/*const consulta = "SELECT usuario, correo FROM usuario WHERE usuario = 'Aaron' && correo = '323456@.com'";
 
 conexion.query(consulta, function (error, datos) {
     if (error) {
@@ -32,6 +32,6 @@ conexion.query(consulta, function (error, datos) {
             console.log("No se encontró ningún usuario con el nombre o correo especificado.");
         }
     }
-});
+});*/
 
 module.exports = conexion;

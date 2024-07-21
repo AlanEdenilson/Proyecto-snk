@@ -3,27 +3,34 @@
 //crear datos 
 // de log-in
 
+
+
+
 module.exports = {
-    buscarusuario:function(conexion) {
-    
-        const consulta = "SELECT * FROM usuario WHERE usuario = 'Aaron'";
-        conexion.query(consulta, function (error, datos) {
-            if (error) {
-                throw error;
-            } else {
-                if (datos.length > 0) {
-                    console.log("Usuario encontrado:", datos);
-                } else { 
-                    console.log("No se encontró ningún usuario con el nombre especificado.");
-
+    buscarusuario:function (conexion,username,password) {
+        const consulta = `SELECT usuario, contraseña FROM usuario WHERE usuario = '${username}' AND contraseña ='${password}'`;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    return reject(error);
+                } else {
+                    if (datos.length > 0) {
+                       /* const usuario = datos[0].usuario;
+                        const contraseña = datos[0].contraseña;
+                        resolve({usuario,contraseña });*/
+                        resolve(true);
+                    } else {
+                        resolve(false); // No se encontró ningún usuario
+                    }
                 }
-            }
+            });
         });
-        
-    },/*termina la consulta */
-
-    otre:function (params) {
-        
     }
     
+    
+    /*function(conexion) {
+        
+      
+         const buscarUser = buscarUsuario(conexion,consulta)
+}*/
 }
