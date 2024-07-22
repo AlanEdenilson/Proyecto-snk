@@ -3,7 +3,7 @@ var random = require('../login/index');
 module.exports={
     enviaremail:function(correo,codigoA){
         let transporter = nodemailer.createTransport({
-            service: 'Gmail', // Puedes usar otros servicios como 'Yahoo', 'Outlook', etc.
+            service: 'gmail', // Puedes usar otros servicios como 'Yahoo', 'Outlook', etc.
             auth: {
                 user: 'ordershop503@gmail.com', // Reemplaza con tu correo electrónico
                 pass: 'pizhuhizbpcmdlwn'       // Reemplaza con tu contraseña
@@ -24,7 +24,7 @@ module.exports={
                 return console.log(`Error: ${error}`);
             }
             console.log('Correo enviado: %s', info.messageId);
-            console.log("tu codigo generado es listo para mandar gmail :"+codigoA + correo)
+            console.log("tu codigo generado es listo para mandar gmail :" + codigoA + correo)
             console.log('URL de vista previa enviado: %s', nodemailer.getTestMessageUrl(info));
          
             
