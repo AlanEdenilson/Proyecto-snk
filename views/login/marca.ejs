@@ -9,12 +9,11 @@
 <body>
     <div class="container">
         <h2>Registro de Marca</h2>
-        <form>
+        <form method="post" action="/marca" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Imagen:</label>
-                <input type="image" id="imagen" name="imagen" >
-                <br></br>
-                <button class="btn btn-primary" type="submit">Agregar Imagen</button>
+                <input type="file" id="imagen" name="imagen"  >
+
             </div>
             <div class="form-group">
                 <label for="email">Nombre:</label>
