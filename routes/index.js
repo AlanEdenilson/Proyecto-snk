@@ -32,7 +32,9 @@ router.get('/recuperar',controlador.recuperarContra);
 router.post('/recuperar_contra', controlador.enviarCorreo);
 
 router.post('/codigo',controlador.confirmar);
-router.get('/marca',)
+router.get('/marca',controlador.enviarm);
+
+router.post('/marca', controlador.verificard);
 
 
 //router.post('/marca')
