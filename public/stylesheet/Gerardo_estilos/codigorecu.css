@@ -15,8 +15,31 @@ body{
 }
 
 .cuer{
-    position: relative;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    border-radius: 15px;
-    border-color: black;
+    width: 350px;
+    height: 270px;
+}
+
+.code{
+    position: relative;
+    height: 30px;
+    width: 210px;
+    right: 60px;
+}
+
+.but{
+    position: relative;
+    top: 20px;
+    height: 35px;
+    width: 150px;
+}
+
+.texl{
+    position: relative;
+    top: -30px;
+    left: px;
 }
