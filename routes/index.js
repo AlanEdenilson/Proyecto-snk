@@ -33,6 +33,11 @@ router.post('/recuperar_contra', controlador.enviarCorreo);
 
 router.post('/codigo',controlador.confirmar);
 
+router.get('/marca',function(req,res) {
+  res.render('login/marca');
+  
+});
+
 //router.post('/marca')
 
 
