@@ -1,25 +1,31 @@
 body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height:100vh;
-    margin:auto;
-    background:linear-gradient(135deg, #821010, #a3690d);
+    background: linear-gradient(135deg, #70b8e9, #7d299f);
+
+   
     
 }
 .Rectangulo{
-    width: 65;
-    height: 60px;    
-    background-color: #dc6521;
-    border: 2px solid #dc6521;
-     text-align: left; 
-     justify-content: space-around;
+    width: 65px;
+    height: 65px;  
+    border: 2px solid #7d299f;
+    position: relative;
+    text-align: center; 
+    justify-content: center;
     line-height: 65px; 
-     color: #fff; 
-    font-size: 22px; 
+    color: #fff; 
+    font-size: 22px;
+    
    
 }
 .imagen-1 img:hover {
     width: 70px; 
     height: auto; 
     transform: scale(1.2);
+
 }
 .imagen-2 img:hover {
     width: 70px; 
