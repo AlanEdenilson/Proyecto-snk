@@ -17,6 +17,4 @@ conexion.connect(
     }
 );
 
-
-
 module.exports = conexion;
