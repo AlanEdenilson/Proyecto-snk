@@ -25,7 +25,19 @@ module.exports = {
                 }
             });
         });
-    }
+    },
+   /* insertarmarca:function (conexion, marca) {
+        const consulta = `INSERT INTO marca (nombre) VALUES ('${marca}')`;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    return reject(error);
+                } else {
+                    resolve(true);
+                }
+            });
+        });
+    }*/
     
     
     /*function(conexion) {

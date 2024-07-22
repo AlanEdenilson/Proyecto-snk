@@ -31,7 +31,14 @@ router.get('/recuperar',controlador.recuperarContra);
 
 router.post('/recuperar_contra', controlador.enviarCorreo);
 
-router.post('/codigo',controlador.confirmar)
+router.post('/codigo',controlador.confirmar);
+
+//router.post('/marca')
+
+
+
+
+
 
 
 /*router.post('/', (req, res) => {
