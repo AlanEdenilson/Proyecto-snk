@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    font-family: Arial, sans-serif;
+}
+
+.titles{
+    text-align: center;
+    position: absolute;
+    top: 20px;
+}
+
+.cuer{
+    position: relative;
+    text-align: center;
+    border-radius: 15px;
+    border-color: black;
+}

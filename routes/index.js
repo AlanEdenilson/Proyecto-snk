@@ -32,6 +32,10 @@ router.get('/recuperar',controlador.recuperarContra);
 router.post('/recuperar_contra', controlador.enviarCorreo);
 
 router.post('/codigo',controlador.confirmar);
+router.get('/marca', function(req, res, next) {
+  res.render('login/marca');
+})
+
 
 //router.post('/marca')
 
