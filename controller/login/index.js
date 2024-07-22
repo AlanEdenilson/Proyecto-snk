@@ -230,9 +230,15 @@ module.exports={
         }else{
             res.send("codigo invalido");
         }
-        },
-    
-}
+    },
+        // aroon perez
+    enviarm:function(req, res){
+        res.render("login/marca");
+    },
+    verificard:function(req, res){
+        
+    }
+}//nolll
     //-----------------------------------------|
 
     //-----------------------------------------|
