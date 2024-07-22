@@ -1,16 +1,8 @@
 var express = require('express');
 var controlador=require('../controller/login/index')
+var midd = require('../controller/login/middlewar');
 
-function verificarCredenciales(req,res,next) {
-  const contraseña = req.body.password;
 
-  if (contraseña.len) {
-    next();
-  } else {
-    res.send('Contraseña incorrecta');
-  }
-  
-}
 
 
 
@@ -21,7 +13,7 @@ var router = express.Router();
 
 router.get('/',controlador.login);
 
-router.post('/',controlador.verificar);
+router.post('/',midd.validar,controlador.verificar);
 
 router.get('/a_y_r', function(req, res, next) {
   res.render('login/a_y_r');
@@ -29,7 +21,7 @@ router.get('/a_y_r', function(req, res, next) {
 
 router.get('/admin',controlador.crearcuenta1);
 
-router.post('/admin',verificarCredenciales,controlador.verificarCuenta);
+router.post('/admin',controlador.verificarCuenta);
 
 router.get('/repartidor',controlador.crearcuenta2);
 
