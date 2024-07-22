@@ -230,7 +230,7 @@ module.exports={
         }else{
             res.send("codigo invalido");
         }
-        },
+    },
         // aroon perez
     
 }//nolll
