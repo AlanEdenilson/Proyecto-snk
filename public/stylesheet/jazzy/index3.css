@@ -21,17 +21,5 @@ body{
     
    
 }
-.imagen-1 img:hover {
-    width: 70px; 
-    height: auto; 
-    transform: scale(1.2);
-
-}
-.imagen-2 img:hover {
-    width: 70px; 
-    height: auto; 
-    transform: scale(1.2);
-
-}
 
 
