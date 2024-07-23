@@ -14,9 +14,9 @@ body{
     padding: 50px; 
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    top:10px; /* Distancia desde la parte superior del contenedor */
-    left: center; /* Distancia desde la izquierda del contenedor */
-    font-size: 16px; /* Tamaño de la fuente del texto */
+    top:10px; 
+    left: center;
+    font-size: 16px; 
 }
 
 .forma img{
