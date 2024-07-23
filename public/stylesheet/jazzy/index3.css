@@ -7,10 +7,40 @@ body{
  
 }
 
+
 .forma{
     display: flex;
+    background-color:white;
+    background-size: cover;
+    background-position: center;
+    padding: 30px; 
+    border-radius: 10px;
+
+
 }
 
 .forma img{
-    
+    float:center;
+    width: 35%;
+    height:auto; 
+    max-height: 100%; 
+    display: block; 
+    margin: auto; 
+}
+h1{
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.a{
+    width: 300px;
+    height: 319px;
+    border: 2px solid #111213;
+    border-radius: 8px;
+  
+}
+.b{
+    width: 300px;
+    height: 319px;
+    border: 2px solid #111213;
+    border-radius: 8px;
 }
