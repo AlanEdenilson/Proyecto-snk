@@ -48,9 +48,18 @@ module.exports={
         body('confirm-password').custom((value, { req }) => {
               return value === req.body.password;
             }).withMessage("La contraseña y la confirmación de contraseña no coinciden"),
-            (req, res, next)=>{
-                
-                
+            (req,res,next)=>{
+                result(req)
+                .then(() => {
+                    next();
+                })
+                .catch((errors) => {
+                    console.log(errors);
+                    res.send("hay errores en los campos");
+                    /*var valores = req.body
+                    var validaciones = errors.array()
+                      res.render('login/inicio',{validaciones:validaciones,valores:valores});*/
+                });
             }
         
     ]
