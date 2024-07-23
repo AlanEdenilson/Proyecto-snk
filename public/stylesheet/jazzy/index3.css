@@ -4,22 +4,7 @@ body{
     align-items: center;
     height:100vh;
     background: linear-gradient(135deg, #70b8e9, #7d299f);
-
-   
-    
-}
-.Rectangulo{
-    width: 65px;
-    height: 65px;  
-    border: 2px solid #7d299f;
-    position: relative;
-    text-align: center; 
-    justify-content: center;
-    line-height: 65px; 
-    color: #fff; 
-    font-size: 22px;
-    
-   
+ 
 }
 
 
