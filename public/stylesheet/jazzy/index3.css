@@ -11,14 +11,13 @@ body{
 .forma{
     display: flex;
     background-size: cover;
+    background-color: white;
     background-position: center;
     padding: 50px; 
     border-radius: 10px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    top:10px; 
-    left: center;
-    font-size: 16px; 
+    box-shadow:rgb(91, 3, 91) 1px 5px 30px;
 }
+    
 
 .forma img{
     float:center;
