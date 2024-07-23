@@ -20,12 +20,12 @@ body{
     
 
 .forma img{
-    float:center;
     width: 35%;
     height:auto; 
     max-height: 100%; 
     display: block; 
     margin: auto; 
+    transform: translate(-0%, 50%);
 }
 
 
@@ -34,7 +34,7 @@ body{
     height: 179px;
     border: 2px solid #111213;
     border-radius: 8px;
-  
+   
 }
 .b{
     width: 240px;
