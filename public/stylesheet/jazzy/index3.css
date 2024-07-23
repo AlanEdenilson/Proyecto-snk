@@ -10,10 +10,7 @@ body{
 
 .forma{
     display: flex;
-    width: 490px;
-    height: 200px;
-    border: 2px solid #111213;
-    border-radius: 8px;
+
    
 }
 
