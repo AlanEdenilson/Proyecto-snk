@@ -6,22 +6,42 @@
     <title>Inicio de Sesión</title>
 </head>
 <body>
+
+   
     <div class="login-container">
         <h2>INICIAR SESION</h2>
         <form method="post"  action="/">
             <div class="input-group">
                 <label for="username"><i class="fas fa-user"></i> Usuario</label>
-                <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
+                <input type="text" id="username" name="username" placeholder="Nombre de usuario" >
+                <% if (typeof validaciones !== 'undefined') { %>
+                    <% validaciones.forEach((validacion, index) => { %>
+                        <% if (index === 0 && validacion.path === 'username') { %>
+                               <strong style="color: rgb(238, 20, 227);background-color: rgb(203, 189, 221);"><%= validacion.msg %></strong>
+                               <% //dale estilos piola a este strong  %>
+                            <% } %>
+                        <% }); %>
+                     <% } %>
             </div>
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" >
+                <% if (typeof validaciones !== 'undefined') { %>
+                    <% validaciones.forEach((validacion, index) => { %>
+                        <% if (index === 1 || index === 0 && validacion.path === 'password') { %>
+                            <strong style="color: rgb(202, 28, 194);background-color: rgb(201, 196, 207);"><%= validacion.msg %></strong>
+                            <% //dale estilos piola a este strong  %>
+                            <% } %>
+                        <% }); %>
+                     <% } %>
+              
                 <a href="/recuperar" class="recuper">¿Olvidastes tu Contraseña?</a>
             </div>
             <a href="/a_y_r" class="create-account">Crear Cuenta</a>
             <button type="submit" class="login-button">Entrar</button>
         </form>
     </div>
+  
 
     
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

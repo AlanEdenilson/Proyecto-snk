@@ -28,7 +28,9 @@ module.exports={
                 })
                 .catch((errors) => {
                     console.log(errors);
-                    return res.status(400).json({ errors: errors.array() });
+                    var valores = req.body
+                    var validaciones = errors.array()
+                      res.render('login/inicio',{validaciones:validaciones,valores:valores});
                 });
             }
         ],
