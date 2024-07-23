@@ -26,7 +26,7 @@ body{
     height: 310px;
     position: relative;
     top: 20px;
-    right: 70px;
+    right: 100px;
     box-shadow:  rgb(255, 255, 255) 0px 5px 15px;
 }
 
@@ -100,9 +100,8 @@ body{
 
 .imm{
     position: relative;
-    height: 150px;
-    width: 150px;
-    right: 400px;
-    top: -220px;
+    height: 350px;
+    width: 350px;
+    margin-right: 200px;
 }
 
