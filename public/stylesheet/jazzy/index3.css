@@ -7,11 +7,21 @@ body{
  
 }
 
+
 .forma{
     display: flex;
+    width: 490px;
+    height: 200px;
+    border: 2px solid #111213;
+    border-radius: 8px;
+   
 }
 
 .forma img{
+    float:center;
     width: 50%;
-    height: auto;
+    height:auto; 
+}
+h1{
+    font-family: 'Times New Roman', Times, serif;
 }
