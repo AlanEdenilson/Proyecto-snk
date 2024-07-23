@@ -6,5 +6,11 @@ body{
     background: linear-gradient(135deg, #70b8e9, #7d299f);
  
 }
-
+.a{
+    display: flex;
+    width: 340px;
+    height:350px;
+    
+    
+}
 
