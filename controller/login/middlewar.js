@@ -36,12 +36,18 @@ module.exports={
         ],
         //verificando credenciales de admin
     Sanitisacionadmin:[
-        body('username')
+        body('fullname')
             .exists()
-            .isLength({ min:3}).withMessage('Usuario no valido'),
-        body('password')
+            .isLength({ min:6}).withMessage('Usuario no valido '),
+        body('email')
             .exists()
-            .isLength({ min:8}).withMessage('La contraseña debe tener al menos 8 caracteres'),
+            .isEmail()
+            .withMessage('El email no es válido')
+            .normalizeEmail(),
+        body('password').isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres"),
+        body('confirm-password').custom((value, { req }) => {
+              return value === req.body.password;
+            }).withMessage("La contraseña y la confirmación de contraseña no coinciden"),
             (req, res, next)=>{
                 result(req)
                 .then(() => {
