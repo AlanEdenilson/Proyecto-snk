@@ -26,6 +26,7 @@ body{
     height: 310px;
     position: relative;
     top: 20px;
+    box-shadow:  rgb(255, 255, 255) 0px 5px 15px;
 }
 
 .contra{
