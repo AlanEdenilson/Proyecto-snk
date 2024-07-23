@@ -7,16 +7,16 @@ body{
  
 }
 
-
 .forma{
     display: flex;
-    background-color:white;
     background-size: cover;
     background-position: center;
-    padding: 30px; 
+    padding: 50px; 
     border-radius: 10px;
-
-
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    top:10px; 
+    left: center;
+    font-size: 16px; 
 }
 
 .forma img{
@@ -27,20 +27,18 @@ body{
     display: block; 
     margin: auto; 
 }
-h1{
-    font-family: 'Times New Roman', Times, serif;
 
-}
+
 .a{
-    width: 300px;
-    height: 319px;
+    width: 240px;
+    height: 179px;
     border: 2px solid #111213;
     border-radius: 8px;
   
 }
 .b{
-    width: 300px;
-    height: 319px;
+    width: 240px;
+    height: 179px;
     border: 2px solid #111213;
     border-radius: 8px;
 }
