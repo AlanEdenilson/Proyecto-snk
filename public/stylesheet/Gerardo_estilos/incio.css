@@ -97,3 +97,9 @@ body {
     text-decoration: underline;
     color: blue;
 }
+
+.h2{
+    color: #9b59b6;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
