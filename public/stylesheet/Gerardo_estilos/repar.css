@@ -12,9 +12,10 @@ body {
     background: #fff;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
+    height: 520px;
+    box-shadow:  rgb(255, 255, 255) 0px 5px 15px;
 }
 
 .register-container h2 {
@@ -75,8 +76,4 @@ body {
     position: relative;
     left: 80px;
     top: -38px;
-}
-
-.register-button:hover {
-    background: #555;
 }
