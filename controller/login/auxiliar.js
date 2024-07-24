@@ -1,7 +1,7 @@
 module.exports={
 
     mostrarventanas:function (res,token,rdatabase) {
-        if ( token === treu && rdatabase === true)  {
+        if (  rdatabase === true)  {
             if(token.rol==="1"){
                 res.render('login/ventanaAdmin');
             }else if(token.rol==="2"){

@@ -15,7 +15,7 @@ module.exports = {
                     throw error;
                 } else {
                     if (datos.length > 0) {
-                        return resolve(`El usuario " " ya existe `);
+                        return resolve(true);
                     } else {
                         return reject(new Error('usuario no encontrado ')); // No se encontró ningún usuario
                     }
