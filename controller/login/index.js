@@ -79,9 +79,6 @@ module.exports={
     verificar:function(req, res, next){
         const token = req.cookies.authToken;
         //validarTokenPromesa(res,token)
-        
-
-
        async  function p() {
         var username=req.body.username;
         var password=req.body.password;
@@ -102,17 +99,7 @@ module.exports={
             console.error('Token validation error:', error.message);
         }
         //---------------------------------------------------------------------
-        
-
-
-        // si el token es valido y el usuario es correcto, muestra la ventana correspondiente
-       /* if (vertoken.t === true && respuestabd === true)  {
-            if(vertoken.rol==="1"){
-                res.render('login/ventanaAdmin');
-            }else if(vertoken.rol==="2"){
-                res.render('login/ventanaRpartidor');
-            }
-        } */ if (vertoken.t===false && respuestabd === true) {
+if (vertoken.t===false && respuestabd === true) {
             res.send("no tines token por favor crea uno ")
             //refresh de token 
         }else if(vertoken.t==="alter" && respuestabd === true){
