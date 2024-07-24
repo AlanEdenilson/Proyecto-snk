@@ -20,9 +20,10 @@ body{
 .titulo{
     position: absolute;
     font-family:'Times New Roman', Times, serif;
+    font-size:x-large;
     text-align: center; 
     color: rgb(5, 5, 5); 
-    padding: 35px 230px; 
+    padding: 35px 210px; 
 
 }
 
