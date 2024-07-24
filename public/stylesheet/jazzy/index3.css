@@ -17,7 +17,14 @@ body{
     border-radius: 10px;
     box-shadow:rgb(91, 3, 91) 1px 5px 30px;
 }
-    
+.titulo{
+    position: absolute;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center; 
+    color: rgb(5, 5, 5); 
+    padding: 35px 230px; 
+
+}
 
 .forma img{
     width: 35%;
@@ -33,9 +40,10 @@ body{
     width: 240px;
     height: 179px;
     border: 2px solid #111213;
-    border-radius: 8px;
-   
+    border-radius: 8px; 
+    margin-right: 20px;  
 }
+
 .b{
     width: 240px;
     height: 179px;
