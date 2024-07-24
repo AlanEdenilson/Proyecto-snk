@@ -5,14 +5,13 @@ var conexion = require('../../config/conexion');
 //var gtoken=require('../Gtoken')
 const Gtoken = require('../Gtoken');
 const model = require('../../model');
+const aux=require('../login/auxiliar')
 
 
 
 let r;
-function validarTokenPromesa(token) {
-   
+/*function validarTokenPromesa(token) {
     return new Promise((resolve, reject) => {
-
         if (!token) {
             resolve({t:false});
             console.log("tu token no es valido")
@@ -35,7 +34,7 @@ function validarTokenPromesa(token) {
         }
        
     });
-}
+}*/
 
 
 module.exports={
@@ -79,7 +78,7 @@ module.exports={
     //-----------------------------------------|
     verificar:function(req, res, next){
         const token = req.cookies.authToken;
-        validarTokenPromesa(res,token)
+        //validarTokenPromesa(res,token)
         
 
 
@@ -91,22 +90,28 @@ module.exports={
         //---------------------------------------------------------------------
         // verificando si no existe 
         if (respuestabd === false) {res.render('login/inicio',{errors:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});} 
-        // ____________________________________________________________________
+       // ___________________________________________________________________
         console.log("tu respuesta de la bd es  ; " + respuestabd)
-
-        // verificando si el token es valido
-        var vertoken= await validarTokenPromesa(token) 
-        console.log("tu vertoken es ; " + vertoken.rol,":",vertoken.t)
+        // verificando si el token es valido 
+        try {
+            var vertoken= await Gtoken.validarToken2(token)
+            console.log('Token is valid:',vertoken);
+        } catch (error) {
+            console.error('Token validation error:', error.message);
+        }
+        console.log("tu vertoken es ; " + vertoken.rol,":",vertoken)
         //---------------------------------------------------------------------
+        aux.mostrarventanas(res,vertoken,respuestabd)
+
 
         // si el token es valido y el usuario es correcto, muestra la ventana correspondiente
-        if (vertoken.t === true && respuestabd === true)  {
+       /* if (vertoken.t === true && respuestabd === true)  {
             if(vertoken.rol==="1"){
                 res.render('login/ventanaAdmin');
             }else if(vertoken.rol==="2"){
                 res.render('login/ventanaRpartidor');
             }
-        } else if (vertoken.t===false && respuestabd === true) {
+        } */ if (vertoken.t===false && respuestabd === true) {
             res.send("no tines token por favor crea uno ")
             //refresh de token 
         }else if(vertoken.t==="alter" && respuestabd === true){
