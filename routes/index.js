@@ -25,13 +25,14 @@ router.post('/admin',midd.Sanitisacionadmin,controlador.verificarCuenta);
 
 router.get('/repartidor',controlador.crearcuenta2);
 
-router.post('/repartidor', controlador.verificarCuenta);
+router.post('/repartidor',midd.sanitacionrepartidor,controlador.verificarCuenta);
 
 router.get('/recuperar',controlador.recuperarContra);
 
 router.post('/recuperar_contra', controlador.enviarCorreo);
 
 router.post('/codigo',controlador.confirmar);
+
 router.get('/marca',controlador.enviarm);
 
 router.post('/marca', controlador.verificard);
