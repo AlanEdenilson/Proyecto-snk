@@ -19,8 +19,20 @@
                 <label for="fullname"><i class="fas fa-user"></i> Nombre </label>
                 <input type="text" id="fullname" name="username" placeholder="User" >
                 <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion, index) => { %>
-                        <% if (index === 0 && validacion.path === 'username') { %>
+                    <% validaciones.forEach((validacion) => { %>
+                        <% if ( validacion.path === 'username') { %>
+                            <div>
+                                <h2 class="error" 
+                                
+                                style="font-family: 'Times New Roman', Times, serif;
+                                font: small-caps 200% serif;
+                                font-size: 18px;
+                                color: #9b599b;
+                                position: relative;
+                                top: -15x;
+
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                            </div>
                             <% } %>
                             <% }); %>
                          <% } %>
@@ -29,8 +41,20 @@
                 <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
                 <input type="email" id="email" name="email" placeholder="Usuario" >
                 <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion, index) => { %>
-                        <% if (index === 0 && validacion.path === 'username') { %>
+                    <% validaciones.forEach((validacion) => { %>
+                        <% if ( validacion.path === 'email') { %>
+                            <div>
+                                <h2 class="error" 
+                                
+                                style="font-family: 'Times New Roman', Times, serif;
+                                font: small-caps 200% serif;
+                                font-size: 18px;
+                                color: #9b599b;
+                                position: relative;
+                                top: -15x;
+
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                            </div>
                             <% } %>
                             <% }); %>
                          <% } %>
@@ -39,8 +63,20 @@
                 <label for="id"><i class="fa-solid fa-hashtag"></i>Id Marca</label>
                 <input type="Id" id="Id" name="Id" placeholder="ID" >
                 <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion, index) => { %>
-                        <% if (index === 0 && validacion.path === 'username') { %>
+                    <% validaciones.forEach((validacion) => { %>
+                        <% if ( validacion.path === 'Id') { %>
+                            <div>
+                                <h2 class="error" 
+                                
+                                style="font-family: 'Times New Roman', Times, serif;
+                                font: small-caps 200% serif;
+                                font-size: 18px;
+                                color: #9b599b;
+                                position: relative;
+                                top: -15x;
+
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                            </div>
                             <% } %>
                             <% }); %>
                          <% } %>
@@ -49,8 +85,20 @@
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
                 <input type="password" id="password" name="password" placeholder="Contraseña" >
                 <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion, index) => { %>
-                        <% if (index === 0 && validacion.path === 'username') { %>
+                    <% validaciones.forEach((validacion) => { %>
+                        <% if ( validacion.path === 'password') { %>
+                            <div>
+                                <h2 class="error" 
+                                
+                                style="font-family: 'Times New Roman', Times, serif;
+                                font: small-caps 200% serif;
+                                font-size: 18px;
+                                color: #9b599b;
+                                position: relative;
+                                top: -15x;
+
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                            </div>
                             <% } %>
                             <% }); %>
                          <% } %>
@@ -58,10 +106,22 @@
             <div class="input-group">
                 <p id="message"></p>
                 <label for="confirmpassword"><i class="fas fa-lock"></i> Repetir Contraseña</label>
-                <input type="password" id="confirm-password"  placeholder="Repetir Contraseña" >
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Repetir Contraseña" >
                 <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion, index) => { %>
-                        <% if (index === 0 && validacion.path === 'username') { %>
+                    <% validaciones.forEach((validacion) => { %>
+                        <% if ( validacion.path === 'confirm-password') { %>
+                            <div>
+                                <h2 class="error" 
+                                
+                                style="font-family: 'Times New Roman', Times, serif;
+                                font: small-caps 200% serif;
+                                font-size: 18px;
+                                color: #9b599b;
+                                position: relative;
+                                top: -15x;
+
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                            </div>
                             <% } %>
                             <% }); %>
                          <% } %>
@@ -71,7 +131,7 @@
         </form>
     </div>
 
-    <script>
+    <%# <script>
         function verifyPasswords() {
             var password = document.getElementById("password").value;
             var confirmpassword = document.getElementById("confirmpassword").value;
@@ -86,7 +146,7 @@
                 messageElement.style.color = "red";
             }
         }
-    </script>
+    </script> %>
     
 
 

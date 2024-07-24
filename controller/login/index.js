@@ -90,7 +90,7 @@ module.exports={
         var respuestabd= await model.buscarusuario(conexion,username,password)
         //---------------------------------------------------------------------
         // verificando si no existe 
-        if (respuestabd === false) {res.send("usuario o conraseña incorrecta")} 
+        if (respuestabd === false) {res.render('login/inicio',{errors:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});} 
         // ____________________________________________________________________
         console.log("tu respuesta de la bd es  ; " + respuestabd)
 

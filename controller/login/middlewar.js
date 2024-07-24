@@ -36,7 +36,7 @@ module.exports={
         ],
         //verificando credenciales de admin
     Sanitisacionadmin:[
-        body('fullname')
+        body('username')
             .exists()
             .isLength({ min:6}).withMessage('Usuario no valido '),
         body('email')

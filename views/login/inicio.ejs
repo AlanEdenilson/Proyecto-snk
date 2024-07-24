@@ -57,6 +57,20 @@
               
                 <a href="/recuperar" class="recuper">¿Olvidastes tu Contraseña?</a>
             </div>
+            <% if (typeof errors !== 'undefined') { %>
+                        <div>
+                            <h2 class="error" 
+                            
+                            style="font-family: 'Times New Roman', Times, serif;
+                            font: small-caps 200% serif;
+                            font-size: 18px;
+                            color: #9b599b;
+                            position: relative;
+                            top: -15x;
+
+                            "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors %></h2>
+                        </div>
+                        <% } %>
             <a href="/a_y_r" class="create-account">Crear Cuenta</a>
             <button type="submit" class="login-button">Entrar</button>
         </form>
