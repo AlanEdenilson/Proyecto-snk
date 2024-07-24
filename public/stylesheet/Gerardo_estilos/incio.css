@@ -16,6 +16,8 @@ body {
     text-align: center;
     width: 300px;
     box-shadow:  rgb(255, 255, 255) 0px 5px 15px;
+    position: relative;
+    right: 50px;
 }
 
 
@@ -104,4 +106,9 @@ body {
     color: #9b59b6;
     font-size: 14px;
     margin-bottom: 10px;
+}
+
+.mm{
+    position: relative;
+    right: 110px;
 }
