@@ -96,12 +96,13 @@ module.exports={
         try {
             var vertoken= await Gtoken.validarToken2(token)
             console.log('Token is valid:',vertoken);
+            aux.mostrarventanas(res,vertoken,respuestabd)
+            console.log("tu vertoken es ; " + vertoken.rol,":",vertoken)
         } catch (error) {
             console.error('Token validation error:', error.message);
         }
-        console.log("tu vertoken es ; " + vertoken.rol,":",vertoken)
         //---------------------------------------------------------------------
-        aux.mostrarventanas(res,vertoken,respuestabd)
+        
 
 
         // si el token es valido y el usuario es correcto, muestra la ventana correspondiente
