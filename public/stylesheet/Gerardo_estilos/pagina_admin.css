@@ -7,8 +7,8 @@ body {
 
 .sidebar {
     width: 250px;
-    height: 650px;
-    background-color: #a9acaf;
+    height: 590px;
+    background-color: #f1efef;
     padding: 30px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -22,7 +22,7 @@ body {
 }
 
 .bor{   
-    background-color: rgb(121, 121, 121);
+    background-color: rgb(163, 160, 160);
     height: 70px;
     width: 1365px;
     position: relative;
@@ -30,4 +30,12 @@ body {
     right: 30px;
 
 }
+
+
+
+
+
+
+
+
 
