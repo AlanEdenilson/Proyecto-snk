@@ -1,6 +1,33 @@
-.panel{
-    position: relative;
-    height: 300px;
-    width: 200px;
-    background-color: white;
+body {
+    display: flex;
+    margin: 0;
+    height: 100vh;
+
 }
+
+.sidebar {
+    width: 250px;
+    height: 650px;
+    background-color: #a9acaf;
+    padding: 30px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.mm {
+    position: relative;
+    top: -90px;
+    right: 5px;
+    height: 250px;
+    width: 250px;
+}
+
+.bor{   
+    background-color: rgb(121, 121, 121);
+    height: 70px;
+    width: 1365px;
+    position: relative;
+    top: -30px;
+    right: 30px;
+
+}
+

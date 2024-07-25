@@ -19,6 +19,10 @@ router.get('/a_y_r', function(req, res, next) {
   res.render('login/a_y_r');
 })
 
+router.get('/ventanaAdmin', function(req, res, next) {
+  res.render('login/ventanaAdmin');
+})
+
 router.get('/admin',controlador.crearcuenta1);
 
 router.post('/admin',midd.Sanitisacionadmin,controlador.verificarCuenta);
