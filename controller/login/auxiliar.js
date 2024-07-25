@@ -6,10 +6,12 @@ module.exports={
                 res.render('login/ventanaAdmin');
             }else if(token.rol==="2"){
                 res.render('login/ventanaRpartidor');
-            }
+            }     
         }
 
         
     }
 
 }; //fin 
+
+    
