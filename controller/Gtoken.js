@@ -25,7 +25,7 @@ module.exports={
                         }
                         return reject(new Error('Token verification failed.'));
                     }
-                    resolve(decoded);
+                    resolve(decoded)
                 });
                 
             } catch (error) {

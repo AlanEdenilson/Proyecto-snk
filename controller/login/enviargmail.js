@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 var random = require('../login/index');
+
 module.exports={
     enviaremail:function(correo,codigoA){
         let transporter = nodemailer.createTransport({

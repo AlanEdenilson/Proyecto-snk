@@ -83,69 +83,32 @@ module.exports={
         var username=req.body.username;
         var password=req.body.password;
         // buscando usuario en la bd
-        var respuestabd= await model.buscarusuario(conexion,username,password)
-        //---------------------------------------------------------------------
-        // verificando si no existe 
-        if (respuestabd === false) {res.render('login/inicio',{errors:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});} 
-       // ___________________________________________________________________
-        console.log("tu respuesta de la bd es  ; " + respuestabd)
+        try {
+            var respuestabd= await model.buscarusuario(conexion,username,password)
+            console.log("tu respuesta de la bd es  ; " + respuestabd)
+        } catch (error) {
+            console.error('Error al buscar usuario:', error.message);
+            res.render('login/inicio',{errors:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});
+        };
         // verificando si el token es valido 
         try {
             var vertoken= await Gtoken.validarToken2(token)
             console.log('Token is valid:',vertoken);
-            aux.mostrarventanas(res,vertoken,respuestabd)
-            console.log("tu vertoken es ; " + vertoken.rol,":",vertoken)
+            aux.mostrarventanas(res,vertoken,respuestabd);
         } catch (error) {
             console.error('Token validation error:', error.message);
         }
         //---------------------------------------------------------------------
-if (vertoken.t===false && respuestabd === true) {
+     /*  if (vertoken.t===false && respuestabd === true) {
             res.send("no tines token por favor crea uno ")
             //refresh de token 
         }else if(vertoken.t==="alter" && respuestabd === true){
             res.send("tu token a sido alterado, por favor contactanos")
-        }
+        }*/
         
         }
 
         p();
-
-
-       
-
-
-
-        /*model.buscarusuario(conexion,username,password)
-        .then(result => {
-            if (result) {
-                console.log("Usuario encontrado:", result);
-            } else {
-                res.send("No se encontró ningún usuario con el nombre o correo especificado.");
-            }
-            })
-            .catch(error => {
-                console.error("Error ejecutando la consulta:", error);
-            });*/
-
-
-        //extraendo la cookie
-       /* const token = req.cookies.authToken;
-
-        //verificando si no hay cokkie
-        if (!token) {
-            res.send(" no tienes token "); // Si no hay token, devuelve un error 401
-        } else{
-            //verificando si el token es valido
-            try {
-                const validarPayload=Gtoken.validarToken(token)
-                console.log("tu token es ", validarPayload)
-                res.send("bienvenido admin tu token es valido")
-                // si hay pero no es valido 
-            } catch (error) {
-                res.send("tu token no es valido")
-                
-            }
-        }*/
              
     },
     crearcuenta1:function(req, res){
