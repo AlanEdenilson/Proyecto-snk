@@ -15,6 +15,7 @@ module.exports = {
                     throw error;
                 } else {
                     if (datos.length > 0) {
+                        console.log(datos)
                         return resolve(true);
                     } else {
                         return reject(new Error('usuario no encontrado ')); // No se encontró ningún usuario
@@ -24,11 +25,11 @@ module.exports = {
         });
     },
 
-    insertarUsuario:function (conexion) {
-        const consulta = `INSERT INTO usuario (usuario, contraseña) VALUES ('${usuario}', '${contraseña}')`;
+    insertarUsuario:function (conexion,datos) {
+        const consulta = `INSERT INTO usuario (id_rol,usuario,correo,contraseña,id_marca) VALUES ('${datos.rol}','${datos.username}','${datos.email}','${datos.password}','${datos.Id}')`;
         return new Promise((resolve, reject) => {
             try {
-                conexion.query(consulta, function (error, datos) {
+                conexion.query(consulta, function (error,result) {
                     if (error) {
                         return reject(error);
                     } else {

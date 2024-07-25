@@ -80,7 +80,7 @@ module.exports={
         const token = req.cookies.authToken;
         //validarTokenPromesa(res,token)
        async  function p() {
-        var username=req.body.username;
+        var username=req.body.username; 
         var password=req.body.password;
         // buscando usuario en la bd
         try {
@@ -118,6 +118,9 @@ module.exports={
 
     //-----------------------------------------|
     verificarCuenta:function(req, res){ 
+        var datos = req.body;
+        console.log(datos);
+
 
         //crenado los datos a almacenar en la cokkie 
 
@@ -135,12 +138,24 @@ module.exports={
             maxAge: 3600000 // 1 hora
         });
 
+        
+
+        model.insertarUsuario(conexion,datos)
+         .then(() => {
+            console.log("usuario ingresado"); // Esto se ejecuta si la promesa se resuelve
+          })
+          .catch((error) => {
+            console.error(error); // Esto se ejecuta si la promesa se rechaza
+          });
+
         if (req.body.rol==="1") {
             res.render('login/ventanaAdmin');
         }
         else if (req.body.rol==="2") {
             res.render('login/ventanaRpartidor');
         }
+
+        
     },
 
     //-----------------------------------------|
