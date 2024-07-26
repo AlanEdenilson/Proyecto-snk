@@ -94,9 +94,11 @@ module.exports={
         try {
             var vertoken= await Gtoken.validarToken2(token)
             console.log('Token is valid:',vertoken);
-            aux.mostrarventanas(res,vertoken,respuestabd);
+            var Rol =req.body.rol;
+            aux.mostrarventanas(res,vertoken,respuestabd,Rol);
         } catch (error) {
             console.error('Token validation error:', error.message);
+            res.send("crea un token de nuevo ")
         }
         //---------------------------------------------------------------------
      /*  if (vertoken.t===false && respuestabd === true) {
@@ -148,12 +150,14 @@ module.exports={
             console.error(error); // Esto se ejecuta si la promesa se rechaza
           });
 
-        if (req.body.rol==="1") {
+        /*if (req.body.rol==="1") {
             res.render('login/ventanaAdmin');
         }
         else if (req.body.rol==="2") {
             res.render('login/ventanaRpartidor');
-        }
+        }*/
+
+        aux.mostrarVentanas2(res,req.body.rol)
 
         
     },
