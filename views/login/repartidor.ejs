@@ -18,11 +18,10 @@
             <div class="input-group">
                 <label for="fullname"><i class="fas fa-user"></i> Nombre </label>
                 <input type="text" id="fullname" name="username" placeholder="User" >
-                <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion) => { %>
-                        <% if ( validacion.path === 'username') { %>
-                            <div>
-                                <h2 class="error" 
+                <% if (typeof errors !== 'undefined') { %>
+                <% if ( errors.username ) { %>
+                        <div>
+                            <h2 class="error" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
@@ -31,20 +30,20 @@
                                 position: relative;
                                 top: -15x;
 
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.username %></h2>
                             </div>
-                            <% } %>
-                            <% }); %>
-                         <% } %>
+                        
+                  
+                  <% } %>
+                  <% } %>
             </div>
             <div class="input-group">
                 <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
-                <input type="email" id="email" name="email" placeholder="Usuario" >
-                <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion) => { %>
-                        <% if ( validacion.path === 'email') { %>
-                            <div>
-                                <h2 class="error" 
+                <input type="email" id="email" name="email" placeholder="example@gmail.com" >
+                <% if (typeof errors !== 'undefined') { %>
+                 <% if ( errors.email ) { %>
+                        <div>
+                            <h2 class="error" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
@@ -53,20 +52,18 @@
                                 position: relative;
                                 top: -15x;
 
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.email %></h2>
                             </div>
-                            <% } %>
-                            <% }); %>
-                         <% } %>
+                      <% } %>
+                      <% } %>
             </div>
             <div class="input-group">
                 <label for="id"><i class="fa-solid fa-hashtag"></i>Id Marca</label>
                 <input type="Id" id="Id" name="Id" placeholder="ID" >
-                <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion) => { %>
-                        <% if ( validacion.path === 'Id') { %>
-                            <div>
-                                <h2 class="error" 
+                <% if (typeof errors !== 'undefined') { %>
+                 <% if ( errors.Id ) { %>
+                        <div>
+                            <h2 class="error" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
@@ -75,20 +72,19 @@
                                 position: relative;
                                 top: -15x;
 
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.Id  %></h2>
                             </div>
-                            <% } %>
-                            <% }); %>
-                         <% } %>
+                        
+                      <% } %> 
+                      <% } %>
             </div>
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
                 <input type="password" id="password" name="password" placeholder="Contraseña" >
-                <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion) => { %>
-                        <% if ( validacion.path === 'password') { %>
-                            <div>
-                                <h2 class="error" 
+                <% if (typeof errors !== 'undefined') { %>
+                 <% if ( errors.password ) { %>
+                        <div>
+                            <h2 class="error" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
@@ -97,21 +93,21 @@
                                 position: relative;
                                 top: -15x;
 
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.password  %></h2>
                             </div>
-                            <% } %>
-                            <% }); %>
-                         <% } %>
+                        
+                      <% } %>
+                      <% } %>
+                    
             </div>
             <div class="input-group">
                 <p id="message"></p>
                 <label for="confirmpassword"><i class="fas fa-lock"></i> Repetir Contraseña</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Repetir Contraseña" >
-                <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion) => { %>
-                        <% if ( validacion.path === 'confirm-password') { %>
-                            <div>
-                                <h2 class="error" 
+                <input type="password" id="confirm-password" name="confirm_password" placeholder="Repetir Contraseña" >
+                <% if (typeof errors !== 'undefined') { %>
+                 <% if ( errors.confirm_password ) { %>
+                        <div>
+                            <h2 class="error" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
@@ -120,11 +116,12 @@
                                 position: relative;
                                 top: -15x;
 
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
+                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.confirm_password %></h2>
                             </div>
-                            <% } %>
-                            <% }); %>
-                         <% } %>
+                        <
+                      <% } %>
+                      <% } %>
+                   
             </div>
             <a href="/" class="login-link">Ya tienes cuenta?</a>
             <button type="submit" class="register-button">Registrarse</button>
