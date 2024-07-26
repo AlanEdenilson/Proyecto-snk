@@ -154,7 +154,7 @@ h2{
     background-color: rgb(255, 0, 76);
 }
 
-.editarr{
+.edit{
     position: absolute;
     width: 12%;
     padding: 10px;
@@ -168,6 +168,7 @@ h2{
     top: 16%;
 }
 
-.editarr:hover{
+.edit:hover{
     background-color: rgb(0, 102, 255);
 }
+
