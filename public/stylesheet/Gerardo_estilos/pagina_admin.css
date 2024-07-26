@@ -2,12 +2,12 @@ body {
     display: flex;
     margin: 0;
     height: 100vh;
-
+    
 }
 
 .sidebar {
     width: 240px;
-    height: 535px;
+    height: 650px;
     background-color: #f1efef;
     padding: 30px;
     font-size: 14px;
@@ -18,9 +18,9 @@ body {
 }
 
 .mm {
-    position: relative;
+    position: absolute;
     top: -90px;
-    right: 5px;
+    right: 82%;
     height: 250px;
     width: 250px;
 }
@@ -28,18 +28,18 @@ body {
 .bor{   
     background-color: #f1efef;
     height: 70px;
-    width: 1363px;
+    width: 1375px;
     position: relative;
     top: -32px;
-    right: 30px;
+    right: 40px;
     border-left: black;
     border-width: 2px;
     border-style: outset;
 }
 
 .conteinert{
-    position: relative;
-    right: 10px ;
+    position: absolute;
+    right: 83%;
     height: 290px;
     width: 220px;
     text-align: left;
@@ -58,22 +58,33 @@ h3 {
     font-size: 14px;
     color: #6c757d;
     margin-bottom: 10px;
-    position: relative;
-    right: 7px;
-    margin-top: -35px;
+    position: absolute;
+    top: 55%;
+    left: 15px;
+}
+
+.mkl{
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 89%;
+    left: 15px;
 }
 
 .conte{
-    position: relative;
-    right: 10px ;
+    position: absolute;
+    right: 83%;
+    top: 60%;
     height: 290px;
     width: 220px;
     text-align: left;
 }
 
 .contei{
-    position: relative;
-    right: 10px ;
+    position: absolute;
+    right: 83%;
+    top: 113%;
     height: 100px;
     width: 220px;
     text-align: left;
@@ -98,50 +109,31 @@ li:hover{
     left: 2px;
 }
 
-.vd{
+
+table {
+    width: 90%;
+    height: 20%;
     position: relative;
-    left: 30px;
-    top: 80px;
-    text-align: center;
-    font-family: Arial, sans-serif;
+    top: 180px; 
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.mj{
-    height: 50px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background: #333;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    position: relative;
-    left: 730px;
-    top: 75px;
+h2{
+    position: absolute;
+    top: 100px;
+    left: 250px;
 }
-
-.bf{
-    height: 50px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background: #333;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    position: relative;
-    left: 470px;
-    top: 75px;
-}
-
-.bf:hover{
-    background-color: #1717FF;
-}
-
-.mj:hover {
-    background-color: #d41866;
-}
-
 
 
 
