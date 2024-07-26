@@ -67,18 +67,28 @@ module.exports={
     ],
     sanitacionrepartidor:[
         body('username')
-            .exists()
-            .isLength({ min:8}).withMessage('Usuario no valido '),
+            .notEmpty().withMessage('El campo  no puede estar vacío')
+            .isLength({ min:6}).withMessage('el usuario dbe contener minino 6 cararcteres')
+            .isLength({ max: 10 }).withMessage('El nombre de usuario no puede tener más de 10 caracteres'),
         body('email')
-            .exists()
-            .isEmail()
-            .withMessage('El email no es válido')
+            .notEmpty().withMessage('El campo  no puede estar vacío')
+            .isEmail().withMessage('El email no es válido')
+            .custom(value => {
+                if (!value.endsWith('@gmail.com')) {
+                  throw new Error('Solo se permiten direcciones de Gmail');
+                }
+                return true;
+              })
             .normalizeEmail(),
         body('Id')
-            .exists()
+            .notEmpty().withMessage('El campo  no puede estar vacío')
             .isInt().withMessage('El id no es válido'),
-        body('password').isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres"),
-        body('confirm-password').custom((value, { req }) => {
+        body('password')
+        .notEmpty().withMessage('El campo  no puede estar vacío')
+        .isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
+        .matches(/[a-zA-Z]/).withMessage('La contraseña debe contener al menos una letra')
+        .matches(/[0-9]/).withMessage('La contraseña debe contener al menos un número'),
+        body('confirm_password').custom((value, { req }) => {
               return value === req.body.password;
             }).withMessage("La contraseña y la confirmación de contraseña no coinciden"),
             (req, res, next)=>{
@@ -88,12 +98,24 @@ module.exports={
                 })
                 .catch((errors) => {
                     console.log(errors);
-                    var valores = req.body
-                    var validaciones = errors.array()
-                      res.render('login/repartidor',{validaciones:validaciones,valores:valores});
-                    /*var valores = req.body
-                    var validaciones = errors.array()
-                      res.render('login/inicio', {validaciones:validaciones, valores:valores});*/
+                    /*var validaciones = errors.array()
+                    res.render('login/repartidor', { validaciones: { firstError: errors.array()[0] }});*/
+                    
+                    // Mantener los datos del formular});
+                    const errorMessages = {};
+                    errors.array().forEach(error => {
+                      if (!errorMessages[error.path]) {
+                        errorMessages[error.path] = error.msg;
+                        console.log(errorMessages);
+                      }
+                    });
+                    res.render('login/repartidor',{errors: errorMessages});
+                    
+
+
+                  
+                    
+                   
                 });
             }
     ]
