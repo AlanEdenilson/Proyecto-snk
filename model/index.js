@@ -48,6 +48,25 @@ module.exports = {
            
         });
     },
+
+    FindUser:function (conexion,username) {
+        const consulta = `SELECT usuario FROM usuario WHERE usuario = '${username}'`;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    if (datos.length > 0) {
+                        console.log(datos)
+                        return resolve(true);
+                    } else {
+                        return reject(new Error('usuario no encontrado ')); // No se encontró ningún usuario
+                    }
+                }
+            });
+        });
+        
+    },
     buscarmarca:function (conexion, marca) {
         const consulta = `SELECT nombre FROM marca WHERE nombre = '${marca}'`;
         return new Promise((resolve, reject) => {

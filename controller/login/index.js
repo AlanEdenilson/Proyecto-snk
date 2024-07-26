@@ -211,6 +211,18 @@ module.exports={
     },
     verificard:function(req, res){
         
+    },
+
+    findUser: async function (user) {
+        try {
+            const result = await model.FindUser(conexion,user);
+            return result;
+        } catch (error) {
+            console.error('Error al buscar usuario:', error.message);
+            throw error;
+        }
+
+        
     }
 }//nolll
     //-----------------------------------------|
