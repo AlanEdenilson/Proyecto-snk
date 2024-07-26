@@ -31,6 +31,15 @@ body {
 
 }
 
+.conteinert{
+    position: relative;
+    right: 17px ;
+    background-color: rgb(255, 255, 255);
+    height: 350px;
+    width: 220px;
+
+}
+
 
 
 
