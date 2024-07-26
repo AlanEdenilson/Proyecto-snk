@@ -6,11 +6,15 @@ body {
 }
 
 .sidebar {
-    width: 250px;
-    height: 590px;
+    width: 240px;
+    height: 535px;
     background-color: #f1efef;
     padding: 30px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    border-radius: 5px;
+    border-left: black;
+    border-width: 2px;
+    border-style: outset;
 }
 
 .mm {
@@ -22,26 +26,77 @@ body {
 }
 
 .bor{   
-    background-color: rgb(163, 160, 160);
+    background-color: #f1efef;
     height: 70px;
-    width: 1365px;
+    width: 1363px;
     position: relative;
-    top: -30px;
+    top: -32px;
     right: 30px;
-
+    border-left: black;
+    border-width: 2px;
+    border-style: outset;
 }
 
 .conteinert{
     position: relative;
-    right: 17px ;
-    background-color: rgb(255, 255, 255);
-    height: 350px;
+    right: 10px ;
+    height: 290px;
     width: 220px;
+    text-align: left;
+    margin-top: -19px;
 
 }
 
 
+li{
+    padding: 9px 0;
+    cursor: pointer;
+    list-style-type: none;
+}
 
+h3 {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+    position: relative;
+    right: 7px;
+    margin-top: -35px;
+}
+
+.conte{
+    position: relative;
+    right: 10px ;
+    height: 290px;
+    width: 220px;
+    text-align: left;
+}
+
+.contei{
+    position: relative;
+    right: 10px ;
+    height: 100px;
+    width: 220px;
+    text-align: left;
+    margin-top: -120px;
+}
+li:hover{
+        color:#1717FF
+}
+
+.x{
+    position: relative;
+    left: 3px;
+}
+
+.m{
+    position: relative;
+    left: 3px;
+}
+
+.ma{
+    position: relative;
+    left: 2px;
+}
 
 
 
