@@ -41,7 +41,11 @@ router.get('/ventanaAdmin', function(req, res, next) {
   res.render('login/ventanaAdmin');
 })
 
-//router.post('/marca')
+router.get('/clear',(res,req)=>{
+  res.clearCookie('authToken');
+  res.clearCookie('refreshToken');
+  res.send('Sesión cerrada exitosamente');
+})
 
 
 
