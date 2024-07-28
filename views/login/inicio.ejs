@@ -13,51 +13,50 @@
             <div class="input-group">
                 <label for="username"><i class="fas fa-user"></i> Usuario</label>
                 <input type="text" id="username" name="username" placeholder="Nombre de usuario" >
-                <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion, index) => { %>
-                        <% if (index === 0 && validacion.path === 'username') { %>
-                            
+                <% if (typeof errors !== 'undefined') { %>
+                    <% if ( errors.username ) { %>
                             <div>
-                                <h2 class="errorr" 
-                                
-                                style="font-family: 'Times New Roman', Times, serif;
-                                font: small-caps 200% serif;
-                                font-size: 18px;
-                                color: #9b599b;
-                                position: relative;
-                                top: -15x;
-
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
-                            </div>
-                            <% } %>
-                        <% }); %>
-                     <% } %>
+                                <h2 class="error" 
+                                    
+                                    style="font-family: 'Times New Roman', Times, serif;
+                                    font: small-caps 200% serif;
+                                    font-size: 18px;
+                                    color: #9b599b;
+                                    position: relative;
+                                    top: -15x;
+    
+                                    "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.username %></h2>
+                                </div>
+                            
+                      
+                      <% } %>
+                      <% } %>
             </div>
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
                 <input type="password" id="password" name="password" placeholder="Contraseña" >
-                <% if (typeof validaciones !== 'undefined') { %>
-                    <% validaciones.forEach((validacion, index) => { %>
-                        <% if (index === 1 || index === 0 && validacion.path === 'password') { %>
+                <% if (typeof errors !== 'undefined') { %>
+                    <% if ( errors.password ) { %>
                             <div>
                                 <h2 class="error" 
-                                
-                                style="font-family: 'Times New Roman', Times, serif;
-                                font: small-caps 200% serif;
-                                font-size: 18px;
-                                color: #9b599b;
-                                position: relative;
-                                top: -15x;
-
-                                "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= validacion.msg %></h2>
-                            </div>
-                            <% } %>
-                        <% }); %>
-                     <% } %>
+                                    
+                                    style="font-family: 'Times New Roman', Times, serif;
+                                    font: small-caps 200% serif;
+                                    font-size: 18px;
+                                    color: #9b599b;
+                                    position: relative;
+                                    top: -15x;
+    
+                                    "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.password %></h2>
+                                </div>
+                            
+                      
+                      <% } %>
+                      <% } %>
               
                 <a href="/recuperar" class="recuper">¿Olvidastes tu Contraseña?</a>
             </div>
-            <% if (typeof errors !== 'undefined') { %>
+            <% if (typeof err !== 'undefined') { %>
                         <div>
                             <h2 class="error" 
                             
@@ -68,7 +67,7 @@
                             position: relative;
                             top: -15x;
 
-                            "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors %></h2>
+                            "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= err %></h2>
                         </div>
                         <% } %>
             <a href="/a_y_r" class="create-account">Crear Cuenta</a>

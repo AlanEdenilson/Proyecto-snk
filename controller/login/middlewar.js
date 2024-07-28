@@ -18,8 +18,8 @@ const result = (req)=>{
 module.exports={
     validar:[
         body('username')
-            .exists()
-            .isLength({ min:3}).withMessage('Usuario no valido'),
+            .notEmpty().withMessage('El campo  no puede estar vacío')
+            .isLength({ min:3}).withMessage('el usuario debe contener almenos 5 caracteres'),
         body('password')
             .exists()
             .isLength({ min:8}).withMessage('La contraseña debe tener al menos 8 caracteres'),
@@ -29,11 +29,17 @@ module.exports={
                     next();
                 })
                 .catch((errors) => {
-                    console.log(errors);
-                    var valores = req.body
-                    var validaciones = errors.array()
-                      res.render('login/inicio',{validaciones:validaciones,valores:valores});
-                });
+                  console.log(errors); 
+                  // Mantener los datos del formular});
+                  const errorMessages = {};
+                  errors.array().forEach(error => {
+                    if (!errorMessages[error.path]) {
+                      errorMessages[error.path] = error.msg;
+                      console.log(errorMessages);
+                    }
+                  });
+                  res.render('login/inicio',{errors: errorMessages,}); 
+              });
             }
         ],
         //verificando credenciales de admin
@@ -62,12 +68,19 @@ module.exports={
                 return true;
               })
             .normalizeEmail(),
-            body('password')
+        body('email').custom(async value => {
+              const email = await controller.findByEmail(value);
+              if (email) {
+                throw new Error('A user already exists with this e-mail address');
+              }
+              return true;
+            }),
+        body('password')
             .notEmpty().withMessage('El campo  no puede estar vacío')
             .isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
             .matches(/[a-zA-Z]/).withMessage('La contraseña debe contener al menos una letra')
             .matches(/[0-9]/).withMessage('La contraseña debe contener al menos un número'),
-            body('confirm_password').custom((value, { req }) => {
+       body('confirm_password').custom((value, { req }) => {
                   return value === req.body.password;
                 }).withMessage("La contraseña y la confirmación de contraseña no coinciden"),
                 (req, res, next)=>{
@@ -77,9 +90,8 @@ module.exports={
                     })
                     .catch((errors) => {
                         console.log(errors);
-                        /*var validaciones = errors.array()
-                        res.render('login/repartidor', { validaciones: { firstError: errors.array()[0] }});*/
-                        
+                        var datos = req.body;
+                        console.log(datos)
                         // Mantener los datos del formular});
                         const errorMessages = {};
                         errors.array().forEach(error => {
@@ -88,7 +100,7 @@ module.exports={
                             console.log(errorMessages);
                           }
                         });
-                        res.render('login/admin',{errors: errorMessages}); 
+                        res.render('login/admin',{errors: errorMessages,valores:datos}); 
                     });
                 }
         
@@ -98,7 +110,7 @@ module.exports={
             .notEmpty().withMessage('El campo  no puede estar vacío'),
             //.isLength({ min:6}).withMessage('el usuario dbe contener minino 6 cararcteres'),
             //.isLength({ max: 10 }).withMessage('El nombre de usuario no puede tener más de 10 caracteres'),
-            body('username').custom(async value => {
+        body('username').custom(async value => {
                 
                     const user = await controller.findUser(value);
                   if (user) {
@@ -119,16 +131,22 @@ module.exports={
                   throw new Error('Solo se permiten direcciones de Gmail');
                 }
                 return true;
-              })
-            .normalizeEmail(),
+              }),
+        body('email').custom(async value => {
+                const email = await controller.findByEmail(value);
+                if (email) {
+                  throw new Error('A user already exists with this e-mail address');
+                }
+                return true;
+              }),
         body('Id')
             .notEmpty().withMessage('El campo  no puede estar vacío')
             .isInt().withMessage('El id no es válido'),
         body('password')
-        .notEmpty().withMessage('El campo  no puede estar vacío')
-        .isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
-        .matches(/[a-zA-Z]/).withMessage('La contraseña debe contener al menos una letra')
-        .matches(/[0-9]/).withMessage('La contraseña debe contener al menos un número'),
+            .notEmpty().withMessage('El campo  no puede estar vacío')
+            .isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
+            .matches(/[a-zA-Z]/).withMessage('La contraseña debe contener al menos una letra')
+            .matches(/[0-9]/).withMessage('La contraseña debe contener al menos un número'),
         body('confirm_password').custom((value, { req }) => {
               return value === req.body.password;
             }).withMessage("La contraseña y la confirmación de contraseña no coinciden"),
@@ -141,7 +159,7 @@ module.exports={
                     console.log(errors);
                     /*var validaciones = errors.array()
                     res.render('login/repartidor', { validaciones: { firstError: errors.array()[0] }});*/
-                    
+                    var datos = req.body;
                     // Mantener los datos del formular});
                     const errorMessages = {};
                     errors.array().forEach(error => {
@@ -150,7 +168,7 @@ module.exports={
                         console.log(errorMessages);
                       }
                     });
-                    res.render('login/repartidor',{errors: errorMessages}); 
+                    res.render('login/repartidor',{errors: errorMessages,valores:datos}); 
                 });
             }
     ]

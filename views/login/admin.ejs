@@ -17,7 +17,7 @@
             </div>
             <div class="input-group">
                 <label for="fullname"><i class="fas fa-user"></i> Nombre </label>
-                <input  type="text" id="fullname" name="username" placeholder="Nombre Completo" >
+                <input  type="text" id="fullname" name="username" placeholder="Nombre Completo" value="<% if(typeof valores != 'undefined') { %><%= valores.username %><% } %>"> 
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.username ) { %>
                             <div>
@@ -40,7 +40,7 @@
             </div>
             <div class="input-group">
                 <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
-                <input type="text" id="email" name="email" placeholder="Usuario" >
+                <input type="text" id="email" name="email" placeholder="Usuario" value="<% if(typeof valores != 'undefined') { %><%= valores.email %><% } %>">
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.email ) { %>
                             <div>
@@ -63,7 +63,7 @@
            
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Contraseña" >
+                <input type="password" id="password" name="password" placeholder="Contraseña" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% }%>" >
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.password ) { %>
                             <div>

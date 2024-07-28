@@ -17,7 +17,7 @@
             </div>
             <div class="input-group">
                 <label for="fullname"><i class="fas fa-user"></i> Nombre </label>
-                <input type="text" id="fullname" name="username" placeholder="User" >
+                <input type="text" id="fullname" name="username" placeholder="User" value="<% if(typeof valores != 'undefined') { %><%= valores.username %><% }%>">
                 <% if (typeof errors !== 'undefined') { %>
                 <% if ( errors.username ) { %>
                         <div>
@@ -39,7 +39,7 @@
             </div>
             <div class="input-group">
                 <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
-                <input type="email" id="email" name="email" placeholder="example@gmail.com" >
+                <input type="email" id="email" name="email" placeholder="example@gmail.com"value="<% if(typeof valores != 'undefined') { %><%= valores.email %><% }%>" >
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.email ) { %>
                         <div>
@@ -59,7 +59,7 @@
             </div>
             <div class="input-group">
                 <label for="id"><i class="fa-solid fa-hashtag"></i>Id Marca</label>
-                <input type="Id" id="Id" name="Id" placeholder="ID" >
+                <input type="Id" id="Id" name="Id" placeholder="ID"value="<% if(typeof valores != 'undefined') { %><%= valores.Id %><% }%>" >
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.Id ) { %>
                         <div>
@@ -80,7 +80,7 @@
             </div>
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Contraseña" >
+                <input type="password" id="password" name="password" placeholder="Contraseña" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% }%>" >
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.password ) { %>
                         <div>

@@ -10,31 +10,7 @@ const aux=require('../login/auxiliar')
 
 
 let r;
-/*function validarTokenPromesa(token) {
-    return new Promise((resolve, reject) => {
-        if (!token) {
-            resolve({t:false});
-            console.log("tu token no es valido")
-        } else {
-            try {
-                const validarPayload = Gtoken.validarToken(token);
-                console.log("tu token es ", validarPayload);
-                const  t = true;
-                const rol = validarPayload.rol;
-                
-                resolve({rol,t});
 
-            } catch (error) {
-                
-                
-                
-
-                
-            }
-        }
-       
-    });
-}*/
 
 
 module.exports={
@@ -88,7 +64,7 @@ module.exports={
             console.log("tu respuesta de la bd es  ; " + respuestabd)
         } catch (error) {
             console.error('Error al buscar usuario:', error.message);
-            res.render('login/inicio',{errors:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});
+            res.render('login/inicio',{err:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});
         };
         // verificando si el token es valido 
         try {
@@ -136,11 +112,8 @@ module.exports={
         const token = Gtoken.generarToken(payload);
         res.cookie('authToken', token, {
             httpOnly: true,
-            secure: true, // Cambia esto a true en producción con HTTPS
-            maxAge: 3600000 // 1 hora
+            secure: true // Cambia esto a true en producción con HTTPS // 1 hora
         });
-
-        
 
         model.insertarUsuario(conexion,datos)
          .then(() => {
@@ -149,13 +122,6 @@ module.exports={
           .catch((error) => {
             console.error(error); // Esto se ejecuta si la promesa se rechaza
           });
-
-        /*if (req.body.rol==="1") {
-            res.render('login/ventanaAdmin');
-        }
-        else if (req.body.rol==="2") {
-            res.render('login/ventanaRpartidor');
-        }*/
 
         aux.mostrarVentanas2(res,req.body.rol)
 
@@ -219,8 +185,16 @@ module.exports={
         } catch (error) {
             console.error('usuario no encontrado');
         }
-      }
-}//nolll
+    },
+
+    findByEmail: async function (email) {
+        try {
+          return await model.FindByEmail(conexion,email);
+        } catch (error) {
+            console.error('correo no encontrado');
+        }
+    },
+}//fin
     //-----------------------------------------|
 
     //-----------------------------------------|
