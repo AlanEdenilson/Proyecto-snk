@@ -8,7 +8,7 @@
 
 module.exports = {
     buscarusuario:function (conexion,username,password) {
-        const consulta = `SELECT usuario, contraseña FROM usuario WHERE usuario = '${username}' AND contraseña ='${password}'`;
+        const consulta = `SELECT id_rol,usuario,correo, contraseña FROM usuario WHERE usuario = '${username}' AND contraseña ='${password}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -16,7 +16,8 @@ module.exports = {
                 } else {
                     if (datos.length > 0) {
                         console.log(datos)
-                        return resolve(true);
+                        
+                        return resolve(datos[0]);
                     } else {
                         return reject(new Error('usuario no encontrado '));
                         // No se encontró ningún usuario

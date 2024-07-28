@@ -6,7 +6,6 @@ var conexion = require('../../config/conexion');
 const Gtoken = require('../Gtoken');
 const model = require('../../model');
 const aux=require('../login/auxiliar');
-const { json } = require('express');
 
 
 
@@ -17,98 +16,111 @@ let r;
 module.exports={
 
     login:function(req,res){
-    
-        res.render('login/inicio');
-        
-        /*
-        var validarPayload;
-        const token = req.cookies.authToken;
-        if (!token) {
-            res.render('login/inicio'); // Si no hay token, devuelve un error 401
-        } else{
-            //verificando si el token es valido
-            try {
-                validarPayload=Gtoken.validarToken(token)
-                console.log("tu token es ", validarPayload)
-                if (validarPayload.rol==="1") {
-                    res.send("tu token es valido tienes los privilegios de un admin")
-                   // res.render('login/ventanaAdmin');
-                }else if(validarPayload.rol==="2"){
-                    res.send("tu token es valido tienes los privilegios de un repartidor")
-                   // res.render('login/ventanaRpartidor');
-                }
-                // si hay pero no es valido 
-            } catch (error) {
-                res.send("tu token no es valido")
-                
-            }
-        }*/
-          
-        // const respuesta = model.buscarusuario(conexion)
-         //console.log(respuesta)
-         
-       
-         //res.redirect('/admin');
-        },
-     //-----------------------------------------|
 
-    //-----------------------------------------|
-    verificar:function(req, res, next){
         const token = req.cookies.authToken;
-        //validarTokenPromesa(res,token)
-       async  function p() {
-        var username=req.body.username; 
-        var password=req.body.password;
-        // buscando usuario en la bd
+
+     async function verificartoken() {     
         try {
-            var respuestabd= await model.buscarusuario(conexion,username,password)
-            console.log("tu respuesta de la bd es  ; " + respuestabd)
-        } catch (error) {
-            console.error('Error al buscar usuario:', error.message);
-            res.render('login/inicio',{err:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});
-        };
-        // verificando si el token es valido 
-        try {
-            var vertoken= await Gtoken.validarToken2(token)
-            console.log('Token is valid:',vertoken);
-            var Rol =req.body.rol;
-            aux.mostrarventanas(res,vertoken,respuestabd,Rol);
+            var vtoken= await Gtoken.validarToken2(token)
+            console.log('Token is valid:',vtoken);
+            var rol = vtoken.rol;
+            aux.mostrarVentanas2(res,rol);
         } catch (error) {
             console.error('Token validation error:', error.message);
-        
-             if(error.message === 'Token has expired.') {
-            
+            if (error.message === 'Token has expired.') {
                 const refreshToken = req.cookies.refreshToken;
     
                 try {
                     const decoded = await Gtoken.validarRefreshToken(refreshToken);
-                    const newtoken= await Gtoken.validarToken2(decoded);
-                    res.cookie('authToken', newtoken, { httpOnly: true,secure: true });
-                    console.log(newtoken)
+                  const { rol, email } = decoded;
+                    console.log('Token is valid:',decoded);
+                    const tokennew = Gtoken.generarToken({ rol, email });
+                    res.cookie('authToken', tokennew, { httpOnly: true,secure: true });
+                    console.log("token refrescado exitosamente")
+                    aux.mostrarVentanas2(res,rol);
+                  
                 } catch (error) {
                     console.error('Token-refresh validation error:', error.message);
 
-                    if(error.message === 'Token has expired.') {
-                        res.send('token de refresh a expirado')
+                    if(error.message === 'Token has expired.' || error.message === 'Token does not exist.' ) {
+                      return  res.render('login/inicio')
                     }
 
-                  
+                    if(error.message === 'Token is altered.' || error.message === 'Token verification failed.') {
+                      return  res.status(401).json({ message: 'Token asido alterado', expired: true });
+                    }
                     
                 }
             }
+            if(error.message === 'Token has expired.' || error.message === 'Token does not exist.' ) {
+               return res.render('login/inicio')
+            }
+
+            if(error.message === 'Token is altered.' || error.message === 'Token verification failed.') {
+               return res.status(401).json({ message: 'Token asido alterado', expired: true });
+            }
+            
+     }}
+
+     if (!token) {
+        res.render('login/inicio'); // Si no hay token, devuelve un error 401
+    } else {
+        verificartoken();
+     }
+
+  
+        
+        },
+     //-----------------------------------------|
+
+    //-----------------------------------------|
+    verificar:function(req,res){
+
+       async  function para() {
+        var username=req.body.username; 
+        var password=req.body.password;
+        // buscando usuario en la bd
+        try {
+            var  respuestabd = await model.buscarusuario(conexion,username,password)
+            console.log("tu respuesta de la bd es  ; " + respuestabd)
+
+            const payload = {
+                rol:respuestabd.id_rol,
+                nombre:respuestabd.usuario,
+                email:respuestabd.correo,
+            }
+
+
+            const payload2 = {
+                rol:respuestabd.id_rol,
+                nombre:respuestabd.usuario,
+                email:respuestabd.correo,
+                refresh:'true'
+            }
+
+            console.log(payload)
+           
+            const token = Gtoken.generarToken(payload);
+            res.cookie('authToken', token, { httpOnly: true,secure: true });
+            const refreshToken = Gtoken.refreshToken(payload2);
+            res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
+
+           aux.mostrarVentanas2(res,respuestabd.id_rol)
+
+       
+            //aux.craertokens(res,respuestabd)
+        } catch (error) {
+            console.error('Error al buscar usuario:', error.message);
+            res.render('login/inicio',{err:"usuario o contraseña no valido por ⬇ favor  crea una cuenta "});
         }
-        //---------------------------------------------------------------------
-     /*  if (vertoken.t===false && respuestabd === true) {
-            res.send("no tines token por favor crea uno ")
-            //refresh de token 
-        }else if(vertoken.t==="alter" && respuestabd === true){
-            res.send("tu token a sido alterado, por favor contactanos")
-        }*/
         
         }
 
-        p();
-             
+        para()
+
+        
+
+ 
     },
     crearcuenta1:function(req, res){
         res.render('login/admin');
@@ -135,9 +147,6 @@ module.exports={
             email:req.body.email,
             refresh:'true'
         }
-
-
-
 
         // generarando token y almacenando lo en la cokkie
         const token = Gtoken.generarToken(payload);

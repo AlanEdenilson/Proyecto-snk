@@ -1,6 +1,6 @@
-
+const Gtoken = require('../Gtoken');
 function sino(res,ruta) {
-    if(ruta==="1"){
+    if(ruta==="1" ||ruta===1){
         res.render('login/ventanaAdmin');
     }else if(ruta==="2"){
         res.render('login/ventanaRpartidor');
@@ -18,11 +18,15 @@ module.exports={
     }
 
 
-} , 
+    } , 
     mostrarVentanas2:function (res,rol) {
                 sino(res,rol);
     
-    }
+    } ,
+
+ 
+
+    
 
 }; //fin 
 

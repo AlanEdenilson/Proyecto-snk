@@ -7,7 +7,7 @@ module.exports={
     },
 
     refreshToken:function(payload2) {
-        return jwt.sign(payload2,'?GTGTG?TGTGTGT?GTGTGT?GTGT?',{ expiresIn:'5m'});
+        return jwt.sign(payload2,'buy787by87y87y87y87y878y7y7y',{ expiresIn:'6m'});
     },
 
     validarRefreshToken:function(refreshtoken) {
@@ -16,7 +16,7 @@ module.exports={
                 return reject(new Error('Token does not exist.'));
             }
             try {
-                jwt.verify(refreshtoken,'?GTGTG?TGTGTGT?GTGTGT?GTGT?', (err, decoded) => {
+                jwt.verify(refreshtoken,'buy787by87y87y87y87y878y7y7y',(err, decoded) => {
                     if (err) {
                         if (err.name === 'TokenExpiredError') {
                             return reject(new Error('Token has expired.'));
