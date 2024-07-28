@@ -5,7 +5,8 @@ var conexion = require('../../config/conexion');
 //var gtoken=require('../Gtoken')
 const Gtoken = require('../Gtoken');
 const model = require('../../model');
-const aux=require('../login/auxiliar')
+const aux=require('../login/auxiliar');
+const { json } = require('express');
 
 
 
@@ -74,7 +75,27 @@ module.exports={
             aux.mostrarventanas(res,vertoken,respuestabd,Rol);
         } catch (error) {
             console.error('Token validation error:', error.message);
-            res.send("crea un token de nuevo ")
+        
+             if(error.message === 'Token has expired.') {
+            
+                const refreshToken = req.cookies.refreshToken;
+    
+                try {
+                    const decoded = await Gtoken.validarRefreshToken(refreshToken);
+                    const newtoken= await Gtoken.validarToken2(decoded);
+                    res.cookie('authToken', newtoken, { httpOnly: true,secure: true });
+                    console.log(newtoken)
+                } catch (error) {
+                    console.error('Token-refresh validation error:', error.message);
+
+                    if(error.message === 'Token has expired.') {
+                        res.send('token de refresh a expirado')
+                    }
+
+                  
+                    
+                }
+            }
         }
         //---------------------------------------------------------------------
      /*  if (vertoken.t===false && respuestabd === true) {
@@ -106,14 +127,24 @@ module.exports={
             rol:req.body.rol,
             nombre:req.body.fullname,
             email:req.body.email,
-            password:req.body.password
         }
+
+        const payload2 = {
+            rol:req.body.rol,
+            nombre:req.body.fullname,
+            email:req.body.email,
+            refresh:'true'
+        }
+
+
+
+
         // generarando token y almacenando lo en la cokkie
         const token = Gtoken.generarToken(payload);
-        res.cookie('authToken', token, {
-            httpOnly: true,
-            secure: true // Cambia esto a true en producción con HTTPS // 1 hora
-        });
+        const refreshToken = Gtoken.refreshToken(payload2);
+
+        res.cookie('authToken', token, { httpOnly: true,secure: true });
+        res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
 
         model.insertarUsuario(conexion,datos)
          .then(() => {
