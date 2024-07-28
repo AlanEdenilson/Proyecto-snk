@@ -1,6 +1,7 @@
 const { body,validationResult } = require('express-validator')
 const controller = require('../login/index')
 
+
 const result = (req)=>{
     return new Promise((resolve, reject) => {
         const errors = validationResult(req);
@@ -41,13 +42,16 @@ module.exports={
             .notEmpty().withMessage('El campo  no puede estar vacío'),
             //.isLength({ min:6}).withMessage('el usuario dbe contener minino 6 cararcteres'),
             //.isLength({ max: 10 }).withMessage('El nombre de usuario no puede tener más de 10 caracteres'),
-        body('username').custom(async value => {
+            body('username').custom(async value => {
+                
                 const user = await controller.findUser(value);
-                if (user) {
-                    throw new Error('El usuario ya esta en uso ');
-                }
+              if (user) {
+                throw new Error('El usuario ya esta en uso');
+              }
 
-            }),
+                return true; // Usuario no existe, lo cual es lo que queremos
+    
+          }),
         body('email')
             .notEmpty().withMessage('El campo  no puede estar vacío')
             .isEmail().withMessage('El email no es válido')
@@ -94,13 +98,19 @@ module.exports={
             .notEmpty().withMessage('El campo  no puede estar vacío'),
             //.isLength({ min:6}).withMessage('el usuario dbe contener minino 6 cararcteres'),
             //.isLength({ max: 10 }).withMessage('El nombre de usuario no puede tener más de 10 caracteres'),
-        body('username').custom(async value => {
-                const user = await controller.findUser(value);
-                if (user) {
-                    throw new Error('El usuario ya esta en uso ');
-                }
-
-            }),
+            body('username').custom(async value => {
+                
+                    const user = await controller.findUser(value);
+                  if (user) {
+                    throw new Error('El usuario ya esta en uso');
+                  }
+                
+                  
+                    return true; // Usuario no existe, lo cual es lo que queremos
+                  
+                  // Re-lanza otros errores
+                
+              }),
         body('email')
             .notEmpty().withMessage('El campo  no puede estar vacío')
             .isEmail().withMessage('El email no es válido')

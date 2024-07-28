@@ -215,15 +215,11 @@ module.exports={
 
     findUser: async function (user) {
         try {
-            const result = await model.FindUser(conexion,user);
-            return result;
+          return await model.FindUser(conexion, user);
         } catch (error) {
-            console.error('Error al buscar usuario:', error.message);
-            throw error;
+            console.error('usuario no encontrado');
         }
-
-        
-    }
+      }
 }//nolll
     //-----------------------------------------|
 

@@ -9,7 +9,7 @@
 module.exports = {
     buscarusuario:function (conexion,username,password) {
         const consulta = `SELECT usuario, contraseña FROM usuario WHERE usuario = '${username}' AND contraseña ='${password}'`;
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
                     throw error;
@@ -18,7 +18,8 @@ module.exports = {
                         console.log(datos)
                         return resolve(true);
                     } else {
-                        return reject(new Error('usuario no encontrado ')); // No se encontró ningún usuario
+                        return reject(new Error('usuario no encontrado '));
+                        // No se encontró ningún usuario
                     }
                 }
             });
@@ -51,7 +52,7 @@ module.exports = {
 
     FindUser:function (conexion,username) {
         const consulta = `SELECT usuario FROM usuario WHERE usuario = '${username}'`;
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
                     throw error;
@@ -60,7 +61,7 @@ module.exports = {
                         console.log(datos)
                         return resolve(true);
                     } else {
-                        return reject(new Error('usuario no encontrado ')); // No se encontró ningún usuario
+                        return reject(false);// No se encontró ningún usuario
                     }
                 }
             });
