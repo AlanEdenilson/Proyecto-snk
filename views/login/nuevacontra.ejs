@@ -11,25 +11,27 @@
 
     <img class="imm" src="/stylesheet/Gerardo_estilos/grrr.png" alt="">
       <div  class="cuer">
-        <h1 class="cs">Introduce la Nueva contraseña</h1>
+        <form action="/update" method="post">
+                <h1 class="cs">Introduce la Nueva contraseña</h1>
 
-        <div class="contra">
-            <label class="texl" for="password"><i class="fa-solid fa-lock"></i> Contraseña</label>
-            <input class="code" type="password" placeholder="Instroduce la contraseña" required>
- 
-        </div>
+                <div class="contra">
+                    <label class="texl" for="password"><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    <input class="code" type="password" name="password" placeholder="Instroduce la contraseña" required>
+        
+                </div>
 
-        <div class="confir">
-            <label class="texll" for="password"><i class="fa-solid fa-lock"></i> Confirmar contraseña</label>
-            <input class="codee" type="password" placeholder="Confirmar contraseña" required>
-        </div>
+                <div class="confir">
+                    <label class="texll" for="password"><i class="fa-solid fa-lock"></i> Confirmar contraseña</label>
+                    <input class="codee" type="password" placeholder="Confirmar contraseña" required>
+                </div>
 
 
-         <div>
-            <button class="but">Cambiar contraseña</button>
-         </div>
-         
+                <div>
+                    <button class="but">Cambiar contraseña</button>
+                </div>
+        </form>
     </div>
 
 </body>
 </html>
+

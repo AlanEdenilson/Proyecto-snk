@@ -87,6 +87,23 @@ module.exports = {
         });
         
     },
+
+    updatepassword:function (conexion,correo,password) {
+        const consulta = `UPDATE usuario SET contraseña = '${password}' WHERE correo = '${correo}'`;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error,datos) {
+                if (error) {
+                    console.log("actualizasion de contraseña fallida ...")
+                    return reject(error);
+
+                } else {
+                    resolve(true);
+                    console.log("actualizado correctamente.....")
+                }
+            });
+        });
+        
+    },
     buscarmarca:function (conexion, marca) {
         const consulta = `SELECT nombre FROM marca WHERE nombre = '${marca}'`;
         return new Promise((resolve, reject) => {

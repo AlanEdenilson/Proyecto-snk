@@ -27,15 +27,21 @@ router.get('/repartidor',controlador.crearcuenta2);
 
 router.post('/repartidor',midd.sanitacionrepartidor,controlador.verificarCuenta);
 
-router.get('/recuperar',controlador.recuperarContra);
+router.get('/recuperar',controlador.recuperarContra);//ingresar correo
 
-router.post('/recuperar_contra', controlador.enviarCorreo);
+router.post('/recuperar_contra', controlador.enviarCorreo);//introdudir codigo
 
-router.post('/codigo',controlador.confirmar);
+router.post('/codigo',controlador.confirmar);//cambiar contra si el codigo es valido
+
+router.post('/update',controlador.update);//actualizar contra
+
+//router.post('/update',controlador.update);
+
+
 
 router.get('/marca',controlador.enviarm);
 
-router.post('/marca', controlador.verificard);
+
 
 router.get('/ventanaAdmin', function(req, res, next) {
   res.render('login/ventanaAdmin');

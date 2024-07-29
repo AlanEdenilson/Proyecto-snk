@@ -14,7 +14,7 @@
         <form method="post" action="/recuperar_contra">
             <div class="input-group">
                 <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
-                <input type="email" id="email" name="email" placeholder="Introduce tu correo electrónico"  value="<% if(typeof correo != 'undefined') { %><%= correo %><% }%>">
+                <input type="text" id="email" name="email" placeholder="Introduce tu correo electrónico"  value="<% if(typeof correo != 'undefined') { %><%= correo %><% }%>">
             </div>
             <button type="submit"  class="reset-button">Enviar</button>
         </form>

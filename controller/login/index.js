@@ -178,9 +178,7 @@ module.exports={
     //-----------------------------------------|
 
     recuperarContra:function(req, res){
-
         res.render('login/recuperar_contraseña');
-
         
     },
     //-----------------------------------------|
@@ -194,6 +192,9 @@ module.exports={
 
         //req.flash('correo', req.body.email);
         console.log("tu correo es ",req.body.email)
+
+        //req.session.correoelectronico=req.body.email;
+        req.flash('correo', req.body.email);
 
 
 
@@ -228,9 +229,37 @@ module.exports={
     enviarm:function(req, res){
         res.render("login/marca");
     },
-    verificard:function(req, res){
+    update:function(req, res){
+       
+        const gmail=req.flash('correo')
+        const password=req.body.password;
+
+        console.log("hola mundo :" + req.body.password+"gmail : "+gmail)
+
+        async function enviarcontra() {
+
+            try {
+                var rsult = await model.updatepassword(conexion,gmail,password);
+                console.log("la respuesta de la bd es :"+rsult)
+                res.send("contraseña actualizada correctamente")
+                
+            } catch (error) {
+
+                console.error('Error al actualizar contraseña:', error.message);
+                res.send("hubo un error al actualizar la contraseña")
+                
+            }
+
+            
+        }
+
+
+        enviarcontra()
+
+      
         
     },
+   
 
     findUser: async function (user) {
         try {
@@ -240,6 +269,8 @@ module.exports={
         }
     },
 
+    
+
     findByEmail: async function (email) {
         try {
           return await model.FindByEmail(conexion,email);
@@ -247,6 +278,10 @@ module.exports={
             console.error('correo no encontrado');
         }
     },
+
+ 
+
+  
 }//fin
     //-----------------------------------------|
 
