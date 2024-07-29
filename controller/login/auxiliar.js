@@ -1,4 +1,4 @@
-const Gtoken = require('../Gtoken');
+
 function sino(res,ruta) {
     if(ruta==="1" ||ruta===1){
         res.render('login/ventanaAdmin');

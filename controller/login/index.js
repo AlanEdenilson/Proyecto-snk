@@ -3,7 +3,7 @@ var email=require('../login/enviargmail');
 var random=require('../login/generarcodigo');
 var conexion = require('../../config/conexion');
 //var gtoken=require('../Gtoken')
-const Gtoken = require('../Gtoken');
+const Gtoken = require('../login/Gtoken');
 const model = require('../../model');
 const aux=require('../login/auxiliar');
 
@@ -178,7 +178,10 @@ module.exports={
     //-----------------------------------------|
 
     recuperarContra:function(req, res){
+
         res.render('login/recuperar_contraseña');
+
+        
     },
     //-----------------------------------------|
 
@@ -186,6 +189,14 @@ module.exports={
 
     //-----------------------------------------|
     enviarCorreo:function(req, res){
+
+       // const gmail=req.flash('correo')
+
+        //req.flash('correo', req.body.email);
+        console.log("tu correo es ",req.body.email)
+
+
+
         r = random.generarcodigo(5);
         var correo = req.body.email;
         email.enviaremail(correo,r);
@@ -196,7 +207,7 @@ module.exports={
 
         //mandarlo ala pagina para recibir el codigo
 
-        res.render('login/codigo')
+        res.render('login/codigo',{correo:req.body.email})
 
         
     },
@@ -204,6 +215,8 @@ module.exports={
 
     //-----------------------------------------|
     confirmar:function(req, res){
+
+        
 
         if (req.body.codigo===r) {
             res.render("login/nuevacontra");
