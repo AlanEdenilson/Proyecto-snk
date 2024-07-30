@@ -112,3 +112,16 @@ body {
     position: relative;
     right: 110px;
 }
+
+
+.chet{
+    position: relative;
+    right: 48%;
+    top: 10px;
+}
+
+.shott{
+    position: relative;
+    left: 26px;
+    top: -8px;
+}

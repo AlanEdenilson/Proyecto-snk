@@ -54,6 +54,22 @@
                       <% } %>
                       <% } %>
               
+                      <div class="show-password">
+                        <input class="chet" type="checkbox" onclick="togglePasswordVisibility()">
+                        <label class="shott" for="show-password">Mostrar contraseña</label>
+                      </div>
+
+                      <script>
+                        function togglePasswordVisibility() {
+                          var passwordInput = document.getElementById("password");
+                          if (passwordInput.type === "password") {
+                            passwordInput.type = "text";
+                          } else {
+                            passwordInput.type = "password";
+                          }
+                        }
+                      </script>
+
                 <a href="/recuperar" class="recuper">¿Olvidastes tu Contraseña?</a>
             </div>
             <% if (typeof err !== 'undefined') { %>
