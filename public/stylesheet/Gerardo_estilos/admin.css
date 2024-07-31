@@ -97,6 +97,21 @@ body {
 }
 
 
+.bx{
+    position: absolute;
+    font-size: 28px;
+    transform: translate(-30px);
+    top: 310px;
+    cursor: pointer;
+}
+
+#n1{
+    position: absolute;
+    font-size: 28px;
+    transform: translate(-30px);
+    top: 385px;
+    cursor: pointer;
+}
 
 
 
