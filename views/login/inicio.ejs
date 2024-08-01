@@ -36,7 +36,7 @@
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
                 <input class="password" type="password" id="password" name="password" placeholder="Contraseña" >
-                <i class='bx bxs-hide'></i>
+                <i class="fa-solid fa-eye-slash" style="color: #919191;"></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.password ) { %>
                             <div>
@@ -55,11 +55,6 @@
                       
                       <% } %>
                       <% } %>
-              
-                      <div class="show-password">
-                        <input class="chet" type="checkbox" onclick="togglePasswordVisibility()">
-                        <label class="shott" for="show-password">Mostrar contraseña</label>
-                      </div>
 
                       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -75,16 +70,6 @@
                                 }
                         });
                       </script>
-
-                     <%#   <script>
-                        function togglePasswordVisibility() {
-                          var passwordInput = document.getElementById("password");
-                          if (passwordInput.type === "password") {
-                            passwordInput.type = "text";
-                          } else {
-                            passwordInput.type = "password";
-                          }
-                        }
 
                         
                       </script>%>
@@ -110,21 +95,23 @@
     </div>
 
 
-    <script>
-        const password= document.getElementById("password")
-        icon = document.querySelector(".bx");
 
-        icon.addEventListener("click", e => {
-            if (password.type === "password") {
-                password.type = "text";
-                icon.classList.remove('bxs-hide')
-                icon.classList.add('bx-show-alt')
-                     } else {
-                        password.type = "password"
-                        icon.classList.add('bxs-hide')
-                        icon.classList.remove('bx-show-alt')
-                    }
-        });     
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.fa-solid').click(function() {
+                var input = $(this).siblings('input');
+                var icon = $(this);
+                
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                } else {
+                    input.attr('type', 'password');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                }
+            });
+        });
     </script>
 
     

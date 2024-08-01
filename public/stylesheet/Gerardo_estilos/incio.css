@@ -113,10 +113,10 @@ body {
     right: 110px;
 }
 
-.bx{
+.fa-solid{
     position: absolute;
-    font-size: 28px;
+    font-size: 18px;
     transform: translate(-30px);
-    top: 203px;
+    top: 207px;
     cursor: pointer;
 }

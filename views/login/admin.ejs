@@ -65,7 +65,7 @@
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
                 <input class="password" type="password" id="password" name="password" placeholder="Contraseña" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% }%>" >
-                <i class='bx bxs-hide'></i>
+                <i class="fa-solid fa-eye-slash" style="color: #919191;"></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.password ) { %>
                             <div>
@@ -88,7 +88,7 @@
             <div class="input-group">
                 <label for="confirm-password"><i class="fas fa-lock"></i> Repetir Contraseña</label>
                 <input class="confirmpassword" type="password" id="confirmpassword" name="confirm_password"  placeholder="Repetir Contraseña" >
-                <i  class='bx bxs-hide' id="n1" ></i>
+                <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n1"></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.confirm_password ) { %>
                             <div>
@@ -118,34 +118,20 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
         $(document).ready(function() {
-            $('.bx').click(function() {
+            $('.fa-solid').click(function() {
                 var input = $(this).siblings('input');
                 var icon = $(this);
                 
                 if (input.attr('type') === 'password') {
                     input.attr('type', 'text');
-                    icon.removeClass('bx-hide').addClass('bx-show-alt');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
                 } else {
                     input.attr('type', 'password');
-                    icon.removeClass('bx-show-alt').addClass('bx-hide');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
                 }
             });
         });
     </script>
-
-
-    <%#  %>
-  <%#  <script>
-        const password= document.getElementById("password")
-        icon = document.querySelector(".bx");
-
-        icon.addEventListener("click", e => {
-            if (copassword.type === "password") {
-                password.type = "text";
-                icon.classList.remove('bxs-hide')
-                icon.classList.add('bx-show-alt')
-                     } else {
-                        password.type = "password%>
    
 </body>
 </html>
