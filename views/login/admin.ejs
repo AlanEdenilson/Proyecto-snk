@@ -65,7 +65,7 @@
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
                 <input class="password" type="password" id="password" name="password" placeholder="Contraseña" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% }%>" >
-                <i class='bx bx-hide'></i>
+                <i class='bx bxs-hide'></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.password ) { %>
                             <div>
@@ -88,7 +88,7 @@
             <div class="input-group">
                 <label for="confirm-password"><i class="fas fa-lock"></i> Repetir Contraseña</label>
                 <input class="confirmpassword" type="password" id="confirmpassword" name="confirm_password"  placeholder="Repetir Contraseña" >
-                <i class='bx bx-hide' id="n1" ></i>
+                <i  class='bx bxs-hide' id="n1" ></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.confirm_password ) { %>
                             <div>
@@ -117,21 +117,19 @@
 
     <script>
         const password= document.getElementById("password")
-        const confirmPassword = document.getElementById("confirm-password")
         icon = document.querySelector(".bx");
-        iconn = document.querySelector(".n1")
 
         icon.addEventListener("click", e => {
-            if (password.type === "password") {
+            if (copassword.type === "password") {
                 password.type = "text";
-                icon.classList.remove('bx-hide')
+                icon.classList.remove('bxs-hide')
                 icon.classList.add('bx-show-alt')
                      } else {
                         password.type = "password"
-                        icon.classList.add('bx-hide')
+                        icon.classList.add('bxs-hide')
                         icon.classList.remove('bx-show-alt')
                     }
-        });     
+        });        
     </script>
    
 </body>

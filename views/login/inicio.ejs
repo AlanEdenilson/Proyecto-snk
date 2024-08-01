@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/incio.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/54b3975121.js" crossorigin="anonymous"></script>
     <title>Inicio de Sesión</title>
 </head>
@@ -34,7 +35,8 @@
             </div>
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Contraseña" >
+                <input class="password" type="password" id="password" name="password" placeholder="Contraseña" >
+                <i class='bx bxs-hide'></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.password ) { %>
                             <div>
@@ -53,23 +55,7 @@
                       
                       <% } %>
                       <% } %>
-              
-                      <div class="show-password">
-                        <input class="chet" type="checkbox" onclick="togglePasswordVisibility()">
-                        <label class="shott" for="show-password">Mostrar contraseña</label>
-                      </div>
-
-                      <script>
-                        function togglePasswordVisibility() {
-                          var passwordInput = document.getElementById("password");
-                          if (passwordInput.type === "password") {
-                            passwordInput.type = "text";
-                          } else {
-                            passwordInput.type = "password";
-                          }
-                        }
-                      </script>
-
+    
                 <a href="/recuperar" class="recuper">¿Olvidastes tu Contraseña?</a>
             </div>
             <% if (typeof err !== 'undefined') { %>
@@ -90,7 +76,24 @@
             <button type="submit" class="login-button">Entrar</button>
         </form>
     </div>
-  
+
+
+    <script>
+        const password= document.getElementById("password")
+        icon = document.querySelector(".bx");
+
+        icon.addEventListener("click", e => {
+            if (password.type === "password") {
+                password.type = "text";
+                icon.classList.remove('bxs-hide')
+                icon.classList.add('bx-show-alt')
+                     } else {
+                        password.type = "password"
+                        icon.classList.add('bxs-hide')
+                        icon.classList.remove('bx-show-alt')
+                    }
+        });     
+    </script>
 
     
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
