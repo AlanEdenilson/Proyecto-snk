@@ -113,15 +113,10 @@ body {
     right: 110px;
 }
 
-
-.chet{
-    position: relative;
-    right: 48%;
-    top: 10px;
-}
-
-.shott{
-    position: relative;
-    left: 26px;
-    top: -8px;
+.bx{
+    position: absolute;
+    font-size: 28px;
+    transform: translate(-30px);
+    top: 203px;
+    cursor: pointer;
 }
