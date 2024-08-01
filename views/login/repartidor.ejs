@@ -81,6 +81,7 @@
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
                 <input type="password" id="password" name="password" placeholder="Contraseña" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% }%>" >
+                <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n0"></i>
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.password ) { %>
                         <div>
@@ -104,6 +105,7 @@
                 <p id="message"></p>
                 <label for="confirmpassword"><i class="fas fa-lock"></i> Repetir Contraseña</label>
                 <input type="password" id="confirm-password" name="confirm_password" placeholder="Repetir Contraseña" >
+                <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n11"></i>
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.confirm_password ) { %>
                         <div>
@@ -128,12 +130,23 @@
         </form>
     </div>
 
-     
-
-
-        
-    
-
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.fa-solid').click(function() {
+                var input = $(this).siblings('input');
+                var icon = $(this);
+                
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                } else {
+                    input.attr('type', 'password');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                }
+            });
+        });
+    </script>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>

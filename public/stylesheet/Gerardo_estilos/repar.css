@@ -84,3 +84,19 @@ body {
     position: relative;
     right: 110px;
 }
+
+#n0{
+    position: absolute;
+    font-size: 18px;
+    transform: translate(-30px);
+    top: 363px;
+    cursor: pointer;
+}
+
+#n11{
+    position: absolute;
+    font-size: 18px;
+    transform: translate(-30px);
+    top: 440px;
+    cursor: pointer;
+}
