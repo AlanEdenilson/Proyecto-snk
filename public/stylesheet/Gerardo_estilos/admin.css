@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 115vh;
+    height: 120vh;
     margin: 0;
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
     font-family: Arial, sans-serif;
@@ -62,6 +62,7 @@ body {
     padding: 10px;
     position: relative;
     right: 5px;
+    top: -25px;
 }
 
 .login-link:hover {
@@ -79,7 +80,7 @@ body {
     cursor: pointer;
     position: relative;
     left: 80px;
-    top: -38px;
+    top: -63px;
 }
 
 .register-button:hover {
@@ -98,22 +99,47 @@ body {
 
 
 .fa-solid{
-    position: absolute;
+    position:relative;
     font-size: 18px;
-    transform: translate(-30px);
-    top: 315px;
+    transform: translate(270px);
+    top: -26px;
     cursor: pointer;
 }
 
 #n1{
-    position: absolute;
+    position: relative;
     font-size: 18px;
-    transform: translate(-30px);
-    top: 392px;
+    transform: translate(270px);
+    top: -45px;
     cursor: pointer;
 }
 
+.confirm-password{
+    position: relative;
+    top: -15px;
+}
 
+.repit-password{
+    position: relative;
+    top: -15px;
+}
 
+.error1{
+    position: relative;
+    top: 1px;
+}
 
+.error2{
+    position: relative;
+    top: 1px;
+}
 
+.error3{
+    position: relative;
+    top: -15px;
+}
+
+.error4{
+    position: relative;
+    top: -55px;
+}

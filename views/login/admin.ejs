@@ -22,7 +22,7 @@
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.username ) { %>
                             <div>
-                                <h2 class="error" 
+                                <h2 class="error1" 
                                     
                                     style="font-family: 'Times New Roman', Times, serif;
                                     font: small-caps 200% serif;
@@ -32,7 +32,7 @@
                                     top: -15x;
                                     height: 20%;
     
-                                    "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.username %></h2>
+                                    "><i class='bx bxs-error-circle' ></i><%= errors.username %></h2>
                                 </div>
                             
                       
@@ -45,16 +45,15 @@
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.email ) { %>
                             <div>
-                                <h2 class="error" 
+                                <h2 class="error2" 
                                     
                                     style="font-family: 'Times New Roman', Times, serif;
                                     font: small-caps 200% serif;
                                     font-size: 18px;
                                     color: #9b599b;
-                                    position: relative;
-                                    top: -15x;
+                                    
     
-                                    "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.email %></h2>
+                                    "><i class='bx bxs-error-circle' ></i><%= errors.email %></h2>
                                 </div>
                             
                       
@@ -69,16 +68,16 @@
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.password ) { %>
                             <div>
-                                <h2 class="error" 
+                                <h2 class="error3" 
                                     
-                                    style="font-family: 'Times New Roman', Times, serif;
+                                    style="position: relative;
+                                    font-family: 'Times New Roman', Times, serif;
                                     font: small-caps 200% serif;
                                     font-size: 18px;
                                     color: #9b599b;
-                                    position: relative;
-                                    top: -15x;
+
     
-                                    "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.password %></h2>
+                                    "><i class='bx bxs-error-circle' ></i><%= errors.password %></h2>
                                 </div>
                             
                       
@@ -86,23 +85,23 @@
                       <% } %>
             </div>
             <div class="input-group">
-                <label for="confirm-password"><i class="fas fa-lock"></i> Repetir Contraseña</label>
-                <input class="confirmpassword" type="password" id="confirmpassword" name="confirm_password"  placeholder="Repetir Contraseña" >
+                <label class="repit-password" for="confirm-password"><i class="fas fa-lock"></i> Repetir Contraseña</label>
+                <input class="confirm-password" type="password" id="confirm-password" name="confirm_password"  placeholder="Repetir Contraseña" >
                 <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n1"></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.confirm_password ) { %>
                             <div>
-                                <h2 class="error" 
+                                <h2 class="error4" 
                                     
                                     style="font-family: 'Times New Roman', Times, serif;
                                     font: small-caps 200% serif;
                                     font-size: 18px;
                                     color: #9b599b;
-                                    position: relative;
-                                    top: -15x;
+                                    
+                                    
     
-                                    "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.confirm_password %></h2>
-                                </div>
+                                    "><<i class='bx bxs-error-circle' ></i><%= errors.confirm_password %></h2>
+                             </div>
                             
                       
                       <% } %>
