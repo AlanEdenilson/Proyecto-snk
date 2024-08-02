@@ -8,6 +8,9 @@
     <script src="https://kit.fontawesome.com/54b3975121.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+
+    
     <img class="mm" src="/stylesheet/Gerardo_estilos/grrr.png" alt="">
     <div class="forgot-password-container">
         <h2>codigo de verificacion enviado </h2>
@@ -31,10 +34,46 @@
                             "> <%= correo %></h2>
                         </div>
               <% } %>
-                <input type="text" id="email" name="codigo" placeholder="Introduce el codigo de verificacion" required>
+                <input type="text"  id="codigo" name="codigo" placeholder="Introduce el codigo de verificacion" >
             </div>
-            <button type="submit" class="reset-button">Enviar</button>
+            <button type="submit" disabled id="boton" class="reset-button" style="background-color: rgb(19, 183, 198);cursor: not-allowed;"  >Enviar</button>
         </form>
     </div>
+
+
+
+    
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+         $(document).ready(function() {
+        var $codigo = $('#codigo');
+        var $boton = $('#boton');
+
+        $codigo.on('input', function() {
+            var codigoIntroducido = $(this).val();
+                // Verifica si el código tiene exactamente 5 dígitos
+            if ( /^\d{5}$/.test(codigoIntroducido)) {
+                $boton.prop('disabled', false);
+                $boton.css({
+                'background-color':'rgb(52, 21, 179)',
+                'cursor':  'pointer'
+            });
+
+            } else {
+                $boton.prop('disabled', true);
+                $boton.css({
+                'background-color':'rgb(19, 183, 198)',
+                'cursor':  'not-allowed'
+            });
+
+            }
+
+           
+        });
+    })
+    </script>
+
 </body>
 </html>
