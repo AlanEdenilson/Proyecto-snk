@@ -171,6 +171,49 @@ module.exports={
                     res.render('login/repartidor',{errors: errorMessages,valores:datos}); 
                 });
             }
+    ],
+
+    verificarcorreo:[
+    
+    body('email')
+        .notEmpty().withMessage('El campo  no puede estar vacío')
+        .isEmail().withMessage('El email no es válido')
+        .custom(value => {
+            if (!value.endsWith('@gmail.com')) {
+              throw new Error('Solo se permiten direcciones de Gmail');
+            }
+            return true;
+          }),
+        body('email').custom(async value => {
+                const email = await controller.findByEmail(value);
+                if (email) {
+                  return true;
+                }
+                else {
+                  throw new Error('correo invalido');
+
+                }
+               
+                
+              }),
+              (req, res, next)=>{
+                result(req)
+                .then(() => {
+                    next();
+                })
+                .catch((errors) => {
+                  console.log(errors);
+                  const errorMessages = {};
+                  errors.array().forEach(error => {
+                    if (!errorMessages[error.path]) {
+                      errorMessages[error.path] = error.msg;
+                      console.log(errorMessages);
+                    }
+                  });
+                  res.render('login/recuperar_contraseña',{errors:errorMessages}); 
+                  }
+                );
+              }
     ]
    
-}
+}//fin 
