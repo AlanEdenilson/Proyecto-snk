@@ -97,19 +97,19 @@ body {
 }
 
 
-.bx{
+.fa-solid{
     position: absolute;
-    font-size: 28px;
+    font-size: 18px;
     transform: translate(-30px);
-    top: 310px;
+    top: 315px;
     cursor: pointer;
 }
 
 #n1{
     position: absolute;
-    font-size: 28px;
+    font-size: 18px;
     transform: translate(-30px);
-    top: 385px;
+    top: 392px;
     cursor: pointer;
 }
 
