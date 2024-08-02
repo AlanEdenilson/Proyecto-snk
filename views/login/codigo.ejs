@@ -16,22 +16,19 @@
             <div class="input-group">
             
                 <%# <label for="password"><i class="fa-solid fa-pen-to-square"></i>codigo de verificacion</label> %>
-                <label for="password">codigo de verificacion eviado a:</label>
+                <label class=" veri" for="password">codigo de verificacion eviado a:</label>
                 <% if (typeof correo !== 'undefined') { %>
-                    <div>
+                    <div class="correoo">
                         <h2 class="error" 
                             
-                            style="font-family: 'Times New Roman', Times, serif;
-                            font: small-caps 200% serif;
-                            font-size: 18px;
-                            color: #9b599b;
-                            position: relative;
-                            top: -15x;
+                            style="
+                            font-size: 17px;
+                            color: #403f43;
         
                             "> <%= correo %></h2>
                         </div>
               <% } %>
-                <input type="text" id="email" name="codigo" placeholder="Introduce el codigo de verificacion" required>
+                <input type="text" id="email" name="codigo" placeholder="Introduce el codigo de verificacion">
             </div>
             <button type="submit" class="reset-button">Enviar</button>
         </form>

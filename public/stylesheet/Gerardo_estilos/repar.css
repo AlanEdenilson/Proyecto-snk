@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 125vh;
     margin: 0;
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
     font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@ body {
     border-radius: 10px;
     text-align: center;
     width: 300px;
-    height: 520px;
+    height: auto;
     box-shadow:  rgb(255, 255, 255) 0px 5px 15px;
     position: relative;
     right: 50px;
@@ -86,17 +86,17 @@ body {
 }
 
 #n0{
-    position: absolute;
+    position: relative;
     font-size: 18px;
-    transform: translate(-30px);
-    top: 363px;
+    transform: translate(270px);
+    top: -25px;
     cursor: pointer;
 }
 
 #n11{
-    position: absolute;
+    position: relative;
     font-size: 18px;
-    transform: translate(-30px);
-    top: 440px;
+    transform: translate(270px);
+    top: -25px;
     cursor: pointer;
 }

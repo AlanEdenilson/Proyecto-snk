@@ -114,9 +114,10 @@ body {
 }
 
 .fa-solid{
-    position: absolute;
+    position: relative;
     font-size: 18px;
-    transform: translate(-30px);
-    top: 207px;
+    transform: translate(270px);
+    top: -25px;
     cursor: pointer;
+    translate: auto;
 }
