@@ -1,9 +1,8 @@
 const nodemailer = require('nodemailer');
-var random = require('../login/index');
+
 
 module.exports={
     enviaremail:function(email,codigo){
-
         let transporter = nodemailer.createTransport({
             service: 'gmail', // Puedes usar otros servicios como 'Yahoo', 'Outlook', etc.
             auth: {
@@ -11,6 +10,7 @@ module.exports={
                 pass: 'pizhuhizbpcmdlwn'       // Reemplaza con tu contraseña
             }
         });
+      return new Promise((resolve, reject) => {
         
         // Configuración del correo electrónico
         let mailOptions = {
@@ -19,18 +19,16 @@ module.exports={
             subject: 'Prueba de orderrshop',          // Asunto
             text: `tu codigo es ${codigo}` // Cuerpo del mensaje
         };
-        
-      return new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 reject(error);
-            }else{
+            }
                 console.log('Correo enviado: %s', info.messageId);
                 console.log("a tu gmail :" + codigo +"::"+ email)
                 console.log('URL de vista previa enviado: %s', nodemailer.getTestMessageUrl(info));
                 resolve(true)
 
-            }
+            
             
         });
       })
