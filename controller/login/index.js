@@ -194,20 +194,21 @@ module.exports={
 
        
          req.session.Verificacioncodes={}
-
+         res.render('login/codigo')
 
         async function enviar () {
             
-        
+            
             try {
+              
                 const codigo = await generarcodigo.generarcodigo()
                 console.log('tu codigo es : ' + codigo)
                 req.session.Verificacioncodes[req.body.email] = codigo
                 console.log(req.session.Verificacioncodes)
-                
+               
                // console.log( "::::" + Object.keys(Verificacioncodes)+":::"+Object.values(Verificacioncodes) )
                 const respuesta = await email.enviaremail(req.body.email,codigo)
-                res.render('login/codigo')
+               
                 console.log('Correo enviado correctamente : '+ respuesta);
             } catch (error) {
                 
@@ -221,6 +222,9 @@ module.exports={
 
     //-----------------------------------------|
     confirmar:function(req, res){
+
+
+        async 
 
         
 
