@@ -7,7 +7,7 @@ module.exports={
     },
 
     refreshToken:function(payload2) {
-        return jwt.sign(payload2,'buy787by87y87y87y87y878y7y7y',{ expiresIn:'6m'});
+        return jwt.sign(payload2,'buy787by87y87y87y87y878y7y7y',{ expiresIn:'3m'});
     },
 
     validarRefreshToken:function(refreshtoken) {
