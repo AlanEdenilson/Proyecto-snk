@@ -214,16 +214,6 @@ module.exports={
         }
         enviar();
 
-
-        console.log("tu correo es ",req.body.email)
-
-        //req.session.correoelectronico=req.body.email;
-
-
-        //mandarlo ala pagina para recibir el codigo
-
-        res.render('login/codigo',{correo:req.body.email})
-
         
     },
     //-----------------------------------------|
