@@ -10,7 +10,7 @@ const generarcodigo = require('../login/generarcodigo');
 
 
 
-let verificacioCodes={};
+
 
 
 
@@ -220,7 +220,11 @@ module.exports={
     //-----------------------------------------|
 
     recuperarContra:function(req, res){
+      req.session.contador=0;
+      req.session.codigo =  {};
+      req.session.correo;
         res.render('login/recuperar_contraseña');
+        
         
     },
     //-----------------------------------------|
@@ -229,11 +233,12 @@ module.exports={
 
     //-----------------------------------------|
     enviarCorreo:function(req, res){
-      req.session.codigo = req.session.codigo || {};
 
-    
 
-         req.flash('correo', req.body.email);
+      req.session.contador=req.session.contador+1;
+
+      console.log("entrando al ruta para generar codigo veses: " + req.session.contador)
+         req.session.correo=req.body.email;
 
         async function enviar () {
             
@@ -243,8 +248,8 @@ module.exports={
                 const codigo = await generarcodigo.generarcodigo()
                 console.log('tu codigo es : ' + codigo)
                 req.session.codigo[req.body.email] = codigo
-                verificacioCodes[req.body.email] = codigo
-                console.log(verificacioCodes)
+               
+                console.log(req.session.codigo[req.body.email])
                // console.log( "::::" + Object.keys(Verificacioncodes)+":::"+Object.values(Verificacioncodes) )
                res.render('login/codigo')
                 const respuesta = await email.enviaremail(req.body.email,codigo)
@@ -254,7 +259,21 @@ module.exports={
                 
             }
         }
-        enviar();
+
+        if (req.session.contador==1) {
+          enviar();
+        } else {
+          
+          console.log("codigo de primera vez con otra sesion: " + req.session.codigo[req.body.email])
+          res.render('login/codigo');
+         
+        }
+
+        //verificacioCodes=req.session.codigo[req.body.email]
+
+      
+
+        
 
       
 
@@ -266,11 +285,12 @@ module.exports={
     confirmar:function(req, res){
         const code = req.body.codigo;
         console.log("codigo ingreasado es " + code)
-        const gmail=req.flash('correo')
-       // console.log('codigo resibido : '+ code + 'gamil' + gmail)
-       console.log('codigo almacenado con sesiones : '+ req.session.codigo['jeffreyccs10@gmail.com'] )
+        const gmail=req.session.correo;
+       console.log('codigo resibido : '+ code + 'gamil' + gmail)
+       const verificacioCodes=req.session.codigo;
        
-        console.log('codigo almacenado : '+ verificacioCodes[gmail] )
+       
+        console.log('codigo almacenado con sesion : '+ verificacioCodes[gmail])
        // delete  req.session.Verificacioncodes;
 
         if ( verificacioCodes[gmail]&& verificacioCodes[gmail] == code) {
