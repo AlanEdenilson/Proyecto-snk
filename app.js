@@ -13,9 +13,12 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 app.use(session({
-  secret: 'tu_clave_secreta',
+  secret: 'mysecret_key',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: { secure: false }
+
+
 }));
 
 app.use(flash());

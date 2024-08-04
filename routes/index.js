@@ -30,8 +30,13 @@ router.post('/repartidor',midd.sanitacionrepartidor,controlador.verificarCuenta)
 router.get('/recuperar',controlador.recuperarContra);//ingresar correo
 
 router.post('/recuperar_contra',midd.verificarcorreo,controlador.enviarCorreo);//introdudir codigo
+router.get('/nuevacontra',function(req,res){
+  res.render('login/nuevacontra');
+ })
 
 router.post('/codigo',controlador.confirmar);//cambiar contra si el codigo es valido
+
+
 
 router.post('/update',controlador.update);//actualizar contra
 

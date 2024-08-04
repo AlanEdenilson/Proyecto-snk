@@ -15,7 +15,7 @@
     <div class="forgot-password-container">
         <h2>codigo de verificacion enviado </h2>
         <p>Por favor, introduce el codigo para restablecer la contraseña.</p>
-        <form method="post" action="/codigo">
+        <form method="post" >
             <div class="input-group">
             
                 <%# <label for="password"><i class="fa-solid fa-pen-to-square"></i>codigo de verificacion</label> %>
@@ -32,8 +32,10 @@
                         </div>
               <% } %>
               <input type="text"  id="codigo" name="codigo" placeholder="Introduce el codigo de verificacion" >
+            
             </div>
             <button type="submit" disabled id="boton" class="reset-button" style="background-color: rgb(19, 183, 198);cursor: not-allowed;"  >Enviar</button>
+            <div id="validation-message"></div>
         </form>
     </div>
 
@@ -44,7 +46,7 @@
     
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
-         $(document).ready(function() {
+        
         var $codigo = $('#codigo');
         var $boton = $('#boton');
 
@@ -69,7 +71,39 @@
 
            
         });
-    })
+    
+    </script>
+
+    <script>
+     $(document).ready(function() {
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+            
+            var codigo = $('#codigo').val();
+            
+            fetch('/codigo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ codigo: codigo })
+            })
+            .then(response => response.json())
+            .then(data => {
+            if (data.valid) {
+                $('#validation-message').text('Código válido. Redirigiendo...').css('color', 'green');
+                window.location.href = '/nuevacontra';
+            } else {
+                $('#validation-message').text('Código inválido. Por favor, intente nuevamente.').css('color', 'red');
+            }
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            $('#validation-message').text('Error al verificar el código. Por favor, intente nuevamente.').css('color', 'red');
+            });
+  });
+});
+  
     </script>
 
 </body>

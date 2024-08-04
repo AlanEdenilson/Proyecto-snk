@@ -229,12 +229,11 @@ module.exports={
 
     //-----------------------------------------|
     enviarCorreo:function(req, res){
+      req.session.codigo = req.session.codigo || {};
+
+    
 
          req.flash('correo', req.body.email);
-
-       
-       
-         res.render('login/codigo')
 
         async function enviar () {
             
@@ -243,10 +242,11 @@ module.exports={
               
                 const codigo = await generarcodigo.generarcodigo()
                 console.log('tu codigo es : ' + codigo)
+                req.session.codigo[req.body.email] = codigo
                 verificacioCodes[req.body.email] = codigo
                 console.log(verificacioCodes)
-               
                // console.log( "::::" + Object.keys(Verificacioncodes)+":::"+Object.values(Verificacioncodes) )
+               res.render('login/codigo')
                 const respuesta = await email.enviaremail(req.body.email,codigo)
                
                 console.log('Correo enviado correctamente : '+ respuesta);
@@ -255,6 +255,8 @@ module.exports={
             }
         }
         enviar();
+
+      
 
         
     },
@@ -266,16 +268,15 @@ module.exports={
         console.log("codigo ingreasado es " + code)
         const gmail=req.flash('correo')
        // console.log('codigo resibido : '+ code + 'gamil' + gmail)
-  
+       console.log('codigo almacenado con sesiones : '+ req.session.codigo['jeffreyccs10@gmail.com'] )
        
         console.log('codigo almacenado : '+ verificacioCodes[gmail] )
        // delete  req.session.Verificacioncodes;
 
         if ( verificacioCodes[gmail]&& verificacioCodes[gmail] == code) {
-            res.render("login/nuevacontra");
-            
+          res.json({ valid: true});
         } else {
-            res.send("codigo invalido");
+          res.json({ valid: false });
         }
     },
         // aroon perez
