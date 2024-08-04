@@ -262,15 +262,17 @@ module.exports={
 
     //-----------------------------------------|
     confirmar:function(req, res){
+        const code = req.body.codigo;
+        console.log('codigo resibido : '+ code)
 
+        const CorreoAndCodigo = req.session.Verificacioncodes;
+        console.log('codigo almacenado : '+ CorreoAndCodigo)
+        delete  req.session.Verificacioncodes;
 
-        
-
-        
-
-        if (req.body.codigo===r) {
+        if (CorreoAndCodigo && CorreoAndCodigo === code) {
             res.render("login/nuevacontra");
-        }else{
+            
+        } else {
             res.send("codigo invalido");
         }
     },
