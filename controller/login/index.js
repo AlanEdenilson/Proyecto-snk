@@ -271,7 +271,7 @@ module.exports={
         console.log('codigo almacenado : '+ verificacioCodes[gmail] )
        // delete  req.session.Verificacioncodes;
 
-        if ( verificacioCodes[gmail] == code) {
+        if ( verificacioCodes[gmail]&& verificacioCodes[gmail] == code) {
             res.render("login/nuevacontra");
             
         } else {
