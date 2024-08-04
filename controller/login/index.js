@@ -10,7 +10,7 @@ const generarcodigo = require('../login/generarcodigo');
 
 
 
-let r;
+let verificacioCodes={};
 
 
 
@@ -233,7 +233,7 @@ module.exports={
          req.flash('correo', req.body.email);
 
        
-         req.session.Verificacioncodes={}
+       
          res.render('login/codigo')
 
         async function enviar () {
@@ -243,8 +243,8 @@ module.exports={
               
                 const codigo = await generarcodigo.generarcodigo()
                 console.log('tu codigo es : ' + codigo)
-                req.session.Verificacioncodes[req.body.email] = codigo
-                console.log(req.session.Verificacioncodes)
+                verificacioCodes[req.body.email] = codigo
+                console.log(verificacioCodes)
                
                // console.log( "::::" + Object.keys(Verificacioncodes)+":::"+Object.values(Verificacioncodes) )
                 const respuesta = await email.enviaremail(req.body.email,codigo)
@@ -263,13 +263,15 @@ module.exports={
     //-----------------------------------------|
     confirmar:function(req, res){
         const code = req.body.codigo;
-        console.log('codigo resibido : '+ code)
+        console.log("codigo ingreasado es " + code)
+        const gmail=req.flash('correo')
+       // console.log('codigo resibido : '+ code + 'gamil' + gmail)
+  
+       
+        console.log('codigo almacenado : '+ verificacioCodes[gmail] )
+       // delete  req.session.Verificacioncodes;
 
-        const CorreoAndCodigo = req.session.Verificacioncodes;
-        console.log('codigo almacenado : '+ CorreoAndCodigo)
-        delete  req.session.Verificacioncodes;
-
-        if (CorreoAndCodigo && CorreoAndCodigo === code) {
+        if ( verificacioCodes[gmail]&& verificacioCodes[gmail] == code) {
             res.render("login/nuevacontra");
             
         } else {

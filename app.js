@@ -15,7 +15,7 @@ var app = express();
 app.use(session({
   secret: 'tu_clave_secreta',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true
 }));
 
 app.use(flash());
