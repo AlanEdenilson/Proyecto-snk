@@ -304,6 +304,10 @@ module.exports={
         res.render("login/marca");
     },
     update:function(req, res){
+
+      delete req.session.contador;
+      delete req.session.codigo;
+      delete req.session.correo;
        
         const gmail=req.flash('correo')
         const password=req.body.password;

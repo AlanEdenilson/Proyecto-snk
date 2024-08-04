@@ -55,6 +55,24 @@
         });
     </script>
 
+
+   <script>
+     $(function() {
+        // Agregar una entrada al historial
+        history.pushState(null, null, location.href);
+
+        // Manejar el evento popstate (cuando se presiona la flecha de retroceso)
+        $(window).on('popstate', function(event) {
+            // Prevenir el retroceso
+            history.pushState(null, null, location.href);
+
+            // Redirigir a la página de inicio de sesión
+            window.location.href = '/'; // Ajusta esta URL a tu página de inicio de sesión
+        });
+        });
+
+   </script>
+
 </body>
 </html>
 
