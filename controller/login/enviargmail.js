@@ -1,8 +1,8 @@
 const nodemailer = require('nodemailer');
-var random = require('../login/index');
+
 
 module.exports={
-    enviaremail:function(correo,codigoA){
+    enviaremail:function(email,codigo){
         let transporter = nodemailer.createTransport({
             service: 'gmail', // Puedes usar otros servicios como 'Yahoo', 'Outlook', etc.
             auth: {
@@ -10,26 +10,28 @@ module.exports={
                 pass: 'pizhuhizbpcmdlwn'       // Reemplaza con tu contraseña
             }
         });
+      return new Promise((resolve, reject) => {
         
         // Configuración del correo electrónico
         let mailOptions = {
             from: 'ordershop503@gmail.com',               // Remitente
-            to: correo,              // Destinatario
+            to: email,              // Destinatario
             subject: 'Prueba de orderrshop',          // Asunto
-            text: `tu codigo es ${codigoA}` // Cuerpo del mensaje
+            text: `tu codigo es ${codigo}` // Cuerpo del mensaje
         };
-        
-        // Enviar el correo electrónico
-         transporter.sendMail(mailOptions, (error, info) => {
+        transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                return console.log(`Error: ${error}`);
+                reject(error);
             }
-            console.log('Correo enviado: %s', info.messageId);
-            console.log("tu codigo generado es listo para mandar gmail :" + codigoA + correo)
-            console.log('URL de vista previa enviado: %s', nodemailer.getTestMessageUrl(info));
-         
+                console.log('Correo enviado: %s', info.messageId);
+                console.log("a tu gmail :" + codigo +"::"+ email)
+                console.log('URL de vista previa enviado: %s', nodemailer.getTestMessageUrl(info));
+                resolve(true)
+
+            
             
         });
+      })
 
     }
 
@@ -40,3 +42,5 @@ module.exports={
 // Configura el transporte con tus credenciales de correo electrónico
 
 
+
+// Enviar el correo electrónico

@@ -6,6 +6,7 @@ var conexion = require('../../config/conexion');
 const Gtoken = require('../login/Gtoken');
 const model = require('../../model');
 const aux=require('../login/auxiliar');
+const generarcodigo = require('../login/generarcodigo');
 
 
 
@@ -16,8 +17,52 @@ let r;
 module.exports={
 
     login:function(req,res){
-
         const token = req.cookies.authToken;
+        async function verificartoken() {
+            try {
+              var vtoken = await Gtoken.validarToken2(token);
+              console.log("El token es válido:", vtoken);
+              var rol = vtoken.rol;
+              return aux.mostrarVentanas2(res, rol);
+            } catch (error) {
+              console.error("Error de validación del token:", error.message);
+              if (error.message === "Token has expired.") {
+                const refreshToken = req.cookies.refreshToken;
+                try {
+                  const decoded = await Gtoken.validarRefreshToken(refreshToken);
+                  const { rol, email } = decoded;
+                  console.log("El token es válido:", decoded);
+                  const tokennew = Gtoken.generarToken({ rol, email });
+                  res.cookie('authToken', tokennew, { httpOnly: true, secure: true });
+                  console.log("token refrescado exitosamente");
+                  return aux.mostrarVentanas2(res, rol);
+                } catch (error) {
+                  console.error("Error de validación del token de actualización:", error.message);
+                  if (error.message === "Token has expired." || error.message === "Token does not exist.") {
+                    return res.render('login/inicio');
+                  }
+                  if (error.message === "Token is altered." || error.message === "Token verification failed.") {
+                    return res.status(401).json({ message: "Token ha sido alterado", expired: true });
+                  }
+                }
+              }
+              if (error.message === "Token has expired." || error.message === "Token does not exist.") {
+                return res.render('login/inicio');
+              }
+              if (error.message === "Token is altered." || error.message === "Token verification failed.") {
+                return res.status(401).json({ message: "Token ha sido alterado", expired: true });
+              }
+            }
+          }
+
+
+          if (!token) {
+            res.render('login/inicio'); // Si no hay token, devuelve un error 401
+        } else {
+            verificartoken();
+         }
+
+       /* const token = req.cookies.authToken;
 
      async function verificartoken() {     
         try {
@@ -57,16 +102,13 @@ module.exports={
             }
 
             if(error.message === 'Token is altered.' || error.message === 'Token verification failed.') {
-               return res.status(401).json({ message: 'Token asido alterado', expired: true });
+                return res.render('login/inicio')
+              
             }
             
-     }}
+     }}*/
 
-     if (!token) {
-        res.render('login/inicio'); // Si no hay token, devuelve un error 401
-    } else {
-        verificartoken();
-     }
+   
 
   
         
@@ -188,27 +230,31 @@ module.exports={
     //-----------------------------------------|
     enviarCorreo:function(req, res){
 
-       // const gmail=req.flash('correo')
+         req.flash('correo', req.body.email);
 
-        //req.flash('correo', req.body.email);
-        console.log("tu correo es ",req.body.email)
+       
+         req.session.Verificacioncodes={}
+         res.render('login/codigo')
 
-        //req.session.correoelectronico=req.body.email;
-        req.flash('correo', req.body.email);
-
-
-
-        r = random.generarcodigo(5);
-        var correo = req.body.email;
-        email.enviaremail(correo,r);
-        
-        console.log("codigo aleatorio: ",r)
-        console.log("tu correo es ",correo);
-        console.log("codigo aleatorio: ", r)
-
-        //mandarlo ala pagina para recibir el codigo
-
-        res.render('login/codigo',{correo:req.body.email})
+        async function enviar () {
+            
+            
+            try {
+              
+                const codigo = await generarcodigo.generarcodigo()
+                console.log('tu codigo es : ' + codigo)
+                req.session.Verificacioncodes[req.body.email] = codigo
+                console.log(req.session.Verificacioncodes)
+               
+               // console.log( "::::" + Object.keys(Verificacioncodes)+":::"+Object.values(Verificacioncodes) )
+                const respuesta = await email.enviaremail(req.body.email,codigo)
+               
+                console.log('Correo enviado correctamente : '+ respuesta);
+            } catch (error) {
+                
+            }
+        }
+        enviar();
 
         
     },
@@ -216,12 +262,17 @@ module.exports={
 
     //-----------------------------------------|
     confirmar:function(req, res){
+        const code = req.body.codigo;
+        console.log('codigo resibido : '+ code)
 
-        
+        const CorreoAndCodigo = req.session.Verificacioncodes;
+        console.log('codigo almacenado : '+ CorreoAndCodigo)
+        delete  req.session.Verificacioncodes;
 
-        if (req.body.codigo===r) {
+        if (CorreoAndCodigo && CorreoAndCodigo === code) {
             res.render("login/nuevacontra");
-        }else{
+            
+        } else {
             res.send("codigo invalido");
         }
     },
