@@ -80,15 +80,15 @@ module.exports={
 <body>
     <div class="container">
         <div class="header">
-<<<<<<< HEAD
-            <img src="https://example.com/logo.png" alt="Logo">
-=======
+
+            <img src="https://res.cloudinary.com/dphpc7b2w/image/upload/v1721791000/logotwo_i0icme.jpg" alt="Logo">
+
  
         </div>
         <div class="content">
             <h1>Verificación de Correo Electrónico</h1>
             <p>Gracias por registrarte. Por favor, usa el siguiente código para verificar tu dirección de correo electrónico:</p>
-            <div class="code">123456</div>
+            <div class="code"> ${codigo}</div>
             <p>Si no solicitaste este correo, puedes ignorarlo.</p>
         </div>
         <div class="footer">
