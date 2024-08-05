@@ -220,13 +220,32 @@ module.exports={
     //-----------------------------------------|
 
     recuperarContra:function(req, res){
+      const token = req.cookies.authToken;
       req.session.contador=0;
       req.session.codigo =  {};
       req.session.correo;
-        res.render('login/recuperar_contraseña');
-        
-        
-    },
+
+
+     
+    
+            
+        if (!token) {
+              res.render('login/recuperar_contraseña',{correo:"Example@gmail.com"}); // Si no hay token, devuelve un error 401
+        } else {
+
+          Gtoken.validarToken2(token)
+          .then((vertoken)=>{
+            console.log("El token es válido:", vertoken.email);
+            res.render('login/recuperar_contraseña',{correo:vertoken.email});
+
+          }).catch(()=>{
+            console.error('Token de recuperación inválido');
+            res.render('login/recuperar_contraseña',{correo:"Example@gmail.com"});
+          })
+
+
+          }
+            },
     //-----------------------------------------|
 
      // funcion para mandar corrreo y codigo generado 
@@ -251,7 +270,7 @@ module.exports={
                
                 console.log(req.session.codigo[req.body.email])
                // console.log( "::::" + Object.keys(Verificacioncodes)+":::"+Object.values(Verificacioncodes) )
-               res.render('login/codigo')
+               res.render('login/codigo',{correo: req.session.correo})
                 const respuesta = await email.enviaremail(req.body.email,codigo)
                
                 console.log('Correo enviado correctamente : '+ respuesta);
@@ -265,7 +284,7 @@ module.exports={
         } else {
           
           console.log("codigo de primera vez con otra sesion: " + req.session.codigo[req.body.email])
-          res.render('login/codigo');
+          res.render('login/codigo',{correo: req.session.correo});
          
         }
 

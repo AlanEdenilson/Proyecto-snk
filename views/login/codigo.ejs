@@ -14,12 +14,13 @@
     <img class="mm" src="/stylesheet/Gerardo_estilos/grrr.png" alt="">
     <div class="forgot-password-container">
         <h2>codigo de verificacion enviado </h2>
-        <p>Por favor, introduce el codigo para restablecer la contraseña.</p>
+        <p>Por favor, introduce el codigo para restablecer la contraseña codigo enviado :<strong ></strong></p>
+        
         <form method="post" >
             <div class="input-group">
             
                 <%# <label for="password"><i class="fa-solid fa-pen-to-square"></i>codigo de verificacion</label> %>
-                <label class=" veri" for="password">codigo de verificacion eviado a:</label>
+                
                 <% if (typeof correo !== 'undefined') { %>
                     <div class="correoo">
                         <h2 class="error" 
@@ -36,7 +37,9 @@
             </div>
             <button type="submit" disabled id="boton" class="reset-button" style="background-color: rgb(19, 183, 198);cursor: not-allowed;"  >Enviar</button>
             <div id="validation-message"></div>
+            
         </form>
+
     </div>
 
 
