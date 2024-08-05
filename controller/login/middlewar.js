@@ -179,7 +179,7 @@ module.exports={
         .notEmpty().withMessage('El campo  no puede estar vacío')
         .isEmail().withMessage('El email no es válido')
         .custom(value => {
-            if (!value.endsWith('@gmail.com')) {
+            if (!value.endsWith('@gmail.com') ||!value.endsWith('@clases.edu.sv')) {
               throw new Error('Solo se permiten direcciones de Gmail');
             }
             return true;
