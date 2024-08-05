@@ -16,14 +16,17 @@ body {
     width: 300px;
     height: auto;
     box-shadow:  rgb(255, 255, 255) 0px 5px 15px;
-    position: relative;
-    right: 50px;
+    position: absolute;
+    right: 250px;
+    top: 30px;
 }
 
 .register-container h2 {
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
+    top: -10px;
+    position: relative;
 }
 
 .input-group {
@@ -82,7 +85,8 @@ body {
 
 .mm{
     position: relative;
-    right: 110px;
+    right: 310px;
+    top: -50px;
 }
 
 #n0{
@@ -99,4 +103,9 @@ body {
     transform: translate(270px);
     top: -25px;
     cursor: pointer;
+}
+
+.repetirr{
+    position: absolute;
+    top: 67%;
 }
