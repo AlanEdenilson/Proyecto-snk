@@ -10,10 +10,10 @@ body{
 
 .forma{
     position: absolute;
-    width: 590px;
-    height: 170px;
-    top: 26px;
-    right: 45%;
+    width: 560px;
+    height: 140px;
+    top: 40px;
+    right: 47%;
     background-color: white;
     padding: 50px; 
     border-radius: 10px;
@@ -29,12 +29,12 @@ body{
 
 .contenedor2{
     position: absolute;
-    width: 50%;
-    height: 270px;
+    width: 48%;
+    height: 240px;
     top: 52%;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    right: 6%;
+    right: 47%;
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
     box-shadow:rgb(255, 255, 255) -5px -5px 50px;
@@ -61,9 +61,9 @@ body{
 .a{
     position: absolute;
     height: auto;
-    width: 34%;
-    top: 20px;
-    right: 64%;
+    width: 32%;
+    top: 13px;
+    right: 66%;
 
 }
 
@@ -78,8 +78,8 @@ body{
 
 .que_hace_rol{
     position: absolute;
-    height: 240px;
-    width: 664px;
+    height: 214px;
+    width: 635px;
     left: 1%;
     top: 5%;
     border-radius: 12px;
@@ -120,8 +120,8 @@ body{
 
 .que_hace_rolL{
     position: absolute;
-    height: 240px;
-    width: 664px;
+    height: 210px;
+    width: 633px;
     left: 2%;
     top: 5%;
     border-radius: 12px;
