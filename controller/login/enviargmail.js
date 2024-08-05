@@ -80,20 +80,20 @@ module.exports={
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://example.com/logo.png" alt="Logo">
+            <img src="/stylesheet/Gerardo_estilos/grrr.png" alt="">
         </div>
         <div class="content">
-            <h1>Verificación de Correo Electrónico</h1>
-            <p>Gracias por registrarte. Por favor, usa el siguiente código para verificar tu dirección de correo electrónico:</p>
+            <h1>Codigo de Verificacion</h1>
+            <p>Gracias por registrarte. Por favor, usa el siguiente código para verificar tu cambio de contraseña:</p>
             <div class="code">123456</div>
             <p>Si no solicitaste este correo, puedes ignorarlo.</p>
         </div>
         <div class="footer">
-            <p>&copy; 2024 Tu Compañía. Todos los derechos reservados.</p>
+            <p>&copy; 2024 AGAJE. Todos los derechos reservados.</p>
         </div>
     </div>
 </body>
-</html>ñ
+</html>
             ` // fin de la coma
         };
         transporter.sendMail(mailOptions, (error, info) => {
