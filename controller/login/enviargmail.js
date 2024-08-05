@@ -80,7 +80,10 @@ module.exports={
 <body>
     <div class="container">
         <div class="header">
+<<<<<<< HEAD
             <img src="https://example.com/logo.png" alt="Logo">
+=======
+ 
         </div>
         <div class="content">
             <h1>Verificación de Correo Electrónico</h1>
