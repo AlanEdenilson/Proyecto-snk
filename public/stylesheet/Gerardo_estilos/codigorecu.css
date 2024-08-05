@@ -135,7 +135,7 @@ body{
   
   .checkmark {
     position: absolute;
-    top: 150px;
+    top: 120px;
     right: 500px; 
     width: 56px;
     height: 56px;
@@ -151,8 +151,24 @@ body{
 
   .ley{
     position: absolute;
-    top: 57%;
+    top: 52%;
     right: 27%;
+  }
+
+  .buton{
+    position: absolute;
+    top: 63%;
+    right: 29%;
+    background-color: #333;
+    color: #fff;
+    height: 45px;
+    width: 12%;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .buton:hover{
+    background-color: #555;
   }
   
   .checkmark__check {
