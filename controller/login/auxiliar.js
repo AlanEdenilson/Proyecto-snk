@@ -12,10 +12,13 @@ function sino(res,ruta) {
 
 module.exports={
 
-    mostrarventanas:function (res,token,rdatabase) {
-        if ( rdatabase === true)  {
-                sino(res,token.rol);  
-    }
+    mostrarventanas:function (res,rol,gmail) {
+        if(rol==="1" || rol===1){
+            res.render('login/ventanaAdmin',{correo:gmail});
+        }else if(rol==="2"){
+            res.render('login/ventanaRpartidor',{correo:gmail});
+        }     
+    
 
 
     } , 

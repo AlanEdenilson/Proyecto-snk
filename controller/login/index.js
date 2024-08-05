@@ -23,6 +23,8 @@ module.exports={
               var vtoken = await Gtoken.validarToken2(token);
               console.log("El token es válido:", vtoken);
               var rol = vtoken.rol;
+ 
+              console.log("al macenado con exito")
               return aux.mostrarVentanas2(res, rol);
             } catch (error) {
               console.error("Error de validación del token:", error.message);
@@ -144,10 +146,12 @@ module.exports={
            
             const token = Gtoken.generarToken(payload);
             res.cookie('authToken', token, { httpOnly: true,secure: true });
+           // res.cookie('correo', respuestabd.correo,);
+           // console.log("cokkie de correo almacenado con exito")
             const refreshToken = Gtoken.refreshToken(payload2);
             res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
-
-           aux.mostrarVentanas2(res,respuestabd.id_rol)
+        
+           aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo)
 
        
             //aux.craertokens(res,respuestabd)
@@ -220,7 +224,7 @@ module.exports={
     //-----------------------------------------|
 
     recuperarContra:function(req, res){
-      const token = req.cookies.authToken;
+      const email = req.cookies.correo;
       req.session.contador=0;
       req.session.codigo =  {};
       req.session.correo;
@@ -229,23 +233,15 @@ module.exports={
      
     
             
-        if (!token) {
+        if (!email) {
               res.render('login/recuperar_contraseña',{correo:"Example@gmail.com"}); // Si no hay token, devuelve un error 401
         } else {
-
-          Gtoken.validarToken2(token)
-          .then((vertoken)=>{
-            console.log("El token es válido:", vertoken.email);
-            res.render('login/recuperar_contraseña',{correo:vertoken.email});
-
-          }).catch(()=>{
-            console.error('Token de recuperación inválido');
-            res.render('login/recuperar_contraseña',{correo:"Example@gmail.com"});
-          })
+          res.render('login/recuperar_contraseña',{correo:email});
+        }
 
 
-          }
-            },
+
+      },
     //-----------------------------------------|
 
      // funcion para mandar corrreo y codigo generado 

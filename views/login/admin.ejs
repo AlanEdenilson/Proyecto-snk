@@ -131,6 +131,28 @@
             });
         });
     </script>
+
+
+
+<script>
+    $(document).ready(function() {
+        // Datos enviados desde el servidor
+
+        if (typeof correo !== 'undefined'){
+            const data =  JSON.stringify(correo) 
+
+// Almacenar los datos en localStorage
+       localStorage.setItem('correo', data.correo);
+       alert("almacenado extosamente")
+
+
+        }
+     
+
+        // Actualizar el estado en la página
+
+    });
+</script>
    
 </body>
 </html>
