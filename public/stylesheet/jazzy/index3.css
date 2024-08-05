@@ -3,7 +3,7 @@ body{
     justify-content: center;
     align-items: center;
     height:100vh;
-    background: linear-gradient(135deg, #01257D, #00FFFF);
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
  
 }
 
@@ -133,4 +133,12 @@ body{
     position: absolute;
     text-align: center;
     left: 49%;
+}
+
+.logo_empresa{
+    position: absolute;
+    height: auto;
+    width: 32%;
+    top: 40%;
+    right: 68%;
 }
