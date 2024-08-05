@@ -80,7 +80,7 @@ module.exports={
 <body>
     <div class="container">
         <div class="header">
-            <img src="/stylesheet/Gerardo_estilos/grrr.png" alt="">
+            <img src="/stylesheet/Gerardo_estilos/grrr.pn" alt="">
         </div>
         <div class="content">
             <h1>Codigo de Verificacion</h1>
