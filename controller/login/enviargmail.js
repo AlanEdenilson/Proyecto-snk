@@ -17,7 +17,9 @@ module.exports={
             from: 'ordershop503@gmail.com',               // Remitente
             to: email,              // Destinatario
             subject: 'Prueba de orderrshop',          // Asunto
-            text: `tu codigo es ${codigo}` // Cuerpo del mensaje
+            text: `tu codigo es ${codigo}`,
+            html:`  
+            ` // fin de la coma
         };
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
