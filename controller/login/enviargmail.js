@@ -85,7 +85,7 @@ module.exports={
         <div class="content">
             <h1>Verificación de Correo Electrónico</h1>
             <p>Gracias por registrarte. Por favor, usa el siguiente código para verificar tu dirección de correo electrónico:</p>
-            <div class="code">123456</div>
+            <div class="code"> ${codigo}</div>
             <p>Si no solicitaste este correo, puedes ignorarlo.</p>
         </div>
         <div class="footer">
