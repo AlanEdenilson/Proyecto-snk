@@ -35,6 +35,7 @@ module.exports={
             padding: 0;
         }
         .container {
+            positio: absolute;
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
@@ -43,12 +44,9 @@ module.exports={
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .header {
-            text-align: center;
-            padding: 10px 0;
-        }
-        .header img {
-            max-width: 100px;
+        .log{
+            width: 100%;
+            height:  140px;
         }
         .content {
             padding: 20px;
@@ -79,24 +77,24 @@ module.exports={
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <div>
 
-            <img src="https://res.cloudinary.com/dphpc7b2w/image/upload/v1721791000/logotwo_i0icme.jpg" alt="Logo">
+            <img src="https://res.cloudinary.com/dphpc7b2w/image/upload/v1721791000/logotwo_i0icme.jpg" alt="" class="log">
 
  
         </div>
         <div class="content">
-            <h1>Verificación de Correo Electrónico</h1>
-            <p>Gracias por registrarte. Por favor, usa el siguiente código para verificar tu dirección de correo electrónico:</p>
+            <h1>Codigo de Verificacion</h1>
+            <p>Gracias por registrarte. Por favor, usa el siguiente código para verificar tu Cambio de contraseña:</p>
             <div class="code"> ${codigo}</div>
             <p>Si no solicitaste este correo, puedes ignorarlo.</p>
         </div>
         <div class="footer">
-            <p>&copy; 2024 Tu Compañía. Todos los derechos reservados.</p>
+            <p>&copy; 2024 AGAJE. Todos los derechos reservados.</p>
         </div>
     </div>
 </body>
-</html>ñ
+</html>
             ` // fin de la coma
         };
         transporter.sendMail(mailOptions, (error, info) => {
