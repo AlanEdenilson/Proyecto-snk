@@ -21,15 +21,13 @@
                 <% if (typeof errors !== 'undefined') { %>
                 <% if ( errors.username ) { %>
                         <div>
-                            <h2 class="error" 
+                            <h2 class="error1" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
                                 font-size: 18px;
                                 color: #9b599b;
-                                position: relative;
-                                top: -15x;
-
+                            
                                 "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.username %></h2>
                             </div>
                         
@@ -43,7 +41,7 @@
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.email ) { %>
                         <div>
-                            <h2 class="error" 
+                            <h2 class="error2" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
@@ -63,7 +61,7 @@
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.Id ) { %>
                         <div>
-                            <h2 class="error" 
+                            <h2 class="error3" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
@@ -85,14 +83,12 @@
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.password ) { %>
                         <div>
-                            <h2 class="error" 
+                            <h2 class="error4" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
                                 font-size: 18px;
                                 color: #9b599b;
-                                position: relative;
-                                top: -15x;
 
                                 "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.password  %></h2>
                             </div>
@@ -103,20 +99,18 @@
             </div>
             <div class="input-group">
                 <p id="message"></p>
-                <label for="confirmpassword"><i class="fas fa-lock"></i> Repetir Contraseña</label>
+                <label class="repetirr" for="confirmpassword"><i class="fas fa-lock"></i> Repetir Contraseña</label>
                 <input type="password" id="confirm-password" name="confirm_password" placeholder="Repetir Contraseña" >
                 <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n11"></i>
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.confirm_password ) { %>
                         <div>
-                            <h2 class="error" 
+                            <h2 class="error5" 
                                 
                                 style="font-family: 'Times New Roman', Times, serif;
                                 font: small-caps 200% serif;
                                 font-size: 18px;
                                 color: #9b599b;
-                                position: relative;
-                                top: -15x;
 
                                 "><i class="fa-solid fa-circle-exclamation" style="color: #db0cc0;"></i> <%= errors.confirm_password %></h2>
                             </div>
