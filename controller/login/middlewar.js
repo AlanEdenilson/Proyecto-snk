@@ -176,14 +176,14 @@ module.exports={
     verificarcorreo:[
     
     body('email')
-        .notEmpty().withMessage('El campo  no puede estar vacío')
-        .isEmail().withMessage('El email no es válido')
+        .notEmpty().withMessage('El campo  no puede estar vacío'),
+      /*  .isEmail().withMessage('El email no es válido')
         .custom(value => {
             if (!value.endsWith('@gmail.com') ||!value.endsWith('@clases.edu.sv')) {
               throw new Error('Solo se permiten direcciones de Gmail');
             }
             return true;
-          }),
+          }),*/
         body('email').custom(async value => {
                 const email = await controller.findByEmail(value);
                 if (email) {
