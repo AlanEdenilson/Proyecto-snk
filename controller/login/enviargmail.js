@@ -80,7 +80,7 @@ module.exports={
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://example.com/logo.png" alt="Logo">
+            <img src="https://res.cloudinary.com/dphpc7b2w/image/upload/v1721791000/logotwo_i0icme.jpg" alt="Logo">
         </div>
         <div class="content">
             <h1>Verificación de Correo Electrónico</h1>
