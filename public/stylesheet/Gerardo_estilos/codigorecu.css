@@ -103,3 +103,21 @@ body{
     right: 110px;
 }
 
+
+#n1{
+    position: absolute;
+    font-size: 18px;
+    top: 119%;
+    right: 45px;
+    cursor: pointer;
+    
+}
+
+#n2{
+    position: absolute;
+    font-size: 18px;
+    top: 108%;
+    right: 45px;
+    cursor: pointer;
+
+}
