@@ -12,12 +12,12 @@
 
     <img class="imm" src="/stylesheet/Gerardo_estilos/grrr.png" alt="">
       <div  class="cuer">
-        <form action="/update" method="post" style="display: none;">
+        <form id="formulario" method="post" style="display: block;">
                 <h1 class="cs">Introduce la Nueva contraseña</h1>
 
                 <div class="contra">
                     <label class="texl" for="password"><i class="fa-solid fa-lock"></i> Contraseña</label>
-                    <input class="code" type="password" name="password" placeholder="Instroduce la contraseña" required>
+                    <input id="contraseña" class="code" type="password" name="password" placeholder="Instroduce la contraseña" required>
                     <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n1"></i>
         
                 </div>
@@ -73,7 +73,7 @@
 
    </script>
 
-<div id="successMessage" >
+<div id="successMessage" style="display: none;" >
 
     <center>
 
@@ -82,11 +82,60 @@
             <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
           </svg>
           <p class="ley" style="color: green;">¡Contraseña cambiada con éxito!</p>
-          <button class="buton" onclick="redirectToHome()">Ir a la página principal</button>
+          <a class="buton" href="/" a la página principal</a>
 
     </center>
    
 </div>
+
+<script>
+    $(function() {
+       // Agregar una entrada al historial
+       $('form').on('submit', function(e) {
+            e.preventDefault();
+            
+            var contraseña = $('#contraseña').val();
+            var $formulario=$('#formulario')
+            var $mensaje=$('#successMessage')
+            
+            
+            fetch('/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ password: contraseña })
+            })
+            .then(response => response.json())
+            .then(data => {
+            if (data.valid) {
+              
+             
+                
+                $formulario.css({
+                'display':'none',
+                })
+
+           
+                $mensaje.css({
+                'display':'block',
+                })
+
+            } else {
+                alert('error al actualizar la Contraseña . Por favor, intente nuevamente.');
+            }
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            $('#validation-message').text('Error al verificar el código. Por favor, intente nuevamente.').css('color', 'red');
+            });
+  });
+       });
+
+  </script>
+
+
+
 
 
 
