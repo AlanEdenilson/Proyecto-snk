@@ -82,7 +82,7 @@
     <p class="ley"  style="color: red;">Error al cambiar la contraseña. <br> Por favor, <br>inténtalo de nuevo más tarde.</p>
     <br>
     <br>
-    <button id="boon1" class="buton" >Intentar nuevamente</button>
+    <button id="boton1" class="buton" type="button">Intentar nuevamente</button>
 </center>
   </div>
 
@@ -95,7 +95,7 @@
             <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
           </svg>
           <p class="ley" style="color: green;">¡Contraseña cambiada con éxito!</p>
-          <button id="boton2" class="buton" >iniciar sesion</button> 
+          <button id="boton2" class="buton" type="button" >iniciar sesion</button> 
 
     </center>
    
@@ -103,16 +103,16 @@
 
 <script>
     $(function() {
-        $( "#boton1" ).on( "click", function() {
+        $( "#boton1" ).on( "click", ()=> {
             window.location.href='/';
   // this refers to an anchor DOM element
-});
-$( "#boton2" ).on( "click", function() {
-            window.location.href='/';
-  // this refers to an anchor DOM element
-});
-    
-});
+        });
+        $( "#boton2" ).on( "click", ()=> {
+                    window.location.href='/';
+        // this refers to an anchor DOM element
+        });
+            
+        });
 
 </script>
 
