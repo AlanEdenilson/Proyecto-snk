@@ -227,7 +227,7 @@ body{
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
   }
 
-  .ley{
+  .ley1{
     position: absolute;
     top: 52%;
     right: 25%;
@@ -236,7 +236,7 @@ body{
 
   }
 
-  .buton{
+  .buton1{
     position: absolute;
     top: 67%;
     right: 27%;

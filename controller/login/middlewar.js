@@ -214,6 +214,36 @@ module.exports={
                   }
                 );
               }
+    ],
+
+    contraNueva:[
+      body('password')
+      .notEmpty().withMessage('El campo  no puede estar vacío')
+      .isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
+      .matches(/[a-zA-Z]/).withMessage('La contraseña debe contener al menos una letra')
+      .matches(/[0-9]/).withMessage('La contraseña debe contener al menos un número'),
+      body('Confirmar_contraseña').custom((value, { req }) => {
+        return value === req.body.password;
+      }).withMessage("La contraseña y la confirmación de contraseña no coinciden"),
+      (req, res, next)=>{
+        result(req)
+        .then(() => {
+            next();
+        })
+        .catch((errors) => {
+          console.log(errors);
+          const errorMessages = {};
+          errors.array().forEach(error => {
+            if (!errorMessages[error.path]) {
+              errorMessages[error.path] = error.msg;
+              console.log(errorMessages);
+            }
+          });
+           res.json({errors:errorMessages});
+          }
+        );
+      }
+
     ]
    
 }//fin 

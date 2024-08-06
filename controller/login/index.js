@@ -128,6 +128,7 @@ module.exports={
             var  respuestabd = await model.buscarusuario(conexion,username,password)
             console.log("tu respuesta de la bd es  ; " + respuestabd)
 
+
             const payload = {
                 rol:respuestabd.id_rol,
                 nombre:respuestabd.usuario,
@@ -152,6 +153,7 @@ module.exports={
             res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
         
            aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo)
+           console.log("hola")
 
        
             //aux.craertokens(res,respuestabd)
@@ -332,12 +334,12 @@ module.exports={
             try {
                 var rsult = await model.updatepassword(conexion,gmail,password);
                 console.log("la respuesta de la bd es :"+rsult)
-                res.json({ valid:false});
+                res.json({ valid:true});
                 
             } catch (error) {
 
                 console.error('Error al actualizar contraseña:', error.message);
-                res.json({ valid:false});
+               
                 
             }
 

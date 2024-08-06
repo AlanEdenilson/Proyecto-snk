@@ -39,7 +39,7 @@ router.post('/codigo',controlador.confirmar);//cambiar contra si el codigo es va
 
 
 
-router.post('/update',controlador.update);//actualizar contra
+router.post('/update',midd.contraNueva,controlador.update);//actualizar contra
 
 //router.post('/update',controlador.update);
 

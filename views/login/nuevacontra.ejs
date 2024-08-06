@@ -21,11 +21,18 @@
                     <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n1"></i>
         
                 </div>
+               
+                    <div id="inpu1" ></div>
+                       
 
                 <div class="confir">
                     <label class="texll" for="password"><i class="fa-solid fa-lock"></i> Confirmar contraseña</label>
-                    <input class="codee" type="password" placeholder="Confirmar contraseña" required>
+                    <input id="contra2" class="codee" type="password" placeholder="Confirmar-contraseña" name="comfirmar-password">
                     <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n2"></i>
+                </div>
+
+                <div id="inpu2" >
+
                 </div>
 
 
@@ -79,10 +86,10 @@
       <circle class="error-icon__circle" cx="26" cy="26" r="25" fill="none"/>
       <path class="error-icon__cross" fill="none" d="M16 16 36 36 M36 16 16 36"/>
     </svg>
-    <p class="ley"  style="color: red;">Error al cambiar la contraseña. <br> Por favor, <br>inténtalo de nuevo más tarde.</p>
+    <p class="ley1"  style="color: red;">Error al cambiar la contraseña. <br> Por favor, <br>inténtalo de nuevo más tarde.</p>
     <br>
     <br>
-    <button id="boton1" class="buton" type="button">Intentar nuevamente</button>
+    <button id="boton1" class="buton1" type="button">Intentar nuevamente</button>
 </center>
   </div>
 
@@ -125,11 +132,19 @@
        // Agregar una entrada al historial
        $('form').on('submit', function(e) {
             e.preventDefault();
+
+            $('#impu1').text("")
+            $('#impu2').text("")
             
             var contraseña = $('#contraseña').val();
+            var confirm_password=$("#contra2").val();
             var $formulario=$('#formulario')
             var $mensaje=$('#successMessage')
             var $errormessage=$('#errorMessage')
+
+           // var $error1=$('#inpu1')
+           // var $error2=$('#inpu2')
+        
             
             
             fetch('/update', {
@@ -137,14 +152,11 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ password: contraseña })
+            body: JSON.stringify({ password: contraseña,Confirmar_contraseña:confirm_password })
             })
             .then(response => response.json())
             .then(data => {
             if (data.valid) {
-              
-             
-                
                 $formulario.css({
                 'display':'none',
                 })
@@ -154,19 +166,56 @@
                 'display':'block',
                 })
 
-            } else {
-                $formulario.css({
-                'display':'none',
-                })
+            } else if( typeof data.errors.password !== 'undefined'){
+                $('#inpu1').html(` <h2 id="e1" class="error1" 
+                            
+                            style="position: relative;
+                            font-family: 'Times New Roman', Times, serif;
+                            font: small-caps 200% serif;
+                            font-size: 18px;
+                            color: #9b599b;
 
-                $errormessage.css({
-                'display':'block',
-                })
+
+                            "><i class='bx bxs-error-circle' ></i>  ${data.errors.password}</h2>
+                    
+             
+             
+             `)
             }
+            else if(typeof data.errors.Confirmar_contraseña !== 'undefined'){
+                
+             $('#inpu2').html(` <h2  class="error2" 
+                            
+                            style="position: relative;
+                            font-family: 'Times New Roman', Times, serif;
+                            font: small-caps 200% serif;
+                            font-size: 18px;
+                            color: #9b599b;
+
+
+                            "><i class='bx bxs-error-circle' ></i>  ${data.errors.Confirmar_contraseña}</h2>
+                    
+             
+             
+             `)
+                
+            }else{
+                $formulario.css({
+              'display':'none',
+              })
+
+              $errormessage.css({
+              'display':'block',
+              })
+            }
+
+            console.log(" error 2"+data.errors.Confirmar_contraseña)
+
             })
             .catch(error => {
-            console.error('Error:', error);
-            $('#validation-message').text('Error al verificar el código. Por favor, intente nuevamente.').css('color', 'red');
+                
+                
+
             });
   });
        });
