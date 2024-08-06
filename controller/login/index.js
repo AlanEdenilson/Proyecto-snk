@@ -332,7 +332,7 @@ module.exports={
             try {
                 var rsult = await model.updatepassword(conexion,gmail,password);
                 console.log("la respuesta de la bd es :"+rsult)
-                res.json({ valid:true});
+                res.json({ valid:false});
                 
             } catch (error) {
 

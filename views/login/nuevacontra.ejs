@@ -72,6 +72,19 @@
         });
 
    </script>
+   <div id="errorMessage" style="display: none;" >
+
+    <center>
+    <svg class="error-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+      <circle class="error-icon__circle" cx="26" cy="26" r="25" fill="none"/>
+      <path class="error-icon__cross" fill="none" d="M16 16 36 36 M36 16 16 36"/>
+    </svg>
+    <p class="ley"  style="color: red;">Error al cambiar la contraseña. <br> Por favor, <br>inténtalo de nuevo más tarde.</p>
+    <br>
+    <br>
+    <button class="buton" >Intentar nuevamente</button>
+</center>
+  </div>
 
 <div id="successMessage" style="display: none;" >
 
@@ -82,11 +95,14 @@
             <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
           </svg>
           <p class="ley" style="color: green;">¡Contraseña cambiada con éxito!</p>
-          <a class="buton" href="/" a la página principal</a>
+          <button class="buton" >iniciar sesion</button> 
 
     </center>
    
 </div>
+
+
+
 
 <script>
     $(function() {
@@ -97,6 +113,7 @@
             var contraseña = $('#contraseña').val();
             var $formulario=$('#formulario')
             var $mensaje=$('#successMessage')
+            var $errormessage=$('#errorMessage')
             
             
             fetch('/update', {
@@ -122,7 +139,13 @@
                 })
 
             } else {
-                alert('error al actualizar la Contraseña . Por favor, intente nuevamente.');
+                $formulario.css({
+                'display':'none',
+                })
+
+                $errormessage.css({
+                'display':'block',
+                })
             }
             })
             .catch(error => {
