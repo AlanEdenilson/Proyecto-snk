@@ -46,7 +46,7 @@ module.exports={
         }
         .log{
             width: 100%;
-            height:  140px;
+            height:  160px;
         }
         .content {
             padding: 20px;
