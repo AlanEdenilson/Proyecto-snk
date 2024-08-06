@@ -320,26 +320,27 @@ module.exports={
     },
     update:function(req, res){
 
-      delete req.session.contador;
-      delete req.session.codigo;
-      delete req.session.correo;
        
-        const gmail=req.flash('correo')
+        const gmail=req.session.correo;
         const password=req.body.password;
 
         console.log("hola mundo :" + req.body.password+"gmail : "+gmail)
+        
+      delete req.session.contador;
+      delete req.session.codigo;
+      delete req.session.correo;
 
         async function enviarcontra() {
 
             try {
                 var rsult = await model.updatepassword(conexion,gmail,password);
                 console.log("la respuesta de la bd es :"+rsult)
-                res.send("contraseña actualizada correctamente")
+                res.json({ valid: true});
                 
             } catch (error) {
 
                 console.error('Error al actualizar contraseña:', error.message);
-                res.send("hubo un error al actualizar la contraseña")
+                res.json({ valid: false});
                 
             }
 
