@@ -46,7 +46,7 @@ module.exports={
         }
         .log{
             width: 100%;
-            height:  160px;
+            height:  190px;
         }
         .content {
             padding: 20px;
@@ -79,7 +79,7 @@ module.exports={
     <div class="container">
         <div>
 
-            <img src="https://res.cloudinary.com/dphpc7b2w/image/upload/v1721791000/logotwo_i0icme.jpg" alt="" class="log">
+            <img src="https://res.cloudinary.com/dphpc7b2w/image/upload/v1723056209/logodordedshop_iizpqo.jpg" alt="" class="log">
 
  
         </div>
