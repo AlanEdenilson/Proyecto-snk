@@ -4,18 +4,19 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background-color: #081b29;
     font-family: Arial, sans-serif;
 }
 
 .forgot-password-container {
-    background: #fff;
+    background: #081b29;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
-    box-shadow:  rgb(255, 255, 255) 0px 5px 15px;
+    border: 2px solid #0ef;
+    box-shadow: 0 0 25px #0ef;
     position: relative;
     right: 50px;
 }
@@ -23,12 +24,12 @@ body {
 .forgot-password-container h2 {
     margin-bottom: 20px;
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
 }
 
 .forgot-password-container p {
     margin-bottom: 20px;
-    color: #666;
+    color: #ffffff;
     font-size: 14px;
 }
 
@@ -40,7 +41,7 @@ body {
 .input-group label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: #0ef;
     font-size: 14px;
 }
 
@@ -51,7 +52,7 @@ body {
 .input-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #0ef;
     border-radius: 5px;
     box-sizing: border-box;
 }
@@ -61,8 +62,8 @@ body {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background: #333;
-    color: #fff;
+    background: #093a47;
+    color: #0ef;
     font-size: 16px;
     cursor: pointer;
 }
@@ -74,12 +75,13 @@ body {
 .back-to-login {
     display: block;
     margin-top: 20px;
-    color: #3498db;
+    color: #0ef;
     text-decoration: none;
 }
 
 .back-to-login:hover {
     text-decoration: underline;
+    color: rgb(255, 255, 255);
 }
 
 .mm{

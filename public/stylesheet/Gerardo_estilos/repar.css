@@ -4,18 +4,19 @@ body {
     align-items: center;
     height: 125vh;
     margin: 0;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background-color: #081b29;
     font-family: Arial, sans-serif;
 }
 
 .register-container {
-    background: #fff;
+    background: #081b29;
     padding: 30px;
     border-radius: 10px;
     text-align: center;
     width: 300px;
     height: auto;
-    box-shadow:  rgb(255, 255, 255) 0px 5px 15px;
+    border: 2px solid #0ef;
+    box-shadow: 0 0 25px #0ef;
     position: absolute;
     right: 250px;
     top: 30px;
@@ -24,7 +25,7 @@ body {
 .register-container h2 {
     margin-bottom: 20px;
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     top: -10px;
     position: relative;
 }
@@ -37,7 +38,7 @@ body {
 .input-group label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: #0ef;
     font-size: 14px;
 }
 
@@ -48,17 +49,17 @@ body {
 .input-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #0ef;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
 .login-link {
     display: block;
-    color: #f7f7f7;
+    color: #0ef;
     text-decoration: none;
     border-radius: 5px;
-    background-color: #333;
+    background-color: #093a47;
     width: 130px;
     padding: 10px;
     position: relative;
@@ -74,8 +75,8 @@ body {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background: #333;
-    color: #fff;
+    background: #093a47;
+    color: #0ef;
     font-size: 16px;
     cursor: pointer;
     position: relative;
