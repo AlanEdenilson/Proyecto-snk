@@ -91,7 +91,7 @@ h3 {
 }
 
 li:hover{
-    background-color: rgb(218, 216, 216);
+    background-color: rgb(37, 37, 37);
     color: #2600ff;
 }
 
@@ -228,15 +228,16 @@ h1 {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
+    color: #0ef;
 }
 
 .product-table th {
-    background-color: #ff00b3;
+    background-color: #093a47;
     color: white;
 }
 
 .product-table tr:hover {   
-    background-color: #ddd;
+    background-color: #181818;
 }
 
 .product-table img {
