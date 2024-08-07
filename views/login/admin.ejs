@@ -64,7 +64,7 @@
             <div class="input-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
                 <input class="password" type="password" id="password" name="password" placeholder="Contraseña" value="<% if(typeof valores != 'undefined') { %><%= valores.password %><% }%>" >
-                <i class="fa-solid fa-eye-slash" style="color: #919191;"></i>
+                <i class="fa-solid fa-eye-slash" style="color: #093a47;"></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.password ) { %>
                             <div>
@@ -87,7 +87,7 @@
             <div class="input-group">
                 <label class="repit-password" for="confirm-password"><i class="fas fa-lock"></i> Repetir Contraseña</label>
                 <input class="confirm-password" type="password" id="confirm-password" name="confirm_password"  placeholder="Repetir Contraseña" >
-                <i class="fa-solid fa-eye-slash" style="color: #919191;" id="n1"></i>
+                <i class="fa-solid fa-eye-slash" style="color: #093a47;" id="n1"></i>
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.confirm_password ) { %>
                             <div>
