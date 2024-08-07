@@ -25,7 +25,7 @@ module.exports={
               var rol = vtoken.rol;
  
               console.log("al macenado con exito")
-              return aux.mostrarVentanas2(res, rol);
+              return aux.mostrarventanas(res, rol,vtoken.email);
             } catch (error) {
               console.error("Error de validación del token:", error.message);
               if (error.message === "Token has expired.") {
@@ -151,9 +151,11 @@ module.exports={
            // console.log("cokkie de correo almacenado con exito")
             const refreshToken = Gtoken.refreshToken(payload2);
             res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
-        
-           aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo)
-           console.log("hola")
+            res.cookie('correo', respuestabd.correo, { httpOnly: true,secure: true });
+
+            aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo)
+           
+           
 
        
             //aux.craertokens(res,respuestabd)
@@ -188,6 +190,7 @@ module.exports={
             nombre:req.body.fullname,
             email:req.body.email,
         }
+
 
         const payload2 = {
             rol:req.body.rol,
@@ -229,7 +232,7 @@ module.exports={
       const email = req.cookies.correo;
       req.session.contador=0;
       req.session.codigo =  {};
-      req.session.correo;
+      
 
 
      

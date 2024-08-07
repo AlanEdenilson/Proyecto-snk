@@ -17,6 +17,7 @@ module.exports={
             res.render('login/ventanaAdmin',{correo:gmail});
         }else if(rol==="2" || rol===2){
             res.render('login/ventanaRpartidor',{correo:gmail});
+            console.log("gmail: "+ gmail)
         }     
     
 
