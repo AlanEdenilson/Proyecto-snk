@@ -25,7 +25,7 @@ module.exports={
               var rol = vtoken.rol;
  
               console.log("al macenado con exito")
-              return aux.mostrarventanas(res, rol,vtoken.email);
+              return aux.mostrarVentanas2(res, rol);
             } catch (error) {
               console.error("Error de validación del token:", error.message);
               if (error.message === "Token has expired.") {
