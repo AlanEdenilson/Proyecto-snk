@@ -108,6 +108,7 @@
    
 </div>
 
+
 <script>
     $(function() {
         $( "#boton1" ).on( "click", ()=> {
@@ -123,7 +124,28 @@
 
 </script>
 
+<script>
+    $(function(){
+        var $passwordInputs = $('#contraseña');
+        var $confirmPasswordInput = $('#contra2');
+        
 
+    $passwordInputs.on('input', function() {
+        // Oculta el mensaje de error
+
+        $('#e1').empty();
+    });
+
+    $confirmPasswordInput .on('input', function() {
+        // Oculta el mensaje de error
+
+        $('#inpu2').empty();
+    });
+
+   
+
+    })
+</script>
 
 
 
@@ -133,8 +155,12 @@
        $('form').on('submit', function(e) {
             e.preventDefault();
 
-            $('#impu1').text("")
-            $('#impu2').text("")
+
+
+//$('#impu1').text("")
+           // $('#impu2').text("")
+
+
             
             var contraseña = $('#contraseña').val();
             var confirm_password=$("#contra2").val();
