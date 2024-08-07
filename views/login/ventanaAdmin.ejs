@@ -12,7 +12,7 @@
     <div  class="sidebar">
         <div class="bor">
             <a href=".">
-            <img class="mm" src="/stylesheet/Gerardo_estilos/grrr.png" alt="">    
+            <img class="mm" src="/stylesheet/Gerardo_estilos/logo_original.png" alt="">    
             </a>
         </div>
         
@@ -40,66 +40,59 @@
         </div>
     </div>
 
-  <table>
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1,001</td>
-            <td>random</td>
-            <td>data</td>
-            <td>placeholder</td>
-        </tr>
-        <tr>
-            <td>1,002</td>
-            <td>placeholder</td>
-            <td>irrelevant</td>
-            <td>visual</td>
-        </tr>
-        <tr>
-            <td>1,003</td>
-            <td>data</td>
-            <td>rich</td>
-            <td>dashboard</td>
-        </tr>
-        <tr>
-            <td>1,003</td>
-            <td>information</td>
-            <td>placeholder</td>
-            <td>illustrative</td>
-        </tr>
-        <tr>
-            <td>1,004</td>
-            <td>text</td>
-            <td>random</td>
-            <td>layout</td>
-        </tr>
-        <tr>
-            <td>1,005</td>
-            <td>dashboard</td>
-            <td>irrelevant</td>
-            <td>text</td>
-        </tr>
-        <tr>
-            <td>1,006</td>
-            <td>dashboard</td>
-            <td>illustrative</td>
-            <td>rich</td>
-        </tr>
-    </tbody>
-</table>
+      <table class="product-table">
+          <thead>
+              <tr>
+                  <th>Marca</th>
+                  <th>Nombre</th>
+                  <th>Imagen/Logotipo</th>
+                  <th>Descripción</th>
+                  <th>Tipo de Producto</th>
+                  <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Nike</td>
+                  <td>Air Max</td>
+                  <td><img src="https://via.placeholder.com/50" alt="Nike Logo"></td>
+                  <td>Zapatillas deportivas de alto rendimiento.</td>
+                  <td>Calzado</td>
+                  <td>
+                      <button class="btn edit-btn">Editar</button>
+                      <button class="btn delete-btn">Eliminar</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Apple</td>
+                  <td>iPhone 14</td>
+                  <td><img src="https://via.placeholder.com/50" alt="Apple Logo"></td>
+                  <td>Teléfono inteligente con cámara avanzada.</td>
+                  <td>Electrónica</td>
+                  <td>
+                      <button class="btn edit-btn">Editar</button>
+                      <button class="btn delete-btn">Eliminar</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Samsung</td>
+                  <td>Galaxy S21</td>
+                  <td><img src="https://via.placeholder.com/50" alt="Samsung Logo"></td>
+                  <td>Teléfono inteligente con pantalla AMOLED.</td>
+                  <td>Electrónica</td>
+                  <td>
+                      <button class="btn edit-btn">Editar</button>
+                      <button class="btn delete-btn">Eliminar</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
 
 <h2>Registro de productos activos</h2>
 
 <!-- Button trigger modal -->
 <button class="Eliminarr" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Eliminar Registro
+    Agregar Registro
   </button>
   
   <!-- Modal -->
@@ -129,31 +122,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Button trigger modal -->
-<button class="edit" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Editar Registro
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Seguro que quieres hacer esto</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            ¿Estás seguro que desea editar este registro esta operacion es irreversible?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
     <script src="https://kit.fontawesome.com/54b3975121.js" crossorigin="anonymous"></script>
 </body>
 </html>
