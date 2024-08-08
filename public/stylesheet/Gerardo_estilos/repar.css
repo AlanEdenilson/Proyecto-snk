@@ -85,9 +85,9 @@ body {
 }
 
 .mm{
-    position: relative;
-    right: 310px;
-    top: -50px;
+    position: absolute;
+    right: 45%;
+    top: 15%;
 }
 
 #n0{
