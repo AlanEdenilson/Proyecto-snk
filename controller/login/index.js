@@ -154,10 +154,6 @@ module.exports={
             res.cookie('correo', respuestabd.correo, { httpOnly: true,secure: true });
 
             aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo)
-           
-           
-
-       
             //aux.craertokens(res,respuestabd)
         } catch (error) {
             console.error('Error al buscar usuario:', error.message);
@@ -167,10 +163,6 @@ module.exports={
         }
 
         para()
-
-        
-
- 
     },
     crearcuenta1:function(req, res){
         res.render('login/admin');
