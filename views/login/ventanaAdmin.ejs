@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina_admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>¬
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
     <div class="sideber">
@@ -76,6 +77,55 @@
         <div class="text">Home content</div>
     </div>
 
+<!-- tabla de productos -->
+<div class="table-container">
+    <h1>Tabla de Administrador</h1>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Contraseña</th>
+                <th>Correo</th>
+                <th>ID de Marca</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juan Pérez</td>
+                <td>********</td>
+                <td>juan.perez@example.com</td>
+                <td>001</td>
+                <td>
+                    <button class="btn edit-btn">Editar</button>
+                    <button class="btn delete-btn">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>María López</td>
+                <td>********</td>
+                <td>maria.lopez@example.com</td>
+                <td>002</td>
+                <td>
+                    <button class="btn edit-btn">Editar</button>
+                    <button class="btn delete-btn">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Carlos García</td>
+                <td>********</td>
+                <td>carlos.garcia@example.com</td>
+                <td>003</td>
+                <td>
+                    <button class="btn edit-btn">Editar</button>
+                    <button class="btn delete-btn">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--animacion y funcion del panel lateral -->
     <script>
         let btn = document.querySelector("#btn");
 let sideber = document.querySelector(".sideber");
