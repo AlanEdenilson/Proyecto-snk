@@ -19,7 +19,7 @@ body{
     height: 100%;
     width: 78px;
     padding: 6px 14px;
-    background: #010007;
+    background: #081b29;
     padding: 6px 14px;
     transition: all 0.5s ease;
 }
@@ -171,6 +171,7 @@ body{
     margin: 12px;
 }
 
+
 /*/codigo  de tablas de control de datos y productos/*/
 
 .table-container {
@@ -237,4 +238,11 @@ h1 {
 
 .delete-btn:hover {
     background-color: #e53935;
+}
+
+.textt{
+    position: absolute;
+    color: #0ef;
+    top: 30px;
+    font-size: 32px;
 }
