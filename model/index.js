@@ -67,7 +67,6 @@ module.exports = {
                 }
             });
         });
-        
     },
     FindByEmail:function (conexion,email) {
         const consulta = `SELECT correo FROM usuario WHERE correo = '${email}'`;

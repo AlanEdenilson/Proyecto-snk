@@ -16,7 +16,7 @@ module.exports={
         let mailOptions = {
             from: 'ordershop503@gmail.com',               // Remitente
             to: email,              // Destinatario
-            subject: 'Prueba de orderrshop',          // Asunto
+            subject: 'Codigo de verificacion',          // Asunto
             text: `tu codigo es ${codigo}`,
             html:`
             
