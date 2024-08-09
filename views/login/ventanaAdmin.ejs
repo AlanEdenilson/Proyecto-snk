@@ -2,126 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina_admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <div  class="sidebar">
-        <div class="bor">
-            <a href=".">
-            <img class="mm" src="/stylesheet/Gerardo_estilos/logo_original.png" alt="">    
+    <div class="sideber">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bxl-css3'></i>
+                <div class="logo_name">Ordershart</div>
+            </div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search">
+               <apan class="tooltip">Search</apan>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user'></i>
+                    <apan class="links_name">User</apan>
+                </a>
+               <apan class="tooltip">User</apan>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-chat'></i>
+                    <apan class="links_name">Messages</apan>
+                </a>
+               <apan class="tooltip">Messages</apan>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <apan class="links_name">analytics</apan>
+                </a>
+               <apan class="tooltip">Analytics</apan>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-folder'></i>
+                    <apan class="links_name">File Manager</apan>
+                </a>
+               <apan class="tooltip">File Manager</apan>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cart-alt'></i>
+                    <apan class="links_name">Order</apan>
+                </a>
+               <apan class="tooltip">Order</apan>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-heart' ></i>
+                    <apan class="links_name">Saved</apan>
+                </a>
+               <apan class="tooltip">Saved</apan>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <apan class="links_name">Setting</apan>
+                </a>
+               <apan class="tooltip">Setting</apan> 
+            </li>
+             <li>
+            <a href="/clear">
+                <i class='bx bx-log-out'></i>
+                <apan class="links_name"">Go Out</apan>
             </a>
-        </div>
-        
-        <div class="conteinert">
-                <li><i class="fa-solid fa-house"></i> Dashboard</li>
-                <li class="x"><i class="fa-solid fa-file"></i> Orders</li>
-                <li><i class="fa-solid fa-cart-shopping"></i> Products</li>
-                <li><i class="fa-solid fa-user-group fa-flip-horizontal"></i> Customers</li>
-                <li class="m"><i class="fa-solid fa-chart-simple"></i> Reports</li>
-                <li class="ma"><i class="fa-solid fa-layer-group"></i> Integrations</li>
-        </div>
-        <h3>SAVED REPORTS</h3>
-
-        <div class="conte">
-            <li><i class="fa-solid fa-file-lines"></i> Current month</li>
-            <li><i class="fa-solid fa-file-lines"></i> Last quarter</li>
-            <li><i class="fa-solid fa-file-lines"></i> Social engagement</li>
-            <li><i class="fa-solid fa-file-lines"></i> Year-end sale</li>
-        </div>
-
-        <h3 class="mkl">CONFIG SAVED</h3>
-        <div class="contei">
-            <li><i class="fa-solid fa-gear"></i> Settings</li>
-            <li><a class="salir" href="/clear"><i class="fa-solid fa-right-from-bracket fa-flip-horizontal" ></i > Sign out</a></li>
-        </div>
+           <apan class="tooltip">go out</apan> 
+        </li>
+        </ul>
+    </div>
+    <div class="home_contentt">
+        <div class="textt">Tabla de Administrador</div>
     </div>
 
-      <table class="product-table">
-          <thead>
-              <tr>
-                  <th>Marca</th>
-                  <th>Nombre</th>
-                  <th>Imagen/Logotipo</th>
-                  <th>Descripción</th>
-                  <th>Tipo de Producto</th>
-                  <th>Acciones</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>Nike</td>
-                  <td>Air Max</td>
-                  <td><img src="https://via.placeholder.com/50" alt="Nike Logo"></td>
-                  <td>Zapatillas deportivas de alto rendimiento.</td>
-                  <td>Calzado</td>
-                  <td>
-                      <button class="btn edit-btn">Editar</button>
-                      <button class="btn delete-btn">Eliminar</button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>Apple</td>
-                  <td>iPhone 14</td>
-                  <td><img src="https://via.placeholder.com/50" alt="Apple Logo"></td>
-                  <td>Teléfono inteligente con cámara avanzada.</td>
-                  <td>Electrónica</td>
-                  <td>
-                      <button class="btn edit-btn">Editar</button>
-                      <button class="btn delete-btn">Eliminar</button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>Samsung</td>
-                  <td>Galaxy S21</td>
-                  <td><img src="https://via.placeholder.com/50" alt="Samsung Logo"></td>
-                  <td>Teléfono inteligente con pantalla AMOLED.</td>
-                  <td>Electrónica</td>
-                  <td>
-                      <button class="btn edit-btn">Editar</button>
-                      <button class="btn delete-btn">Eliminar</button>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
+<!-- tabla de productos -->
+<div class="table-container">
+    <h1>Tabla de Administrador</h1>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Contraseña</th>
+                <th>Correo</th>
+                <th>ID de Marca</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juan Pérez</td>
+                <td>********</td>
+                <td>juan.perez@example.com</td>
+                <td>001</td>
+                <td>
+                    <button class="btn edit-btn">Editar</button>
+                    <button class="btn delete-btn">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>María López</td>
+                <td>********</td>
+                <td>maria.lopez@example.com</td>
+                <td>002</td>
+                <td>
+                    <button class="btn edit-btn">Editar</button>
+                    <button class="btn delete-btn">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Carlos García</td>
+                <td>********</td>
+                <td>carlos.garcia@example.com</td>
+                <td>003</td>
+                <td>
+                    <button class="btn edit-btn">Editar</button>
+                    <button class="btn delete-btn">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-<h2>Registro de productos activos</h2>
 
-<!-- Button trigger modal -->
-<button class="Eliminarr" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Agregar Registro
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Seguro que quieres hacer esto</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <i  class="fa-solid fa-triangle-exclamation"></i>
-           ¿Estás seguro que desea eliminar este registro esta operacion es irreversible?
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <form action="" method="post">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <input type="text">
+<!--animacion y funcion del panel lateral -->
+    <script>
+        let btn = document.querySelector("#btn");
+let sideber = document.querySelector(".sideber");
+let searchBtn = document.querySelector(".bx-search");
 
-           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-    <script src="https://kit.fontawesome.com/54b3975121.js" crossorigin="anonymous"></script>
+btn.onclick = function() {
+    sideber.classList.toggle("active");
+}
+
+searchBtn.onclick = function() {
+    sideber.classList.toggle("active");
+}
+    </script>
 </body>
 </html>
