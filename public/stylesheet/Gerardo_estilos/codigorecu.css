@@ -139,7 +139,7 @@ body{
   .checkmark {
     position: absolute;
     top: 120px;
-    right: 500px; 
+    right: 430px; 
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -155,13 +155,13 @@ body{
   .ley{
     position: absolute;
     top: 52%;
-    right: 27%;
+    right: 25%;
   }
 
   .buton{
     position: absolute;
     top: 63%;
-    right: 28%;
+    right: 27%;
     background-color: #333;
     color: #fff;
     height: 45px;
