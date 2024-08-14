@@ -6,7 +6,7 @@ function sino(res,ruta) {
         res.render('login/ventanaRpartidor');
     }     
 }
-
+//hola
     
 
 
