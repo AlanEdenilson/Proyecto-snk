@@ -1,5 +1,5 @@
 const { body,validationResult } = require('express-validator')
-const controller = require('../login/index')
+const controller = require('./index')
 
 
 const result = (req)=>{
