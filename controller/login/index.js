@@ -1,12 +1,12 @@
 
-var email=require('../login/enviargmail');
-var random=require('../login/generarcodigo');
+var email=require('./enviargmail');
+var random=require('./generarcodigo');
 var conexion = require('../../config/conexion');
 //var gtoken=require('../Gtoken')
-const Gtoken = require('../login/Gtoken');
+const Gtoken = require('./Gtoken');
 const model = require('../../model');
-const aux=require('../login/auxiliar');
-const generarcodigo = require('../login/generarcodigo');
+const aux=require('./auxiliar');
+const generarcodigo = require('./generarcodigo');
 
 
 
