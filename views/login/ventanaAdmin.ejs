@@ -86,73 +86,17 @@
                <apan id="" class="tooltip">Messages</apan>
             </li>
             <li>
-                <a href="#">
+                <a href="myModel">
                     <i class='bx bx-pie-chart-alt-2'></i>
                     <apan class="links_name">analytics</apan>
-
-                    
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Insertar contenido</h2>
-                <span class="close"></span>
-            </div>
-            <div>
-                <label  for="" class="nom" >Nombre Producto</label>
-                <input name="nombre" type="text" class="reseñedor" placeholder="User">
-                <label for="" class="cantidad"> Precio Unidad</label>
-                <input name="Precio" type="number" class="rese" placeholder="Cantidad">
-                <label for="" class="zona"> Precio Stock</label>
-                <input name="stock" type="text" class="reseñ" placeholder="zona_region">
-                <label for="" class="tipo1">Descripcion</label>
-                <textarea name="descripcion" class="tipos1" placeholder="Ingresa una descripcion"></textarea>
-                <label for="" class="tipo2">Imagen</label>
-                <input name="imagen" type="file" class="tipos2">
-            </div>
-            <div class="modal-footer">
-                <button id="cancelBtn" class="btn btn-secondary">Cancelar</button>
-                <button id="acceptBtn" class="btn btn-primary">Aceptar</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const modal = document.getElementById("myModal");
-        const btn = document.getElementById("openModal");
-        const span = document.getElementsByClassName("close")[0];
-        const cancelBtn = document.getElementById("cancelBtn");
-        const acceptBtn = document.getElementById("acceptBtn");
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        cancelBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        acceptBtn.onclick = function() {
-            alert("Acción aceptada");
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
                 </a>
                <apan class="tooltip">Analytics</apan>
             </li>
             <li>
-                <a href="#">
+                <a href="#" id="openModal">
                     <i class='bx bx-folder'></i>
                     <apan class="links_name">File Manager</apan>
+                    
                 </a>
                <apan class="tooltip">File Manager</apan>
             </li>
@@ -190,6 +134,32 @@
         <div class="textt">Tabla de Administrador</div>
     </div>
 
+    <!--ventana flotante de formulario-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Insertar contenido</h2>
+                <span class="close"></span>
+            </div>
+            <div>
+                <label  for="" class="nom" >Nombre Producto</label>
+                <input name="nombre" type="text" class="reseñedor" placeholder="User">
+                <label for="" class="cantidad"> Precio Unidad</label>
+                <input name="Precio" type="" class="rese" placeholder="Cantidad">
+                <label for="" class="zona"> Precio Stock</label>
+                <input name="stock" type="text" class="reseñ" placeholder="zona_region">
+                <label for="" class="tipo1">Descripcion</label>
+                <textarea name="descripcion" class="tipos1" placeholder="Ingresa una descripcion"></textarea>
+                <label for="" class="tipo2">Imagen</label>
+                <input name="imagen" type="file" class="tipos2">
+            </div>
+            <div class="modal-footer">
+                <button id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+                <button id="acceptBtn" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
 <!--animacion y funcion del panel lateral -->
     <script>
         let btn = document.querySelector("#btn");
@@ -204,5 +174,7 @@ searchBtn.onclick = function() {
     sideber.classList.toggle("active");
 }
     </script>
+
+    <script type="module" src="/javascript/index.js"></script>
 </body>
 </html>
