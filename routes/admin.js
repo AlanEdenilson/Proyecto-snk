@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 
 
-1 
+
 
 
 //router.post("/addproductos",filtro.addproductos,controlador.rrr)
