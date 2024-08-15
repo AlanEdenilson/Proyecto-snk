@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina_admin.css">
+    <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina-admin2.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-
-    <!-- tabla de productos -->
-<div class="table-container">
-    <h1>Tabla de Administrador</h1>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Administrador</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <table class="admin-table">
         <thead>
+            <h1 class="h1a">Tabla de administracion </h1>
             <tr>
                 <th>Nombre</th>
                 <th>Contraseña</th>
@@ -26,36 +33,28 @@
             <tr>
                 <td>Juan Pérez</td>
                 <td>********</td>
-                <td>juan.perez@example.com</td>
-                <td>001</td>
+                <td>juan@ejemplo.com</td>
+                <td>MRK001</td>
                 <td>
-                    <button class="btn edit-btn">Editar</button>
-                    <button class="btn delete-btn">Eliminar</button>
+                    <button class="btn-edit">Editar</button>
+                    <button class="btn-delete">Borrar</button>
                 </td>
             </tr>
             <tr>
-                <td>María López</td>
+                <td>María García</td>
                 <td>********</td>
-                <td>maria.lopez@example.com</td>
-                <td>002</td>
+                <td>maria@ejemplo.com</td>
+                <td>MRK002</td>
                 <td>
-                    <button class="btn edit-btn">Editar</button>
-                    <button class="btn delete-btn">Eliminar</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Carlos García</td>
-                <td>********</td>
-                <td>carlos.garcia@example.com</td>
-                <td>003</td>
-                <td>
-                    <button class="btn edit-btn">Editar</button>
-                    <button class="btn delete-btn">Eliminar</button>
+                    <button class="btn-edit">Editar</button>
+                    <button class="btn-delete">Borrar</button>
                 </td>
             </tr>
         </tbody>
     </table>
-</div>
+</body>
+</html>
+
   <!-- Sidebar -->
     <div class="sideber">
         <div class="logo_content">
@@ -129,9 +128,6 @@
            <apan class="tooltip">go out</apan> 
         </li>
         </ul>
-    </div>
-    <div class="home_contentt">
-        <div class="textt">Tabla de Administrador</div>
     </div>
 
     <!--ventana flotante de formulario-->
