@@ -29,5 +29,7 @@
     },
     "testExplorer.addToEditorContextMenu": true,
     "workbench.layoutControl.type": "both",
-    "gitlens.fileAnnotations.command": "changes"
+    "gitlens.fileAnnotations.command": "changes",
+    "editor.suggest.showStatusBar": true,
+    "vscode_custom_css.statusbar": true
 }

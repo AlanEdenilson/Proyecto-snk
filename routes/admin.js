@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var filtro=require('../controller/admin/middlewar')
-var controlador=require('../controller/admin/index')
+//var filtro=require('../controller/admin/middlewar')
+//var controlador=require('../controller/admin/index')
 
 
 
@@ -12,7 +12,10 @@ router.get('/', function(req, res, next) {
 
 
 
-router.post("/addproductos",filtro.tusfunciones,controlador.rrr)
+1 
+
+
+//router.post("/addproductos",filtro.addproductos,controlador.rrr)
 
 
 
