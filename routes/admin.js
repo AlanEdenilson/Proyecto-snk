@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-//var filtro=require('../controller/admin/middlewar')
+var filtro=require('../controller/admin/middlewar')
 //var controlador=require('../controller/admin/index')
 
 
@@ -10,10 +10,11 @@ router.get('/', function(req, res, next) {
   res.send('hola admin');
 });
 
+router.get('/marca',(req,res)=>{
+  res.render("login/marca")
+});
 
-
-1 
-
+router.post('/marca', filtro.addmarca)
 
 //router.post("/addproductos",filtro.addproductos,controlador.rrr)
 
