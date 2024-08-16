@@ -35,7 +35,7 @@
                 <td>MRK001</td>
                 <td>
                     <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Borrar</button>
+                    <button class="btn-delete" id="openModall">Borrar</button>
                 </td>
             </tr>
             <tr>
@@ -161,6 +161,7 @@
         </div>
     </div>
 
+    <!--ventana de perfil del usuario-->
     <div class="dropdown">
         <div class="dropdown-header">
           <img src="profile-image.jpg" alt="Profile Picture" class="profile-pic">
@@ -177,6 +178,22 @@
             <li>Cerrar sesión</li>
           </ul>
         </div>
+      </div>
+
+
+      <div id="myModall" class="modall">
+          <div class="modall-contentt">
+              <div class="modall-headerr">
+                  <h2>Confirmar acción</h2>
+              </div>
+              <div class="modall-bodyy">
+                  <p>¿Estás seguro de que quieres realizar esta acción?</p>
+              </div>
+              <div class="modal-footer">
+                  <button id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+                  <button id="acceptBtn" class="btn btn-primary">Aceptar</button>
+              </div>
+          </div>
       </div>
 <!--animacion y funcion del panel lateral -->
     <script>
