@@ -34,7 +34,6 @@ router.post('/recuperar_contra',midd.verificarcorreo,controlador.enviarCorreo);/
 router.get('/nuevacontra',function(req,res){
   res.render('login/nuevacontra');
  })
-
 router.post('/codigo',controlador.confirmar);//cambiar contra si el codigo es valido
 
 
