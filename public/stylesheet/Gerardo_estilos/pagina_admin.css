@@ -1,4 +1,5 @@
 /*/codigo panel lateral/*/ 
+
 *{
     margin: 0;
     padding: 0;
@@ -113,7 +114,6 @@ body{
     padding-left: 50px;
     font-size: 18px;
     color: #fff;
-    
 }
 .sideber ul li .bx-search{
     position: absolute;
@@ -121,7 +121,6 @@ body{
     color: #fff;
     font-size: 22px;
     transition: all 0.5 ease;
-
 }
 .sideber ul li .bx-search:hover{
     background: #fff;
@@ -163,7 +162,6 @@ body{
     width:  calc(100% - 240px);
     left: 240px;
 }
-
 .home_contentt .text{
     font-size: 25px;
     font-weight: 500;
@@ -171,6 +169,7 @@ body{
     margin: 12px;
 }
 /*/ boton con formulario flotante/*/
+
 .modal {
     display: none;
     position: absolute;
@@ -182,7 +181,6 @@ body{
     overflow: auto;
     background-color: #081b29ad;
 }
-
 .modal-content {
     position: absolute;
     top: -30%;
@@ -197,14 +195,12 @@ body{
     border-radius: 12px;
     box-shadow: 0 0 25px #0ef;
 }
-
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
-
 .modal-header h2 {
     position: absolute;
     top: 5%;
@@ -214,18 +210,15 @@ body{
     font-size:34px;
     text-align: center;
 }
-
 .close {
     color: #aaa;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
 }
-
 .close:hover {
     color: #000;
 }
-
 .modal-footer {
     display: flex;
     justify-content: flex-end;
@@ -332,7 +325,6 @@ body{
     top: 90%;
     right: 8%;
 }
-
 .btn-secondary {
     position: absolute;
     background-color:#093a47;
@@ -340,7 +332,6 @@ body{
     right: 19%;
     top: 90%;
 }
-
 .btn-primary:hover {
     opacity: 0.8;
     background: #11b103bb;
@@ -362,7 +353,6 @@ body{
     height: 150%;
     width: 100%;
 }
-
 /*/ tabla de contenido de producto/*/
 
 .admin-table {
@@ -379,16 +369,13 @@ body{
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
-
 .admin-table th {
     background-color: #4CAF50;
     color: white;
 }
-
 .admin-table tr:hover {
     background-color: #f5f5f5;
 }
-
 .btn-edit, .btn-delete {
     padding: 6px 10px;
     margin: 2px;
@@ -396,28 +383,22 @@ body{
     cursor: pointer;
     border-radius: 3px;
 }
-
 .btn-edit {
     background-color: #008CBA;
     color: white;
 }
-
 .btn-delete {
     background-color: #f44336;
     color: white;
 }
-
 .btn-edit:hover {
     background-color: #005f7f;
 }
-
 .btn-delete:hover {
     background-color: #da190b;
 }
-
 .h1a{
     position: absolute;
     top: 22%;
     left: 44%;
 }
-
