@@ -3,8 +3,7 @@ const { format } = require('date-fns');
 
 // Formatear la fecha actual
 const fechaActual = Date.now();
-console.log(fechaActual);
-console.log(format(fechaActual, 'yyyy-MM-dd HH:mm:ss'));
+
 
 
 
