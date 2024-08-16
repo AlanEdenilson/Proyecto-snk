@@ -243,10 +243,10 @@
     background-color: #074a6160;
     margin: 15% auto;
     border: 1px solid #888;
-    width: 500px;
-    height: 280px;
-    top: -5%;
-    left: 30%;
+    width: 400px;
+    height: 400px;
+    top: -15%;
+    left: 36%;
     border-radius: 10px;
     box-shadow: 0 0 25px #0ef;
 }
@@ -268,20 +268,25 @@
 .closee:hover {
     color: #000;
 }
-
-.modal-bodyy{
-  text-align: center;
+.ad{
+  top: 55%;
   position: absolute;
-  top: 52%;
+  text-align: center;
+  width: 395px;
   margin-bottom: 20px;
-  color: rgb(255, 255, 255) ;
+  color: rgb(255, 255, 255);
 }
-
 .modal-footerr {
     display: flex;
     justify-content: flex-end;
 }
-
+.dare{
+  position: absolute;
+  height: 35%;
+  width: 45%;
+  top: 15%;
+  left: 28%;
+}
 .btnn {
     padding: 8px 16px;
     margin-left: 10px;
@@ -294,7 +299,7 @@
 .btn-primaryy {
   position: absolute;
   top: 80%;
-  left: 77%;
+  right: 25%;
   background-color: #4CAF50;
   color: white;
 }
@@ -302,7 +307,7 @@
 .btn-secondaryy {
   position: absolute;
   top: 80%;
-  left: 55%;
+  right: 50%;
   background-color: #f44336;
   color: white;
 }
