@@ -28,7 +28,8 @@ module.exports={
 
                 const update= await model.isertId(conexion,req.session.marca,gcodigo);
 
-                res.send("id ingresdo correctamente")
+                res.render('admin/id')
+
 
    
     
