@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina_admin.css">
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina-admin2.css">
     <script type="module" src="/javascript/animacion.js"></script>
+    <script type="module" src="/javascript/boton.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -180,21 +181,20 @@
         </div>
       </div>
 
-
       <div id="myModall" class="modall">
-          <div class="modall-contentt">
-              <div class="modall-headerr">
-                  <h2>Confirmar acción</h2>
-              </div>
-              <div class="modall-bodyy">
-                  <p>¿Estás seguro de que quieres realizar esta acción?</p>
-              </div>
-              <div class="modal-footer">
-                  <button id="cancelBtn" class="btn btn-secondary">Cancelar</button>
-                  <button id="acceptBtn" class="btn btn-primary">Aceptar</button>
-              </div>
-          </div>
-      </div>
+        <div class="modal-contentt">
+            <div class="modal-header">
+                <span class="closee"></span>
+            </div>
+            <div class="modal-bodyy">
+                <p>¿Estás seguro de que quieres borrar el contenido seleccionado porque no se pobra restaurar de nuevo?</p>
+            </div>
+            <div class="modal-footerr">
+                <button id="cancelBtnn" class="btn btn-secondaryy">Cancelar</button>
+                <button id="acceptBtnn" class="btn btn-primaryy">Aceptar</button>
+            </div>
+        </div>
+    </div>
 <!--animacion y funcion del panel lateral -->
     <script>
         let btn = document.querySelector("#btn");
