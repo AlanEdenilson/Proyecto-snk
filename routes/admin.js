@@ -14,7 +14,7 @@ router.get('/marca',(req,res)=>{
   res.render("login/marca")
 });
 
-router.post('/marca', filtro.addmarca)
+
 
 //router.post("/addproductos",filtro.addproductos,controlador.rrr)
 
