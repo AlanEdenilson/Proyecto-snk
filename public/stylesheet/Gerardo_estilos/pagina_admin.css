@@ -300,6 +300,7 @@ body{
     top: 40%;
     left: 55%;
     width: 35%;
+    height: 20%;
     padding: 10px;
     border: 1px solid #0ef;
     border-radius: 5px;
@@ -329,14 +330,14 @@ body{
     background-color: #093a47;
     color: white;
     top: 90%;
-    right: 30%;
+    right: 8%;
 }
 
 .btn-secondary {
     position: absolute;
     background-color:#093a47;
     color: white;
-    right: 55%;
+    right: 19%;
     top: 90%;
 }
 
@@ -353,7 +354,7 @@ body{
     height: 25%;
     width: 25%;
     top: 63%;
-    left: 35%;
+    left: 10%;
 }
 .imgg{
     position: absolute;
