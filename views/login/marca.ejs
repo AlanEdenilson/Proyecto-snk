@@ -9,30 +9,130 @@
 <body>
     <div class="container">
         <h2>Registro de Marca</h2>
-        <form method="post" action="/marca" enctype="multipart/form-data">
+        <form method="post" action="/adminr/marca" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Imagen:</label>
-                <input type="file" id="imagen" name="imagen"  >
+                <input type="file" id="imagen" name="imagen">
+                <% if (typeof errors !== 'undefined') { %>
+                    <% if ( errors.imagen ) { %>
+                            <div>
+                                <h2  class="error1" 
+                                    
+                                    style="font-family: 'Times New Roman', Times, serif;
+                                    font: small-caps 200% serif;
+                                    font-size: 18px;
+                                    color: #ff0000;
+                                    position: relative;
+                                    top: -15x;
+                                    height: 20%;
+    
+                                    "><i class='bx bxs-error-circle' ></i><%= errors.imagen %></h2>
+                                </div>
+                            
+                      
+                      <% } %>
+                      <% } %>
             </div>
             <div class="form-group">
                 <label for="email">Nombre:</label>
-                <input type="email" id="name" name="name" >
+                <input type="text" id="name" name="name" >
+                <% if (typeof errors !== 'undefined') { %>
+                    <% if ( errors.name ) { %>
+                            <div>
+                                <h2 id="er1" class="error1" 
+                                    
+                                    style="font-family: 'Times New Roman', Times, serif;
+                                    font: small-caps 200% serif;
+                                    font-size: 18px;
+                                    color: #ff0000;
+                                    position: relative;
+                                    top: -15x;
+                                    height: 20%;
+    
+                                    "><i class='bx bxs-error-circle' ></i><%= errors.name %></h2>
+                                </div>
+                      <% } %>
+                      <% } %>
             </div>
             <div class="form-group">
                 <label for="message">Descripcion:</label>
-                <textarea id="des" name="des" rows="5" ></textarea>
+                <textarea id="des" name="descripcion" ></textarea>
+                <% if (typeof errors !== 'undefined') { %>
+                    <% if ( errors.descripcion ) { %>
+                            <div>
+                                <h2 id="er2" class="error1" 
+                                    
+                                    style="font-family: 'Times New Roman', Times, serif;
+                                    font: small-caps 200% serif;
+                                    font-size: 18px;
+                                    color: #ff0000;
+                                    position: relative;
+                                    top: -15x;
+                                    height: 20%;
+    
+                                    "><i class='bx bxs-error-circle' ></i><%= errors.descripcion %></h2>
+                                </div>
+                      <% } %>
+                      <% } %>
             </div>
             <div class="form-group">
                 <label for="email">Tipo de Producto:</label>
-                <input type="email" id="tipo" name="tipo" >
+                <input type="email" id="tipo" name="tipop" >
+                <% if (typeof errors !== 'undefined') { %>
+                    <% if ( errors.tipop ) { %>
+                            <div>
+                                <h2 id="er3" class="error1" 
+                                    
+                                    style="font-family: 'Times New Roman', Times, serif;
+                                    font: small-caps 200% serif;
+                                    font-size: 18px;
+                                    color: #ff0000;
+                                    position: relative;
+                                    top: -15x;
+                                    height: 20%;
+    
+                                    "><i class='bx bxs-error-circle' ></i><%= errors.tipop %></h2>
+                                </div>
+                      <% } %>
+                      <% } %>
             </div>
             <div class="form-group">
-                <label for="email" >ID Marca: <span>78478539874638</span></label>
+                <input type="text" placeholder="ID marca:">
                 
             </div>
             <button type="submit">Registrar</button>
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function(){
+            var $name = $('#name');
+            var $des = $('#des');
+            var $tip = $('#tipo');
+            
+    
+        $name.on('input', function() {
+            // Oculta el mensaje de error
+    
+            $('#er1').empty();
+        });
+    
+        $des.on('input', function() {
+            // Oculta el mensaje de error
+    
+            $('#er2').empty();
+        });
+
+        $tip.on('input', function() {
+            // Oculta el mensaje de error
+    
+            $('#er3').empty();
+        });
+    
+       
+    
+        })
+    </script>
 </body>
 </html>
-

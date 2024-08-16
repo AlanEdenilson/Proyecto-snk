@@ -45,7 +45,7 @@ router.post('/update',midd.contraNueva,controlador.update);//actualizar contra
 
 
 
-router.get('/marca',controlador.enviarm);
+
 
 
 
