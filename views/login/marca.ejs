@@ -16,7 +16,7 @@
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.imagen ) { %>
                             <div>
-                                <h2 class="error1" 
+                                <h2  class="error1" 
                                     
                                     style="font-family: 'Times New Roman', Times, serif;
                                     font: small-caps 200% serif;
@@ -37,9 +37,9 @@
                 <label for="email">Nombre:</label>
                 <input type="text" id="name" name="name" >
                 <% if (typeof errors !== 'undefined') { %>
-                    <% if ( errors.imagen ) { %>
+                    <% if ( errors.name ) { %>
                             <div>
-                                <h2 class="error1" 
+                                <h2 id="er1" class="error1" 
                                     
                                     style="font-family: 'Times New Roman', Times, serif;
                                     font: small-caps 200% serif;
@@ -49,7 +49,7 @@
                                     top: -15x;
                                     height: 20%;
     
-                                    "><i class='bx bxs-error-circle' ></i><%= errors.imagen %></h2>
+                                    "><i class='bx bxs-error-circle' ></i><%= errors.name %></h2>
                                 </div>
                       <% } %>
                       <% } %>
@@ -60,7 +60,7 @@
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.descripcion ) { %>
                             <div>
-                                <h2 class="error1" 
+                                <h2 id="er2" class="error1" 
                                     
                                     style="font-family: 'Times New Roman', Times, serif;
                                     font: small-caps 200% serif;
@@ -81,7 +81,7 @@
                 <% if (typeof errors !== 'undefined') { %>
                     <% if ( errors.tipop ) { %>
                             <div>
-                                <h2 class="error1" 
+                                <h2 id="er3" class="error1" 
                                     
                                     style="font-family: 'Times New Roman', Times, serif;
                                     font: small-caps 200% serif;
@@ -97,12 +97,42 @@
                       <% } %>
             </div>
             <div class="form-group">
-                <label for="email" >ID Marca: <span>999</span></label>
+                <input type="text" placeholder="ID marca:">
                 
             </div>
             <button type="submit">Registrar</button>
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function(){
+            var $name = $('#name');
+            var $des = $('#des');
+            var $tip = $('#tipo');
+            
+    
+        $name.on('input', function() {
+            // Oculta el mensaje de error
+    
+            $('#er1').empty();
+        });
+    
+        $des.on('input', function() {
+            // Oculta el mensaje de error
+    
+            $('#er2').empty();
+        });
+
+        $tip.on('input', function() {
+            // Oculta el mensaje de error
+    
+            $('#er3').empty();
+        });
+    
+       
+    
+        })
+    </script>
 </body>
 </html>
-
