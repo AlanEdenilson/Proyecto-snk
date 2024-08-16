@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina_admin.css">
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina-admin2.css">
+    <script type="module" src="/javascript/animacion.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -159,7 +160,24 @@
             </div>
         </div>
     </div>
-    
+
+    <div class="dropdown">
+        <div class="dropdown-header">
+          <img src="profile-image.jpg" alt="Profile Picture" class="profile-pic">
+          <div class="profile-info">
+            <span class="personal">Administrador</span>
+            <span class="name">Gerrard Antony</span>
+          </div>
+          <span class="dropdown-arrow">▼</span>
+        </div>
+        <div class="dropdown-content">
+          <ul>
+            <li>Mi perfil</li>
+            <li>Configuración</li>
+            <li>Cerrar sesión</li>
+          </ul>
+        </div>
+      </div>
 <!--animacion y funcion del panel lateral -->
     <script>
         let btn = document.querySelector("#btn");
