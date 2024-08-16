@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina_admin.css">
     <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/pagina-admin2.css">
+    <script type="module" src="/javascript/animacion.js"></script>
+    <script type="module" src="/javascript/boton.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -19,7 +21,6 @@
 </head>
 <body>
     <table class="admin-table">
-        <thead>
             <h1 class="h1a">Tabla de administracion </h1>
             <tr>
                 <th>Nombre</th>
@@ -28,8 +29,6 @@
                 <th>ID de Marca</th>
                 <th>Acciones</th>
             </tr>
-        </thead>
-        <tbody>
             <tr>
                 <td>Juan Pérez</td>
                 <td>********</td>
@@ -37,7 +36,7 @@
                 <td>MRK001</td>
                 <td>
                     <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Borrar</button>
+                    <button class="btn-delete" id="openModall">Borrar</button>
                 </td>
             </tr>
             <tr>
@@ -50,7 +49,6 @@
                     <button class="btn-delete">Borrar</button>
                 </td>
             </tr>
-        </tbody>
     </table>
 </body>
 </html>
@@ -116,19 +114,22 @@
                <apan class="tooltip">Setting</apan> 
             </li>
              <li>
+            <a href="/adminr/marca">
+                <i class='bx bx-clipboard'></i>
+                <apan class="links_name"">register trademark</apan>
+            </a>
+           <apan class="tooltip">register trademark</apan> 
+        </li>
+
+             <li>
             <a href="/clear">
                 <i class='bx bx-log-out'></i>
                 <apan class="links_name"">Go Out</apan>
             </a>
            <apan class="tooltip">go out</apan> 
         </li>
-        <li>
-            <a href="/adminr/marca">
-                <i class='bx bx-log-out'></i>
-                <apan class="links_name"">registar_marca</apan>
-            </a>
-           <apan class="tooltip">registar_marca</apan> 
-        </li>
+
+        
         </ul>
     </div>
 
@@ -161,6 +162,40 @@
         </div>
     </div>
 
+    <!--ventana de perfil del usuario-->
+    <div class="dropdown">
+        <div class="dropdown-header">
+          <img src="profile-image.jpg" alt="Profile Picture" class="profile-pic">
+          <div class="profile-info">
+            <span class="personal">Administrador</span>
+            <span class="name">Gerrard Antony</span>
+          </div>
+          <span class="dropdown-arrow">▼</span>
+        </div>
+        <div class="dropdown-content">
+          <ul>
+            <li>Mi perfil</li>
+            <li>Configuración</li>
+            <li>Cerrar sesión</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="myModall" class="modall">
+        <div class="modal-contentt">
+            <div class="modal-header">
+                <span class="closee"></span>
+            </div>
+            <div>
+                <img class="dare" src="/stylesheet/Gerardo_estilos/pngegg-removebg-preview.png" alt="">
+            </div>
+            <p class="ad">¿Estás seguro de que quieres borrar el contenido seleccionado porque no se pobra restaurar de nuevo?</p>
+            <div class="modal-footerr">
+                <button id="cancelBtnn" class="btn btn-secondaryy">Cancelar</button>
+                <button id="acceptBtnn" class="btn btn-primaryy">Aceptar</button>
+            </div>
+        </div>
+    </div>
 <!--animacion y funcion del panel lateral -->
     <script>
         let btn = document.querySelector("#btn");
