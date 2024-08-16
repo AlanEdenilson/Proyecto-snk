@@ -8,7 +8,7 @@
 
 module.exports = {
     buscarusuario:function (conexion,username,password) {
-        const consulta = `SELECT id_rol,usuario,correo, contraseña FROM usuario WHERE usuario = '${username}' AND contraseña ='${password}'`;
+        const consulta = `SELECT id,id_rol,usuario,correo, contraseña FROM usuario WHERE usuario = '${username}' AND contraseña ='${password}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
