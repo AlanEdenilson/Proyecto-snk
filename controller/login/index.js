@@ -130,6 +130,7 @@ module.exports={
 
 
             const payload = {
+                 id:respuestabd.id,
                 rol:respuestabd.id_rol,
                 nombre:respuestabd.usuario,
                 email:respuestabd.correo,
@@ -137,6 +138,7 @@ module.exports={
 
 
             const payload2 = {
+                id:respuestabd.id,
                 rol:respuestabd.id_rol,
                 nombre:respuestabd.usuario,
                 email:respuestabd.correo,
