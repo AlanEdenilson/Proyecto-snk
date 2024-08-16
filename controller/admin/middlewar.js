@@ -55,5 +55,41 @@ module.exports = {
                 console.log('el error: ',{errors: errorMessages,valores:datos}); 
             });
         }
+    ],
+
+    addmarca:[
+        body('imagen')
+        .notEmpty().withMessage('La imagen es requerida'),
+
+        body('name')
+        .notEmpty().withMessage('El nombre es requerido')
+        .isLength({ min:4}).withMessage('el nombre debe contener almenos 5 caracteres'),
+
+        body('descripcion')
+        .notEmpty().withMessage('La descripcion es requerida'),
+
+        body('tipop')
+        .notEmpty().withMessage('El tipo de producto es requerido'),
+
+        (req, res, next)=>{
+            result(req)
+            .then(() => {
+                next();
+            })
+            .catch((errors) => {
+                console.log(errors);
+                var datos = req.body;
+                console.log(datos)
+                // Mantener los datos del formular});
+                const errorMessages = {};
+                errors.array().forEach(error => {
+                  if (!errorMessages[error.path]) {
+                    errorMessages[error.path] = error.msg;
+                    console.log(errorMessages);
+                  }
+                });
+                res.render('login/marca',{errors: errorMessages,valores:datos}); 
+            });
+        }
     ]
 }
