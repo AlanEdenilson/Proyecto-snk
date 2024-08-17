@@ -20,6 +20,8 @@ router.get('/id',(req,res)=>{
   res.render('admin/id')
 })
 
+router.get('/uploads',controlador.updt)
+
 
 
 
