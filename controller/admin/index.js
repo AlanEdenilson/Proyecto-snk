@@ -28,7 +28,7 @@ module.exports={
 
                 const update= await model.isertId(conexion,req.session.marca,gcodigo);
 
-                res.render('admin/id')
+                res.render('admin/id',{codigo:gcodigo})
 
 
    
@@ -69,6 +69,12 @@ module.exports={
         
 
         
+    },
+
+    updt:function (req,res) {
+        res.send("hola #:"+req.query)
+
+       // var rmarca= await model.buscarmarca(conexion,respuestabd.id)
     }
 
 

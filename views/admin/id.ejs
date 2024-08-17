@@ -10,22 +10,19 @@
 
 
     <center>
-        <p>tu codigo generado es </p>
+
+        <form action="/adminr/uploads" method="get">
+            <p>tu codigo generado es </p>
+            <input  type="text" value="<% if(typeof codigo != 'undefined') { %><%= codigo %><% } %>">
+            
         <p># <span>12345</span></p>
 
-        <button id="btn">ok</button>
+        <button type="submit">ok</button>
+
+        </form>
+        
     </center>
 
-<script>
-
-    var btn=document.getElementById('btn')
-
-    btn.addEventListener('click',()=>{
-
-        window.location.href='/ventanaAdmin';
-
-    })
-</script>
     
 </body>
 </html>

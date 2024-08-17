@@ -128,23 +128,49 @@ module.exports={
             var  respuestabd = await model.buscarusuario(conexion,username,password)
             console.log("tu respuesta de la bd es  ; " + respuestabd)
 
+            var rmarca= await model.buscarmarca(conexion,respuestabd.id)
 
-            const payload = {
-                 id:respuestabd.id,
-                rol:respuestabd.id_rol,
-                nombre:respuestabd.usuario,
-                email:respuestabd.correo,
-            }
+            var payload
+            var payload2
+
+            if(rmarca.respuesta){
+             payload = {
+               id:respuestabd.id,
+               rol:respuestabd.id_rol,
+               nombre:respuestabd.usuario,
+               email:respuestabd.correo,
+               imagen:rmarca.datos.imagen
+           }
 
 
-            const payload2 = {
+            payload2 = {
+               id:respuestabd.id,
+               rol:respuestabd.id_rol,
+               nombre:respuestabd.usuario,
+               email:respuestabd.correo,
+               refresh:'true',
+               imagen:rmarca.datos.imagen
+           }
+
+
+            }else{
+               payload = {
                 id:respuestabd.id,
-                rol:respuestabd.id_rol,
-                nombre:respuestabd.usuario,
-                email:respuestabd.correo,
-                refresh:'true'
-            }
+               rol:respuestabd.id_rol,
+               nombre:respuestabd.usuario,
+               email:respuestabd.correo,
+           }
 
+
+              payload2 = {
+               id:respuestabd.id,
+               rol:respuestabd.id_rol,
+               nombre:respuestabd.usuario,
+               email:respuestabd.correo,
+               refresh:'true'
+           }
+
+            }
             console.log(payload)
            
             const token = Gtoken.generarToken(payload);
@@ -155,7 +181,15 @@ module.exports={
             res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
             res.cookie('correo', respuestabd.correo, { httpOnly: true,secure: true });
 
-            aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo)
+            if(rmarca.respuesta){
+              var imagen=`/images/${rmarca.datos.imagen}`
+              aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo,imagen)
+            }else{
+              aux.mostrarventanas(res,respuestabd.id_rol)
+
+            }
+
+
             //aux.craertokens(res,respuestabd)
         } catch (error) {
             console.error('Error al buscar usuario:', error.message);
@@ -175,6 +209,9 @@ module.exports={
     verificarCuenta:function(req, res){ 
         var datos = req.body;
         console.log(datos);
+
+
+       
 
 
         //crenado los datos a almacenar en la cokkie 

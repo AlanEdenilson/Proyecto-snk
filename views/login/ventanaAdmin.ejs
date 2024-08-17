@@ -35,7 +35,7 @@
                 <td>juan@ejemplo.com</td>
                 <td>MRK001</td>
                 <td>
-                    <button class="btn-edit">Editar</button>
+                    <button class="btn-edit"  id="openModal1">Editar</button>
                     <button class="btn-delete" id="openModall">Borrar</button>
                 </td>
             </tr>
@@ -46,7 +46,7 @@
                 <td>MRK002</td>
                 <td>
                     <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Borrar</button>
+                    <button id="openModall" class="btn-delete">Borrar</button>
                 </td>
             </tr>
     </table>
@@ -212,7 +212,7 @@
     <!--ventana de perfil del usuario-->
     <div class="dropdown">
         <div class="dropdown-header">
-          <img src="profile-image.jpg" alt="Profile Picture" class="profile-pic">
+          <img src="<% if (typeof imagen !== 'undefined') { %><%= imagen %> <% } %>" alt="Profile Picture" class="profile-pic">
           <div class="profile-info">
             <span class="personal">Administrador</span>
             <span class="name">Gerrard Antony</span>
@@ -240,6 +240,32 @@
             <div class="modal-footerr">
                 <button id="cancelBtnn" class="btn btn-secondaryy">Cancelar</button>
                 <button id="acceptBtnn" class="btn btn-primaryy">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+     <!--ventana flotante de formulario de agregar 2-->
+     <div id="myModal1" class="modal1">
+        <div class="modal-content1">
+            <div class="modal-header1">
+                <h2>Insertar contenido</h2>
+                <span class="close1"></span>
+            </div>
+            <div>
+                <label  for="" class="nom1" >Nombre Producto</label>
+                <input name="nombre" type="text" class="reseñedor1" placeholder="User">
+                <label for="" class="cantidad1"> Precio Unidad</label>
+                <input name="Precio" type="" class="rese1" placeholder="Cantidad">
+                <label for="" class="zona1"> Precio Stock</label>
+                <input name="stock" type="text" class="reseñ1" placeholder="zona_region">
+                <label for="" class="tipo11">Descripcion</label>
+                <textarea name="descripcion" class="tipos11" placeholder="Ingresa una descripcion"></textarea>
+                <label for="" class="tipo22">Imagen</label>
+                <input name="imagen" type="file" class="tipos22">
+            </div>
+            <div class="modal-footerrr">
+                <button id="cancelBtn1" class="btn1 btn-secondary1">Cancelar</button>
+                <button id="acceptBtn1" class="btn1 btn-primary1">Aceptar</button>
             </div>
         </div>
     </div>
