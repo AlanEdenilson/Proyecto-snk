@@ -165,7 +165,7 @@
     <!--ventana de perfil del usuario-->
     <div class="dropdown">
         <div class="dropdown-header">
-          <img src="profile-image.jpg" alt="Profile Picture" class="profile-pic">
+          <img src="<% if (typeof imagen !== 'undefined') { %><%= imagen %> <% } %>" alt="Profile Picture" class="profile-pic">
           <div class="profile-info">
             <span class="personal">Administrador</span>
             <span class="name">Gerrard Antony</span>

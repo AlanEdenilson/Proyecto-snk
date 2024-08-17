@@ -103,17 +103,18 @@ module.exports = {
         });
         
     },
-    buscarmarca:function (conexion, marca) {
-        const consulta = `SELECT nombre FROM marca WHERE nombre = '${marca}'`;
+    buscarmarca:function (conexion, id) {
+        const consulta = `SELECT imagen FROM marca WHERE id_admin = '${id}'`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
                     return reject(error);
                 } else {
                     if (datos.length > 0) {
-                        resolve(true);
+                        console.log(datos[0])
+                        return resolve({respuesta:true,datos:datos[0]});
                     } else {
-                        resolve(false); // No se encontró ningún usuario
+                        resolve(false); // No se encontró ningúna marca
                     }
                 }
             });
