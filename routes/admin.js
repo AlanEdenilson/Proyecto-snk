@@ -16,6 +16,10 @@ router.get('/marca',(req,res)=>{
 
 router.post('/marca',upload.single('imagen'),controlador.marca)
 
+router.get('/id',(req,res)=>{
+  res.render('admin/id')
+})
+
 
 
 
