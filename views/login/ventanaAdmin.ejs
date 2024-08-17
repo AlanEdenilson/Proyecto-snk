@@ -140,25 +140,72 @@
                 <h2>Insertar contenido</h2>
                 <span class="close"></span>
             </div>
-            <div>
-                <label  for="" class="nom" >Nombre Producto</label>
-                <input name="nombre" type="text" class="reseñedor" placeholder="User">
-                <label for="" class="cantidad"> Precio Unidad</label>
-                <input name="Precio" type="" class="rese" placeholder="Cantidad">
-                <label for="" class="zona"> Precio Stock</label>
-                <input name="stock" type="text" class="reseñ" placeholder="zona_region">
-                <label for="" class="tipo1">Descripcion</label>
-                <textarea name="descripcion" class="tipos1" placeholder="Ingresa una descripcion"></textarea>
-                <label for="" class="tipo2">Imagen</label>
-                <input name="imagen" type="file" class="tipos2">
-                <div class="contenedor_de_img">
-                    <img class="imgg" src="/stylesheet/Gerardo_estilos/carrito.png" alt="">
+            <style>
+                .error { color: red; }
+                .div1{
+                    font-size: 18px;
+                    position: absolute;
+                    left: 84px;
+                    top: 184px;
+                }
+                .div2{
+                    font-size: 18px;
+                    position: absolute;
+                    left: 500px;
+                    top: 184px;
+                }
+                .div3{
+                    font-size: 18px;
+                    position: absolute;
+                    left: 84px;
+                    top: 284px;
+                }
+                .div4{
+                    font-size: 18px;
+                    position: absolute;
+                    left: 500px;
+                    top: 370px;
+                }
+            </style>
+            <form id="Produc" action="/jajaja">
+                <div>
+                    <div>
+                        <label  for="" class="nom" >Nombre Producto</label>
+                        <input id="producto" name="nombre" type="text" class="reseñedor" placeholder="User">
+                        <div class="div1"><b><span class="error" id="productoError"></span></b></div>
+                    </div>
+                    
+                    <div>
+                        <label for="" class="cantidad"> Precio Unidad</label>
+                        <input id="precio" name="Precio" type="" class="rese" placeholder="Cantidad">
+                        <div class="div2"><b><span class="error" id="precioError"></span></b></div>
+                    </div>
+
+                    <div>
+                        <label for="" class="zona"> Precio Stock</label>
+                        <input id="stock" name="stock" type="text" class="reseñ" placeholder="zona_region">
+                        <div class="div3"><b><span class="error" id="stockError"></span></b></div>
+                    </div>
+
+                    <div>
+                        <label for="" class="tipo1">Descripcion</label>
+                        <textarea id="des" name="descripcion" class="tipos1" placeholder="Ingresa una descripcion"></textarea>
+                        <div class="div4"><b><span class="error" id="desError"></span></b></div>
+                    </div>
+
+                    <label for="" class="tipo2">Imagen</label>
+                    <input name="imagen" type="file" class="tipos2">
+
+                    <div class="contenedor_de_img">
+                        <img class="imgg" src="/stylesheet/Gerardo_estilos/carrito.png" alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button id="cancelBtn" class="btn btn-secondary">Cancelar</button>
-                <button id="acceptBtn" class="btn btn-primary">Aceptar</button>
-            </div>
+            
+                <div class="modal-footer">
+                    <button id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+                    <button id="acceptBtn" class="btn btn-primary" type="submit">Aceptar</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -214,7 +261,107 @@ searchBtn.onclick = function() {
     <script type="module" src="/javascript/index.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+
+    <!------------------------------------------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+         $(document).ready(function() {
+            $('#Produc').on('submit', function(e) {
+                let hasErrors = false;
+                
+                // Validar producto
+                const producto = $('#producto').val().trim();
+
+                if (producto === '') {
+                $('#productoError').text('El nombre de producto es requerido');
+                hasErrors = true;
+                } else if (producto.length < 3) {
+                $('#productoError').text('El nombre debe tener al menos 3 caracteres');
+                hasErrors = true;
+                } else {
+                $('#productoError').text('');
+                }
+                
+                
+                // Validar precio
+                const precio = $('#precio').val().trim();
+
+                if (precio === '') {
+                $('#precioError').text('El precio es requerido');
+                hasErrors = true;
+                } else {
+                $('#precioError').text('');
+                }
+
+                // Validar stock
+                const stock = $('#stock').val().trim();
+
+                if (stock === '') {
+                $('#stockError').text('El precio stock es requerido');
+                hasErrors = true;
+                } else {
+                $('#stockError').text('');
+                }
+
+                // Validar descripcion
+                const des = $('#des').val().trim();
+
+                if (des === '') {
+                $('#desError').text('La descripcion es requerida');
+                hasErrors = true;
+                } else if (des.length < 12) {
+                $('#desError').text('La descripcion debe tener al menos 12 caracteres');
+                hasErrors = true;
+                } else {
+                $('#desError').text('');
+                }
+
+
+
+                
+                // Si hay errores, prevenir el envío del formulario
+                if (hasErrors) {
+                    e.preventDefault();
+                }
+            });
     
-    <script src="/public/javascript/validarp.js"></script>
+            // Quitar el borde rojo cuando el input obtiene el foco
+            $('#producto').on('input', function() {
+                $('#productoError').empty()
+            });
+            $('#precio').on('input', function() {
+                $('#precioError').empty()
+            });
+            $('#stock').on('input', function() {
+                $('#stockError').empty()
+            });
+            $('#des').on('input', function() {
+                $('#desError').empty()
+            });
+    
+            // Volver a validar cuando el input pierde el foco
+            $('input').on('blur', function() {
+                if ($(this).val().trim() === '') {
+                    $(this).addClass('input-error');
+                    $('#' + this.id + 'Error').text('Este campo es requerido');
+                } else {
+                    $(this).removeClass('input-error');
+                    $('#' + this.id + 'Error').text('');
+                }
+            });
+
+            $('textarea').on('blur', function() {
+                if ($(this).val().trim() === '') {
+                    $(this).addClass('input-error');
+                    $('#' + this.id + 'Error').text('Este campo es requerido');
+                } else {
+                    $(this).removeClass('input-error');
+                    $('#' + this.id + 'Error').text('');
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>
