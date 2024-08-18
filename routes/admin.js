@@ -23,7 +23,7 @@ router.get('/id',(req,res)=>{
 router.get('/uploads',controlador.updt)
 
 
-router.post('/add',upload.single('imagen'),controlador.addproductos)
+router.post('/add',upload.single('imagen'),controlador.addproductos);
 
 
 
