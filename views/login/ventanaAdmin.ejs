@@ -173,7 +173,7 @@
                     top: 375px;
                 }
             </style>
-            <form id="Produc" action="/jajaja">
+            <form id="Produc" action="/adminr/add" method="post" enctype="multipart/form-data">
                 <div>
                     <div>
                         <label  for="" class="nom" >Nombre Producto</label>
@@ -260,6 +260,7 @@
                 <h2>Insertar contenido</h2>
                 <span class="close1"></span>
             </div>
+            
             <div>
                 <label  for="" class="nom1" >Nombre Producto</label>
                 <input name="nombre" type="text" class="reseñedor1" placeholder="User">
@@ -274,8 +275,9 @@
             </div>
             <div class="modal-footerrr">
                 <button id="cancelBtn1" class="btn1 btn-secondary1">Cancelar</button>
-                <button id="acceptBtn1" class="btn1 btn-primary1">Aceptar</button>
+                <button id="acceptBtn1" class="btn1 btn-primary1" type="submit">Aceptar</button>
             </div>
+        </form>
         </div>
     </div>
 <!--animacion y funcion del panel lateral -->
