@@ -113,14 +113,19 @@
                 </a>
                <apan class="tooltip">Setting</apan> 
             </li>
-             <li>
-            <a href="/adminr/marca">
-                <i class='bx bx-clipboard'></i>
-                <apan class="links_name"">register trademark</apan>
-            </a>
-           <apan class="tooltip">register trademark</apan> 
-        </li>
-
+            
+                <% if ( typeof imagen !== 'undefined') { %>
+                    
+                  <% } else { %>
+                    <li>
+                    <a href="/adminr/marca">
+                        <i class='bx bx-clipboard'></i>
+                        <apan class="links_name"">register trademark</apan>
+                    </a>
+                   <apan class="tooltip">register trademark</apan> 
+                </li>
+                  <% } %>
+        
              <li>
             <a href="/clear">
                 <i class='bx bx-log-out'></i>
@@ -168,7 +173,15 @@
           <img src="<% if (typeof imagen !== 'undefined') { %><%= imagen %> <% } %>" alt="Profile Picture" class="profile-pic">
           <div class="profile-info">
             <span class="personal">Administrador</span>
-            <span class="name">Gerrard Antony</span>
+            
+            <% if ( typeof nombre !== 'undefined') { %>
+                <span class="name"> <%= nombre %> </span>
+              <% } else { %>
+                <span class="name"> juan perez </span>
+              <% } %>
+            
+
+
           </div>
           <span class="dropdown-arrow">▼</span>
         </div>

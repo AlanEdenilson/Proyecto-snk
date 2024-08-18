@@ -10,7 +10,9 @@ const GenerarID=require('../login/generarcodigo')
 module.exports={
 
     marca:function(req,res){
+        req.session.imagen=req.file.filename;
         req.session.marca=req.body.nombre;
+        
         console.log('nombre de la marca',req.session.marca)
 
 
@@ -21,6 +23,7 @@ module.exports={
                 var vtoken = await Gtoken.validarToken2(token);
                 //console.log("El token es válido:", vtoken);
                 var id_admin = vtoken.id;
+                req.session.admin=vtoken.nombre;
     
                 const respuesta= await model.insertarmarca(conexion,id_admin,req.file.filename,req.body)
 
@@ -49,30 +52,16 @@ module.exports={
 
         
 
-        
-
-      
-
-
-      /* async function insertar() {
-
-        try {
-            const respuesta= await model.insertarmarca(conexion,)
-        } catch (error) {
-            
-        }
-            
-        }*/
-
-
-
-        
 
         
     },
 
     updt:function (req,res) {
-        res.send("hola #:"+req.query)
+        var imagen=`/images/${req.session.imagen}`
+        var nombre=req.session.admin;
+        delete req.session.admin
+        delete req.session.imagen;
+        res.render('login/ventanaAdmin',{imagen:imagen,nombre:nombre})
 
        // var rmarca= await model.buscarmarca(conexion,respuestabd.id)
     }
