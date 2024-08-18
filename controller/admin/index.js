@@ -87,7 +87,24 @@ module.exports={
         add()
 
 
-    }
+    },
+
+    mostar:function(req, res){
+        const marca = req.cookies.marca;
+        model.mostar(conexion,marca)
+        .then((datos)=>{
+            res.json(datos)
+        })
+
+        
+        .catch((error)=>{
+
+        })
+
+
+    },
+
+   
 
 
 

@@ -25,6 +25,8 @@ router.get('/uploads',controlador.updt)
 
 router.post('/add',upload.single('imagen'),controlador.addproductos);
 
+router.get('/te53eer353r',controlador.mostar)
+
 
 
 

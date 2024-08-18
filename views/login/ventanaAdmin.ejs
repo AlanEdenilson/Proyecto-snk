@@ -20,13 +20,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <table class="admin-table">
+    <table class="admin-table"  id="default">
             <h1 class="h1a">Tabla de administracion </h1>
             <tr>
-                <th>Nombre</th>
-                <th>Contraseña</th>
-                <th>Correo</th>
-                <th>ID de Marca</th>
+                <th>imagen</th>
+                <th>nombre</th>
+                <th>precio</th>
+                <th>stock</th>
                 <th>Acciones</th>
             </tr>
             <tr>
@@ -39,17 +39,7 @@
                     <button class="btn-delete" id="openModall">Borrar</button>
                 </td>
             </tr>
-            <tr>
-                <td>María García</td>
-                <td>********</td>
-                <td>maria@ejemplo.com</td>
-                <td>MRK002</td>
-                <td>
-                    <button class="btn-edit">Editar</button>
-                    <button id="openModall" class="btn-delete">Borrar</button>
-                </td>
-            </tr>
-    </table>
+           
 </body>
 </html>
 
@@ -275,7 +265,7 @@
         </div>
       </div>
 
-      <div id="myModall" class="modall">
+      <div id="myModall" class="modall" style="display: none;">
         <div class="modal-contentt">
             <div class="modal-header">
                 <span class="closee"></span>
@@ -292,7 +282,7 @@
     </div>
 
      <!--ventana flotante de formulario de agregar 2-->
-     <div id="myModal1" class="modal1">
+     <div id="myModal1" class="modal1" style="display: none;">
         <div class="modal-content1">
             <div class="modal-header1">
                 <h2>Insertar contenido</h2>

@@ -102,7 +102,24 @@ module.exports={
         });
 
 
-    }
+    },
+    mostar: function (conexion,marca) {
+        const consulta = `SELECT * FROM productos WHERE id_marca = ${marca};`
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    if (datos.length > 0) {
+                        return resolve(datos);
+                    } else {
+                        return resolve(false)
+                    }
+                }
+            });
+        });
+    },
+    
     
 
 
