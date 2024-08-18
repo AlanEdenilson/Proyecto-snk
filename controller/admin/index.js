@@ -66,6 +66,14 @@ module.exports={
         res.render('login/ventanaAdmin',{imagen:imagen,nombre:nombre})
 
        // var rmarca= await model.buscarmarca(conexion,respuestabd.id)
+    },
+
+
+    addproductos:function(req,res){
+        console.log(req.body)
+        res.send(JSON.stringify(req.body))
+
+
     }
 
 
