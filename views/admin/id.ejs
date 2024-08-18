@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet/Gerardo_estilos/id.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>agaje sistem te da la bienvenida </h1>
+    <h1 class="titulo_tema">Ordershop te da la Bienvenida</h1>
 
+    <img class="logo" src="/stylesheet/Gerardo_estilos/logo_original.png" alt="">
 
-    <center>
-
+    <div  class="conteiner">
         <form action="/adminr/uploads" method="get">
-            <p>tu codigo generado es </p>
-            <input  type="text" value="<% if(typeof codigo != 'undefined') { %><%= codigo %><% } %>">
+            <p class="titulo_codigo">Tu Codigo Generado es el Siguiente: </p>
+            <input class="codigo_generado"  type="text" value="<% if(typeof codigo != 'undefined') { %><%= codigo %><% } %>">
             
-        <p># <span>12345</span></p>
+        <p class="contenido_codigo"># <span>12345</span></p>
 
-        <button type="submit">ok</button>
+        <button class="accion_ok" type="submit">Aceptar</button>
 
         </form>
-        
-    </center>
-
-    
+    </div>        
 </body>
 </html>
