@@ -56,11 +56,9 @@ module.exports={
                 } else {
                     if (datos.length > 0) {
                         console.log(datos)
-                        console.log("id encotrado")
                         return resolve(true);
                     
                     } else {
-                        console.log("id no econtrado")
                         return resolve(false)
                         
                         
@@ -70,7 +68,26 @@ module.exports={
         });
 
         
-    }
+    },
+    isertIdadmin:function(conexion,id,id_admin) {
+        console.log("admin # "+id_admin + "##"+id)
+        const consulta=`UPDATE usuario SET id_marca = ${id} WHERE id = '${id_admin}';`
+        return new Promise((resolve,reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    console.log('iD de admin insertado correctamente')
+                    return resolve(true)
+                    
+                    
+                }                                                  
+            });
+        });
+
+        
+    },
+    
 
 
     

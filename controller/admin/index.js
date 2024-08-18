@@ -31,6 +31,8 @@ module.exports={
 
                 const update= await model.isertId(conexion,req.session.marca,gcodigo);
 
+                const uddates= await model.isertIdadmin(conexion,gcodigo,id_admin);
+
                 res.render('admin/id',{codigo:gcodigo})
 
 
