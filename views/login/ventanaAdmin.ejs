@@ -113,19 +113,14 @@
                 </a>
                <apan class="tooltip">Setting</apan> 
             </li>
-            
-                <% if ( typeof imagen !== 'undefined') { %>
-                    
-                  <% } else { %>
-                    <li>
-                    <a href="/adminr/marca">
-                        <i class='bx bx-clipboard'></i>
-                        <apan class="links_name"">register trademark</apan>
-                    </a>
-                   <apan class="tooltip">register trademark</apan> 
-                </li>
-                  <% } %>
-        
+             <li>
+            <a href="/adminr/marca">
+                <i class='bx bx-clipboard'></i>
+                <apan class="links_name"">register trademark</apan>
+            </a>
+           <apan class="tooltip">register trademark</apan> 
+        </li>
+
              <li>
             <a href="/clear">
                 <i class='bx bx-log-out'></i>
@@ -198,8 +193,11 @@
                         <div class="div4"><b><span class="error" id="desError"></span></b></div>
                     </div>
 
-                    <label for="" class="tipo2">Imagen</label>
-                    <input name="imagen" type="file" class="tipos2">
+                    <div>
+                        <label for="" class="tipo2">Imagen</label>
+                        <input id="imagen" name="imagen" type="file" accept="image/png" class="tipos2">
+                        <b><span class="error" id="imagenError"></span></b>
+                    </div>
 
                     <div class="contenedor_de_img">
                         <img class="imgg" src="/stylesheet/Gerardo_estilos/carrito.png" alt="">
@@ -220,15 +218,7 @@
           <img src="<% if (typeof imagen !== 'undefined') { %><%= imagen %> <% } %>" alt="Profile Picture" class="profile-pic">
           <div class="profile-info">
             <span class="personal">Administrador</span>
-            
-            <% if ( typeof nombre !== 'undefined') { %>
-                <span class="name"> <%= nombre %> </span>
-              <% } else { %>
-                <span class="name"> juan perez </span>
-              <% } %>
-            
-
-
+            <span class="name">Gerrard Antony</span>
           </div>
           <span class="dropdown-arrow">▼</span>
         </div>
@@ -329,6 +319,9 @@ searchBtn.onclick = function() {
                 if (precio === '') {
                 $('#precioError').text('El precio es requerido');
                 hasErrors = true;
+                } else if (!/^\d+(\.\d+)?$/.test(precio)) {
+                $('#precioError').text('El precio solo debe contener números');
+                hasErrors = true;
                 } else {
                 $('#precioError').text('');
                 }
@@ -338,6 +331,9 @@ searchBtn.onclick = function() {
 
                 if (stock === '') {
                 $('#stockError').text('El precio stock es requerido');
+                hasErrors = true;
+                } else if (!/^\d+(\.\d+)?$/.test(precio)) {
+                $('#stockError').text('El stock solo debe contener números');
                 hasErrors = true;
                 } else {
                 $('#stockError').text('');
@@ -356,6 +352,20 @@ searchBtn.onclick = function() {
                 $('#desError').text('');
                 }
 
+                //validar imagen
+                // Validar imagen
+                const archivoInput = $('#imagen');
+                const archivo = archivoInput[0].files[0];
+
+                if (!archivo) {
+                $('#imagenError').text('La imagen es requerida');
+                hasErrors = true;
+                } else if (archivo.type !== 'image/png') {
+                $('#imagenError').text('Solo se permiten imágenes PNG');
+                hasErrors = true;
+                } else {
+                $('#imagenError').text('');
+                }
 
 
                 
@@ -377,6 +387,9 @@ searchBtn.onclick = function() {
             });
             $('#des').on('input', function() {
                 $('#desError').empty()
+            });
+            $('#imagen').on('input', function() {
+                $('#imagenError').empty()
             });
     
             // Volver a validar cuando el input pierde el foco
