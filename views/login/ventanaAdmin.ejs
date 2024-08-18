@@ -172,6 +172,16 @@
                     left: 84px;
                     top: 375px;
                 }
+                #vistaPrevia {
+                position: relative;
+                width: 200px;
+                height: 200px;
+                margin-top: 350px;
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                display: none;
+                left: 65px;
+                }
             </style>
             <form id="Produc" action="/jajaja">
                 <div>
@@ -203,7 +213,26 @@
                         <label for="" class="tipo2">Imagen</label>
                         <input id="imagen" name="imagen" type="file" accept="image/png" class="tipos2">
                         <div class="div5"><b><span class="error" id="imagenError"></span></b></div>
+                        <img id="vistaPrevia" alt="Vista previa de la imagen">
                     </div>
+                    <script>
+                        document.getElementById('imagen').addEventListener('change', function(event) {
+                            const archivo = event.target.files[0];
+                
+                            if (archivo && archivo.type.startsWith('image/')) {
+                                const img = document.getElementById('vistaPrevia');
+                                img.src = URL.createObjectURL(archivo);
+                                img.style.display = 'block';
+                
+                                // Liberar la URL creada para evitar pérdidas de memoria
+                                img.onload = () => {
+                                    URL.revokeObjectURL(img.src);
+                                };
+                            } else {
+                                alert('Por favor, selecciona un archivo de imagen válido.');
+                            }
+                        });
+                    </script>
 
                     <div class="contenedor_de_img">
                         <img class="imgg" src="/stylesheet/Gerardo_estilos/carrito.png" alt="">
