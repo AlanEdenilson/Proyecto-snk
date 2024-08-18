@@ -7,132 +7,173 @@
     <title></title>
 </head>
 <body>
+<style>
+    .error { color: red; }
+    #vistaPrevia {
+                width: 200px;
+                height: 200px;
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                display: none;
+                left: 65px;
+                }
+</style>
+
     <div class="container">
         <h2>Registro de Marca</h2>
-        <form method="post" action="/adminr/marca" enctype="multipart/form-data" >
+        <form id="marc" method="post" action="/adminr/marca" enctype="multipart/form-data" >
             <div class="form-group">
                 <label for="name">Imagen:</label>
-                <input type="file" id="imagen" name="imagen">
-                <% if (typeof errors !== 'undefined') { %>
-                    <% if ( errors.imagen ) { %>
-                            <div>
-                                <h2  class="error1" 
-                                    
-                                    style="font-family: 'Times New Roman', Times, serif;
-                                    font: small-caps 200% serif;
-                                    font-size: 18px;
-                                    color: #ff0000;
-                                    position: relative;
-                                    top: -15x;
-                                    height: 20%;
-    
-                                    "><i class='bx bxs-error-circle' ></i><%= errors.imagen %></h2>
-                                </div>
-                            
-                      
-                      <% } %>
-                      <% } %>
+                <input type="file" id="imagen" name="imagen" accept="image/png">
+                <b><span class="error" id="imagenError"></span></b>
+                <img id="vistaPrevia" alt="Vista previa de la imagen">
             </div>
+
             <div class="form-group">
                 <label for="email">Nombre:</label>
-                <input type="text" id="name" name="nombre" >
-                <% if (typeof errors !== 'undefined') { %>
-                    <% if ( errors.name ) { %>
-                            <div>
-                                <h2 id="er1" class="error1" 
-                                    
-                                    style="font-family: 'Times New Roman', Times, serif;
-                                    font: small-caps 200% serif;
-                                    font-size: 18px;
-                                    color: #ff0000;
-                                    position: relative;
-                                    top: -15x;
-                                    height: 20%;
-    
-                                    "><i class='bx bxs-error-circle' ></i><%= errors.name %></h2>
-                                </div>
-                      <% } %>
-                      <% } %>
+                <input type="text" id="nombre" name="nombre" >
+                <b><span class="error" id="nombreError"></span></b>
             </div>
+
             <div class="form-group">
                 <label for="message">Descripcion:</label>
-                <textarea id="des" name="descripcion" ></textarea>
-                <% if (typeof errors !== 'undefined') { %>
-                    <% if ( errors.descripcion ) { %>
-                            <div>
-                                <h2 id="er2" class="error1" 
-                                    
-                                    style="font-family: 'Times New Roman', Times, serif;
-                                    font: small-caps 200% serif;
-                                    font-size: 18px;
-                                    color: #ff0000;
-                                    position: relative;
-                                    top: -15x;
-                                    height: 20%;
-    
-                                    "><i class='bx bxs-error-circle' ></i><%= errors.descripcion %></h2>
-                                </div>
-                      <% } %>
-                      <% } %>
+                <textarea id="descrip" name="descripcion" ></textarea>
+                <b><span class="error" id="desError"></span></b>
             </div>
+
             <div class="form-group">
                 <label for="email">Tipo de Producto:</label>
                 <input type="text" id="tipo" name="tipop" >
-                <% if (typeof errors !== 'undefined') { %>
-                    <% if ( errors.tipop ) { %>
-                            <div>
-                                <h2 id="er3" class="error1" 
-                                    
-                                    style="font-family: 'Times New Roman', Times, serif;
-                                    font: small-caps 200% serif;
-                                    font-size: 18px;
-                                    color: #ff0000;
-                                    position: relative;
-                                    top: -15x;
-                                    height: 20%;
-    
-                                    "><i class='bx bxs-error-circle' ></i><%= errors.tipop %></h2>
-                                </div>
-                      <% } %>
-                      <% } %>
+                <b><span class="error" id="tipoError"></span></b>
             </div>
-            <div class="form-group">
-                <input type="text" placeholder="ID marca:">
-                
-            </div>
+
             <button type="submit">Registrar</button>
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(function(){
-            var $name = $('#name');
-            var $des = $('#des');
-            var $tip = $('#tipo');
-            
-    
-        $name.on('input', function() {
-            // Oculta el mensaje de error
-    
-            $('#er1').empty();
-        });
-    
-        $des.on('input', function() {
-            // Oculta el mensaje de error
-    
-            $('#er2').empty();
-        });
+        $(document).ready(function() {
+            $('#marc').on('submit', function(e) {
+                let hasErrors = false;
+                
+                // Validar nombre marca
+                const nombre = $('#nombre').val().trim();
 
-        $tip.on('input', function() {
-            // Oculta el mensaje de error
+                if (nombre === '') {
+                $('#nombreError').text('El nombre de la marca es requerida');
+                hasErrors = true;
+                } else if (nombre.length < 3) {
+                $('#nombreError').text('El nombre debe tener al menos 3 caracteres');
+                hasErrors = true;
+                } else {
+                $('#nombreError').text('');
+                }
+
+                // Validar imagen
+                const archivoInput = $('#imagen');
+                const archivo = archivoInput[0].files[0];
+
+                if (!archivo) {
+                $('#imagenError').text('La imagen es requerida');
+                hasErrors = true;
+                } else if (archivo.type !== 'image/png') {
+                $('#imagenError').text('Solo se permiten imágenes PNG');
+                hasErrors = true;
+                } else {
+                $('#imagenError').text('');
+                }
+
+                //validar descripcion
+                const descripcion = $('#descrip').val().trim();
+
+                if (descripcion === '') {
+                $('#desError').text('La descripcion es requerida');
+                hasErrors = true;
+                } else if (descripcion.length < 12) {
+                $('#desError').text('La descripcion debe tener al menos 12 caracteres');
+                hasErrors = true;
+                } else {
+                $('#desError').text('');
+                }
+
+                // Validar tipo producto
+                const tipo = $('#tipo').val().trim();
+
+                if (tipo === '') {
+                $('#tipoError').text('El tipo de producto es requerida');
+                hasErrors = true;
+                } else if (tipo.length < 3) {
+                $('#tipoError').text('El tipo de producto debe tener al menos 3 caracteres');
+                hasErrors = true;
+                } else {
+                $('#tipoError').text('');
+                }
+
+
+                
+                // Si hay errores, prevenir el envío del formulario
+                if (hasErrors) {
+                    e.preventDefault();
+                }
+            });
     
-            $('#er3').empty();
+            // Quitar el borde rojo cuando el input obtiene el foco
+            $('#nombre').on('input', function() {
+                $('#nombreError').empty()
+            });
+
+            $('#imagen').on('input', function() {
+                $('#imagenError').empty()
+            });
+
+            $('#descrip').on('input', function() {
+                $('#desError').empty()
+            });
+
+            $('#tipo').on('input', function() {
+                $('#tipoError').empty()
+            });
+    
+            // Volver a validar cuando el input pierde el foco
+            $('input').on('blur', function() {
+                if ($(this).val().trim() === '') {
+                    $(this).addClass('input-error');
+                    $('#' + this.id + 'Error').text('Este campo es requerido');
+                } else {
+                    $(this).removeClass('input-error');
+                    $('#' + this.id + 'Error').text('');
+                }
+            });
+
+            $('textarea').on('blur', function() {
+                if ($(this).val().trim() === '') {
+                    $(this).addClass('input-error');
+                    $('#' + this.id + 'Error').text('Este campo es requerido');
+                } else {
+                    $(this).removeClass('input-error');
+                    $('#' + this.id + 'Error').text('');
+                }
+            });
         });
-    
-       
-    
-        })
+    </script>
+     <script>
+        document.getElementById('imagen').addEventListener('change', function(event) {
+            const archivo = event.target.files[0];
+
+            if (archivo && archivo.type.startsWith('image/')) {
+                const img = document.getElementById('vistaPrevia');
+                img.src = URL.createObjectURL(archivo);
+                img.style.display = 'block';
+
+                // Liberar la URL creada para evitar pérdidas de memoria
+                img.onload = () => {
+                    URL.revokeObjectURL(img.src);
+                };
+            } else {
+                alert('Por favor, selecciona un archivo de imagen válido.');
+            }
+        });
     </script>
 </body>
 </html>
