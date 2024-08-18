@@ -89,7 +89,7 @@ module.exports={
     },
 
     addproducts:function(conexion,id_marca,imagen,datos ) {
-        const consulta=`INSERT INTO productos (id_marca	,imagen	,nombre,descripcion	,precio	) VALUES ('${id_marca}', '${imagen}', '${nombre}', '${descripcion}','${precio});`
+        const consulta=`INSERT INTO productos (id_marca,imagen,nombre,descripcion,precio,stock,fecha_creacion) VALUES ('${id_marca}', '${imagen}', '${datos.nombre}', '${datos.descripcion}','${datos.precio}','${datos.stock}',NOW());`
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {

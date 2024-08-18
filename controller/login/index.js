@@ -193,7 +193,7 @@ module.exports={
 
             if(rmarca.respuesta){
               var imagen=`/images/${rmarca.datos.imagen}`
-              res.cookie('#', rmarca.datos.id, { httpOnly: true,secure: true });
+              res.cookie('marca', rmarca.datos.id, { httpOnly: true,secure: true });
               aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo,imagen,respuestabd.usuario)
             }else{
               aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.usuario)

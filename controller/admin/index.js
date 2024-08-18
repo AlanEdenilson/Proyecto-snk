@@ -70,9 +70,21 @@ module.exports={
 
 
     addproductos:function(req,res){
-        console.log(req.file.filename)
-        console.log(req.body)
-        res.send(JSON.stringify(req.body))
+        const marca = req.cookies.marca;
+        async function add() {
+            try {
+
+                await model.addproducts(conexion,marca,req.file.filename,req.body)
+                res.send('producto ingresado correctamente')
+                
+            } catch (error) {
+                
+            }
+            
+        }
+
+
+        add()
 
 
     }
