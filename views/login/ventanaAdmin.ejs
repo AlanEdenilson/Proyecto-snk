@@ -166,6 +166,12 @@
                     left: 500px;
                     top: 370px;
                 }
+                .div5{
+                    font-size: 18px;
+                    position: absolute;
+                    left: 84px;
+                    top: 375px;
+                }
             </style>
             <form id="Produc" action="/jajaja">
                 <div>
@@ -196,7 +202,7 @@
                     <div>
                         <label for="" class="tipo2">Imagen</label>
                         <input id="imagen" name="imagen" type="file" accept="image/png" class="tipos2">
-                        <b><span class="error" id="imagenError"></span></b>
+                        <div class="div5"><b><span class="error" id="imagenError"></span></b></div>
                     </div>
 
                     <div class="contenedor_de_img">
@@ -332,7 +338,7 @@ searchBtn.onclick = function() {
                 if (stock === '') {
                 $('#stockError').text('El precio stock es requerido');
                 hasErrors = true;
-                } else if (!/^\d+(\.\d+)?$/.test(precio)) {
+                } else if (!/^\d+(\.\d+)?$/.test(stock)) {
                 $('#stockError').text('El stock solo debe contener números');
                 hasErrors = true;
                 } else {
@@ -352,7 +358,6 @@ searchBtn.onclick = function() {
                 $('#desError').text('');
                 }
 
-                //validar imagen
                 // Validar imagen
                 const archivoInput = $('#imagen');
                 const archivo = archivoInput[0].files[0];
