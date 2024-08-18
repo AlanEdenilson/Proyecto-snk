@@ -104,7 +104,7 @@ module.exports = {
         
     },
     buscarmarca:function (conexion, id) {
-        const consulta = `SELECT imagen FROM marca WHERE id_admin = '${id}'`;
+        const consulta = `SELECT id,imagen FROM marca WHERE id_admin = '${id}'`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {

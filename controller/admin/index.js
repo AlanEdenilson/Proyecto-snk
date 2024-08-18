@@ -70,6 +70,7 @@ module.exports={
 
 
     addproductos:function(req,res){
+        console.log(req.file.filename)
         console.log(req.body)
         res.send(JSON.stringify(req.body))
 

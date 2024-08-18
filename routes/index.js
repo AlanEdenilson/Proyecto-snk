@@ -55,7 +55,9 @@ router.get('/ventanaAdmin', function(req, res, next) {
 router.get('/clear',(req,res)=>{
   res.clearCookie('authToken');
   res.clearCookie('refreshToken');
-    res.redirect('/')
+  res.clearCookie('connect.sid');
+  res.clearCookie('correo');
+  res.redirect('/')
 })
 
 

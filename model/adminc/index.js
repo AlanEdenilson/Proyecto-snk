@@ -87,6 +87,22 @@ module.exports={
 
         
     },
+
+    addproducts:function(conexion,id_marca,imagen,datos ) {
+        const consulta=`INSERT INTO productos (id_marca	,imagen	,nombre,descripcion	,precio	) VALUES ('${id_marca}', '${imagen}', '${nombre}', '${descripcion}','${precio});`
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    console.log('producto insertado correctamente')
+                    return resolve(true)
+                }
+            });
+        });
+
+
+    }
     
 
 

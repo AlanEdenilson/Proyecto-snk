@@ -28,7 +28,7 @@ module.exports={
 
  
               console.log("al macenado con exito")
-              return aux.mostrarventanas(res, rol,vtoken.email,imagen);
+              return aux.mostrarventanas(res, rol,vtoken.email,imagen,vtoken.nombre);
             } catch (error) {
               console.error("Error de validación del token:", error.message);
               if (error.message === "Token has expired.") {
@@ -143,6 +143,7 @@ module.exports={
             if(rmarca.respuesta){
              payload = {
                id:respuestabd.id,
+               marca:rmarca.datos.id,
                rol:respuestabd.id_rol,
                nombre:respuestabd.usuario,
                email:respuestabd.correo,
@@ -152,6 +153,7 @@ module.exports={
 
             payload2 = {
                id:respuestabd.id,
+               marca:rmarca.datos.id,
                rol:respuestabd.id_rol,
                nombre:respuestabd.usuario,
                email:respuestabd.correo,
@@ -187,12 +189,14 @@ module.exports={
             const refreshToken = Gtoken.refreshToken(payload2);
             res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
             res.cookie('correo', respuestabd.correo, { httpOnly: true,secure: true });
+           
 
             if(rmarca.respuesta){
               var imagen=`/images/${rmarca.datos.imagen}`
-              aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo,imagen)
+              res.cookie('#', rmarca.datos.id, { httpOnly: true,secure: true });
+              aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo,imagen,respuestabd.usuario)
             }else{
-              aux.mostrarventanas(res,respuestabd.id_rol)
+              aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.usuario)
 
             }
 
