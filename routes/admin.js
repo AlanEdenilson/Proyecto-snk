@@ -27,9 +27,8 @@ router.post('/add',upload.single('imagen'),controlador.addproductos);
 
 router.get('/te53eer353r',controlador.mostar)
 
-router.delete('/delete/:id',(req,res)=>{
-  console.log("el id a eliminar es #"+req.params.id)
-})
+router.delete('/delete/:id',controlador.delete)
+
 
 
 

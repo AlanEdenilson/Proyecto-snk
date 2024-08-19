@@ -104,7 +104,7 @@ module.exports={
 
     },
     mostar: function (conexion,marca) {
-        const consulta = `SELECT * FROM productos WHERE id_marca = ${marca};`
+        const consulta = `SELECT * FROM productos WHERE id_marca = ${marca}`
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -115,6 +115,35 @@ module.exports={
                     } else {
                         return resolve(false)
                     }
+                }
+            });
+        });
+    },
+
+    mostarparad: function (conexion,id) {
+        const consulta = `SELECT imagen FROM productos WHERE id = ${id}`
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    if (datos.length > 0) {
+                        return resolve(datos);
+                    } else {
+                        return resolve(false)
+                    }
+                }
+            });
+        });
+    },
+    delete:function (conexion,id) {
+        const consulta = `DELETE  FROM productos WHERE id = ${id}`
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                   resolve(true)
                 }
             });
         });
