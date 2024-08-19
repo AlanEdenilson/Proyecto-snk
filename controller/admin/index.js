@@ -3,7 +3,8 @@ const conexion = require('../../config/conexion');
 const model=require('../../model/adminc/index')
 const Gtoken = require('../login/Gtoken');
 const GenerarID=require('../login/generarcodigo')
-const delet=require('fs')
+const delet = require('fs');
+const path = require('path');
 
 
 
@@ -113,8 +114,8 @@ module.exports={
 
        try {
         var datos= await model.mostarparad(conexion,req.params.id)
-        var img ='/public/images/'+datos[0].imagen
-        console.log('/images/',datos[0].imagen)
+        const img = path.join(__dirname,'images', datos[0].imagen);
+        console.log(img)
         if (delet.existsSync(img)) {
             delet.unlinkSync(img)
         }
