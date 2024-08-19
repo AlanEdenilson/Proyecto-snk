@@ -48,8 +48,11 @@ router.post('/update',midd.contraNueva,controlador.update);//actualizar contra
 
 
 
-router.get('/ventanaAdmin', function(req, res, next) {
-  res.render('login/ventanaAdmin');
+router.get('/ventanaAdmin', function(req, res) {
+  const token = req.cookies.perfil;
+  
+ 
+  res.render('login/ventanaAdmin',{imagen:token.imagen,nombre:token.nombre,marca:token.marca});
 })
 
 router.get('/clear',(req,res)=>{

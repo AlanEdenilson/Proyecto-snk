@@ -70,12 +70,13 @@ module.exports={
 
 
     addproductos:function(req,res){
-        const marca = req.cookies.marca;
+        const perfil = req.cookies.perfil;
+       
         async function add() {
             try {
 
-                await model.addproducts(conexion,marca,req.file.filename,req.body)
-                res.send('producto ingresado correctamente')
+                await model.addproducts(conexion,perfil.marca,req.file.filename,req.body)
+                res.redirect('/ventanaAdmin')
                 
             } catch (error) {
                 
@@ -84,14 +85,16 @@ module.exports={
         }
 
 
-        add()
+       add()
 
 
     },
 
     mostar:function(req, res){
-        const marca = req.cookies.marca;
-        model.mostar(conexion,marca)
+        const perfil = req.cookies.perfil;
+       
+
+        model.mostar(conexion,perfil.marca)
         .then((datos)=>{
             res.json(datos)
         })

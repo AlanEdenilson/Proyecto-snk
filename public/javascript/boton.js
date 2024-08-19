@@ -4,6 +4,7 @@ const spann = document.getElementsByClassName("closee")[0];
 const cancelBtnn = document.getElementById("cancelBtnn");
 
 
+
 btnn.onclick = function() {
     modall.style.display = "block";
 }
@@ -26,8 +27,8 @@ window.onclick = function(event) {
 
 // boton de registro
 
-const modal1 = document.getElementById("myModal1");
-const btn1 = document.getElementById("openModal1");
+//const modal1 = document.getElementById("myModal1");
+//const btn1 = document.getElementById("openModal1");
 const span1 = document.getElementsByClassName("close1")[0];
 const cancelBt1 = document.getElementById("cancelBtn1");
 

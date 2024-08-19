@@ -273,11 +273,15 @@
             <div>
                 <img class="dare" src="/stylesheet/Gerardo_estilos/pngegg-removebg-preview.png" alt="">
             </div>
-            <p class="ad">¿Estás seguro de que quieres borrar el contenido seleccionado porque no se pobra restaurar de nuevo?</p>
-            <div class="modal-footerr">
-                <button id="cancelBtnn" class="btn btn-secondaryy">Cancelar</button>
-                <button id="acceptBtnn" class="btn btn-primaryy">Aceptar</button>
-            </div>
+            <p class="ad">¿Estás seguro de que quieres borrar el contenido seleccionado porque no se podra restaurar de nuevo,nombre del registro : <span id="r535re" style="color: yellow;"></span>?</p>
+            <form >
+                <input type="hidden" name="id" id="id">
+                <div class="modal-footerr">
+                    <button id="cancelBtnn" class="btn btn-secondaryy" >Cancelar</button>
+                    <button id="acceptBtnn" class="btn btn-primaryy" type="submit" >Aceptar</button>
+                </div>
+            </form>
+           
         </div>
     </div>
 
@@ -288,21 +292,28 @@
                 <h2>Insertar contenido</h2>
                 <span class="close1"></span>
             </div>
-            
+            <form  id="edit-product-form" enctype="multipart/form-data">
             <div>
+                <input type="hidden" id="product-id" name="id">
+
                 <label  for="" class="nom1" >Nombre Producto</label>
-                <input name="nombre" type="text" class="reseñedor1" placeholder="User">
+                <input id="nombre" name="nombre" type="text" class="reseñedor1" placeholder="User">
                 <label for="" class="cantidad1"> Precio Unidad</label>
-                <input name="Precio" type="" class="rese1" placeholder="Cantidad">
+                <input id="precio-unidad" name="precio" type="" class="rese1" placeholder="Cantidad">
                 <label for="" class="zona1"> Precio Stock</label>
-                <input name="stock" type="text" class="reseñ1" placeholder="zona_region">
+                <input id="precio-stock" name="stock" type="text" class="reseñ1" placeholder="zona_region">
                 <label for="" class="tipo11">Descripcion</label>
-                <textarea name="descripcion" class="tipos11" placeholder="Ingresa una descripcion"></textarea>
+                <textarea  name="descripcion" class="tipos11" placeholder="Ingresa una descripcion"></textarea>
                 <label for="" class="tipo22">Imagen</label>
-                <input name="imagen" type="file" class="tipos22">
+                <input id="imagen" name="imagen" type="file" accept="image/png" class="tipos22" >
+               
+                 <div class="contenedor_de_img" id="imagen-actual-container">
+                    <img id="imagen-actual" src="" alt="actual" style="max-width: 200px;">
+                </div>
+                
             </div>
             <div class="modal-footerrr">
-                <button id="cancelBtn1" class="btn1 btn-secondary1">Cancelar</button>
+                <button id="cancelBtn1" class="btn1 btn-secondary1" ">Cancelar</button>
                 <button id="acceptBtn1" class="btn1 btn-primary1" type="submit">Aceptar</button>
             </div>
         </form>
@@ -327,6 +338,7 @@ searchBtn.onclick = function() {
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="/javascript/mostrar.js"></script>
+    <script src="/public/javascript/edit.js"></script>
 
 
     <!------------------------------------------------------------------------------->

@@ -193,10 +193,17 @@ module.exports={
 
             if(rmarca.respuesta){
               var imagen=`/images/${rmarca.datos.imagen}`
-              res.cookie('marca', rmarca.datos.id, { httpOnly: true,secure: true });
-              aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.correo,imagen,respuestabd.usuario)
+              var play={
+                marca:rmarca.datos.id,
+                imagen:imagen,
+                nombre:respuestabd.usuario
+              }
+              res.cookie('perfil',play,{ httpOnly: true,secure: true });
+              
+              
+              aux.mostrarventanas(res,respuestabd.id_rol,imagen,respuestabd.usuario)
             }else{
-              aux.mostrarventanas(res,respuestabd.id_rol,respuestabd.usuario)
+              aux.mostrarventanas(res,respuestabd.id_rol,imagen,respuestabd.usuario)
 
             }
 
@@ -421,6 +428,10 @@ module.exports={
             console.error('correo no encontrado');
         }
     },
+
+    admin:function(req,res) {
+      
+    }
 
  
 
