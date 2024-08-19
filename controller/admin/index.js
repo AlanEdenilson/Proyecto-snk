@@ -3,7 +3,7 @@ const conexion = require('../../config/conexion');
 const model=require('../../model/adminc/index')
 const Gtoken = require('../login/Gtoken');
 const GenerarID=require('../login/generarcodigo')
-const delet = require('fs');
+var delet = require('fs');
 const path = require('path');
 
 
