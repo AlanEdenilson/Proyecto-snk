@@ -1,6 +1,7 @@
 var express = require('express');
 var controlador=require('../controller/login/index')
 var midd = require('../controller/login/middlewar');
+var seguridad = require('../controller/login/validacioncokie')
 
 
 
@@ -15,30 +16,30 @@ router.get('/',controlador.login);
 
 router.post('/',midd.validar,controlador.verificar);
 
-router.get('/a_y_r', function(req, res, next) {
+router.get('/a_y_r',seguridad.uyyy, function(req, res, next) {
   res.render('login/a_y_r');
 })
 
-router.get('/admin',controlador.crearcuenta1);
+router.get('/admin',seguridad.uyyy,controlador.crearcuenta1);
 
-router.post('/admin',midd.Sanitisacionadmin,controlador.verificarCuenta);
+router.post('/admin',seguridad.uyyy,midd.Sanitisacionadmin,controlador.verificarCuenta);
 
-router.get('/repartidor',controlador.crearcuenta2);
+router.get('/repartidor',seguridad.uyyy,controlador.crearcuenta2);
 
-router.post('/repartidor',midd.sanitacionrepartidor,controlador.verificarCuenta);
+router.post('/repartidor',seguridad.uyyy,midd.sanitacionrepartidor,controlador.verificarCuenta);
 
-router.get('/recuperar',controlador.recuperarContra);//ingresar correo
+router.get('/recuperar',seguridad.uyyy,controlador.recuperarContra);//ingresar correo
 
 
-router.post('/recuperar_contra',midd.verificarcorreo,controlador.enviarCorreo);//introdudir codigo
-router.get('/nuevacontra',function(req,res){
+router.post('/recuperar_contra',seguridad.uyyy,midd.verificarcorreo,controlador.enviarCorreo);//introdudir codigo
+router.get('/nuevacontra',seguridad.uyyy,function(req,res){
   res.render('login/nuevacontra');
  })
-router.post('/codigo',controlador.confirmar);//cambiar contra si el codigo es valido
+router.post('/codigo',seguridad.uyyy,controlador.confirmar);//cambiar contra si el codigo es valido
 
 
 
-router.post('/update',midd.contraNueva,controlador.update);//actualizar contra
+router.post('/update',seguridad.uyyy,midd.contraNueva,controlador.update);//actualizar contra
 
 //router.post('/update',controlador.update);
 
