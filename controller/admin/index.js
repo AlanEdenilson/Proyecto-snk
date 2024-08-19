@@ -130,7 +130,7 @@ module.exports={
         
         await model.delete(conexion, req.params.id);
         console.log('Borrado exitosamente');
-        res.send({msg: 'borrado exitosamente'});
+        res.json({id:req.params.id});
         } catch (error) {
         console.error('Error al borrar:', error);
         res.status(500).send({msg: 'Error al borrar el archivo', error: error.message});

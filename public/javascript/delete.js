@@ -18,7 +18,14 @@ $(function() {
             })
             .then(response => response.json())
             .then(data => {
-                window.location.href = '/ventanaAdmin';
+
+                $(`#${data.id}`).closest('tr').remove();
+                $('.modall').css({
+                    'display':'none',
+                    })
+                    
+                 
+
                
             })
             .catch(error => {
