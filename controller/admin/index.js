@@ -120,6 +120,8 @@ module.exports={
         }
 
         await model.delete(conexion,req.params.id)
+        console.log('borrado exitosamnete')
+        res.send({msg:'borrado exitosamnete'})
 
        } catch (error) {
         

@@ -18,7 +18,7 @@ $(function() {
             })
             .then(response => response.json())
             .then(data => {
-                alert('Contraseña actualizada correctamente'+data);
+                window.location.href = '/ventanaAdmin';
                
             })
             .catch(error => {
