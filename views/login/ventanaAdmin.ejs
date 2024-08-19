@@ -176,6 +176,16 @@
                 display: none;
                 left: 65px;
                 }
+                #vistaPrevia2 {
+                position: relative;
+                width: 200px;
+                height: 200px;
+                margin-top: 350px;
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                display: none;
+                left: 65px;
+                }
             </style>
             <form id="Produc" action="/adminr/add" method="post" enctype="multipart/form-data">
                 <div>
@@ -298,19 +308,57 @@
             <div>
                 <input type="hidden" id="product-id" name="id">
 
+                <div>
                 <label  for="" class="nom1" >Nombre Producto</label>
                 <input id="nombre" name="nombre" type="text" class="reseñedor1" placeholder="User">
+                <div class="div1"><b><span class="error" id="producto2Error"></span></b></div>
+                </div>
+
+                <div>
                 <label for="" class="cantidad1"> Precio Unidad</label>
                 <input id="precio-unidad" name="precio" type="" class="rese1" placeholder="Cantidad">
+                <div class="div2"><b><span class="error" id="precio2Error"></span></b></div>
+                </div>
+
+                <div>
                 <label for="" class="zona1"> Precio Stock</label>
                 <input id="precio-stock" name="stock" type="text" class="reseñ1" placeholder="zona_region">
+                <div class="div3"><b><span class="error" id="stock2Error"></span></b></div>
+                </div>
+
+                <div>
                 <label for="" class="tipo11">Descripcion</label>
-                <textarea  name="descripcion" class="tipos11" placeholder="Ingresa una descripcion"></textarea>
+                <textarea id="des2"  name="descripcion" class="tipos11" placeholder="Ingresa una descripcion"></textarea>
+                <div class="div4"><b><span class="error" id="des2Error"></span></b></div>
+                </div>
+
+                <div>
                 <label for="" class="tipo22">Imagen</label>
-                <input id="imagen" name="imagen" type="file" accept="image/png" class="tipos22" >
+                <input id="imagen2" name="imagen" type="file" accept="image/png" class="tipos22" >
+                <div class="div5"><b><span class="error" id="imagen2Error"></span></b></div>
+                <img id="vistaPrevia2" alt="Vista previa de la imagen">
+                </div>
+                <script>
+                    document.getElementById('imagen2').addEventListener('change', function(event) {
+                        const archivo = event.target.files[0];
+            
+                        if (archivo && archivo.type.startsWith('image/')) {
+                            const img = document.getElementById('vistaPrevia2');
+                            img.src = URL.createObjectURL(archivo);
+                            img.style.display = 'block';
+            
+                            // Liberar la URL creada para evitar pérdidas de memoria
+                            img.onload = () => {
+                                URL.revokeObjectURL(img.src);
+                            };
+                        } else {
+                            alert('Por favor, selecciona un archivo de imagen válido.');
+                        }
+                    });
+                </script>
                
                  <div class="contenedor_de_img" id="imagen-actual-container">
-                    <img id="imagen-actual" src="" alt="actual" style="max-width: 200px;">
+                    
                 </div>
                 
             </div>
@@ -347,6 +395,7 @@ searchBtn.onclick = function() {
     <!------------------------------------------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        
          $(document).ready(function() {
             $('#Produc').on('submit', function(e) {
                 let hasErrors = false;
@@ -465,6 +514,125 @@ searchBtn.onclick = function() {
             });
         });
     </script>
+    <script>
+        $(document).ready(function() {
+           $('#edit-product-form').on('submit', function(e) {
+               let hasErrors = false;
+               
+               // Validar producto
+               const producto = $('#nombre').val().trim();
+
+               if (producto === '') {
+               $('#producto2Error').text('El nuevo nombre de producto es requerido');
+               hasErrors = true;
+               } else if (producto.length < 3) {
+               $('#producto2Error').text('El nombre debe tener al menos 3 caracteres');
+               hasErrors = true;
+               } else {
+               $('#producto2Error').text('');
+               }
+               
+               
+               // Validar precio
+               const precio = $('#precio-unidad').val().trim();
+
+               if (precio === '') {
+               $('#precio2Error').text('El nuevo precio es requerido');
+               hasErrors = true;
+               } else if (!/^\d+(\.\d+)?$/.test(precio)) {
+               $('#precio2Error').text('El precio solo debe contener números');
+               hasErrors = true;
+               } else {
+               $('#precio2Error').text('');
+               }
+
+               // Validar stock
+               const stock = $('#precio-stock').val().trim();
+
+               if (stock === '') {
+               $('#stock2Error').text('El nuevo precio stock es requerido');
+               hasErrors = true;
+               } else if (!/^\d+(\.\d+)?$/.test(stock)) {
+               $('#stock2Error').text('El stock solo debe contener números');
+               hasErrors = true;
+               } else {
+               $('#stock2Error').text('');
+               }
+
+               // Validar descripcion
+               const des = $('#des2').val().trim();
+
+               if (des === '') {
+               $('#des2Error').text('La nueva descripcion es requerida');
+               hasErrors = true;
+               } else if (des.length < 12) {
+               $('#des2Error').text('La descripcion debe tener al menos 12 caracteres');
+               hasErrors = true;
+               } else {
+               $('#des2Error').text('');
+               }
+
+               // Validar imagen
+               const archivoInput = $('#imagen2');
+               const archivo = archivoInput[0].files[0];
+
+               if (!archivo) {
+               $('#imagen2Error').text('La nueva imagen es requerida');
+               hasErrors = true;
+               } else if (archivo.type !== 'image/png') {
+               $('#imagen2Error').text('Solo se permiten imágenes PNG');
+               hasErrors = true;
+               } else {
+               $('#imagen2Error').text('');
+               }
+
+
+               
+               // Si hay errores, prevenir el envío del formulario
+               if (hasErrors) {
+                   e.preventDefault();
+               }
+           });
+   
+           // Quitar el borde rojo cuando el input obtiene el foco
+           $('#nombre').on('input', function() {
+               $('#producto2Error').empty()
+           });
+           $('#precio-unidad').on('input', function() {
+               $('#precio2Error').empty()
+           });
+           $('#precio-stock').on('input', function() {
+               $('#stoc2kError').empty()
+           });
+           $('#dese').on('input', function() {
+               $('#deseError').empty()
+           });
+           $('#imagen2').on('input', function() {
+               $('#imagen2Error').empty()
+           });
+   
+           // Volver a validar cuando el input pierde el foco
+           $('input').on('blur', function() {
+               if ($(this).val().trim() === '') {
+                   $(this).addClass('input-error');
+                   $('#' + this.id + 'Error').text('Este campo es requerido');
+               } else {
+                   $(this).removeClass('input-error');
+                   $('#' + this.id + 'Error').text('');
+               }
+           });
+
+           $('textarea').on('blur', function() {
+               if ($(this).val().trim() === '') {
+                   $(this).addClass('input-error');
+                   $('#' + this.id + 'Error').text('Este campo es requerido');
+               } else {
+                   $(this).removeClass('input-error');
+                   $('#' + this.id + 'Error').text('');
+               }
+           });
+       });
+   </script>
     
 </body>
 </html>
