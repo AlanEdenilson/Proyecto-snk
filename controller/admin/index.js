@@ -3,7 +3,7 @@ const conexion = require('../../config/conexion');
 const model=require('../../model/adminc/index')
 const Gtoken = require('../login/Gtoken');
 const GenerarID=require('../login/generarcodigo')
-var delet = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 
 
@@ -109,17 +109,47 @@ module.exports={
 
     },
     delete: async  function(req, res){
+
+
+        // ... dentro de la función delete
+        try {
+        const datos = await model.mostarparad(conexion, req.params.id);
+        const imgPath ="public/images/"+datos[0].imagen;
+        
+        console.log('Intentando borrar:', imgPath);
+        
+        try {
+            
+            await fs.unlink(imgPath);
+            console.log('Borrado exitosamente');
+            
+          } catch (accessError) {
+            console.error('El archivo no existe o no se puede acceder:', imgPath);
+            return res.status(404).send({ msg: 'Archivo no encontrado' });
+          }
+        
+        await model.delete(conexion, req.params.id);
+        console.log('Borrado exitosamente');
+        res.json({id:req.params.id});
+        } catch (error) {
+        console.error('Error al borrar:', error);
+        res.status(500).send({msg: 'Error al borrar el archivo', error: error.message});
+        }
         
         
 
-       try {
+       /*try {
         var datos= await model.mostarparad(conexion,req.params.id)
         const img = path.join(__dirname,'images', datos[0].imagen);
         console.log(img)
-        if (delet.existsSync(img)) {
-            delet.unlinkSync(img)
-        }
 
+        if (await fs.access(imgPath).then((
+
+        ) => true).catch(() => false)) {
+           
+            
+            await fs.unlink(imgPath);}
+      
         await model.delete(conexion,req.params.id)
         console.log('borrado exitosamnete')
         res.send({msg:'borrado exitosamnete'})
@@ -129,7 +159,8 @@ module.exports={
        }
 
 
-    }
+    }*/}
+   
 
    
 

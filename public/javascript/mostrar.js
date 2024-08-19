@@ -9,7 +9,7 @@ $(function(){
         for (var i = 0; i < jsonData.length; i++) {
             console.log(jsonData[i].imagen)
             $('.admin-table').append(`
-                  <tr>
+                  <tr id="${jsonData[i].id}" class="fila" >
                      <td><img src="/images/${jsonData[i].imagen}" alt="Profile Picture" class="profile-pic"></td>
                      <td>${jsonData[i].nombre}</td>
                      <td>${jsonData[i].precio}</td>
