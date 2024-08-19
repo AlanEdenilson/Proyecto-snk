@@ -1,4 +1,6 @@
 $(function() {
+   
+
 
     $('#deleteForm').on('submit', function(e) {
         e.preventDefault();
@@ -10,16 +12,13 @@ $(function() {
 
 
          
-        fetch('/adminr/delete', {
+        fetch('/adminr/delete/'+id, {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body:id
+            
             })
             .then(response => response.json())
             .then(data => {
-                alert('Contraseña actualizada correctamente'+data);
+                window.location.href = '/ventanaAdmin';
                
             })
             .catch(error => {

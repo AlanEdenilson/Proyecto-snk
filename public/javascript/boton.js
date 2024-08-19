@@ -14,6 +14,7 @@ spann.onclick = function() {
 }
 
 cancelBtnn.onclick = function() {
+    
     modall.style.display = "none";
 }
 
