@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Tabla de Pedidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:  #081b29;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background:#f4f4f4;
+        
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px #0ef;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color:#081b29 ;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 4px 2px;
+            border: none;
+            border-radius: 4px;
+            background-color: #0ef;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        .select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .boton{
+            background-color: #1ce047;
+            border-radius: 50px;
+            
+            
+        }
+        .boton:hover{
+            background-color:  #218838;
+            cursor: pointer;
+        }
+        .boton2{
+            background-color:red;
+            border-radius: 50px;
+            cursor: pointer;
+         
+        }
+        .boton2:hover{
+            background-color: rgb(192, 25, 25);
+        }
+
+    </style>
+</head>
+<body>
+   <form>
+    <div class="container">
+        <h1>Tabla de Ventas/Repartidor</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número de Pedido</th>
+                    <th>Usuario</th>
+                    <th>Nombre de la Tienda</th>
+                    <th>Fecha/Emision</th>
+                    <th>Fecha/Entrega</th>
+                    <th>Estado de pedido</th>
+                    <th>Ver Pedido</th>
+                    <th>Total</th>
+                    <th></th>
+            
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>@super/selectos28</td>
+                    <td>Hoy no se fia Mañana si</td>
+                    <td> 04/08/24</td>
+                    <td>08/09/24 </td>
+                    <td><button class="boton">Entregado</button>
+                        <button class="boton2">No Entregado</button></td></td>
+                        <td><button>Pedido</button></td>         
+                    <td>15.50$</td>
+                  
+                    </td>
+                  
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>@fierro_foragido</td>
+                    <td>La Bendicion De Dios</td>
+                    <td>04/09/24</td>
+                    <td>08/09/24</td>
+                    <td> <button class="boton">Entregado</button>
+                        <button class="boton2">No Entregado</button></td> </td>
+                        <td><button>Pedido</button></td>       
+                    <td>10.00$</td>
+                  
+                      
+                    </td>
+                   
+                </tr>
+                <!-- Puedes agregar más filas aquí -->
+                <tr>
+                    <td>001</td>
+                    <td>@super/selectos28</td>
+                    <td>Hoy no se fia Mañana si</td>
+                    <td> 04/08/24</td>
+                    <td>08/09/24</td>
+                    <td>
+                        <button class="boton">Entregado</button>
+                        <button class="boton2">No Entregado</button></td>
+                        <td><button id="openModal">Pedido</button></td>        
+                    <td>15.50$</td>
+                   
+
+                    </td>
+                  
+                
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>@super/selectos28</td>
+                    <td>Hoy no se fia Mañana si</td>
+                    <td> 04/08/24</td>
+                    <td>08/09/24</td>
+                    <td><button class="boton">Entregado</button>
+                        
+                        <button class="boton2">No Entregado</button></td></td>
+                        <td><button>Pedido</button></td>     
+                    <td>15.50$</td>
+                  
+                       
+                    </td>
+                  
+                </tr>
+            </tbody>
+        </table>
+        <button class="button">Actualizar Pedidos</button>
+        </div>
+
+        
+
+</body>
+</html>
