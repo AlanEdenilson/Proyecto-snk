@@ -20,26 +20,26 @@ router.get('/a_y_r',seguridad.uyyy, function(req, res, next) {
   res.render('login/a_y_r');
 })
 
-router.get('/admin',seguridad.uyyy,controlador.crearcuenta1);
+router.get('/admin',controlador.crearcuenta1);
 
-router.post('/admin',seguridad.uyyy,midd.Sanitisacionadmin,controlador.verificarCuenta);
+router.post('/admin',midd.Sanitisacionadmin,controlador.verificarCuenta);
 
 router.get('/repartidor',seguridad.uyyy,controlador.crearcuenta2);
 
-router.post('/repartidor',seguridad.uyyy,midd.sanitacionrepartidor,controlador.verificarCuenta);
+router.post('/repartidor',midd.sanitacionrepartidor,controlador.verificarCuenta);
 
 router.get('/recuperar',seguridad.uyyy,controlador.recuperarContra);//ingresar correo
 
 
-router.post('/recuperar_contra',seguridad.uyyy,midd.verificarcorreo,controlador.enviarCorreo);//introdudir codigo
+router.post('/recuperar_contra',midd.verificarcorreo,controlador.enviarCorreo);//introdudir codigo
 router.get('/nuevacontra',seguridad.uyyy,function(req,res){
   res.render('login/nuevacontra');
  })
-router.post('/codigo',seguridad.uyyy,controlador.confirmar);//cambiar contra si el codigo es valido
+router.post('/codigo',controlador.confirmar);//cambiar contra si el codigo es valido
 
 
 
-router.post('/update',seguridad.uyyy,midd.contraNueva,controlador.update);//actualizar contra
+router.post('/update',midd.contraNueva,controlador.update);//actualizar contra
 
 //router.post('/update',controlador.update);
 

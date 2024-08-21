@@ -214,7 +214,7 @@
 
                     <div>
                         <label for="" class="tipo2">Imagen</label>
-                        <input id="imagen" name="imagen" type="file" accept="image/png" class="tipos2">
+                        <input id="imagen" name="archivo" type="file" accept="image/png" class="tipos2">
                         <div class="div5"><b><span class="error" id="imagenError"></span></b></div>
                         <img id="vistaPrevia" alt="Vista previa de la imagen">
                     </div>
@@ -334,7 +334,6 @@
                 <div>
                 <label for="" class="tipo22">Imagen</label>
                 <input id="imagen2" name="imagen" type="file" accept="image/png" class="tipos22" >
-                <div class="div5"><b><span class="error" id="imagen2Error"></span></b></div>
                 <img id="vistaPrevia2" alt="Vista previa de la imagen">
                 </div>
                
@@ -515,7 +514,8 @@ searchBtn.onclick = function() {
         });
     </script>
     <script>
-       /* $(document).ready(function() {
+        /*
+            $(document).ready(function() {
            $('#edit-product-form').on('submit', function(e) {
                let hasErrors = false;
                
@@ -572,21 +572,6 @@ searchBtn.onclick = function() {
                $('#des2Error').text('');
                }
 
-               // Validar imagen
-               const archivoInput = $('#imagen2');
-               const archivo = archivoInput[0].files[0];
-
-               if (!archivo) {
-               $('#imagen2Error').text('La nueva imagen es requerida');
-               hasErrors = true;
-               } else if (archivo.type !== 'image/png') {
-               $('#imagen2Error').text('Solo se permiten imágenes PNG');
-               hasErrors = true;
-               } else {
-               $('#imagen2Error').text('');
-               }
-
-
                
                // Si hay errores, prevenir el envío del formulario
                if (hasErrors) {
@@ -606,9 +591,6 @@ searchBtn.onclick = function() {
            });
            $('#dese').on('input', function() {
                $('#deseError').empty()
-           });
-           $('#imagen2').on('input', function() {
-               $('#imagen2Error').empty()
            });
    
            // Volver a validar cuando el input pierde el foco
