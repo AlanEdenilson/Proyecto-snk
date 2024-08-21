@@ -23,11 +23,38 @@ router.get('/id',(req,res)=>{
 router.get('/uploads',controlador.updt)
 
 
-router.post('/add',upload.single('imagen'),controlador.addproductos);
+router.post('/add',upload.single('archivo'),controlador.addproductos);
 
 router.get('/te53eer353r',controlador.mostar)
 
 router.delete('/delete/:id',controlador.delete)
+
+router.patch('/update1/:id',(req,res)=>{
+  const userId = req.params.id;
+ 
+  console.log('#'+userId)
+  console.log(req.body)
+
+})
+router.patch('/update2/:id',upload.single('archivo'),(req,res)=>{
+
+
+  const userId = req.params.id;
+  const imagen= req.file
+  const updatedData = JSON.stringify(req.body);
+
+  if(updatedData === '{}'){
+    console.log('no se an proporcinado cmabio solo imagen')
+    console.log(imagen)
+   
+
+  }else{
+  console.log(userId)
+  console.log(imagen)
+  console.log(updatedData)
+  }
+  
+})
 
 
 

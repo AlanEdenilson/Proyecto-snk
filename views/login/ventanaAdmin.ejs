@@ -304,7 +304,7 @@
                 <h2>Insertar contenido</h2>
                 <span class="close1"></span>
             </div>
-            <form  id="edit-product-form" enctype="multipart/form-data">
+            <form  id="edit-product-form" method="post" enctype="multipart/form-data">
             <div>
                 <input type="hidden" id="product-id" name="id">
 
@@ -328,7 +328,7 @@
 
                 <div>
                 <label for="" class="tipo11">Descripcion</label>
-                <textarea id="des2"  name="descripcion" class="tipos11" placeholder="Ingresa una descripcion"></textarea>
+                <textarea id="descripcion"  name="descripcion" class="tipos11" placeholder="Ingresa una descripcion"></textarea>
                 <div class="div4"><b><span class="error" id="des2Error"></span></b></div>
                 </div>
 
@@ -338,9 +338,12 @@
                 <div class="div5"><b><span class="error" id="imagen2Error"></span></b></div>
                 <img id="vistaPrevia2" alt="Vista previa de la imagen">
                 </div>
+               
+                
                 <script>
                     document.getElementById('imagen2').addEventListener('change', function(event) {
                         const archivo = event.target.files[0];
+                      
             
                         if (archivo && archivo.type.startsWith('image/')) {
                             const img = document.getElementById('vistaPrevia2');
@@ -356,10 +359,6 @@
                         }
                     });
                 </script>
-               
-                 <div class="contenedor_de_img" id="imagen-actual-container">
-                    
-                </div>
                 
             </div>
             <div class="modal-footerrr">
@@ -387,13 +386,15 @@ searchBtn.onclick = function() {
     <script type="module" src="/javascript/index.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="/javascript/mostrar.js"></script>
-    <script src="/javascript/delete.js"></script>
-    
+    <script  src="/javascript/mostrar.js"></script>
+    <script  src="/javascript/delete.js"></script>
+    <script  src="/javascript/edit.js"></script>
+
 
 
     <!------------------------------------------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+   
     <script>
         
          $(document).ready(function() {
@@ -515,7 +516,7 @@ searchBtn.onclick = function() {
         });
     </script>
     <script>
-        $(document).ready(function() {
+       /* $(document).ready(function() {
            $('#edit-product-form').on('submit', function(e) {
                let hasErrors = false;
                
@@ -631,7 +632,7 @@ searchBtn.onclick = function() {
                    $('#' + this.id + 'Error').text('');
                }
            });
-       });
+       });*/
    </script>
     
 </body>

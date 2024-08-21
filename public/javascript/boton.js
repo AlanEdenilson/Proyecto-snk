@@ -36,6 +36,7 @@ const cancelBt1 = document.getElementById("cancelBtn1");
 
 btn1.onclick = function() {
     modal1.style.display = "block";
+    
 }
 
 span1.onclick = function() {
