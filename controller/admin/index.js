@@ -163,8 +163,109 @@ module.exports={
 
 
     actualizar:function(req,res) {
+        const userId = req.params.id;
+        console.log(userId)
+        
+        
+          
+        const updatedData =req.body;
 
-        if (typeof req.body==='undefined') {
+        for (const [key, value] of Object.entries(updatedData)) {
+                    
+          
+            console.log(`${key}: ${value}`);
+          }
+        const updatedData1 =JSON.stringify(req.body);
+      /*  for (const [key, value] of Object.entries(updatedData)) {
+            console.log(`${key}: ${value}`);
+          }*/
+        
+
+
+
+          async function update() {
+            try {
+                var i;
+                for (const [key, value] of Object.entries(updatedData)) {
+                    
+                    i=await model.updateproduct(conexion,key,value,userId)
+                    console.log(i)
+                    console.log(`${key}: ${value}`);
+                  }
+
+                  res.send('actualizado con exito')
+
+        
+                
+            } catch (error) {
+                
+            }
+            
+          }
+
+          update();
+
+       /* if ( updatedData1==='{}') {
+            console.log('no se proporcionaron  cambio')
+            
+        }else{
+            update();
+        }*/
+
+        
+        
+    },
+
+    actualizar2:function(req,res) {
+        const userId = req.params.id;
+        const imagen= req.file.filename
+        console.log(imagen)
+        const updatedData = req.body;
+        
+        console.log(userId)
+        
+        
+       
+
+        for (const [key, value] of Object.entries(updatedData)) {
+                    
+          
+            console.log(`${key}: ${value}`);
+          }
+        const updatedData1 =JSON.stringify(req.body);
+      /*  for (const [key, value] of Object.entries(updatedData)) {
+            console.log(`${key}: ${value}`);
+          }*/
+        
+
+
+
+          async function update() {
+            try {
+
+                const r=await model.updateimagen(conexion,imagen,userId)
+                console.log('imagen guardada ?'+r)
+                var i;
+                for (const [key, value] of Object.entries(updatedData)) {
+                    
+                    i=await model.updateproduct(conexion,key,value,userId)
+                    console.log(i)
+                    console.log(`${key}: ${value}`);
+                  }
+
+                  res.send('actualizado con exito')
+
+        
+                
+            } catch (error) {
+                
+            }
+            
+          }
+
+          update();
+
+        /*if (typeof req.body ==='{}') {
             console.log('no se proporcionaron  cambio')
             
         }else{
@@ -172,7 +273,7 @@ module.exports={
             console.log(req.body)
             console.log(req.file)
 
-        }
+        }*/
         
     }
    
