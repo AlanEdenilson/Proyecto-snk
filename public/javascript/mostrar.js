@@ -87,7 +87,7 @@ $(function(){
                 precio:$('#precio-unidad').val(),
                 stock: $('#precio-stock').val(),
                 descripcion:$('#descripcion').val(),
-                archivo: $('#imagen2')[0].files[0] // Obtener el archivo inicial
+                imagen: $('#imagen2')[0].files[0] // Obtener el archivo inicial
       
             };
             console.log(initialValues)
@@ -106,7 +106,7 @@ $(function(){
                     precio:$('#precio-unidad').val(),
                     stock: $('#precio-stock').val(),
                     descripcion:$('#descripcion').val(),
-                    archivo: $('#imagen2')[0].files[0] // Obtener el archivo actual
+                    imagen: $('#imagen2')[0].files[0] // Obtener el archivo actual
                   };
 
                   var imagen = $('#imagen2')[0].files[0]
@@ -157,7 +157,7 @@ $(function(){
                   contentType: type, // Evita que jQuery establezca el tipo de contenido
                   processData: false, // Evita que jQuery procese los datos
                   success: function(data) {
-                  console.log('hhhhhght')
+                  console.log(data)
                     // Aquí puedes agregar código para manejar la respuesta exitosa
                   },
                   error: function(xhr, status, error) {

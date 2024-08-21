@@ -148,6 +148,41 @@ module.exports={
             });
         });
     },
+
+    updateproduct:function(conexion,campo,value,id) {
+        const consulta=`UPDATE productos SET ${campo} = '${value}' WHERE id = ${id};`
+        return new Promise((resolve,reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    console.log('actualizado correcatamente')
+                    return resolve(true)
+                    
+                    
+                }                                                  
+            });
+        });
+
+        
+    },
+    updateimagen:function(conexion,value,id) {
+        const consulta=`UPDATE productos SET imagen = '${value}' WHERE id = ${id};`
+        return new Promise((resolve,reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    console.log('actualizado correcatamente')
+                    return resolve(true)
+                    
+                    
+                }                                                  
+            });
+        });
+
+        
+    },
     
     
 
