@@ -158,6 +158,10 @@ $(function(){
                   processData: false, // Evita que jQuery procese los datos
                   success: function(data) {
                   console.log(data)
+                  window.location.href='/ventanaAdmin'
+                  
+                  
+      
                     // Aquí puedes agregar código para manejar la respuesta exitosa
                   },
                   error: function(xhr, status, error) {
