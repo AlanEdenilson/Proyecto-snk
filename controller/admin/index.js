@@ -159,7 +159,22 @@ module.exports={
        }
 
 
-    }*/}
+    }*/},
+
+
+    actualizar:function(req,res) {
+
+        if (typeof req.body==='undefined') {
+            console.log('no se proporcionaron  cambio')
+            
+        }else{
+
+            console.log(req.body)
+            console.log(req.file)
+
+        }
+        
+    }
    
 
    

@@ -1,13 +1,19 @@
 $(function(){
 
+
+    
+
+
+
+
     $.getJSON('/adminr//te53eer353r', function(data) {
         
         
 
-        var jsonData = data
+        var jsonData = data;
         
         for (var i = 0; i < jsonData.length; i++) {
-            console.log(jsonData[i].imagen)
+          
             $('.admin-table').append(`
                   <tr id="${jsonData[i].id}" class="fila" >
                      <td><img src="/images/${jsonData[i].imagen}" alt="Profile Picture" class="profile-pic"></td>
@@ -17,10 +23,11 @@ $(function(){
                      <td>
                          <button class="btn-edit"  id="openModal1"
                         data-id="${jsonData[i].id}"
-                        data-imagen="${jsonData[i].imagen}"
                         data-nombre="${jsonData[i].nombre}"
                         data-precio="${jsonData[i].precio}"
                         data-stock="${jsonData[i].stock}"
+                         data-descripcion="${jsonData[i].descripcion}"
+                        data-imagen="${jsonData[i].imagen}"
                      
                          >
                          Editar</button>
@@ -35,24 +42,26 @@ $(function(){
                  
     // Asegúrate de que las funciones se establecen solo una vez
     $('.admin-table').off('click', '#openModal1').on('click', '#openModal1', function() {
+        
         var id = $(this).data('id');
-        var imagen = $(this).data('imagen');
         var nombre = $(this).data('nombre');
         var precio = $(this).data('precio');
         var stock = $(this).data('stock');
+        var descripcion = $(this).data('descripcion');
+        var imagen = $(this).data('imagen');
 
-        console.log($(this).data('imagen'))
-  
 
 
-        $('#product-id').val(id);
+
+        $(' #product-id').val(id);
         $('#nombre').val(nombre);
         $('#precio-unidad').val(precio);
         $('#precio-stock').val(stock);
+        $('#descripcion').val(descripcion);
        
         // Mostrar la imagen actual si existe
         if (imagen) {
-            $('#imagen-actual').attr('src','/images/'+imagen).show();
+            $('#vistaPrevia2').attr('src','/images/'+imagen).show();
             $('#imagen-actual-container').show();
         } else {
             $('#imagen-actual-container').hide();
@@ -60,6 +69,120 @@ $(function(){
         $('#myModal1').css({
             'display':'block',
             })
+            var $myDiv=$('#myModal1')
+           
+
+        
+           
+            if ($myDiv.css('display') === 'block') {
+                console.log('El div se ha ocultado');
+          
+                   
+
+    
+            }
+
+            const initialValues = {
+                nombre: $('#nombre').val(),
+                precio:$('#precio-unidad').val(),
+                stock: $('#precio-stock').val(),
+                descripcion:$('#descripcion').val(),
+                archivo: $('#imagen2')[0].files[0] // Obtener el archivo inicial
+      
+            };
+            console.log(initialValues)
+
+            $('#edit-product-form').on('submit', function(event) {
+                event.preventDefault();
+
+                var id=$(' #product-id').val();
+                var url;
+              
+                
+
+                const currentValues = {
+                    
+                    nombre: $('#nombre').val(),
+                    precio:$('#precio-unidad').val(),
+                    stock: $('#precio-stock').val(),
+                    descripcion:$('#descripcion').val(),
+                    archivo: $('#imagen2')[0].files[0] // Obtener el archivo actual
+                  };
+
+                  var imagen = $('#imagen2')[0].files[0]
+                  var type=false;
+                  var d;
+
+                  console.log(currentValues)
+
+                  const updatedFields = {};
+                  for (const key in currentValues) {
+                    if (currentValues[key] !== initialValues[key]) {
+                      updatedFields[key] = currentValues[key];
+                      
+                    }
+                  }
+              
+                  console.log(updatedFields)
+                  const formData = new FormData();
+              
+                  /*const files = $('#myForm input[type="file"]')[0].files;
+                  for (let i = 0; i < files.length; i++) {
+                    formData.append(`archivo`, files[i]);
+                    console.log(files[i])*
+                  }*/
+              
+                  for (const key in updatedFields) {
+                    formData.append(key, updatedFields[key]);
+                  }
+
+                  if (typeof imagen === 'undefined'){
+                    url='/update1/'
+                    type='application/json'
+                    d=JSON.stringify(updatedFields)
+                    console.log('no se a cambiado la imagen ')
+                  }else{
+                    url='/update2/'
+                    console.log('enviando imagen ')
+                    d=formData;
+
+                  }
+              
+
+                              
+                $.ajax({
+                  url: `/adminr${url}${id}`,
+                  type: 'PATCH',
+                  data:d,
+                  contentType: type, // Evita que jQuery establezca el tipo de contenido
+                  processData: false, // Evita que jQuery procese los datos
+                  success: function(data) {
+                  console.log('hhhhhght')
+                    // Aquí puedes agregar código para manejar la respuesta exitosa
+                  },
+                  error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    // Aquí puedes agregar código para manejar los errores
+                  }
+                });
+
+  
+              
+        
+    
+              
+            
+            
+    
+            
+    
+        })
+
+         
+
+
+        
+        
     });
 
     $('.admin-table').off('click', '#openModall').on('click', '#openModall', function() {
@@ -86,3 +209,18 @@ $(function(){
 
        
 })
+
+  // Convertir los datos del formulario a JSON
+             /* const jsonData = {};
+                for (const [key, value] of formData.entries()) {
+                  // Verificar si el campo es de tipo "file"
+                  if (key === 'archivo') {
+                    // Obtener el nombre del archivo
+                    jsonData[key] = value.name;
+                  } else {
+                    jsonData[key] = value;
+                  }
+                }
+              
+                // Imprimir el objeto JSON en la consola
+                console.log(JSON.stringify(jsonData));*/
