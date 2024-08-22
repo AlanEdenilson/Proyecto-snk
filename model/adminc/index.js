@@ -167,6 +167,7 @@ module.exports={
         
     },
     updateimagen:function(conexion,value,id) {
+        console.log('imagen:'+value)
         const consulta=`UPDATE productos SET imagen = '${value}' WHERE id = ${id};`
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {

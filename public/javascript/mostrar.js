@@ -166,6 +166,7 @@ $(function(){
                   },
                   error: function(xhr, status, error) {
                     console.error('Error:', error);
+                    console.log(status)
                     // Aquí puedes agregar código para manejar los errores
                   }
                 });

@@ -163,8 +163,14 @@ module.exports={
 
           async function update() {
             try {
-                var i;
-                for (const [key, value] of Object.entries(updatedData)) {
+              var i;
+                 if (updatedData1 ==='{}') {
+                  console.log('no hay cambios de texto ')
+                  res.send('no hay cambios que aser')
+          
+            
+                }else{
+                  for (const [key, value] of Object.entries(updatedData)) {
                     
                     i=await model.updateproduct(conexion,key,value,userId)
                     console.log(i)
@@ -172,6 +178,10 @@ module.exports={
                   }
 
                   res.send('actualizado con exito')
+        
+                  
+        
+                }
 
         
                 
@@ -197,10 +207,10 @@ module.exports={
     actualizar2: function(req,res) {
         const userId = req.params.id;
         const imagen= req.file.filename
-        console.log(imagen)
+     
         const updatedData = req.body;
         
-        console.log(userId)
+   
         
         
        
@@ -218,28 +228,40 @@ module.exports={
 
 
 
-          async function update() {
+          async function update(imagen) {
             try {
+              var i;
                 const datos = await model.mostarparad(conexion, req.params.id);
                 const imgPath ="public/images/"+datos[0].imagen;
-                
-                console.log('Intentando borrar:', imgPath);
 
-                const r=await model.updateimagen(conexion,imagen,userId)
-                console.log('imagen guardada ?'+r)
+                if(datos[0].imagen===imagen){
+                  console.log('la imagen que has roporcionado es la misma asi que no se puede actualizar ')
 
-                try {
+                }else{
+                  console.log('Intentando borrar:', imgPath);
+
+                  const r=await model.updateimagen(conexion,imagen,userId)
+                  console.log('imagen guardada ?'+r)
+  
+                  try {
+              
+                      await fs.unlink(imgPath);
+                      console.log('Borrado exitosamente');
+                      
+                    } catch (accessError) {
+                      console.error('El archivo no existe o no se puede acceder:', imgPath);
+                      return res.status(404).send({ msg: 'Archivo no encontrado' });
+                    }
+
+                }
+            //----------
+                if (updatedData1 ==='{}') {
+                  console.log('no hay cambios de texto ')
+                  res.send('no hay cambios que aser')
+          
             
-                    await fs.unlink(imgPath);
-                    console.log('Borrado exitosamente');
-                    
-                  } catch (accessError) {
-                    console.error('El archivo no existe o no se puede acceder:', imgPath);
-                    return res.status(404).send({ msg: 'Archivo no encontrado' });
-                  }
-
-                var i;
-                for (const [key, value] of Object.entries(updatedData)) {
+                }else{
+                  for (const [key, value] of Object.entries(updatedData)) {
                     
                     i=await model.updateproduct(conexion,key,value,userId)
                     console.log(i)
@@ -247,26 +269,19 @@ module.exports={
                   }
 
                   res.send('actualizado con exito')
-
         
-                
+                  
+        
+                }
+ 
             } catch (error) {
                 
             }
             
           }
+          update(imagen);
 
-          update();
 
-        /*if (typeof req.body ==='{}') {
-            console.log('no se proporcionaron  cambio')
-            
-        }else{
-
-            console.log(req.body)
-            console.log(req.file)
-
-        }*/
         
     }
    
