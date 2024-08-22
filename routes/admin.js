@@ -26,7 +26,7 @@ router.get('/uploads',seguridad.uyyy,controlador.updt)
 
 router.post('/add',upload.single('archivo'),controlador.addproductos);
 
-router.get('/te53eer353r',seguridad.uyyy,controlador.mostar)
+router.get('/te53eer353r',controlador.mostar)
 
 router.delete('/delete/:id',controlador.delete)
 

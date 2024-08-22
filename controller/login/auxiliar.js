@@ -12,10 +12,11 @@ function sino(res,ruta) {
 
 module.exports={
 
-    mostrarventanas:function (res,rol,imagen,nombre) {
+    mostrarventanas:function (res,rol,token) {
+        
         if(rol==="1" || rol===1){
-            console.log("#"+imagen)
-            res.render('login/ventanaAdmin',{imagen:imagen,nombre:nombre});
+          
+            res.render('login/ventanaAdmin',{imagen:token.imagen,nombre:token.nombre,marca:token.marca});
         }else if(rol==="2" || rol===2){
             res.render('login/ventanaRpartidor',{correo:gmail});
             console.log("gmail: "+ gmail)

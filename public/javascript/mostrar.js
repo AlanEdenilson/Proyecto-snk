@@ -6,7 +6,7 @@ $(function(){
 
 
 
-    $.getJSON('/adminr//te53eer353r', function(data) {
+    $.getJSON('/adminr/te53eer353r', function(data) {
         
         
 
