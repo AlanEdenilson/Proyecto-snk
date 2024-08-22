@@ -135,31 +135,9 @@ module.exports={
         console.error('Error al borrar:', error);
         res.status(500).send({msg: 'Error al borrar el archivo', error: error.message});
         }
-        
-        
 
-       /*try {
-        var datos= await model.mostarparad(conexion,req.params.id)
-        const img = path.join(__dirname,'images', datos[0].imagen);
-        console.log(img)
+    },
 
-        if (await fs.access(imgPath).then((
-
-        ) => true).catch(() => false)) {
-           
-            
-            await fs.unlink(imgPath);}
-      
-        await model.delete(conexion,req.params.id)
-        console.log('borrado exitosamnete')
-        res.send({msg:'borrado exitosamnete'})
-
-       } catch (error) {
-        
-       }
-
-
-    }*/},
 
 
     actualizar:function(req,res) {
@@ -216,7 +194,7 @@ module.exports={
         
     },
 
-    actualizar2:function(req,res) {
+    actualizar2: function(req,res) {
         const userId = req.params.id;
         const imagen= req.file.filename
         console.log(imagen)
@@ -242,9 +220,24 @@ module.exports={
 
           async function update() {
             try {
+                const datos = await model.mostarparad(conexion, req.params.id);
+                const imgPath ="public/images/"+datos[0].imagen;
+                
+                console.log('Intentando borrar:', imgPath);
 
                 const r=await model.updateimagen(conexion,imagen,userId)
                 console.log('imagen guardada ?'+r)
+
+                try {
+            
+                    await fs.unlink(imgPath);
+                    console.log('Borrado exitosamente');
+                    
+                  } catch (accessError) {
+                    console.error('El archivo no existe o no se puede acceder:', imgPath);
+                    return res.status(404).send({ msg: 'Archivo no encontrado' });
+                  }
+
                 var i;
                 for (const [key, value] of Object.entries(updatedData)) {
                     
