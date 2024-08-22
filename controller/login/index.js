@@ -149,9 +149,9 @@ module.exports={
               res.cookie('perfil',play,{ httpOnly: true,secure: true });
               
               
-              aux.mostrarventanas(res,respuestabd.id_rol,imagen,respuestabd.usuario)
+              aux.mostrarVentanas2(res,respuestabd.id_rol,imagen,respuestabd.usuario)
             }else{
-              aux.mostrarventanas(res,respuestabd.id_rol,imagen,respuestabd.usuario)
+              aux.mostrarVentanas2(res,respuestabd.id_rol,imagen,respuestabd.usuario)
 
             }
 

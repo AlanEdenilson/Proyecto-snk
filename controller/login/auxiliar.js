@@ -1,7 +1,7 @@
 
-function sino(res,ruta) {
+function sino(res,ruta,imagen,nombre) {
     if(ruta==="1" ||ruta===1){
-        res.render('login/ventanaAdmin');
+        res.render('login/ventanaAdmin',{imagen:imagen,nombre:nombre});
     }else if(ruta==="2" ||ruta===2){
         res.render('login/ventanaRpartidor');
     }     
@@ -25,8 +25,8 @@ module.exports={
 
 
     } , 
-    mostrarVentanas2:function (res,rol) {
-                sino(res,rol);
+    mostrarVentanas2:function (res,rol,imagen,nombre) {
+                sino(res,rol,imagen,nombre);
     
     } ,
 
