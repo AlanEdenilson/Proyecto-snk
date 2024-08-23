@@ -1,22 +1,66 @@
 /*/ tabla de contenido de producto/*/
 
-.admin-table {
+.contenido1{
+    position: absolute;
+    height: 350px;
     width: 93%;
+    top: 42%;
+    right: 5px;
+    overflow: auto;
+}
+.admin-table {
+    width: 100%; 
     border-collapse: collapse;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    top: 200px;
-    left: 90px;
+    max-width: 100%;
     position: relative;
+}
+.header-row{
+  position: absolute;
+  color: white;
+  background-color: #00759c2d;
+  border: 1px solid;
+  border-color: rgba(0, 238, 255, 0.253);
+  width: 93%;
+  left: 90px;
+  top: 200px;
+  height: 50px;
+}
+.titu1{
+  position: absolute;
+  color: white;
+  left: 7%;
+  top: 36%;
+}
+.titu2{
+  position: absolute;
+  color: white;
+  top: 36%;
+  left: 291px;
+}
+.titu3{
+  position: absolute;
+  color: white;
+  top: 36%;
+  left: 584px;
+}
+.titu4{
+  position: absolute;
+  color: white;
+  top: 36%;
+  left: 794px;
+}
+.titu5{
+  position: absolute;
+  color: white;
+  top: 36%;
+  left: 1005px;
 }
 .admin-table th, .admin-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #0ef;
     color: #0ef;
-}
-.admin-table th {
-    background-color: #0a4b5e;
-    color: white;
 }
 .admin-table tr:hover {
     background-color: rgb(81, 101, 102);
@@ -44,7 +88,7 @@
 }
 .h1a{
     position: absolute;
-    top: 22%;
+    top: 25%;
     left: 38%;
     font-size: 35px;
     color: white;
@@ -139,10 +183,10 @@
 .dropdown {
     width: 250px;
     font-family: Arial, sans-serif;
-    position: relative;
-    position: absolute;
+    position: fixed;
     top: 5%;
     left: 80%;
+    overflow: hidden;
   }
   
   .dropdown-header {
