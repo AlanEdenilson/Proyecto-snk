@@ -11,6 +11,15 @@ $(function(){
   })
 
 
+  $('#cancelBtnn').click(function () {
+    $('.modall').css({
+      'display':'none',
+      })
+
+    
+  })
+
+
 
 
         
