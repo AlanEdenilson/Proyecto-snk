@@ -4,30 +4,36 @@ const model=require('../../model/adminc/index')
 const Gtoken = require('../login/Gtoken');
 const GenerarID=require('../login/generarcodigo')
 const fs = require('fs').promises;
-const path = require('path');
+//const path = require('path');
+const cloudinary=require('../cloudinar')
+
 
 
 
 
 module.exports={
 
-    marca:function(req,res){
-        req.session.imagen=req.file.filename;
-        req.session.marca=req.body.nombre;
+    marca:async function(req,res){
         
-        console.log('nombre de la marca',req.session.marca)
+        req.session.marca=req.body.nombre;
+        const dataUri = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+        
 
 
+        try {
 
-        async function insert(){
-            try {
-                const token = req.cookies.authToken;
+          const result = await cloudinary.subir(dataUri,{ use_filename: true, unique_filename: false })
+          req.session.imagen=result.secure_url;
+          req.session.idImagen=result.public_id;
+
+          console.log(`desde el controlador imagen url:${result.secure_url} mas el id :${result.public_id}`)
+          const token = req.cookies.authToken;
                 var vtoken = await Gtoken.validarToken2(token);
                 //console.log("El token es válido:", vtoken);
                 var id_admin = vtoken.id;
                 req.session.admin=vtoken.nombre;
     
-                const respuesta= await model.insertarmarca(conexion,id_admin,req.file.filename,req.body)
+                const respuesta= await model.insertarmarca(conexion,id_admin,result.public_id,result.secure_url,req.body)
 
                 const gcodigo= await GenerarID.generarid();
 
@@ -36,23 +42,14 @@ module.exports={
                 const uddates= await model.isertIdadmin(conexion,gcodigo,id_admin);
 
                 res.render('admin/id',{codigo:gcodigo})
-
-
-   
-    
-            } catch (error) {
-                console.error(error)
-    
-                
-
-             }
-       
-
-        
+          
+        } catch (error) {
+          console.log(error)
+          
         }
         
 
-        insert()
+       // insert()
 
         
 
@@ -61,7 +58,7 @@ module.exports={
     },
 
     updt:function (req,res) {
-        var imagen=`/images/${req.session.imagen}`
+        var imagen=req.session.imagen;
         var nombre=req.session.admin;
         delete req.session.admin
         delete req.session.imagen;
@@ -71,23 +68,25 @@ module.exports={
     },
 
 
-    addproductos:function(req,res){
+    addproductos:async function(req,res){
         const perfil = req.cookies.perfil;
-       
-        async function add() {
-            try {
 
-                await model.addproducts(conexion,perfil.marca,req.file.filename,req.body)
+
+       
+      
+            try {
+              const dataUri = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+              const result = await cloudinary.subir(dataUri,{ use_filename: true, unique_filename: false })
+              console.log(`desde el controlador imagen url:${result.secure_url} mas el id :${result.public_id}`)
+
+                await model.addproducts(conexion,perfil.marca,result.public_id,result.secure_url,req.body)
                 res.redirect('/ventanaAdmin')
                 
             } catch (error) {
                 
             }
             
-        }
-
-
-       add()
+       
 
 
     },

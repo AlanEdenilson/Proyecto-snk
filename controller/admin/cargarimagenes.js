@@ -1,8 +1,11 @@
 const multer = require('multer')
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 const { format } = require('date-fns');
 
 // Formatear la fecha actual
-const fechaActual = Date.now();
+/*const fechaActual = Date.now();
 
 
 
@@ -24,5 +27,5 @@ const storage = multer.diskStorage({
     }
   })
   
-  const upload = multer({ storage: storage })
+  const upload = multer({ storage: storage })*/
   module.exports = upload

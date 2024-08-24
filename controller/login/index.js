@@ -140,7 +140,7 @@ module.exports={
            
 
             if(rmarca.respuesta){
-              var imagen=`/images/${rmarca.datos.imagen}`
+              var imagen=rmarca.datos.imagen;
               var play={
                 marca:rmarca.datos.id,
                 imagen:imagen,
