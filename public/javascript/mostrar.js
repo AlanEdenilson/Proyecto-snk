@@ -61,7 +61,7 @@ $(function(){
        
         // Mostrar la imagen actual si existe
         if (imagen) {
-            $('#vistaPrevia2').attr('src','/images/'+imagen).show();
+            $('#vistaPrevia2').attr('src',imagen).show();
             $('#imagen-actual-container').show();
         } else {
             $('#imagen-actual-container').hide();
