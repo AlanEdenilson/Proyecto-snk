@@ -121,7 +121,7 @@ module.exports={
     },
 
     mostarparad: function (conexion,id) {
-        const consulta = `SELECT imagen FROM productos WHERE id = ${id}`
+        const consulta = `SELECT id_imagen FROM productos WHERE id = ${id}`
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -173,12 +173,12 @@ module.exports={
             conexion.query(consulta, function (error, datos) {
                 if (error) {
                     throw error;
-                } else {
-                    console.log('actualizado correcatamente')
-                    return resolve(true)
-                    
-                    
-                }                                                  
+                } else if(datos.affectedRows===1) {
+                    //console.log(datos)
+                    return resolve(true)  
+                } else{
+                    reject('problemas al actualizar imagen')
+                }                                                 
             });
         });
 

@@ -112,19 +112,19 @@ module.exports={
 
         // ... dentro de la función delete
         try {
-        const datos = await model.mostarparad(conexion, req.params.id);
-        const imgPath ="public/images/"+datos[0].imagen;
-        
-        console.log('Intentando borrar:', imgPath);
-        
-        try {
-            
-            await fs.unlink(imgPath);
-            console.log('Borrado exitosamente');
-            
-          } catch (accessError) {
-            console.error('El archivo no existe o no se puede acceder:', imgPath);
-            return res.status(404).send({ msg: 'Archivo no encontrado' });
+          const datos = await model.mostarparad(conexion,req.params.id);
+          const imgPath =datos[0].id_imagen;
+          console.log('imagen de cloudinary'+imgPath)
+
+          if(!imgPath){
+            console.log('la imagen no existe ')
+          }
+
+          const result= await cloudinary.delete(imgPath)
+          if (result.result === 'ok') {
+            console.log('Imagen borrada exitosamente');
+          } else {
+            console.log('Imagen no encontrada' );
           }
         
         await model.delete(conexion, req.params.id);
@@ -136,8 +136,6 @@ module.exports={
         }
 
     },
-
-
 
     actualizar:function(req,res) {
         const userId = req.params.id;
@@ -205,15 +203,14 @@ module.exports={
 
     actualizar2: function(req,res) {
         const userId = req.params.id;
-        const imagen= req.file.filename
+
+       console.log(req.params.id) 
+        
      
         const updatedData = req.body;
         
    
-        
-        
-       
-
+  
         for (const [key, value] of Object.entries(updatedData)) {
                     
           
@@ -224,33 +221,54 @@ module.exports={
             console.log(`${key}: ${value}`);
           }*/
         
-
-
-
-          async function update(imagen) {
+          async function update() {
             try {
-              var i;
-                const datos = await model.mostarparad(conexion, req.params.id);
-                const imgPath ="public/images/"+datos[0].imagen;
+              
+                const datos = await model.mostarparad(conexion,req.params.id);
+                const imgPath =datos[0].id_imagen;
+                console.log('imagen de cloudinary'+imgPath)
 
-                if(datos[0].imagen===imagen){
+               // if (!imgPath) {
+               //   return res.status(404).json({ error: 'Imagen no encontrada' });
+               // }
+
+                const dataUri = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+                const result = await cloudinary.actualizar(dataUri,imgPath)
+                console.log(`desde el controlador imagen url:${result.secure_url} mas el id :${result.public_id}`)
+
+                const r=await model.updateimagen(conexion,result.secure_url,userId)
+                  console.log('imagen guardada ?'+r)
+
+                  if (updatedData1 ==='{}') {
+                    console.log('no hay cambios de texto ')
+                    res.send('no hay cambios que aser')
+            
+              
+                  }else{
+                    for (const [key, value] of Object.entries(updatedData)) {
+                      
+                      i=await model.updateproduct(conexion,key,value,userId)
+                      console.log(i)
+                      console.log(`${key}: ${value}`);
+                    }
+                  }
+
+                  res.send('actualizado con exito')
+
+
+
+
+
+              /*  if(datos[0].imagen===imagen){
                   console.log('la imagen que has roporcionado es la misma asi que no se puede actualizar ')
 
                 }else{
                   console.log('Intentando borrar:', imgPath);
 
                   const r=await model.updateimagen(conexion,imagen,userId)
-                  console.log('imagen guardada ?'+r)
+                  console.log('imagen guardada ?'+r)*/
   
-                  try {
-              
-                      await fs.unlink(imgPath);
-                      console.log('Borrado exitosamente');
-                      
-                    } catch (accessError) {
-                      console.error('El archivo no existe o no se puede acceder:', imgPath);
-                      return res.status(404).send({ msg: 'Archivo no encontrado' });
-                    }
+                 /* 
 
                 }
             //----------
@@ -271,14 +289,14 @@ module.exports={
         
                   
         
-                }
+                }*/
  
             } catch (error) {
                 
             }
             
           }
-          update(imagen);
+          update();
 
 
         

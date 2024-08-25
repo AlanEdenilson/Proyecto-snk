@@ -26,5 +26,33 @@ module.exports={
 
     
     
+  },
+  actualizar:async function(imagen,id){
+
+    try {
+
+      return await cloudinary.uploader.upload(imagen,{
+        public_id: id, // Usa el mismo public_id para sobrescribir
+        overwrite: true})
+
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+
+    
+
+
+  },
+  delete:async function(id){
+    try{
+
+      return await cloudinary.uploader.destroy(id);
+
+    } catch(error){
+      console.error({ error: 'Error al borrar la imagen' });
+
+    }
   }
 }

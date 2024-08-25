@@ -31,6 +31,7 @@ router.get('/te53eer353r',controlador.mostar)
 router.delete('/delete/:id',controlador.delete)
 
 router.patch('/update1/:id',controlador.actualizar)
+
 router.patch('/update2/:id',upload.single('imagen'),controlador.actualizar2)
 
 
