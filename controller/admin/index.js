@@ -76,7 +76,7 @@ module.exports={
       
             try {
               const dataUri = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
-              const result = await cloudinary.subir(dataUri,{ use_filename: true, unique_filename: false })
+              const result = await cloudinary.subir(dataUri)
               console.log(`desde el controlador imagen url:${result.secure_url} mas el id :${result.public_id}`)
 
                 await model.addproducts(conexion,perfil.marca,result.public_id,result.secure_url,req.body)

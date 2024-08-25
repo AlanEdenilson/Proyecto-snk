@@ -18,8 +18,6 @@ module.exports={
 
       return await cloudinary.uploader.upload(imagen)
 
-
-
       
     } catch (error) {
       console.log(error)
