@@ -83,6 +83,7 @@ module.exports={
                 res.redirect('/ventanaAdmin')
                 
             } catch (error) {
+              console.log('a ocurrido un error al agregar productos')
                 
             }
             
