@@ -7,16 +7,18 @@ body {
 
 .container {
     max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffffff;
+    margin: 90px auto;
+    padding: 19px;
+    background-color: #081b29;
+    border: 3px solid;
+    border-color: #0ef;
     border-radius: 8px;
-    box-shadow: 0 0 12345px #0ef;
+    box-shadow: 0 0 25px #0ef;
 }
 
 h2 {
     text-align: center;
-    color: #333;
+    color: white;
 }
 
 .form-group {
@@ -26,13 +28,13 @@ h2 {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #555;
+    color: #0ef;
 }
 
 input[type="text"],
 input[type="email"],
 textarea {
-    width: 99%;
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -42,11 +44,11 @@ textarea {
 input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus {
-    border-color: #007bff;
+    border-color: #01d9ff;
 }
 
 button {
-    width: 100%;
+    width: 99%;
     padding: 10px;
     background-color:#007bff;
     border: none;
@@ -58,5 +60,8 @@ button {
 }
 
 button:hover {
-    background-color:#0ef;
+    background-color: #b30866;
+}
+#imagen{
+    color: white;
 }
