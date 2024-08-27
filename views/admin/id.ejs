@@ -14,9 +14,9 @@
     <div  class="conteiner">
         <form action="/adminr/uploads" method="get">
             <p class="titulo_codigo">Tu Codigo Generado es el Siguiente: </p>
-            <input class="codigo_generado"  type="text" value="<% if(typeof codigo != 'undefined') { %><%= codigo %><% } %>">
             
-        <p class="contenido_codigo"># <span>12345</span></p>
+            
+        <p class="contenido_codigo"># <span><% if(typeof codigo != 'undefined') { %><%= codigo %><% } %></span></p>
 
         <button class="accion_ok" type="submit">Aceptar</button>
 
