@@ -353,3 +353,57 @@ body{
     height: 150%;
     width: 100%;
 }
+
+.advertencia{
+    position: absolute;
+    border: 2px solid;
+    border-color: #0ef;
+    border-radius: 9px;
+    top: 10%;
+    left: 35%;
+    height: 60%;
+    width: 30%;
+    background-color: #646363;
+    box-shadow: 0 0 25px #0ef;
+}
+.titulo20{
+    position: absolute;
+    color: rgb(255, 0, 128);
+    left: 27%;
+    top: 5%;
+    font-size: 38px;
+}
+.adver{
+    position: absolute;
+    height: 120px;
+    width: 150px;
+    left: 30%;
+    top: 19%;
+}
+
+.contenido76{
+    position: absolute;
+    margin-top: 52%;
+    height: 25%;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+}
+.acep{
+    position: absolute;
+    top: 78%;
+    left: 25%;
+    width: 50%;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    background-color: #093a47;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.acep:hover{
+    background-color: #11b103bb;
+    color: white;
+}
