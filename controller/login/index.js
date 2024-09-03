@@ -83,50 +83,33 @@ module.exports={
             var  respuestabd = await model.buscarusuario(conexion,username,password)
             console.log("tu respuesta de la bd es  ; " + respuestabd)
 
-            var rmarca= await model.buscarmarca(conexion,respuestabd.id)
+            var marca= await model.buscarmarca(conexion,respuestabd.id)
+            
 
             var payload
             var payload2
 
-            if(rmarca.respuesta){
-             payload = {
-               id:respuestabd.id,
-               marca:rmarca.datos.id,
-               rol:respuestabd.id_rol,
-               nombre:respuestabd.usuario,
-               email:respuestabd.correo,
-               imagen:rmarca.datos.imagen
-           }
-
-
+            payload = {
+              id:respuestabd.id,
+             rol:respuestabd.rol,
+             nombre:respuestabd.usuario,
+             email:respuestabd.email,
+         }
+  
+  
             payload2 = {
-               id:respuestabd.id,
-               marca:rmarca.datos.id,
-               rol:respuestabd.id_rol,
-               nombre:respuestabd.usuario,
-               email:respuestabd.correo,
-               refresh:'true',
-               imagen:rmarca.datos.imagen
-           }
+             id:respuestabd.id,
+             rol:respuestabd.rol,
+             nombre:respuestabd.usuario,
+             email:respuestabd.email,
+             refresh:'true'
+         }
 
-
-            }else{
-               payload = {
-                id:respuestabd.id,
-               rol:respuestabd.id_rol,
-               nombre:respuestabd.usuario,
-               email:respuestabd.correo,
-           }
-
-
-              payload2 = {
-               id:respuestabd.id,
-               rol:respuestabd.id_rol,
-               nombre:respuestabd.usuario,
-               email:respuestabd.correo,
-               refresh:'true'
-           }
-
+           if(marca.respuesta){
+            payload.imagen = marca.datos.imagen;
+            payload.marca = marca.datos.id;
+            payload2.imagen = marca.datos.imagen;
+            payload2.marca = marca.datos.id;
             }
             console.log(payload)
            
@@ -136,22 +119,22 @@ module.exports={
            // console.log("cokkie de correo almacenado con exito")
             const refreshToken = Gtoken.refreshToken(payload2);
             res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
-            res.cookie('correo', respuestabd.correo, { httpOnly: true,secure: true });
-           
+            //res.cookie('correo', respuestabd.correo, { httpOnly: true,secure: true });
+            //aux.mostrarVentanas2(res,respuestabd.rol,respuestabd.usuario)
 
-            if(rmarca.respuesta){
-              var imagen=rmarca.datos.imagen;
+            if(marca.respuesta){
+              var imagen=marca.datos.imagen;
               var play={
-                marca:rmarca.datos.id,
+                marca:marca.datos.id,
                 imagen:imagen,
                 nombre:respuestabd.usuario
               }
               res.cookie('perfil',play,{ httpOnly: true,secure: true });
               
               
-              aux.mostrarVentanas2(res,respuestabd.id_rol,imagen,respuestabd.usuario)
+              aux.mostrarVentanas2(res,respuestabd.rol,imagen,respuestabd.usuario)
             }else{
-              aux.mostrarVentanas2(res,respuestabd.id_rol,imagen,respuestabd.usuario)
+              aux.mostrarventanas(res,respuestabd.rol)
 
             }
 
@@ -172,7 +155,7 @@ module.exports={
     //-----------------------------------------|
 
     //-----------------------------------------|
-    verificarCuenta:function(req, res){ 
+    verificarCuenta: async function(req, res){ 
         var datos = req.body;
         console.log(datos);
 
@@ -203,15 +186,32 @@ module.exports={
         res.cookie('authToken', token, { httpOnly: true,secure: true });
         res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
 
-        model.insertarUsuario(conexion,datos)
-         .then(() => {
-            console.log("usuario ingresado"); // Esto se ejecuta si la promesa se resuelve
-          })
-          .catch((error) => {
-            console.error(error); // Esto se ejecuta si la promesa se rechaza
-          });
+        try {
+          var result = await model.insertarUsuario(conexion,datos)
+          const principalId = result.insertId;
 
-        aux.mostrarVentanas2(res,req.body.rol)
+          console.log(principalId)
+
+
+          if(req.body.rol==='repartidor'){
+            await model.inforepar(conexion,principalId)
+            console.log('insertado el repartidor') 
+          }else{
+            await model.infoadmin(conexion,principalId) 
+            console.log('insertado el admin')
+
+          }
+         
+          aux.mostrarVentanas2(res,req.body.rol)
+
+        
+        } catch (error) {
+          console.error('Error al insertar usuario:', error.message);
+
+          
+        }
+
+        
 
         
     },

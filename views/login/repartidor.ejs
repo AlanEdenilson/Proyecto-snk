@@ -13,7 +13,7 @@
         <h2>REGISTRO REPARTIDOR</h2>
         <form method="post" action="/repartidor">
             <div class="input-group">
-                <input type="hidden" id="fullname" name="rol" value="2">
+                <input type="hidden" id="fullname" name="rol" value="repartidor">
             </div>
             <div class="input-group">
                 <label for="fullname"><i class="fas fa-user"></i> Nombre </label>
@@ -57,7 +57,7 @@
             </div>
             <div class="input-group">
                 <label for="id"><i class="fa-solid fa-hashtag"></i>Id Marca</label>
-                <input type="Id" id="Id" name="Id" placeholder="ID"value="<% if(typeof valores != 'undefined') { %><%= valores.Id %><% }%>" >
+                <input type="number" id="Id" name="Id" placeholder="ID"value="<% if(typeof valores != 'undefined') { %><%= valores.Id %><% }%>" >
                 <% if (typeof errors !== 'undefined') { %>
                  <% if ( errors.Id ) { %>
                         <div>

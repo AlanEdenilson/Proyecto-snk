@@ -3,7 +3,7 @@ const conexion = require('../../config/conexion');
 const model=require('../../model/adminc/index')
 const Gtoken = require('../login/Gtoken');
 const GenerarID=require('../login/generarcodigo')
-const fs = require('fs').promises;
+//const fs = require('fs').promises;
 //const path = require('path');
 const cloudinary=require('../cloudinar')
 
@@ -15,7 +15,7 @@ module.exports={
 
     marca:async function(req,res){
         
-        req.session.marca=req.body.nombre;
+        
         const dataUri = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
         
 
@@ -29,17 +29,21 @@ module.exports={
           console.log(`desde el controlador imagen url:${result.secure_url} mas el id :${result.public_id}`)
           const token = req.cookies.authToken;
                 var vtoken = await Gtoken.validarToken2(token);
-                //console.log("El token es válido:", vtoken);
+                console.log("El token es válido:", vtoken);
                 var id_admin = vtoken.id;
                 req.session.admin=vtoken.nombre;
     
-                const respuesta= await model.insertarmarca(conexion,id_admin,result.public_id,result.secure_url,req.body)
+                const resulta = await model.insertarmarca(conexion,result.public_id,result.secure_url,req.body)
+                const principalId = resulta.insertId;
+                console.log(principalId)
+
+                await model.infoadmin(conexion,principalId,id_admin)
 
                 const gcodigo= await GenerarID.generarid();
 
-                const update= await model.isertId(conexion,req.session.marca,gcodigo);
+                const update= await model.isertId(conexion,principalId,gcodigo);
 
-                const uddates= await model.isertIdadmin(conexion,gcodigo,id_admin);
+                //const uddates= await model.isertIdadmin(conexion,gcodigo,id_admin);
 
                 res.render('admin/id',{codigo:gcodigo})
           

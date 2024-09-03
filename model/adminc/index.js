@@ -1,7 +1,7 @@
 module.exports={
 
-    insertarmarca:function(conexion,id_admin,id_imagen,imagen,datos) {
-        const consulta = `INSERT INTO marca (id_admin,id_imagen,imagen,nombre,descripcion,tipo_producto) VALUES ('${id_admin}','${id_imagen}','${imagen}','${datos.nombre}','${datos.descripcion}','${datos.tipop}')`;
+    insertarmarca:function(conexion,id_imagen,imagen,datos) {
+        const consulta = `INSERT INTO marcas (id_imagen,imagen,nombre,descripcion,tipo_producto) VALUES ('${id_imagen}','${imagen}','${datos.nombre}','${datos.descripcion}','${datos.tipop}')`;
         return new Promise((resolve, reject) => {
             try {
                 conexion.query(consulta, function (error,result) {
@@ -9,7 +9,7 @@ module.exports={
                         return reject(error);
                     } else {
                         
-                        resolve(true);
+                        resolve(result);
 
                     }
                 });
@@ -24,8 +24,32 @@ module.exports={
         });
         
     },
+    infoadmin:function (conexion,marca,id) {
+        const consulta =  `UPDATE administradores SET marca_id = '${marca}' WHERE id = '${id}'`;
+        return new Promise((resolve, reject) => {
+            try {
+                conexion.query(consulta, function (error,result) {
+                    if (error) {
+                        return reject(error);
+                    } else {
+                        console.log('actualizado el admin ya tiene marca')
+                        resolve(true);
+                    }
+                });
+                
+            } catch (error) {
+                throw error;
+                
+
+                
+            }
+
+
+           
+        });
+    },
     buscarId:function (conexion,id) {
-        const consulta=`SELECT * FROM marca WHERE id_marca = '${id}';`
+        const consulta=`SELECT * FROM marcas WHERE id_marca = '${id}';`
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -47,8 +71,8 @@ module.exports={
         });
         
     },
-    isertId:function(conexion,nombre,id) {
-        const consulta=`UPDATE marca SET id_marca = ${id} WHERE nombre = '${nombre}';`
+    isertId:function(conexion,id_p,id) {
+        const consulta=`UPDATE marcas SET id_marca = ${id} WHERE id = '${id_p}';`
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -89,7 +113,7 @@ module.exports={
     },
 
     addproducts:function(conexion,id_marca,id_imagen,imagen,datos ) {
-        const consulta=`INSERT INTO productos (id_marca,id_imagen,imagen,nombre,descripcion,precio,stock,fecha_creacion) VALUES ('${id_marca}','${id_imagen}','${imagen}','${datos.nombre}','${datos.descripcion}','${datos.precio}','${datos.stock}',NOW());`
+        const consulta=`INSERT INTO productos (marca_id,id_imagen,imagen,nombre,descripcion,precio,stock,fecha_creacion) VALUES ('${id_marca}','${id_imagen}','${imagen}','${datos.nombre}','${datos.descripcion}','${datos.precio}','${datos.stock}',NOW());`
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -104,7 +128,7 @@ module.exports={
 
     },
     mostar: function (conexion,marca) {
-        const consulta = `SELECT * FROM productos WHERE id_marca = ${marca}`
+        const consulta = `SELECT * FROM productos WHERE marca_id = ${marca}`
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {

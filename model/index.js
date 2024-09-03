@@ -8,7 +8,7 @@
 
 module.exports = {
     buscarusuario:function (conexion,username,password) {
-        const consulta = `SELECT id,id_rol,usuario,correo, contraseña FROM usuario WHERE usuario = '${username}' AND contraseña ='${password}'`;
+        const consulta = `SELECT id,usuario,email,contrasena,rol FROM usuarios WHERE usuario = '${username}' AND contrasena ='${password}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -28,13 +28,62 @@ module.exports = {
     },
 
     insertarUsuario:function (conexion,datos) {
-        const consulta = `INSERT INTO usuario (id_rol,usuario,correo,contraseña,id_marca) VALUES ('${datos.rol}','${datos.username}','${datos.email}','${datos.password}','${datos.Id}')`;
+        const consulta = `INSERT INTO usuarios (usuario,email,contrasena,rol) VALUES ('${datos.username}','${datos.email}','${datos.password}','${datos.rol}')`;
         return new Promise((resolve, reject) => {
             try {
                 conexion.query(consulta, function (error,result) {
                     if (error) {
                         return reject(error);
                     } else {
+                        console.log(result)
+                        resolve(result);
+                    }
+                });
+                
+            } catch (error) {
+                throw error;
+                
+
+                
+            }
+
+
+           
+        });
+    },
+    inforepar:function (conexion,id) {
+        const consulta = `INSERT INTO repartidores (id) VALUES (${id})`;
+        return new Promise((resolve, reject) => {
+            try {
+                conexion.query(consulta, function (error,result) {
+                    if (error) {
+                        return reject(error);
+                    } else {
+                        console.log('insertado correctamente')
+                        resolve(true);
+                    }
+                });
+                
+            } catch (error) {
+                throw error;
+                
+
+                
+            }
+
+
+           
+        });
+    },
+    infoadmin:function (conexion,id) {
+        const consulta = `INSERT INTO administradores (id) VALUES (${id})`;
+        return new Promise((resolve, reject) => {
+            try {
+                conexion.query(consulta, function (error,result) {
+                    if (error) {
+                        return reject(error);
+                    } else {
+                        console.log('insertado correctamente el admin ya tiene marca')
                         resolve(true);
                     }
                 });
@@ -52,7 +101,7 @@ module.exports = {
     },
 
     FindUser:function (conexion,username) {
-        const consulta = `SELECT usuario FROM usuario WHERE usuario = '${username}'`;
+        const consulta = `SELECT usuario FROM usuarios WHERE usuario = '${username}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -69,7 +118,7 @@ module.exports = {
         });
     },
     FindByEmail:function (conexion,email) {
-        const consulta = `SELECT correo FROM usuario WHERE correo = '${email}'`;
+        const consulta = `SELECT email FROM usuarios WHERE email = '${email}'`;
         return new Promise((resolve,reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
@@ -88,7 +137,7 @@ module.exports = {
     },
 
     updatepassword:function (conexion,correo,password) {
-        const consulta = `UPDATE usuario SET contraseña = '${password}' WHERE correo = '${correo}'`;
+        const consulta = `UPDATE usuarios SET contrasena = '${password}' WHERE email = '${correo}'`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error,datos) {
                 if (error) {
@@ -104,7 +153,14 @@ module.exports = {
         
     },
     buscarmarca:function (conexion, id) {
-        const consulta = `SELECT id,imagen FROM marca WHERE id_admin = '${id}'`;
+        
+        const consulta = `
+        SELECT m.id, m.id_imagen, m.imagen
+        FROM marcas m
+        JOIN administradores a ON m.id = a.marca_id
+        WHERE a.id = ${id}
+        LIMIT 1
+      `;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {

@@ -1,8 +1,8 @@
 
 function sino(res,ruta,imagen,nombre) {
-    if(ruta==="1" ||ruta===1){
+    if(ruta==="admin" ){
         res.render('login/ventanaAdmin',{imagen:imagen,nombre:nombre});
-    }else if(ruta==="2" ||ruta===2){
+    }else if(ruta==="repartidor" ){
         res.render('login/ventanaRpartidor');
     }     
 }
@@ -12,14 +12,15 @@ function sino(res,ruta,imagen,nombre) {
 
 module.exports={
 
-    mostrarventanas:function (res,rol,token) {
+    mostrarventanas:function (res,rol) {
         
-        if(rol==="1" || rol===1){
+        if(rol==="admin"){
+            
           
-            res.render('login/ventanaAdmin',{imagen:token.imagen,nombre:token.nombre,marca:token.marca});
-        }else if(rol==="2" || rol===2){
-            res.render('login/ventanaRpartidor',{correo:gmail});
-            console.log("gmail: "+ gmail)
+            res.render('login/ventanaAdmin');
+        }else if(rol==="repartidor"){
+            res.render('login/ventanaRpartidor');
+         
         }     
     
 
