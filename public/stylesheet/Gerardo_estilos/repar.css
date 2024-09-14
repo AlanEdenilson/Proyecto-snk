@@ -64,10 +64,30 @@ body {
     padding: 10px;
     position: relative;
     right: 5px;
+    border-radius: 9px;
+    border: none;
+    background-color: rgb(3, 83, 88);
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    outline: 1px solid;
+    outline-color: rgba(83, 1, 1, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
 }
 
 .login-link:hover {
     text-decoration: underline;
+    border: 1px solid;
+    border-color: #ff0000;
+    box-shadow: inset 0 0 20px rgba(248, 3, 3, 0.5),
+        0 0 20px rgba(255, 0, 0, 0.486);
+    outline-color: rgba(255, 0, 0, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #ff0000;
+    color: rgb(255, 0, 106);
+    background-color: rgb(19, 18, 18);
+
+
+
 }
 
 .register-button {
@@ -82,8 +102,29 @@ body {
     position: relative;
     left: 80px;
     top: -38px;
+    border-radius: 9px;
+    border: none;
+    background-color: rgb(3, 83, 88);
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    outline: 1px solid;
+    outline-color: rgba(83, 1, 1, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
 }
+.register-button:hover{
+    border: 1px solid;
+    border-color: #ff0000;
+    box-shadow: inset 0 0 20px rgba(248, 3, 3, 0.5),
+        0 0 20px rgba(255, 0, 0, 0.486);
+    outline-color: rgba(255, 0, 0, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #ff0000;
+    color: rgb(255, 0, 106);
+    background-color: rgb(19, 18, 18);
 
+
+
+}
 .mm{
     position: absolute;
     right: 50%;
