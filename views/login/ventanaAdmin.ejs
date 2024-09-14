@@ -185,7 +185,7 @@
                 left: 65px;
                 }
             </style>
-            <form id="Produc" action="/adminr/add" method="post" enctype="multipart/form-data">
+            <form id="Produc" enctype="multipart/form-data">
                 <div>
                     <div>
                         <label  for="" class="nom" >Nombre Producto</label>
@@ -242,8 +242,8 @@
                 </div>
             
                 <div class="modal-footer">
-                    <button id="cancelBtn" class="btn btn-secondary">Cancelar</button>
-                    <button id="acceptBtn" class="btn btn-primary" type="submit">Aceptar</button>
+                    <button id="cancelBtn" class="btn btn-secondary" type="button">Cancelar</button>
+                    <button  id="acceptBtn" class="btn btn-primary" type="submit">Aceptar</button>
                 </div>
             </form>
         </div>
@@ -380,12 +380,14 @@ searchBtn.onclick = function() {
 }
     </script>
 
-    <script type="module" src="/javascript/index.js"></script>
+ 
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script  src="/javascript/mostrar.js"></script>
     <script  src="/javascript/delete.js"></script>
     <script  src="/javascript/edit.js"></script>
+    <script  src="/javascript/addproducs.js"></script>
+    <script type="module" src="/javascript/index.js"></script>
 
 
 
@@ -469,8 +471,9 @@ searchBtn.onclick = function() {
                 
                 // Si hay errores, prevenir el envío del formulario
                 if (hasErrors) {
-                    e.preventDefault();
+                    $('#acceptBtn').css({'display':'none'})
                 }
+               // $('#acceptBtn').css({'display':'block'})
             });
     
             // Quitar el borde rojo cuando el input obtiene el foco

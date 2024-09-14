@@ -74,21 +74,19 @@ module.exports={
 
     addproductos:async function(req,res){
         const perfil = req.cookies.perfil;
-
-
-       
-      
+        console.log(req.body)
+        console.log(req.file)
             try {
               const dataUri = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
               const result = await cloudinary.subir(dataUri)
-              console.log(`desde el controlador imagen url:${result.secure_url} mas el id :${result.public_id}`)
-
+              
+             // if (typeof result.secure_url!=='undefined') {
+                console.log(`desde el controlador imagen url:${result.secure_url} mas el id :${result.public_id}`)
                 await model.addproducts(conexion,perfil.marca,result.public_id,result.secure_url,req.body)
-                res.redirect('/ventanaAdmin')
-                
+                res.send('resibido con exito')
+             // } 
             } catch (error) {
-              console.log('a ocurrido un error al agregar productos')
-                
+              res.status(400).send(error.message || 'Ocurrió un error al procesar el formulario');
             }
             
        

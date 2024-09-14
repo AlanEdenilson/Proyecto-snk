@@ -2,9 +2,9 @@ const cloudinary = require('cloudinary').v2;
 
 
 cloudinary.config({
-    cloud_name: 'dk56nkrlu',
-    api_key: '311488338724542',
-    api_secret: '3YAN3n0xrJpBN1ECQ-LgmcBpSMQ'
+    cloud_name: 'dphpc7b2w',
+    api_key: '145857856899796',
+    api_secret: 'qxaQRJc9gqS4k8WawMwp4rAXeBk'
   });
 
 
@@ -16,11 +16,62 @@ module.exports={
 
     try {
 
-      return await cloudinary.uploader.upload(imagen)
+      //return await cloudinary.uploader.upload(imagen)
+      const result = await Promise.race([
+        cloudinary.uploader.upload(imagen),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('ETIMEDOUT')), 30000))
+      ]);
+      return result
 
       
     } catch (error) {
-      console.log(error)
+    var erores=error.error
+    console.log(erores.code)
+
+      let errorMessage = 'Ocurrió un error al subir la imagen.';
+      let statusCode = 500;
+  
+      switch(true) {
+        case erores.message === 'ETIMEDOUT':
+          errorMessage = 'La conexión es demasiado lenta. Por favor, inténtalo de nuevo.';
+          break;
+        case erores.http_code === 401:
+          errorMessage = 'Error de autenticación con Cloudinary.';
+          statusCode = 401;
+          break;
+        case erores.http_code === 403:
+          errorMessage = 'No tienes permiso para realizar esta acción en Cloudinary.';
+          statusCode = 403;
+          break;
+        case erores.message === 'No se proporcionó ningún archivo':
+          errorMessage = 'Por favor, selecciona una imagen para subir.';
+          statusCode = 400;
+          break;
+        case erores.message.includes('File size too large'):
+          errorMessage = 'El archivo es demasiado grande. Por favor, selecciona una imagen más pequeña.';
+          statusCode = 400;
+          break;
+        case erores.message.includes('Invalid image file'):
+          errorMessage = 'El archivo no es una imagen válida. Por favor, selecciona un formato de imagen soportado.';
+          statusCode = 400;
+          break;
+        case erores.code === 'ECONNREFUSED':
+          errorMessage = 'No se pudo conectar con Cloudinary. Por favor, verifica tu conexión a internet.';
+          break;
+        case erores.code === 'ENOTFOUND':
+          errorMessage = 'No se pudo encontrar el servidor de Cloudinary. Verifica tu conexión a internet.';
+          break;
+        case erores instanceof multer.MulterError:
+          errorMessage = 'Error al procesar el archivo. Por favor, inténtalo de nuevo.';
+          statusCode = 400;
+          break;
+      }
+      
+      return new Promise((resolve, reject) => {
+         reject(errorMessage)
+        
+      })
+     
       
     }
 
@@ -37,10 +88,12 @@ module.exports={
 
       
     } catch (error) {
-      console.log(error)
+     console.log(error.code)
+      //var errorMessage = 'Ocurrió un error al subir la imagen.';
+      
       
     }
-
+   
     
 
 
