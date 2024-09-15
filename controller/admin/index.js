@@ -30,6 +30,9 @@ module.exports={
           const token = req.cookies.authToken;
                 var vtoken = await Gtoken.validarToken2(token);
                 console.log("El token es válido:", vtoken);
+                
+                const {id, rol, email } = vtoken
+
                 var id_admin = vtoken.id;
                 req.session.admin=vtoken.nombre;
     
@@ -42,8 +45,19 @@ module.exports={
                 const gcodigo= await GenerarID.generarid();
 
                 const update= await model.isertId(conexion,principalId,gcodigo);
+                res.clearCookie('authToken');
+                res.clearCookie('refreshToken');
 
                 //const uddates= await model.isertIdadmin(conexion,gcodigo,id_admin);
+                //borrar cokies y crealas de nuevo con la informacion de marca
+                const tokennew = Gtoken.generarToken({id, rol, email, marca:principalId });
+                res.cookie('authToken', tokennew, { httpOnly: true,secure: true });
+
+                const refreshToken = Gtoken.refreshToken({id, rol, email, refresxh:true, marca:principalId });
+                res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
+
+
+
 
                 res.render('admin/id',{codigo:gcodigo})
           

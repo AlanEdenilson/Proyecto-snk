@@ -165,32 +165,15 @@ module.exports={
 
         //crenado los datos a almacenar en la cokkie 
 
-        const payload = {
-            rol:req.body.rol,
-            nombre:req.body.fullname,
-            email:req.body.email,
-        }
-
-
-        const payload2 = {
-            rol:req.body.rol,
-            nombre:req.body.fullname,
-            email:req.body.email,
-            refresh:'true'
-        }
-
         // generarando token y almacenando lo en la cokkie
-        const token = Gtoken.generarToken(payload);
-        const refreshToken = Gtoken.refreshToken(payload2);
-
-        res.cookie('authToken', token, { httpOnly: true,secure: true });
-        res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
+      
 
         try {
           var result = await model.insertarUsuario(conexion,datos)
           const principalId = result.insertId;
 
           console.log(principalId)
+      
 
 
           if(req.body.rol==='repartidor'){
@@ -201,6 +184,28 @@ module.exports={
             console.log('insertado el admin')
 
           }
+          const payload = {
+            id:result.insertId,
+            rol:req.body.rol,
+            nombre:req.body.fullname,
+            email:req.body.email,
+        }
+  
+  
+        const payload2 = {
+            id:result.insertId,
+            rol:req.body.rol,
+            nombre:req.body.fullname,
+            email:req.body.email,
+            refresh:'true'
+        }
+  
+        const token = Gtoken.generarToken(payload);
+        const refreshToken = Gtoken.refreshToken(payload2);
+          
+  
+          res.cookie('authToken', token, { httpOnly: true,secure: true });
+          res.cookie('refreshToken', refreshToken, { httpOnly: true,secure: true });
          
           aux.mostrarVentanas2(res,req.body.rol)
 
