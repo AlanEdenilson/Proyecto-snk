@@ -38,7 +38,7 @@ $(function(){
 
                  
     // Asegúrate de que las funciones se establecen solo una vez
-    $('.admin-table').off('click', '#openModal1').on('click', '#openModal1', function() {
+    $('.admin-table').off('click', '.btn-edit').on('click', '.btn-edit', function() {
         
         var id = $(this).data('id');
         var nombre = $(this).data('nombre');
@@ -66,18 +66,15 @@ $(function(){
         $('#myModal1').css({
             'display':'block',
             })
-            var $myDiv=$('#myModal1')
+           // var $myDiv=$('#myModal1')
            
 
         
            
-            if ($myDiv.css('display') === 'block') {
+           /* if ($myDiv.css('display') === 'block') {
                 console.log('El div se ha ocultado');
-          
-                   
-
     
-            }
+            }*/
 
             const initialValues = {
                 nombre: $('#nombre').val(),

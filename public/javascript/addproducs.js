@@ -17,8 +17,10 @@ $(function() {
             processData: false,  // Importante cuando se usa FormData
             contentType: false,
             success: function(response) {
-                
+                alert('producto insertado correctamente')
                 console.log(response);
+                //$('#myModal').css({'display':'none'})
+               
             },
             error: function(xhr, status, error) {
                 

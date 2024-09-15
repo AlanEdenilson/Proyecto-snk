@@ -21,7 +21,7 @@
 </head>
 <body>
 
-    <div class="advertencia">
+    <div class="advertencia" style="display: none;">
         <h1 class="titulo20">advertencia</h1>
         <img class="adver" src="/stylesheet/Gerardo_estilos/pngwing.com-removebg-preview.png" alt="">
         <p class="contenido76"> Mucho tiempo de espera por favor espere un tiempo para volver intentarlo de nuevo </p>
@@ -242,10 +242,11 @@
                 </div>
             
                 <div class="modal-footer">
-                    <button id="cancelBtn" class="btn btn-secondary" type="button">Cancelar</button>
                     <button  id="acceptBtn" class="btn btn-primary" type="submit">Aceptar</button>
+                </form>
+                    <button id="cancelBtn" class="btn btn-secondary" type="button">Cancelar</button>
                 </div>
-            </form>
+           
         </div>
     </div>
 
@@ -296,7 +297,7 @@
     </div>
 
      <!--ventana flotante de formulario de agregar 2-->
-     <div id="myModal1" class="modal1" style="display: none;">
+     <div id="myModal1" class="modal1" >
         <div class="modal-content1">
             <div class="modal-header1">
                 <h2>Insertar contenido</h2>
@@ -395,9 +396,8 @@ searchBtn.onclick = function() {
    
    
     <script>
-        
             $(function() {
-            $('#Produc').on('submit', function(e) {
+             function ver(){
                 let hasErrors = false;
                 
                 // Validar producto
@@ -466,15 +466,17 @@ searchBtn.onclick = function() {
                 } else {
                 $('#imagenError').text('');
                 }
+                if (hasErrors) {
+                    $('#acceptBtn').css({'display':'none'})
+                    
+                } else {
+                    $('#acceptBtn').css({'display':'block'})
+                }
 
 
                 
-                // Si hay errores, prevenir el envío del formulario
-                if (hasErrors) {
-                    $('#acceptBtn').css({'display':'none'})
-                }
-               // $('#acceptBtn').css({'display':'block'})
-            });
+                
+            };
     
             // Quitar el borde rojo cuando el input obtiene el foco
             $('#producto').on('input', function() {
@@ -498,8 +500,13 @@ searchBtn.onclick = function() {
                 if ($(this).val().trim() === '') {
                     $(this).addClass('input-error');
                     $('#' + this.id + 'Error').text('Este campo es requerido');
+                    
+                    ver()
+                   
                 } else {
                     $(this).removeClass('input-error');
+                   // $('#acceptBtn').css({'display':'block'})
+                    ver()
                     $('#' + this.id + 'Error').text('');
                 }
             });
@@ -508,8 +515,10 @@ searchBtn.onclick = function() {
                 if ($(this).val().trim() === '') {
                     $(this).addClass('input-error');
                     $('#' + this.id + 'Error').text('Este campo es requerido');
+                    ver()
                 } else {
                     $(this).removeClass('input-error');
+                    ver()
                     $('#' + this.id + 'Error').text('');
                 }
             });
