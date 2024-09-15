@@ -86,7 +86,12 @@ module.exports={
                 res.send('resibido con exito')
              // } 
             } catch (error) {
-              res.status(400).send(error.message || 'Ocurrió un error al procesar el formulario');
+              console.log(error)
+              res.status(400).json({
+                success: false,
+                error: error,
+                details: 'mas detalles'
+              });
             }
             
        

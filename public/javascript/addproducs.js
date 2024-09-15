@@ -19,17 +19,41 @@ $(function() {
             success: function(response) {
                 alert('producto insertado correctamente')
                 console.log(response);
-                //$('#myModal').css({'display':'none'})
+                $('#myModal').css({'display':'none'})
                
             },
-            error: function(xhr, status, error) {
+            error: function(jqXHR, textStatus, errorThrown) {
                 
-                //console.error(xhr.responseText);
-                var errorMessage = xhr.responseText || 'Error desconocido';
-                console.error(errorMessage);
-                
+                let errorMessage = 'Ocurrió un error: ';
+
+        if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
+          // Si el servidor envió un mensaje de error estructurado
+          errorMessage += jqXHR.responseJSON.error;
+        } else if (errorThrown) {
+          // Si hay un mensaje de error genérico
+          errorMessage += errorThrown;
+        } else {
+          // Si no hay información específica sobre el error
+          errorMessage += 'No se pudo completar la operación.';
+        }
+
+       // alert(errorMessage);
+        $('.contenido76').text(errorMessage)
+        $('#myModal').css({'display':'none'})
+        $('.contenido1').css({'display':'none'})
+        $('.advertencia').css({'display':'block'})
+
+
             }
         })
+
+    })
+
+    $('.advertencia').off('click', '.acep').on('click', '.acep', function() {
+        $('.advertencia').css({'display':'none'})
+       // $('.admin-table').css({'display':'block'})
+        window.location.href='/ventanaAdmin'
+      
 
     })
        
