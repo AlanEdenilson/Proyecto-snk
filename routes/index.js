@@ -49,7 +49,7 @@ router.post('/update',midd.contraNueva,controlador.update);//actualizar contra
 
 
 
-router.get('/ventanaAdmin',seguridad.uyyy, function(req, res) {
+router.get('/ventanaAdmin',function(req, res) {
   const token = req.cookies.perfil;
   
   

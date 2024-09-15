@@ -87,7 +87,12 @@ module.exports={
 
 
     addproductos:async function(req,res){
-        const perfil = req.cookies.perfil;
+        const token = req.cookies.authToken;
+        var vtoken = await Gtoken.validarToken2(token);
+                console.log("El token es válido:", vtoken);
+                
+                const {marca } = vtoken
+
         console.log(req.body)
         console.log(req.file)
             try {
@@ -96,7 +101,7 @@ module.exports={
               
              // if (typeof result.secure_url!=='undefined') {
                 console.log(`desde el controlador imagen url:${result.secure_url} mas el id :${result.public_id}`)
-                await model.addproducts(conexion,perfil.marca,result.public_id,result.secure_url,req.body)
+                await model.addproducts(conexion,marca,result.public_id,result.secure_url,req.body)
                 res.send('resibido con exito')
              // } 
             } catch (error) {
@@ -113,11 +118,14 @@ module.exports={
 
     },
 
-    mostar:function(req, res){
-        const perfil = req.cookies.perfil;
-       
+    mostar:async function(req, res){
+      const token = req.cookies.authToken;
+      var vtoken = await Gtoken.validarToken2(token);
+              console.log("El token es válido:", vtoken);
+              
+              const {marca } = vtoken
 
-        model.mostar(conexion,perfil.marca)
+        model.mostar(conexion,marca)
         .then((datos)=>{
             res.json(datos)
         })
