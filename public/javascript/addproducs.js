@@ -57,6 +57,7 @@ $(function() {
 
     })
        
-
+// genera el click de una imagen
     
 })
+
