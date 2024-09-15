@@ -7,24 +7,7 @@ cloudinary.config({
     api_secret: 'qxaQRJc9gqS4k8WawMwp4rAXeBk'
   });
 
-
-module.exports={
-
-  subir: async function(imagen) {
-
-
-
-    try {
-
-      //return await cloudinary.uploader.upload(imagen)
-      const result = await Promise.race([
-        cloudinary.uploader.upload(imagen),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('ETIMEDOUT')), 30000))
-      ]);
-      return result
-
-      
-    } catch (error) {
+  function erores(error) {
     var erores=error.error
     console.log(erores.code)
 
@@ -67,10 +50,36 @@ module.exports={
           break;
       }
       
+     return errorMessage
+    
+  }
+
+
+module.exports={
+
+  subir: async function(imagen) {
+
+
+
+    try {
+
+      return await cloudinary.uploader.upload(imagen)
+     /* const result = await Promise.race([
+        cloudinary.uploader.upload(imagen),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('ETIMEDOUT')), 30000))
+      ]);
+      return result*/
+
+      
+    } catch (error) {
+      var r =erores(error)
+
       return new Promise((resolve, reject) => {
-         reject(errorMessage)
-        
-      })
+        reject(r)
+       
+     })
+    
+      
      
       
     }
@@ -88,8 +97,15 @@ module.exports={
 
       
     } catch (error) {
-     console.log(error.code)
-      //var errorMessage = 'Ocurrió un error al subir la imagen.';
+      var r =erores(error)
+
+      return new Promise((resolve, reject) => {
+        reject(r)
+       
+     })
+    
+    
+      
       
       
     }
@@ -104,7 +120,14 @@ module.exports={
       return await cloudinary.uploader.destroy(id);
 
     } catch(error){
-      console.error({ error: 'Error al borrar la imagen' });
+    
+      var r =erores(error)
+
+      return new Promise((resolve, reject) => {
+        reject(r)
+       
+     })
+    
 
     }
   }

@@ -139,8 +139,11 @@ module.exports={
         console.log('Borrado exitosamente');
         res.json({id:req.params.id});
         } catch (error) {
-        console.error('Error al borrar:', error);
-        res.status(500).send({msg: 'Error al borrar el archivo', error: error.message});
+          res.status(400).json({
+            success: false,
+            error: error,
+            details: 'mas detalles'
+          });
         }
 
     },
@@ -300,6 +303,12 @@ module.exports={
                 }*/
  
             } catch (error) {
+              console.log(error)
+              res.status(400).json({
+                success: false,
+                error: error,
+                details: 'mas detalles'
+              });
                 
             }
             
