@@ -73,6 +73,9 @@ router.get('/clear',(req,res)=>{
   console.log(`Nombre: ${nombre}, Correo: ${contraseña}`);
 });*/
 
+router.get('/diseño3',(req,res)=>{
+  res.render('gestionDpedido/diseño2');
+});
 
 
 
