@@ -1,0 +1,60 @@
+  .notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f7fafc;
+    border-radius: 20px;
+}
+.note {
+    width: 200px;
+    min-height: 200px;
+    background-color: #fefcbf;
+    padding: 15px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    transform: rotate(var(--rotate));
+    transition: all 0.3s ease;
+}
+.note:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+.note-header {
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #d69e2e;
+    padding-bottom: 5px;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    color: #2d3748;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h2 {
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+.btn {
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.btn-accept { background-color: #48bb78; color: white; }
+.btn-reject { background-color: #f56565; color: white; }
+.btn-assign { background-color: #4299e1; color: white; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }

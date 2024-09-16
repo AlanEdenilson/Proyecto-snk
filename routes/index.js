@@ -45,10 +45,6 @@ router.post('/update',midd.contraNueva,controlador.update);//actualizar contra
 
 
 
-
-
-
-
 router.get('/ventanaAdmin',function(req, res) {
   const token = req.cookies.perfil;
   
