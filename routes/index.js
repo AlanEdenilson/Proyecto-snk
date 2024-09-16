@@ -1,7 +1,7 @@
 var express = require('express');
 var controlador=require('../controller/login/index')
 var midd = require('../controller/login/middlewar');
-var seguridad = require('../controller/login/validacioncokie')
+//var seguridad = require('../controller/login/validacioncokie')
 
 
 

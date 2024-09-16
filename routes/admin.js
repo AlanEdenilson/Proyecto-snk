@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var upload=require('../controller/admin/cargarimagenes')
 var controlador=require('../controller/admin/index')
-var seguridad = require('../controller/login/validacioncokie')
+//var seguridad = require('../controller/login/validacioncokie')
 
 
 
@@ -11,17 +11,17 @@ router.get('/', function(req, res, next) {
   res.send('hola admin');
 });
 
-router.get('/marca',seguridad.uyyy,(req,res)=>{
+router.get('/marca',(req,res)=>{
   res.render("login/marca")
 });
 
 router.post('/marca',upload.single('imagen'),controlador.marca)
 
-router.get('/id',seguridad.uyyy,(req,res)=>{
+router.get('/id',(req,res)=>{
   res.render('admin/id')
 })
 
-router.get('/uploads',seguridad.uyyy,controlador.updt)
+router.get('/uploads',controlador.updt)
 
 
 router.post('/add',upload.single('archivo'),controlador.addproductos);
