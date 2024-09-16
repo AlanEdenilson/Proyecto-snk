@@ -6,5 +6,4 @@ router.get('/',(req,res)=>{
     res.render('gestionDpedido/diseño2');
 });
 
-
 module.exports = router;

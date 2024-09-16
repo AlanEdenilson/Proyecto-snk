@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.header, .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header div, .footer div {
+    display: flex;
+    align-items: center;
+}
+
+.header img, .footer img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header span, .footer span {
+    margin-left: 10px;
+}
+
+.order-note {
+    margin: 10px 0;
+    color: #333;
+    position: relative;
+    left: 100px;
+    top: 15px;
+}
+
+.reject {
+    font-weight: bold;
+    position: relative;
+    top: 35px;
+    left: 60px;
+}
+
+.reject2{
+    position: relative;
+    top: 33px;
+    left: 50px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    top: 30px;
+    position: relative;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f9f9f9;
+}
+
+.subtotal {
+    text-align: right;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+    right: 91%;
+    top: 40px;
+}
+
+.footer img {
+    width: 30px;
+    height: 30px;
+}
+
+.nota{
+    position: relative;
+    top: 30px;
+    right: 80px;
+}
+.iconos{
+    position: relative;
+    font-size: 30px;
+    top: 25px;
+    left: 20px;
+}
+strong{
+    position: relative;
+    top: -22px;
+    right: 60px;
+}
+h3{
+    position: relative;
+    font-size: 13px;
+    top: 10px;
+    right: 140px;
+}
+.atras{
+    position: relative;
+    font-size: 60px;
+    top: 50px;
+    cursor: pointer;
+}
+.añedir{
+    position: relative;
+    top: 36px;
+    right: 220px;
+    font-size: 40px;
+    cursor: pointer;
+}
+.rep{
+    position: relative;
+    top: 40px;
+    left: 90px;
+}
+.enviar{
+    position: relative;
+    top: 45px;
+    font-size: 40px;
+    right: 120px;
+    cursor: pointer;
+}
+.chat{
+    position: relative;
+    font-size: 35px;
+    right: 77px;
+}
