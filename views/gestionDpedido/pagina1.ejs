@@ -1,0 +1,97 @@
+
+        <div id="tabla-container">
+            <table >
+                <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Tab</th>
+                        <th>fecha</th>
+                        <th>items</th>
+                        <th>total</th>
+                        <th>asignado a</th>
+                        <th>Fecha de entrega</th>
+                        <th>.</th>
+                        <th>detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div id="boton-container">
+            <!-- Botón Activar con ventana de confirmación -->
+            <button class="activar-btn">Activar</button>
+            
+            <!-- Ventana modal de confirmación -->
+            <div id="modal-confirmacion" class="modal" style="display: none;">
+                <div class="modal-contenido">
+                    <p>¿Está seguro que desea aplicar los cambios?</p>
+                    <div class="botones-modal">
+                        <button id="btn-aceptar" class="btn-modal">Aceptar</button>
+                        <button id="btn-cancelar" class="btn-modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+            $(document).ready(function() {
+                $('.activar-btn').on('click', function() {
+                    $('#modal-confirmacion').show();
+                });
+
+                $('#btn-cancelar').on('click', function() {
+                    $('#modal-confirmacion').hide();
+                });
+
+                /*$('#btn-aceptar').on('click', function() {
+                    // Aquí puedes poner el código para aplicar los cambios
+                    $('#modal-confirmacion').hide();
+                    alert('Cambios aplicados');
+                });*/
+            });
+            </script>
+        </div>
+        <script src="/javascripts/index1.js"></script>
+        <script src="/javascripts/index1.0.js"></script>
+        <script>
+        $(document).ready(function() {
+           /* $('#tabla-container').on('change', 'input[type="checkbox"]', function() {
+                // Este código maneja el cambio de color del icono de estado en la tabla
+                
+                // Encuentra la fila más cercana al checkbox que se ha cambiado
+                let fila = $(this).closest('tr');
+                
+                // Busca el icono de estado dentro de la fila
+                let estadoIcon = fila.find('.estado-icon i');
+                estadoIcon.removeClass('fas fa-exclamation-circle')
+                
+                // Cambia el color del icono basado en su clase actual
+                // Si tiene la clase 'fa-times', lo cambia a verde; si no, a rojo
+               // estadoIcon.css('color':'red');
+                
+                if ($(this).is(':checked')) {
+                    estadoIcon.removeClass('fas fa-times').addClass('fas fa-check');
+                   // estadoIcon.closest('.estado-icon').removeClass('pendiente').addClass('completado');
+                    estadoIcon.css('color', 'green');
+                } else {
+                    estadoIcon.removeClass('fas fa-check').addClass('fas fa-times');
+                  //  estadoIcon.closest('.estado-icon').removeClass('completado').addClass('pendiente');
+                    estadoIcon.css('color', 'red');
+                }
+            });*/
+
+        // Manejo del clic en el botón de detalles
+        $('#tabla-container').on('click', '.detalles-btn', function() {
+            // Encuentra el icono de estado en la misma fila
+            let fila = $(this).closest('tr');
+            let estadoIcons = fila.find('.ver i');
+            
+            // Cambia la clase del icono
+          
+                estadoIcons.removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+                estadoIcons.css('color', 'blue');
+
+        });
+        });
+        </script>
