@@ -1,5 +1,6 @@
 
 var model = require('../../model/GestiondPedido/index');
+var conexion=require('../../config/conexion');
 
 
 module.exports = {
@@ -7,9 +8,9 @@ module.exports = {
         try{
             model.verpedidos(conexion,function(err,results){
                 if(err){
-                    console.log(err);
+                   throw err;
                 }else{
-                    res.render('gestionDpedido/verpedidos',{results:results});
+                    res.send(results);
                 }
             });
         }catch(error){

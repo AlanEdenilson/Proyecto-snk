@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var controller = require('../controller/GestiondPedido/index');
+
 
 router.get('/',(req,res)=>{
     res.render('gestionDpedido/diseño2');
@@ -26,6 +28,6 @@ router.get('/pagina1',(req,res)=>{
 
 })
 
-router.get('/verpedidos')
+router.get('/verpedidos',controller.verpedidos)
 
 module.exports = router;
