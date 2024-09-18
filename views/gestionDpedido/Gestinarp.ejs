@@ -24,24 +24,17 @@
     </div>
 
     
-   <script src="/javascript/GestiondPedido/Pagina1.js"></script>
+  
   
     <script>
         $(document).ready(function() {
   
-      
-
-
-//2
-$("#btn2").click(function() {
-$(".container").load("./tabla2.html", function(response, status, xhr) {
-    
-    if (status == "error") {
-        var msg = "Lo siento, ocurrió un error: ";
-        $(".container").html(msg + xhr.status + " " + xhr.statusText);
-    }
-});
-});
+            $(".container").load("/gestion/pagina1", function(response, status, xhr) {
+            if (status == "error") {
+                var msg = "Lo siento, ocurrió un error: ";
+                $(".container").html(msg + xhr.status + " " + xhr.statusText);
+            }
+        });
 
 //3
 $("#btn3").click(function() {
