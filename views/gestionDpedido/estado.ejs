@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
-
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Pedido</title>
- 
-</head>
-<body>
-
     <div class="header">
         <div>
             <img class="iconos" src="" alt="">
@@ -90,7 +69,17 @@
         </div>
     </div>
 
-</body>
-</html>
-</body>
-</html>
+    <script >
+        $(function() {
+            $(".bx").on("click", function() {
+                $(".container").load("/gestion/pagina1", function(response, status, xhr) {
+            if (status == "error") {
+                var msg = "Lo siento, ocurrió un error: ";
+                $(".container").html(msg + xhr.status + " " + xhr.statusText);
+            }
+        });
+            });
+        });
+
+    </script>
+

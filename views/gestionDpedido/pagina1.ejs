@@ -82,7 +82,14 @@
 
         // Manejo del clic en el botón de detalles
         $('#tabla-container').on('click', '.detalles-btn', function() {
-            // Encuentra el icono de estado en la misma fila
+
+            $(".container").load("/gestion/l1", function(response, status, xhr) {
+            if (status == "error") {
+                var msg = "Lo siento, ocurrió un error: ";
+                $(".container").html(msg + xhr.status + " " + xhr.statusText);
+            }
+        });
+            
             let fila = $(this).closest('tr');
             let estadoIcons = fila.find('.ver i');
             
@@ -90,6 +97,8 @@
           
                 estadoIcons.removeClass('fas fa-eye-slash').addClass('fas fa-eye');
                 estadoIcons.css('color', 'blue');
+
+
 
         });
         });
