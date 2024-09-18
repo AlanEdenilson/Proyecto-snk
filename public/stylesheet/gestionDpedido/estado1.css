@@ -40,13 +40,13 @@ body {
     font-weight: bold;
     position: relative;
     top: 35px;
-    left: 60px;
+    left: 140px;
 }
 
 .reject2{
     position: relative;
     top: 33px;
-    left: 50px;
+    left: 140px;
     font-size: 22px;
     cursor: pointer;
 }

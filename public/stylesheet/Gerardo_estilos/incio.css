@@ -128,7 +128,7 @@ body {
 .mm{
     position: relative;
     right: 110px;
-    filter: drop-shadow(2px 2px 1px rgb(255, 0, 128));
+    filter: drop-shadow(2px 2px 1px rgb(255, 0, 0));
 }
 
 .fa-solid{
