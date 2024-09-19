@@ -1,4 +1,17 @@
 $(function(){
+    function cargarDetalles(item){
+        
+            let fila = `<tr>
+                            <td><img src="${item.producto_imagen}" alt="Producto" width="50" height="80" ></td>
+                            <td>${item.producto_nombre}</td>
+                            <td>${item.producto_precio}</td>
+                            <td>${item.cantidad_total}</td>
+                            <td>${item.subtotal_total}</td>
+                        </tr>`;
+        $('.table tbody').append(fila);
+    
+
+    }
 
     $('#tabla-container').on('click', '.detalles-btn', function() {
 
@@ -19,7 +32,11 @@ $(function(){
         success: function(response) {
             console.log('Detalles cargados para el pedido:', filaId);
             console.log(response);
-        },
+
+            for(let item of response){
+                cargarDetalles(item);
+            }
+    },
         error: function(xhr, status, error) {
             console.error('Error al cargar los detalles:', error);
         }
