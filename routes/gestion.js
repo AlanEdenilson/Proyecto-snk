@@ -30,4 +30,7 @@ router.get('/pagina1',(req,res)=>{
 
 router.get('/verpedidos',controller.verpedidos)
 
+
+router.get('/detalles',controller.detalles)
+
 module.exports = router;

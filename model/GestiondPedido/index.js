@@ -39,6 +39,48 @@ ORDER BY
     m.nombre, fecha_hora_pedido DESC;
      `;
         conexion.query(sql,funcion)
+    },
+    detalles: function(conexion,id,funcion){
+        // Convertir el id a un entero y almacenarlo en una variable
+      
+        
+
+        // Modificamos la consulta SQL para manejar múltiples IDs
+        const sql = `
+            SELECT 
+                p.id AS producto_id, 
+                p.imagen AS producto_imagen,
+                p.precio AS producto_precio,
+                p.nombre AS producto_nombre, 
+                SUM(dp.cantidad) AS cantidad_total, 
+                dp.precio_unitario, 
+                SUM(dp.subtotal) AS subtotal_total, 
+                pa.id,
+                DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s') AS fecha,
+                pa.estado 
+            FROM 
+                productos p
+                JOIN detalles_pedido dp ON p.id = dp.producto_id 
+                JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
+                JOIN marcas m ON p.marca_id = m.id 
+            WHERE 
+                pa.id IN (?)
+            GROUP BY 
+                p.id, dp.precio_unitario, pa.id, pa.estado 
+            ORDER BY 
+                pa.id, p.nombre
+        `;
+
+        // Explicación del error y la solución:
+        // El error se producía porque la consulta original estaba diseñada para un solo ID,
+        // pero estábamos intentando pasar múltiples IDs. Para solucionarlo, hemos hecho lo siguiente:
+        // 1. Cambiamos 'pa.id = ?' a 'pa.id IN (?)' para permitir múltiples IDs.
+        // 2. Agregamos 'pa.id' al GROUP BY para asegurar que los resultados se agrupen correctamente por cada pedido.
+        // 3. Modificamos el ORDER BY para ordenar primero por 'pa.id' y luego por 'p.nombre'.
+        // Estas modificaciones permiten que la consulta maneje múltiples IDs de pedido a la vez,
+        // devolviendo los resultados correctamente agrupados y ordenados para cada pedido.
+
+        conexion.query(sql, [id], funcion)
     }
 
 }
