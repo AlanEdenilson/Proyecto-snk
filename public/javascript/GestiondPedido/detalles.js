@@ -1,12 +1,19 @@
 $(function(){
+    var tienda_nombre = '';
+    var propietario = '';
+    var img = '';
+    var fecha = '';
     function cargarDetalles(item){
-        
+        tienda_nombre = item.tienda_nombre;
+        propietario = item.cliente_apellido;
+        img = item.tienda_imagen;
+        fecha = item.fecha;
             let fila = `<tr>
                             <td><img src="${item.producto_imagen}" alt="Producto" width="50" height="80" ></td>
                             <td>${item.producto_nombre}</td>
-                            <td>${item.producto_precio}</td>
+                            <td> $ ${item.producto_precio}</td>
                             <td>${item.cantidad_total}</td>
-                            <td>${item.subtotal_total}</td>
+                            <td> $ ${item.subtotal_total}</td>
                         </tr>`;
         $('.table tbody').append(fila);
     
@@ -32,10 +39,15 @@ $(function(){
         success: function(response) {
             console.log('Detalles cargados para el pedido:', filaId);
             console.log(response);
+           
 
             for(let item of response){
                 cargarDetalles(item);
             }
+            $('#tienda_nombre').text("Nombre tienda: " + tienda_nombre);
+            $('#propietario').text( "Propietario: " + propietario);
+            $('#img').attr('src', img);
+            $('#fecha').text("Fecha: " + fecha);
     },
         error: function(xhr, status, error) {
             console.error('Error al cargar los detalles:', error);

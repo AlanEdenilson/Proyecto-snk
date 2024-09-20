@@ -33,9 +33,7 @@ $(function() {
                         </select>
                     </td>
                     <td>
-                        <select>
-                            
-                        </select>
+                         <input type="date" id="fecha" name="fecha">
                     </td>
                     <td class="checkbox-center">
                         <input type="checkbox" ${item['.'] ? 'checked' : ''}>

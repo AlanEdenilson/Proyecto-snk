@@ -48,6 +48,10 @@ ORDER BY
         // Modificamos la consulta SQL para manejar múltiples IDs
         const sql = `
             SELECT 
+                c.nombre AS cliente_nombre,
+                c.apellido AS cliente_apellido,
+                t.imagen AS tienda_imagen,
+                t.nombre AS tienda_nombre,
                 p.id AS producto_id, 
                 p.imagen AS producto_imagen,
                 p.precio AS producto_precio,
@@ -62,6 +66,8 @@ ORDER BY
                 productos p
                 JOIN detalles_pedido dp ON p.id = dp.producto_id 
                 JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
+                JOIN tiendas t ON pa.tienda_id = t.id
+                JOIN clientes c ON pa.cliente_id = c.id
                 JOIN marcas m ON p.marca_id = m.id 
             WHERE 
                 pa.id IN (?)
