@@ -33,4 +33,12 @@ router.get('/verpedidos',controller.verpedidos)
 
 router.get('/detalles',controller.detalles)
 
+
+router.get('/l66', function(req, res, next) {
+    res.render('repartidor/ventas_repartido')
+  });
+router.get('/89', function(req, res, next) {
+    res.render('gestionDpedido/diseño1')
+  });
+  
 module.exports = router;
