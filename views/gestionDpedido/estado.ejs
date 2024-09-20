@@ -60,6 +60,7 @@
         $(function() {
             $(".bx").on("click", function() {
                 $(".container").load("/gestion/pagina1", function(response, status, xhr) {
+                    Modulo1.cargarDatos()
             if (status == "error") {
                 var msg = "Lo siento, ocurrió un error: ";
                 $(".container").html(msg + xhr.status + " " + xhr.statusText);

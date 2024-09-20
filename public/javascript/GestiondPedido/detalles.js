@@ -23,6 +23,7 @@ $(function(){
     $('#tabla-container').on('click', '.detalles-btn', function() {
 
         $(".container").load("/gestion/l1", function(response, status, xhr) {
+           
         if (status == "error") {
             var msg = "Lo siento, ocurrió un error: ";
             $(".container").html(msg + xhr.status + " " + xhr.statusText);
