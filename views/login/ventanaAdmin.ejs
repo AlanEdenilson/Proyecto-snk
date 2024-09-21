@@ -126,7 +126,7 @@
     </div>
 
     <!--ventana flotante de formulario-->
-    <div id="myModal" class="modal">
+    <div id="myModal" class="modal" >
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Insertar contenido</h2>
@@ -185,11 +185,12 @@
                 left: 65px;
                 }
             </style>
-            <form id="Produc" enctype="multipart/form-data">
+            <form id="Produc" enctype="multipart/form-data" style="display: none;">
                 <div>
                     <div>
                         <label  for="" class="nom" >Nombre Producto</label>
                         <input id="producto" name="nombre" type="text" class="reseñedor" placeholder="User">
+                 
                         <div class="div1"><b><span class="error" id="productoError"></span></b></div>
                     </div>
                     
@@ -217,6 +218,7 @@
                         <div class="div5"><b><span class="error" id="imagenError"></span></b></div>
                         <img id="vistaPrevia" alt="Vista previa de la imagen">
                     </div>
+
                     <script>
                         document.getElementById('imagen').addEventListener('change', function(event) {
                             const archivo = event.target.files[0];
@@ -246,8 +248,62 @@
                 </form>
                     <button id="cancelBtn" class="btn btn-secondary" type="button">Cancelar</button>
                 </div>
+                
+                <div class="check-container">
+                    <div class="check-mark"></div>
+                </div>
            
         </div>
+<svg viewBox="0 0 240 240" height="240" width="240" class="pl" style="display: none;">
+  <circle
+    stroke-linecap="round"
+    stroke-dashoffset="-330"
+    stroke-dasharray="0 660"
+    stroke-width="20"
+    stroke="#000"
+    fill="none"
+    r="105"
+    cy="120"
+    cx="120"
+    class="pl__ring pl__ring--a"
+  ></circle>
+  <circle
+    stroke-linecap="round"
+    stroke-dashoffset="-110"
+    stroke-dasharray="0 220"
+    stroke-width="20"
+    stroke="#000"
+    fill="none"
+    r="35"
+    cy="120"
+    cx="120"
+    class="pl__ring pl__ring--b"
+  ></circle>
+  <circle
+    stroke-linecap="round"
+    stroke-dasharray="0 440"
+    stroke-width="20"
+    stroke="#000"
+    fill="none"
+    r="70"
+    cy="120"
+    cx="85"
+    class="pl__ring pl__ring--c"
+  ></circle>
+  <circle
+    stroke-linecap="round"
+    stroke-dasharray="0 440"
+    stroke-width="20"
+    stroke="#000"
+    fill="none"
+    r="70"
+    cy="120"
+    cx="155"
+    class="pl__ring pl__ring--d"
+  ></circle>
+</svg>
+
+
     </div>
 
     <!--ventana de perfil del usuario-->

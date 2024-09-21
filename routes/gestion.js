@@ -33,8 +33,19 @@ router.get('/verpedidos',controller.verpedidos)
 
 router.get('/detalles',controller.detalles)
 
+
 // rutas para la pagina de gestion de pedidos
 router.get('/vernuevosregistros',controller.vernuevosregistros)
 
 
-module.exports = router; 
+
+
+router.get('/l66', function(req, res, next) {
+    res.render('repartidor/ventas_repartido')
+  });
+router.get('/89', function(req, res, next) {
+    res.render('gestionDpedido/diseño1')
+  });
+  
+module.exports = router;
+
