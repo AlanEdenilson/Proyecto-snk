@@ -48,6 +48,47 @@ function obtenerPedidos() {
         request.onsuccess = () => resolve(request.result);
     });
 }
+function obtenerUltimoId() {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(["pedidos"], "readonly");
+        const objectStore = transaction.objectStore("pedidos");
+        const request = objectStore.openCursor(null, 'prev');
+        
+        request.onerror = () => reject("Error al obtener el último ID");
+        request.onsuccess = (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+                // Extraer todos los números de la clave
+                const numbers = cursor.key.match(/\d+/g);
+                if (numbers && numbers.length > 0) {
+                    // Tomar el último número y convertirlo a entero
+                    const lastNumber = parseInt(numbers[numbers.length - 1], 10);
+                    resolve(lastNumber);
+                } else {
+                    resolve(0); // Si no se encuentran números, devuelve 0
+                }
+            } else {
+                resolve(0); // Si no hay registros, devuelve 0
+            }
+        };
+    });
+}
+
+
+function contarRegistros() {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(["pedidos"], "readonly");
+        const objectStore = transaction.objectStore("pedidos");
+        const countRequest = objectStore.count();
+        
+        countRequest.onerror = () => reject("Error al contar registros");
+        countRequest.onsuccess = () => {
+            const count = countRequest.result;
+            console.log(`Número de registros en la base de datos: ${count}`);
+            resolve(count);
+        };
+    });
+}
  /// cargar datos en  el html 
  function cargarDatos(){
              
@@ -100,37 +141,17 @@ function obtenerPedidos() {
     
 
     }
-
-// Uso
-/*initDB()
-    .then(() => {
-        // Primero, obtenemos los pedidos existentes
-        return obtenerPedidos().then(pedidosExistentes => {
-            // Luego, agregamos nuevos datos
-            const nuevosPedidos = [
-                { id: Date.now(), fecha: new Date(), detalles: "Nuevo pedido 1" },
-                { id: Date.now() + 1, fecha: new Date(), detalles: "Nuevo pedido 2" }
-            ];
-            
-            // Combinamos los pedidos existentes con los nuevos
-            const todosLosPedidos = [...pedidosExistentes, ...nuevosPedidos];
-            
-            // Guardamos todos los pedidos
-            return guardarPedidos(todosLosPedidos).then(() => {
-                // Finalmente, obtenemos todos los pedidos actualizados
-                return obtenerPedidos();
-            });
-        });
-    })
-    .then(pedidos => console.log(pedidos))
-    .catch(error => console.error(error));*/
     
     return {
         initDB: initDB,
         guardarPedidos: guardarPedidos,
         obtenerPedidos: obtenerPedidos,
-        cargarDatos: cargarDatos
+        cargarDatos: cargarDatos,
+        contarRegistros: contarRegistros,
+        obtenerUltimoId: obtenerUltimoId
     };
+
+
 
 
 

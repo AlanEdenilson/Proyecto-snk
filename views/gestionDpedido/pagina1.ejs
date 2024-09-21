@@ -1,3 +1,115 @@
+        <style>
+            .boton-extraer {
+                position: relative;
+                background-color: blue;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-bottom: 10px;
+            }
+
+            .boton-extraer:hover .tooltip {
+                display: block;
+            }
+
+            .tooltip {
+                display: none;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.7);
+                color: white;
+                padding: 5px;
+                border-radius: 3px;
+                top: 100%;
+                left: 0;
+                white-space: nowrap;
+            }
+
+            .notificacion {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background-color: red;
+                color: white;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+            }
+        </style>
+
+        <div style="text-align: left; margin-bottom: 10px;">
+            <button class="boton-extraer">
+                Extraer
+                <span class="tooltip" style="background-color: rgba(0, 0, 0, 0.5);">Hay cambios. ¿Deseas extraerlos?</span>
+                <span style="display: none;" class="notificacion"></span>
+            </button>
+        </div>
+        <style>
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(128, 128, 128, 0.7);
+                z-index: 1000;
+            }
+            
+            .animacion-extraccion {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 1001;
+                text-align: center;
+            }
+            
+            .spinner {
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #3498db;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                animation: spin 1s linear infinite;
+                margin: 0 auto 10px;
+            }
+            
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+
+        <div class="overlay"></div>
+        <div class="animacion-extraccion">
+            <div class="spinner"></div>
+            <p>Extrayendo cambios...</p>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $('.boton-extraer').on('click', function() {
+                    $('.overlay').show();
+                    $('.animacion-extraccion').show();
+                    
+                    // Simular la extracción (reemplazar con la lógica real)
+                    setTimeout(function() {
+                        $('.overlay').hide();
+                        $('.animacion-extraccion').hide();
+                    }, 3000); // 3 segundos de ejemplo
+                });
+            });
+        </script>
 
         <div id="tabla-container">
             <table >
@@ -29,11 +141,13 @@
                     <p>¿Está seguro que desea aplicar los cambios?</p>
                     <div class="botones-modal">
                         <button id="btn-aceptar" class="btn-modal">Aceptar</button>
+                        <!-- boton para animar -->
                         <button id="btn-cancelar" class="btn-modal">Cancelar</button>
                     </div>
                 </div>
             </div>
-
+             
+            
             <script>
             $(document).ready(function() {
                 $('.activar-btn').on('click', function() {
@@ -56,32 +170,7 @@
         <script src="/javascript/GestiondPedido/detalles.js"></script>
         <script>
         $(document).ready(function() {
-           /* $('#tabla-container').on('change', 'input[type="checkbox"]', function() {
-                // Este código maneja el cambio de color del icono de estado en la tabla
-                
-                // Encuentra la fila más cercana al checkbox que se ha cambiado
-                let fila = $(this).closest('tr');
-                
-                // Busca el icono de estado dentro de la fila
-                let estadoIcon = fila.find('.estado-icon i');
-                estadoIcon.removeClass('fas fa-exclamation-circle')
-                
-                // Cambia el color del icono basado en su clase actual
-                // Si tiene la clase 'fa-times', lo cambia a verde; si no, a rojo
-               // estadoIcon.css('color':'red');
-                
-                if ($(this).is(':checked')) {
-                    estadoIcon.removeClass('fas fa-times').addClass('fas fa-check');
-                   // estadoIcon.closest('.estado-icon').removeClass('pendiente').addClass('completado');
-                    estadoIcon.css('color', 'green');
-                } else {
-                    estadoIcon.removeClass('fas fa-check').addClass('fas fa-times');
-                  //  estadoIcon.closest('.estado-icon').removeClass('completado').addClass('pendiente');
-                    estadoIcon.css('color', 'red');
-                }
-            });*/
-
-        // Manejo del clic en el botón de detalles
+           
         
         });
         </script>

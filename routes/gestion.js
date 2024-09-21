@@ -33,4 +33,8 @@ router.get('/verpedidos',controller.verpedidos)
 
 router.get('/detalles',controller.detalles)
 
-module.exports = router;
+// rutas para la pagina de gestion de pedidos
+router.get('/vernuevosregistros',controller.vernuevosregistros)
+
+
+module.exports = router; 

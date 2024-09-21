@@ -42,5 +42,25 @@ module.exports = {
         }catch(error){
             console.log(error);
         }
+    },
+    vernuevosregistros: async (req,res)=>{
+
+        // Extraer la cookie 'perfil'
+        const perfilCookie = req.cookies.perfil;
+        
+         console.log(perfilCookie.marca);
+         try{
+            model.verpedidosnuevos(conexion,req.query.rango,function(err,results){
+                if(err){
+                   throw err;
+                }else{
+                    res.json({datos:results, nuevosRegistros: results.length });
+                }
+            });
+
+         }catch(error){
+        res.send('resibido en el servidor');
     }
+
+}
 }
