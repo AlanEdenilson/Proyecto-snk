@@ -5,8 +5,6 @@ $(function() {
             console.log('Botón extraer clickeado');
             $('.overlay').show();
             $('.animacion-extraccion').show();
-            alert('ExtraerCambios.js cargado');
-            // Simular la extracción (reemplazar con la lógica real)
             setTimeout(function() {
                 $('.overlay').hide();
                 $('.animacion-extraccion').hide();
