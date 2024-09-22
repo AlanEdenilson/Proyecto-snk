@@ -89,6 +89,31 @@ function contarRegistros() {
         };
     });
 }
+
+function editarCampo(id, campo, valor) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(["pedidos"], "readwrite");
+        const objectStore = transaction.objectStore("pedidos");
+        const request = objectStore.get(id);
+        
+        request.onerror = () => reject("Error al obtener el pedido para editar");
+        
+        request.onsuccess = (event) => {
+            const pedido = event.target.result;
+            if (pedido) {
+                // Actualizar el campo específico del pedido
+                pedido[campo] = valor; // Asignar el nuevo valor al campo
+                const updateRequest = objectStore.put(pedido);
+                
+                updateRequest.onsuccess = () => resolve("Campo actualizado exitosamente");
+                updateRequest.onerror = () => reject("Error al actualizar el campo");
+            } else {
+                reject("Pedido no encontrado");
+            }
+        };
+    });
+}
+
  /// cargar datos en  el html 
  function cargarDatos(){
              
@@ -159,9 +184,14 @@ function contarRegistros() {
         });
     }
 
+
     function actualizarTablaHTML(pedidos) {
+        const repartidor = JSON.parse(localStorage.getItem('repartidores'));
+        console.log(repartidor)
         let filas = '';
-        pedidos.forEach(function(item) {
+        for (let i = 0; i < pedidos.length; i++) {
+            const item = pedidos[i];
+            console.log('item actualisados'+i)
             filas += `
                 <tr id="${item.id}" data-id="${item.id}">
                     <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
@@ -171,7 +201,7 @@ function contarRegistros() {
                     <td>$ ${item.total}</td>
                     <td>
                         <select id='repartidor'>
-                             <option id='text' value="">Seleccione un repartidor</option>
+                             <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
                         </select>
                     </td>
                     <td>
@@ -183,7 +213,7 @@ function contarRegistros() {
                     <td><button class="detalles-btn">≫</button></td>
                 </tr>
             `;
-        });
+        };
 
         $('#tabla-container tbody').html(filas);
     }
@@ -195,7 +225,8 @@ function contarRegistros() {
         cargarDatos: cargarDatos,
         contarRegistros: contarRegistros,
         obtenerUltimoId: obtenerUltimoId,
-        refrescarBD: refrescarBD // Añadir la nueva función al objeto retornado
+        refrescarBD: refrescarBD,
+        editar:editarCampo // Añadir la nueva función al objeto retornado
     };
 
 

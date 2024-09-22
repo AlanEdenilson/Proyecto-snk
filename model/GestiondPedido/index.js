@@ -11,11 +11,9 @@ module.exports = {
     GROUP_CONCAT(DISTINCT pa.estado) AS estados,
     DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s') AS fecha_hora_pedido,
     GROUP_CONCAT(DISTINCT pa.id) AS pedidos_ids,
-    GROUP_CONCAT(DISTINCT CONCAT(
-        'repartidor:', pa.repartidor_id,
-        ',fecha-entrega:', DATE_FORMAT(pa.fecha_estimada_entrega, '%Y-%m-%d %H:%i:%s')
-    ) SEPARATOR '||') AS detalles_repartidor,
-
+    pa.repartidor_id AS repartidor,
+    DATE_FORMAT(pa.fecha_estimada_entrega, '%Y-%m-%d %H:%i:%s') AS fecha_entrega,
+   
     SUM(dp.subtotal) AS total_pedido,
     GROUP_CONCAT(DISTINCT CONCAT(
         'producto_id:', dp.producto_id, 
