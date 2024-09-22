@@ -142,16 +142,61 @@ function contarRegistros() {
 
     }
     
+    function refrescarBD() {
+        return new Promise((resolve, reject) => {
+            console.log('Refrescando la base de datos...');
+            initDB()
+                .then(() => obtenerPedidos())
+                .then(pedidos => {
+                    console.log('Datos actualizados obtenidos');
+                    actualizarTablaHTML(pedidos);
+                    resolve('Base de datos refrescada exitosamente');
+                })
+                .catch(error => {
+                    console.error("Error al refrescar la base de datos:", error);
+                    reject(error);
+                });
+        });
+    }
+
+    function actualizarTablaHTML(pedidos) {
+        let filas = '';
+        pedidos.forEach(function(item) {
+            filas += `
+                <tr id="${item.id}" data-id="${item.id}">
+                    <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
+                    <td class="ver"><i class="fas fa-eye-slash"></i></td>
+                    <td>${item.fecha}</td>
+                    <td>${item.cantidad}</td>
+                    <td>$ ${item.total}</td>
+                    <td>
+                        <select id='repartidor'>
+                             <option id='text' value="">Seleccione un repartidor</option>
+                        </select>
+                    </td>
+                    <td>
+                         <input type="date" id="fecha" name="fecha">
+                    </td>
+                    <td class="checkbox-center">
+                        <input type="checkbox" ${item['.'] ? 'checked' : ''}>
+                    </td>
+                    <td><button class="detalles-btn">≫</button></td>
+                </tr>
+            `;
+        });
+
+        $('#tabla-container tbody').html(filas);
+    }
+
     return {
         initDB: initDB,
         guardarPedidos: guardarPedidos,
         obtenerPedidos: obtenerPedidos,
         cargarDatos: cargarDatos,
         contarRegistros: contarRegistros,
-        obtenerUltimoId: obtenerUltimoId
+        obtenerUltimoId: obtenerUltimoId,
+        refrescarBD: refrescarBD // Añadir la nueva función al objeto retornado
     };
-
-
 
 
 

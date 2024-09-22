@@ -31,7 +31,11 @@ var Modulo2 = (function($){
                     const notificacionSpan = $('.notificacion');
                     
                     // Mostrar el span
-                    notificacionSpan.show();
+                    if(nuevosRegistros == 0){
+                        notificacionSpan.hide();
+                    }else{
+                        notificacionSpan.show();
+                    }
                     
                     // Modificar el número a 1
                     notificacionSpan.text(nuevosRegistros);
