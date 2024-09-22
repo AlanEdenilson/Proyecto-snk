@@ -115,14 +115,14 @@ ORDER BY
             JOIN pedidos_activos pa ON dp.pedido_id = pa.id
             WHERE 
                 m.id = 4
-                AND pa.id > 76  
+                AND pa.id > ? 
             GROUP BY 
                 m.id, DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s')
             ORDER BY 
                 m.nombre, fecha_hora_pedido DESC;
             `;
             
-            conexion.query(sql,funcion);
+            conexion.query(sql,[ultimoIdLocal],funcion);
         },
         // ... resto del código ...
     

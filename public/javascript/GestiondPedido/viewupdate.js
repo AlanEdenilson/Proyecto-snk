@@ -13,8 +13,6 @@ $(async function() {
      
   } catch (error) {
     console.error('Error al obtener los pedidos:', error);
-
-
   }
 
 

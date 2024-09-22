@@ -1,5 +1,9 @@
-$(function() {
+$( async function () {
+        // Función para verificar si la base de datos existe y inicializarla
 
+        // Llamar a la función de verificación e inicialización
+
+        function cargarDatos(){
         $.ajax({
             url: "/gestion/verpedidos",
             type: "GET",
@@ -30,8 +34,20 @@ $(function() {
                 console.error("Error al cargar el contenido:", error);
             }
         });
-
-
+            }   
+             try {
+                await Modulo1.initDB();
+               var numero = await Modulo1.contarRegistros()
+               console.log('numero de registros inicio', numero)
+               if(numero == 0){
+                cargarDatos()
+               }
+                
+            } catch (error) {
+                
+            }
+            
+          
 
         
         $(".container").load("/gestion/pagina1", function(response, status, xhr) {
