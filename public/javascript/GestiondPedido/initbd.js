@@ -138,14 +138,14 @@ function editarCampo(id, campo, valor) {
                     <td>
                     
                         <select id='repartidor'>
-                             <option id='text' value="">Seleccione un repartidor</option>
+                              <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
                         </select>
                     </td>
                     <td>
-                         <input type="date" id="fecha" name="fecha">
+                        <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
                     </td>
                     <td class="checkbox-center">
-                        <input type="checkbox" ${item['.'] ? 'checked' : ''}>
+                         <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
                     </td>
                     <td><button class="detalles-btn">≫</button></td>
                 </tr>
@@ -186,12 +186,12 @@ function editarCampo(id, campo, valor) {
 
 
     function actualizarTablaHTML(pedidos) {
-        const repartidor = JSON.parse(localStorage.getItem('repartidores'));
-        console.log(repartidor)
+        
+        
         let filas = '';
         for (let i = 0; i < pedidos.length; i++) {
             const item = pedidos[i];
-            console.log('item actualisados'+i)
+           
             filas += `
                 <tr id="${item.id}" data-id="${item.id}">
                     <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
@@ -205,10 +205,10 @@ function editarCampo(id, campo, valor) {
                         </select>
                     </td>
                     <td>
-                         <input type="date" id="fecha" name="fecha">
+                         <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
                     </td>
                     <td class="checkbox-center">
-                        <input type="checkbox" ${item['.'] ? 'checked' : ''}>
+                        <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
                     </td>
                     <td><button class="detalles-btn">≫</button></td>
                 </tr>

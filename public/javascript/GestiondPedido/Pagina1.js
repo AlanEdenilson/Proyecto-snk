@@ -85,6 +85,9 @@ $(document).on('click', '#repartidor',async function() {
     if (repartidoresGuardados) {
         if ($(this).find('option').length < 5) {
             $(this).empty();
+            // Obtener el data-id de la fila actual
+            
+            
            
             for (let i = 0; i < repartidoresGuardados.length; i++) {
                 $(this).append(`<option value="${repartidoresGuardados[i].id}">${repartidoresGuardados[i].nombre}</option>`);
@@ -93,10 +96,16 @@ $(document).on('click', '#repartidor',async function() {
     }
 
     $(this).on('change',async  function() {
+        let textoRepartidor = $(this).find('option:selected').text();
+        console.log('Texto del repartidor seleccionado:', textoRepartidor);
+        let selectedRepartidor = $(this).val();
+        console.log('Valor del repartidor seleccionado:', selectedRepartidor);
+        let filaId = $(this).closest('tr').attr('data-id');
+            console.log('ID de la fila:', filaId);
         try {
             await Modulo1.initDB()
-           var e= await Modulo1.editar('28,29', 'repartidor', 1);
-           var l= await Modulo1.editar('28,29', 'repartidorn', 'alan');
+           var e= await Modulo1.editar(filaId, 'repartidor', selectedRepartidor);
+           var l= await Modulo1.editar(filaId, 'repartidorn', textoRepartidor);
             console.log("Campo actualizado exitosamente", e);
             await Modulo1.refrescarBD()
         } catch (error) {
@@ -107,8 +116,47 @@ $(document).on('click', '#repartidor',async function() {
 
   
     
-});
-        
+}); 
+  // capturar fecha de entrega
+  $(document).on('change', '#fecha', async function() {
+    let fecha = $(this).val();
+    console.log('Fecha de entrega seleccionada:', fecha);
+    
+    let filaId = $(this).closest('tr').attr('data-id');
+    console.log('ID de la fila:', filaId);
+    
+    try {
+      await Modulo1.initDB();
+      await Modulo1.editar(filaId, 'fecha_entrega', fecha);
+      console.log("Fecha de entrega actualizada exitosamente");
+      await Modulo1.refrescarBD();
+    } catch (error) {
+      console.error("Error al actualizar la fecha de entrega:", error);
+    }
+  });
+
+  //capturar el checkbox
+  $(document).on('change', '#aceptado', async function() {
+    let estaCheckeado = $(this).prop('checked');
+    console.log('El checkbox está:', estaCheckeado ? true : false);
+
+    let filaId = $(this).closest('tr').attr('data-id');
+    console.log('ID de la fila:', filaId);
+    try {
+      await Modulo1.initDB();
+      await Modulo1.editar(filaId, 'Aceptado', estaCheckeado);
+      console.log("Estado del checkbox actualizado exitosamente");
+      await Modulo1.refrescarBD();
+    } catch (error) {
+      console.error("Error al actualizar el estado del checkbox:", error);
+    }
+  });
+
+  //capturar el boton de aceptar
+  $(document).on('click', '#btn-aceptar', async function() {
+    alert('Aceptar');
+    Megatron.transformar();
+  });
 
     
     
