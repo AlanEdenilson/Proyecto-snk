@@ -25,23 +25,7 @@ $( function() {
                 })));
                 console.log("Nuevos pedidos guardados exitosamente en IndexedDB");
                 await Modulo1.refrescarBD();
-                setTimeout(function() {
                
-                    $('.spinner').hide();
-                    $('.text-spinner').hide();
-                  
-                    
-                    $('.check-success').show();
-    
-                }, 2000); // 3 segundos de ejemplo
-    
-                setTimeout(function() {
-                     $('.overlay').hide();
-                    $('.animacion-extraccion').hide();
-                    $('.check-success').hide();
-                   
-                }, 3000); // 3 segundos de ejemplo
-                
             } else {
                 console.log("No hay nuevos pedidos para guardar");
             }
@@ -50,7 +34,17 @@ $( function() {
                 console.error('Error al extraer los cambios:', error);
             }
 
+            setTimeout(function() {
+                $('.spinner').hide();
+                $('.text-spinner').hide();
+                $('.check-success').show();
+            }, 2000);
 
+            setTimeout(function() {
+                $('.check-success').hide();
+                $('.overlay').hide();
+                $('.animacion-extraccion').hide();
+            }, 4000);
             
            
         });
