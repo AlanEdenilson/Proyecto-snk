@@ -19,13 +19,16 @@ class Megatron {
                     id: pedido.id,
                     repartidor: pedido.repartidor,
                     Aceptado: pedido.Aceptado,
+                    estado: pedido.estado,
                     fecha_entrega: pedido.fecha_entrega
                 };
                 change.push(pedidoLimpio);
             });
             console.log("Datos extraídos y agregados a la lista 'change':", change);
             
-            // Aquí puedes realizar más operaciones con la lista 'change' si es necesario
+            var estado = await Galbatron.VerificarEstado(change);
+            console.log("Estado de los pedidos:", estado);
+
             
         } catch (error) {
             console.error("Error al actualizar el estado del checkbox:", error);
