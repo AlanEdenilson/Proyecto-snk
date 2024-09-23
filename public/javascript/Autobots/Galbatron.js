@@ -62,7 +62,8 @@ class Galbatron {
 const galbatron = new Galbatron();
 
 return {
-    VerificarEstado: galbatron.VerificarEstado
+    VerificarEstado: galbatron.VerificarEstado,
+    PrepararRegistros: galbatron.PrepararRegistros
 }
 
    
