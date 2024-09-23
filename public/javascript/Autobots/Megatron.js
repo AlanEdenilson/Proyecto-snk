@@ -29,6 +29,8 @@ class Megatron {
             var estado = await Galbatron.VerificarEstado(change);
             console.log("Estado de los pedidos:", estado);
 
+            var lista = await Galbatron.PrepararRegistros(estado);
+
             
         } catch (error) {
             console.error("Error al actualizar el estado del checkbox:", error);

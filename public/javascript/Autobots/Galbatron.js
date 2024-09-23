@@ -36,7 +36,23 @@ class Galbatron {
 
 
     PrepararRegistros(lista) {
-        
+    return new Promise((resolve, reject) => {
+        try {
+            const nuevaLista = lista.flatMap(pedido => {
+                const ids = pedido.id.toString().split(',').map(id => id.trim());
+                return ids.map(id => ({
+                    ...pedido,
+                    id: parseInt(id)
+                }));
+            });
+            
+            console.log("Nueva lista con registros separados:", nuevaLista);
+            resolve(nuevaLista);
+        } catch (error) {
+            console.error("Error al preparar los registros:", error);
+            reject(error);
+        }
+    });
 
     }
 
