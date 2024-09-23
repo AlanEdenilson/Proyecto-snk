@@ -17,7 +17,7 @@ $( async function () {
                     id: item.pedidos_ids,
                     fecha: item.fecha_hora_pedido,
                     repartidor: item.repartidor,
-                    repartidorn:'no asignado',
+                    repartidorn:item.repartidor_nombre,
                     fecha_entrega: item.fecha_entrega,
                     estado: item.estados,
                     total: item.total_pedido,

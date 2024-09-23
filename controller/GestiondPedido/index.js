@@ -10,6 +10,7 @@ module.exports = {
                 if(err){
                    throw err;
                 }else{
+                    console.log(results);
                     res.send(results);
                 }
             });

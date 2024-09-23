@@ -18,6 +18,9 @@ $( function() {
                 await Modulo1.guardarPedidos(nuevoPedido.datos.map(item => ({
                     id: item.pedidos_ids,
                     fecha: item.fecha_hora_pedido,
+                    repartidor: item.repartidor,
+                    repartidorn:'no asignado',
+                    fecha_entrega: item.fecha_entrega,
                     estado: item.estados,
                     total: item.total_pedido,
                     cantidad: item.total_cantidad,
