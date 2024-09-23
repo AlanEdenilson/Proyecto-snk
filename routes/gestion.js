@@ -46,6 +46,9 @@ router.get('/l66', function(req, res, next) {
 router.get('/89', function(req, res, next) {
     res.render('gestionDpedido/diseño1')
   });
+
+  //aplication change
+  router.post('/AplicationChange',controller.AplicationChange)
   
 module.exports = router;
 

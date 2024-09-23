@@ -62,5 +62,69 @@ module.exports = {
         res.send('resibido en el servidor');
     }
 
+},
+AplicationChange: async (req,res)=>{
+
+  // Crear una nueva lista con los datos requeridos
+  let change = [];
+  const arr=JSON.stringify(req.body);
+            
+  // Iterar sobre cada pedido y agregarlo a la lista 'change'
+  req.body.forEach(pedido => {
+      const pedidoLimpio = {
+          id: pedido.id,
+          repartidor: pedido.repartidor,
+          estado: pedido.estado,
+          fecha_entrega: pedido.fecha_entrega
+      };
+      change.push(pedidoLimpio);
+  });
+ 
+  //res.json({ mensaje: 'Datos recibidos y procesados correctamente', datos: change });
+
+    try {
+        // Procesar cada pedido en la lista 'change'
+        for (let pedido of change) {
+            // Preparar los datos para la actualización
+            const datosActualizacion = [
+                pedido.repartidor,
+                pedido.estado,
+                pedido.fecha_entrega,
+                pedido.id
+            ];
+
+            // Llamar a la función AplicationChange del modelo
+            await new Promise((resolve, reject) => {
+                model.AplicationChange(conexion, datosActualizacion, function(err, results) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(results);
+                    }
+                });
+            });
+        }
+
+        // Enviar respuesta de éxito
+        res.json({ mensaje: 'Todos los pedidos han sido actualizados correctamente' });
+    } catch (error) {
+        console.error('Error al actualizar los pedidos:', error);
+        res.status(500).json({ error: 'Error al procesar la actualización de pedidos' });
+    }
+
+
+  
+    // try{
+    //     model.AplicationChange(conexion,req.body.id,function(err,results){
+    //         if(err){
+    //             throw err;
+    //         }else{
+    //             res.send(results);
+    //         }
+    //     });
+    // }catch(error){
+    //     console.log(error);
+    // }
+
 }
 }

@@ -64,11 +64,10 @@ $( async function () {
 
 // Crear un array de repartidores
             const repartidores = [
-                { id: 1, nombre: "Juan Pérez" },
-                { id: 2, nombre: "María García" },
-                { id: 3, nombre: "Carlos Rodríguez" },
-                { id: 4, nombre: "Ana Martínez" },
-                { id: 5, nombre: "Luis Sánchez" }
+                { id: 8, nombre: "Juan Pérez" },
+                { id: 9, nombre: "María García" },
+                { id: 11, nombre: "Carlos Rodríguez" },
+                { id: 13, nombre: "Luis Sánchez" }
             ];
 
             // Guardar el array en el localStorage

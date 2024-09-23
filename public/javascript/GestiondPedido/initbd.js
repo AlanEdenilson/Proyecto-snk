@@ -114,6 +114,21 @@ function editarCampo(id, campo, valor) {
     });
 }
 
+ function borrarTodosLosRegistros() {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(["pedidos"], "readwrite");
+        const objectStore = transaction.objectStore("pedidos");
+        const request = objectStore.clear();
+        
+        request.onerror = () => reject("Error al borrar todos los registros");
+        request.onsuccess = () => {
+            console.log("Todos los registros han sido borrados exitosamente");
+            resolve("Todos los registros han sido borrados");
+        };
+    });
+}
+
+
  /// cargar datos en  el html 
  function cargarDatos(){
              
@@ -226,7 +241,8 @@ function editarCampo(id, campo, valor) {
         contarRegistros: contarRegistros,
         obtenerUltimoId: obtenerUltimoId,
         refrescarBD: refrescarBD,
-        editar:editarCampo // Añadir la nueva función al objeto retornado
+        editar:editarCampo,
+        borrarTodosLosRegistros:borrarTodosLosRegistros
     };
 
 

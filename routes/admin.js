@@ -44,4 +44,8 @@ router.patch('/update2/:id',upload.single('imagen'),controlador.actualizar2)
 
 
 
+
+
+
+
 module.exports = router;

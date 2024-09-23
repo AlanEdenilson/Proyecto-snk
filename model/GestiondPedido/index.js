@@ -123,7 +123,16 @@ ORDER BY
             conexion.query(sql,[ultimoIdLocal],funcion);
         },
         // ... resto del código ...
-    
+        AplicationChange: function(conexion,datos,funcion){
+            const sql = `
+            UPDATE pedidos_activos 
+            SET repartidor_id = ?, 
+                estado = ?, 
+                fecha_estimada_entrega = ?
+            WHERE id = ?
+        `;
+        conexion.query(sql,datos,funcion);
+    }
 
 
 }

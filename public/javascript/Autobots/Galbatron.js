@@ -56,6 +56,31 @@ class Galbatron {
 
     }
 
+
+    EnviarCambios(datos) {
+        return new Promise((resolve, reject) => {
+            try {
+                $.ajax({
+                    url: '/gestion/aplicationchange',
+                    method: 'POST',
+                    data: JSON.stringify(datos),
+                    contentType: 'application/json',
+                    success: function(respuesta) {
+                        console.log("Cambios enviados con éxito:", respuesta);
+                        resolve(respuesta);
+                    },
+                    error: function(error) {
+                        console.error("Error al enviar los cambios:", error);
+                        reject(error);
+                    }
+                });
+            } catch (error) {
+                console.error("Error al preparar la petición AJAX:", error);
+                reject(error);
+            }
+        });
+    }
+
 }
 
 // Crear una instancia de Galbatron
@@ -63,7 +88,8 @@ const galbatron = new Galbatron();
 
 return {
     VerificarEstado: galbatron.VerificarEstado,
-    PrepararRegistros: galbatron.PrepararRegistros
+    PrepararRegistros: galbatron.PrepararRegistros,
+    EnviarCambios: galbatron.EnviarCambios
 }
 
    
