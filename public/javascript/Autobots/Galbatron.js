@@ -34,6 +34,12 @@ class Galbatron {
         });
     }
 
+
+    PrepararRegistros(lista) {
+        
+
+    }
+
 }
 
 // Crear una instancia de Galbatron
