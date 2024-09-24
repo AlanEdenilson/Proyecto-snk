@@ -45,7 +45,12 @@ function obtenerPedidos() {
         const request = objectStore.getAll();
         
         request.onerror = () => reject("Error al obtener pedidos");
-        request.onsuccess = () => resolve(request.result);
+        request.onsuccess = () => {
+            const pedidos = request.result;
+            // Ordenar los pedidos por ID numéricamente
+            pedidos.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+            resolve(pedidos);
+        };
     });
 }
 function obtenerUltimoId() {

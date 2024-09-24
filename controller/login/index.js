@@ -156,17 +156,11 @@ module.exports={
 
     //-----------------------------------------|
     verificarCuenta: async function(req, res){ 
+
+      
+
         var datos = req.body;
         console.log(datos);
-
-
-       
-
-
-        //crenado los datos a almacenar en la cokkie 
-
-        // generarando token y almacenando lo en la cokkie
-      
 
         try {
           var result = await model.insertarUsuario(conexion,datos)
@@ -177,7 +171,9 @@ module.exports={
 
 
           if(req.body.rol==='repartidor'){
-            await model.inforepar(conexion,principalId)
+            var result = await model.Buscar_marca(conexion,req.body.Id)
+            console.log(result.dato[0].id)
+            await model.inforepar(conexion,principalId,result.dato[0].id)
             console.log('insertado el repartidor') 
           }else{
             await model.infoadmin(conexion,principalId) 
@@ -382,7 +378,15 @@ module.exports={
         }
     },
 
-    admin:function(req,res) {
+    buscarcodigo:async function(id) {
+      try{
+        return await model.Buscar_marca(conexion,id)
+
+      } catch (error) { 
+        return error
+
+      }
+
       
     }
 

@@ -118,7 +118,7 @@ ORDER BY
             LEFT JOIN usuarios r ON pa.repartidor_id = r.id
             WHERE 
                 m.id = 4
-                AND pa.id > ? 
+                AND pa.id > ? AND pa.estado = 'En_espera' 
             GROUP BY 
                 m.id, DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s')
             ORDER BY 
@@ -137,6 +137,18 @@ ORDER BY
             WHERE id = ?
         `;
         conexion.query(sql,datos,funcion);
+    },
+    verRepart: function(conexion,funcion,id){
+        const sql = `SELECT 
+            pa.id,
+            u.usuario
+            FROM repartidores pa
+            JOIN usuarios u ON u.id = pa.id
+            WHERE pa.marca_id = 4
+            AND u.rol = 'repartidor'
+            `;
+
+        conexion.query(sql,funcion);
     }
 
 

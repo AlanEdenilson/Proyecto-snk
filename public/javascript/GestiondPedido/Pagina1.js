@@ -1,7 +1,16 @@
 $( async function () {
-        // Función para verificar si la base de datos existe y inicializarla
-
-        // Llamar a la función de verificación e inicialización
+    $.ajax({
+        url: "/gestion/repartidores",
+        type: "GET",
+        success: function(response) {
+        localStorage.setItem('repartidores', JSON.stringify(response));
+            console.log('repartidores guardados en localStorage')
+        },
+        //eror
+        error: function(xhr, status, error) {
+            alert('errror al cargar los repartidores')
+        }
+    })
 
         function cargarDatos(){
         $.ajax({
@@ -62,18 +71,7 @@ $( async function () {
         });
 
 
-// Crear un array de repartidores
-            const repartidores = [
-                { id: 8, nombre: "Juan Pérez" },
-                { id: 9, nombre: "María García" },
-                { id: 11, nombre: "Carlos Rodríguez" },
-                { id: 13, nombre: "Luis Sánchez" }
-            ];
 
-            // Guardar el array en el localStorage
-            localStorage.setItem('repartidores', JSON.stringify(repartidores));
-
-            console.log('Array de repartidores guardado en localStorage');
 
 
 // Escuchar el evento de cambio en el select con id 'repartidor'
@@ -89,7 +87,7 @@ $(document).on('click', '#repartidor',async function() {
             
            
             for (let i = 0; i < repartidoresGuardados.length; i++) {
-                $(this).append(`<option value="${repartidoresGuardados[i].id}">${repartidoresGuardados[i].nombre}</option>`);
+                $(this).append(`<option value="${repartidoresGuardados[i].id}">${repartidoresGuardados[i].usuario}</option>`);
             }
         }
     }

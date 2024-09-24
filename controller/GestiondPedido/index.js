@@ -113,19 +113,21 @@ AplicationChange: async (req,res)=>{
         res.status(500).json({ error: 'Error al procesar la actualización de pedidos' });
     }
 
-
-  
-    // try{
-    //     model.AplicationChange(conexion,req.body.id,function(err,results){
-    //         if(err){
-    //             throw err;
-    //         }else{
-    //             res.send(results);
-    //         }
-    //     });
-    // }catch(error){
-    //     console.log(error);
-    // }
-
+},
+verRepart: async (req,res)=>{
+    try{
+        model.verRepart(conexion,function(err,results){
+            if(err){
+                throw err;
+            }else if(results.length > 0){
+                console.log(results);
+                res.send(results);
+            }else{
+                res.send([]);
+            }
+        });
+    }catch(error){
+        console.log(error);
+    }
 }
 }

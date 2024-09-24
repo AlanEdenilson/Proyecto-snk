@@ -51,8 +51,8 @@ module.exports = {
            
         });
     },
-    inforepar:function (conexion,id) {
-        const consulta = `INSERT INTO repartidores (id) VALUES (${id})`;
+    inforepar:function (conexion,id,marca) {
+        const consulta = `INSERT INTO repartidores (id, marca_id) VALUES (${id} ,${marca})`;
         return new Promise((resolve, reject) => {
             try {
                 conexion.query(consulta, function (error,result) {
@@ -176,23 +176,23 @@ module.exports = {
             });
         });
     },
-   /* insertarmarca:function (conexion, marca) {
-        const consulta = `INSERT INTO marca (nombre) VALUES ('${marca}')`;
+    Buscar_marca:function (conexion, id) {
+        console.log('buscando marca')
+        
+        const consulta = `SELECT id FROM marcas WHERE id_marca=${id}`;
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
                     return reject(error);
                 } else {
-                    resolve(true);
+                    if (datos.length > 0) {
+                        console.log(datos)
+                        return resolve({respuesta:true,dato:datos});
+                    } else {
+                        resolve(false); // No se encontró ningúna marca
+                    }
                 }
             });
         });
-    }*/
-    
-    
-    /*function(conexion) {
-        
-      
-         const buscarUser = buscarUsuario(conexion,consulta)
-}*/
+    },
 }

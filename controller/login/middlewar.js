@@ -141,7 +141,19 @@ module.exports={
               }),
         body('Id')
             .notEmpty().withMessage('El campo  no puede estar vacío')
+            .isLength({ min:5 }).withMessage("debe contener almenos 5 caracteres")
             .isInt().withMessage('El id no es válido'),
+        body('Id').custom((async value =>{
+            const res= await controller.buscarcodigo(value)
+            console.log(res)
+            if (res.respuesta) {
+              return true
+            }else{
+              throw new Error('Alapareser el codigo proporcionado no existe ');
+            }
+
+
+        })),
         body('password')
             .notEmpty().withMessage('El campo  no puede estar vacío')
             .isLength({ min:8 }).withMessage("La contraseña debe tener al menos 8 caracteres")

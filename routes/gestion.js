@@ -49,6 +49,8 @@ router.get('/89', function(req, res, next) {
 
   //aplication change
   router.post('/AplicationChange',controller.AplicationChange)
+
+  router.get('/repartidores',controller.verRepart)
   
 module.exports = router;
 
