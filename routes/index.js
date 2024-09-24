@@ -76,6 +76,10 @@ router.get('/clear',(req,res)=>{
 router.get('/diseño3',(req,res)=>{
   res.render('gestionDpedido/diseño2');
 });
+router.get('/tabla',(req,res)=>{
+  res.render('gestionDpedido/tablavista');
+});
+
 
 
 
