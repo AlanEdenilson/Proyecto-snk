@@ -20,6 +20,7 @@ function initDB() {
             objectStore.createIndex("estado", "estado", { unique: false });
             objectStore.createIndex("total", "total", { unique: false });
             objectStore.createIndex("cantidad", "cantidad", { unique: false });
+            objectStore.createIndex("autoId", "autoId", { unique: false });
         };
     });
 }
@@ -29,14 +30,29 @@ function guardarPedidos(pedidos) {
         const transaction = db.transaction(["pedidos"], "readwrite");
         const objectStore = transaction.objectStore("pedidos");
         
-        pedidos.forEach(pedido => {
-            objectStore.put(pedido);
-        });
+        let lastId = 0;
+        const getLastIdRequest = objectStore.openCursor(null, 'prev');
         
-        transaction.oncomplete = () => resolve("Pedidos guardados");
-        transaction.onerror = () => reject("Error al guardar pedidos");
+        getLastIdRequest.onsuccess = (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+                lastId = cursor.value.autoId || 0;
+            }
+            
+            pedidos.forEach(pedido => {
+                lastId++;
+                pedido.autoId = lastId;
+                objectStore.put(pedido);
+            });
+            
+            transaction.oncomplete = () => resolve("Pedidos guardados");
+            transaction.onerror = () => reject("Error al guardar pedidos");
+        };
+        
+        getLastIdRequest.onerror = () => reject("Error al obtener el último ID");
     });
 }
+
 
 function obtenerPedidos() {
     return new Promise((resolve, reject) => {
@@ -57,21 +73,14 @@ function obtenerUltimoId() {
     return new Promise((resolve, reject) => {
         const transaction = db.transaction(["pedidos"], "readonly");
         const objectStore = transaction.objectStore("pedidos");
-        const request = objectStore.openCursor(null, 'prev');
+        const index = objectStore.index("autoId");
+        const request = index.openCursor(null, 'next');
         
-        request.onerror = () => reject("Error al obtener el último ID");
+        request.onerror = () => reject("Error al obtener el primer ID");
         request.onsuccess = (event) => {
             const cursor = event.target.result;
             if (cursor) {
-                // Extraer todos los números de la clave
-                const numbers = cursor.key.match(/\d+/g);
-                if (numbers && numbers.length > 0) {
-                    // Tomar el último número y convertirlo a entero
-                    const lastNumber = parseInt(numbers[numbers.length - 1], 10);
-                    resolve(lastNumber);
-                } else {
-                    resolve(0); // Si no se encuentran números, devuelve 0
-                }
+                resolve(cursor.value.id);
             } else {
                 resolve(0); // Si no hay registros, devuelve 0
             }
