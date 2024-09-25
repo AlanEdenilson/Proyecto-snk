@@ -8,6 +8,7 @@ module.exports = {
         const sql = `
         SELECT 
     m.id AS marca_id,
+    
   
 
     GROUP_CONCAT(DISTINCT pa.estado) AS estados,
@@ -35,8 +36,7 @@ JOIN pedidos_activos pa ON dp.pedido_id = pa.id
 WHERE 
     m.id = 4 AND pa.estado = 'En_espera' || pa.estado = ''
 GROUP BY 
-    m.id,DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s')
-ORDER BY 
+
     m.nombre, fecha_hora_pedido DESC;
      `;
         conexion.query(sql,funcion)

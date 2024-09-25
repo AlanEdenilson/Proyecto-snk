@@ -22,16 +22,18 @@ $( async function () {
             // Inicializar la base de datos
             Modulo1.initDB().then(() => {
                 // Guardar los pedidos en la base de datos
+                let contador = 0;
                 return Modulo1.guardarPedidos(arrayRecuperado.map(item => ({
+                    
                     id: item.pedidos_ids,
                     fecha: item.fecha_hora_pedido,
                     repartidor: item.repartidor,
-                    repartidorn:item.repartidor_nombre,
+                    repartidorn: item.repartidor_nombre,
                     fecha_entrega: item.fecha_entrega,
                     estado: item.estados,
                     total: item.total_pedido,
                     cantidad: item.total_cantidad,
-                    Aceptado:false
+                    Aceptado: false
                 })));
             }).then(() => {
                 console.log("Pedidos guardados exitosamente en IndexedDB");

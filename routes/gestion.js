@@ -51,6 +51,17 @@ router.get('/89', function(req, res, next) {
   router.post('/AplicationChange',controller.AplicationChange)
 
   router.get('/repartidores',controller.verRepart)
+
+  router.get('/decidir',(re,res)=>{
+    res.render('gestionDpedido/decidir')
+    })
+
+    router.get('/menu',(re,res)=>{
+        res.render('gestionDpedido/menuGestion')
+        })
+        
+      
+    
   
 module.exports = router;
 
