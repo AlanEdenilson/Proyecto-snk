@@ -1,0 +1,45 @@
+h1 {
+    text-align: center;
+    color: #333;
+}
+table {
+    width: 100%;
+    
+  
+    border: none; /* Quitar bordes de la tabla */
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: none; /* Quitar bordes de las celdas */
+}
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+.estado-icon {
+    font-size: 24px;
+    text-align: center;
+}
+.estado-completado {
+    color: green;
+}
+.estado-pendiente {
+    color: red;
+}
+select, input[type="date"] {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.checkbox-center {
+    text-align: center;
+}
+.detalles-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
