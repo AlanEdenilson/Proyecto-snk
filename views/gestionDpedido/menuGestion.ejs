@@ -7,6 +7,8 @@
     <title>CarpiShop</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/stylesheet/gestionDpedido/menu.css">
+    <link rel="stylesheet" href="/stylesheet/gestionDpedido/menutablas.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/main.css">
 </head>
@@ -29,16 +31,16 @@
             <nav>
                 <ul class="menu">
                     <li>
-                        <button id="todos" class="boton-menu boton-categoria active"><i class="bi bi-hand-index-thumb-fill"></i> Todos los productos</button>
+                        <button id="todos" value="1" class="boton-menu boton-categoria active"><i class="bi bi-hand-index-thumb-fill"></i> Todos los productos</button>
                     </li>
                     <li>
-                        <button id="abrigos" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Abrigos</button>
+                        <button id="abrigos" value="2" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Abrigos</button>
                     </li>
                     <li>
-                        <button id="camisetas" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Camisetas</button>
+                        <button id="camisetas" value="3" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Camisetas</button>
                     </li>
                     <li>
-                        <button id="pantalones" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Pantalones</button>
+                        <button id="pantalones" value="4" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Pantalones</button>
                     </li>
                     <li>
                         <a class="boton-menu boton-carrito" href="./carrito.html">
@@ -53,54 +55,99 @@
         </aside>
         <main>
             <h2 class="titulo-principal" id="titulo-principal">Administrador de pedidos</h2>
+            <div class="boton-editar">
+                <button class="btn-editar">
+                    <i class="bi bi-pencil"></i> 
+                    <span class="tooltip">Editar</span>
+                </button>
+            </div>
+            <style>
+                .boton-editar {
+                    position: relative;
+                }
+                .btn-editar {
+                    background-color: transparent;
+                    color: rgb(65, 81, 224);
+                    border: none;
+                    padding: 2px 16px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+                .btn-editar:hover {
+                    background-color: #e6ebf0;
+                }
+                .tooltip {
+                    visibility: hidden;
+                    width: 60px;
+                    background-color: #007bff;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px 0;
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 125%;
+                    left: 50%;
+                    margin-left: -30px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                .btn-editar:hover .tooltip {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            </style>
+            <style>
+                .boton-editar {
+                    position: absolute;
+                    top: 50px;
+                    right: 60px;
+                }
+                .btn-editar {
+                    background-color: #e6ebf0;
+                    color: rgb(65, 81, 224);
+                    border: none;
+                    padding: 2px 16px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+                .btn-editar:hover {
+                   
+                    color: black;
+                }
+            </style>
             <div id="contenedor-productos" class="contenedor-productos">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Encabezado 1</th>
-                        <th>Encabezado 2</th>
-                        <th>Encabezado 3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Dato 1</td>
-                        <td>Dato 2</td>
-                        <td>Dato 3</td>
-                    </tr>
-                    <tr>
-                        <td>Dato 4</td>
-                        <td>Dato 5</td>
-                        <td>Dato 6</td>
-                    </tr>
-                </tbody>
-            </table>
+               
             </div>
         </main>
     </div>
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <script>
        
-const botonesCategorias = document.querySelectorAll(".boton-categoria");
+$(document).ready(function() {
+    $(".boton-categoria").on("click", function(e) {
+        $(".boton-categoria").removeClass("active");
+        $(this).addClass("active");
+        var valor = $(this).val();
+        console.log("Valor del botón clickeado:", valor);
 
-botonesCategorias.forEach(boton => {
-    boton.addEventListener("click", (e) => {
-
-        botonesCategorias.forEach(boton => boton.classList.remove("active"));
-        e.currentTarget.classList.add("active");
-
-      
-
-    })
+    // Cargar la página correspondiente en el div
+    $("#contenedor-productos").load("/gestion/menus?n=" + valor, function(response, status, xhr) {
+        if (status == "error") {
+            console.log("Error al cargar la página: " + xhr.status + " " + xhr.statusText);
+            $("#contenedor-productos").html("<p>Error al cargar el contenido. Por favor, intente de nuevo.</p>");
+        }
+    });
+    });
 });
-
-
-
-
-
-
-
 
 
     </script>
