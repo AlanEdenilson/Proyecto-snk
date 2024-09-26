@@ -95,12 +95,19 @@ tr:hover {
 .tienda{
     position: absolute;
     top: 30px;
-    left: 5x;
+    left: 20px;
     font-size: 23px;
 }
 .nombre{
     position: absolute;
     top: 90px;
-    left: 5x;
+    left: 20px;
     font-size: 23px;
+}
+i{
+    position: absolute;
+    top: 90%;
+    right: 96%;
+    font-size: 45px;
+    cursor: pointer;
 }
