@@ -38,6 +38,11 @@ router.get('/detalles',controller.detalles)
 router.get('/vernuevosregistros',controller.vernuevosregistros)
 
 
+router.get('/perfil',(req,res)=>{
+    res.render('gestionDpedido/perfil')
+})
+
+
 
 
 router.get('/l66', function(req, res, next) {
