@@ -61,6 +61,42 @@
                     <span class="tooltip">Editar</span>
                 </button>
             </div>
+            <div class="boton-salir-editar">
+                <button class="btn-salir-editar">
+                    <i class="bi bi-x-circle"></i> 
+                    <span class="tooltip">Salir de edición</span>
+                </button>
+            </div>
+            <style>
+                .boton-salir-editar {
+                    position: absolute;
+                    top: 50px;
+                    right: 120px;
+                }
+                .btn-salir-editar {
+                    background-color: #e6ebf0;
+                    color: rgb(224, 65, 65);
+                    border: none;
+                    padding: 2px 16px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+                .btn-salir-editar:hover {
+                    background-color: #f0e6e6;
+                }
+                .btn-salir-editar .tooltip {
+                    width: 120px;
+                    background-color: #dc3545;
+                    margin-left: -60px;
+                }
+                .btn-salir-editar:hover .tooltip {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            </style>
             <style>
                 .boton-editar {
                     position: relative;

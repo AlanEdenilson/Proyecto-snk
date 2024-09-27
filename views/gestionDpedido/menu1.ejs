@@ -8,7 +8,7 @@
             <th>total</th>
             <th>asignado a</th>
             <th>Fecha de entrega</th>
-            <th>.</th>
+            <th class="checkbox-center" >.</th>
             <th>detalles</th>
         </tr>
     </thead>
@@ -226,10 +226,40 @@
         
     </tbody>
 </table>
+<!-- ... código existente ... -->
+<style>
+    .checkbox-center {
+        display: none;
+    }
+</style>
 <script>
     $(document).ready(function() {
+
+     
         $('.btn-editar').on('click', function() {
-            alert('editar');
+            $('.checkbox-center').css('display', 'block');
+            // Cambiar todos los select de repartidor a label
+            $('select[id="repartidor"]').each(function() {
+                var $repartidor = $(this);
+                var textoRepartidor = $repartidor.find('option:selected').text();
+                var $labelRepartidor = $('<label>', {
+                    id: 'repartidor',
+                    text: textoRepartidor
+                });
+                $repartidor.replaceWith($labelRepartidor);
+            });
+    
+            // Cambiar todos los input de fecha a label
+            $('input[id="fecha"]').each(function() {
+                var $fecha = $(this);
+                var textoFecha = $fecha.val();
+                var $labelFecha = $('<label>', {
+                    id: 'fecha',
+                    text: textoFecha
+                });
+                $fecha.replaceWith($labelFecha);
+            });
         });
     });
-</script>
+    </script>
+    
