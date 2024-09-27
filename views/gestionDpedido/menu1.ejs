@@ -1,3 +1,4 @@
+
 <table >
     <thead>
         <tr>
@@ -20,14 +21,14 @@
 
             <td> ${item.cantidad}</td>
             <td> $ ${item.total}</td>
-            <td>
+            <td id="select">
             
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
+                <label id='repartidor'>
+                       marta1
+                </label>
             </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
+            <td id="fechatd">
+                <label type="date" id="fecha" name="fecha" >12/34/2024 </label>
             </td>
             <td class="checkbox-center">
                  <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
@@ -41,188 +42,20 @@
 
             <td> ${item.cantidad}</td>
             <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
+            <td id="select">
+                <label id='repartidor'>
+                    marta1
+             </label>
             </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
-            </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
+            <td id="fechatd">
+                <label type="date" id="fecha" name="fecha" >12/34/2024 </label>
             </td>
             <td class="checkbox-center">
                  <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
             </td>
             <td><button class="detalles-btn">≫</button></td>
         </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
-            </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
-            </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
-            </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
-            </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
-            </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
-            </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td>
-            
-                <select id='repartidor'>
-                      <option id='text' value="${item.repartidor}">${item.repartidorn}</option>
-                </select>
-            </td>
-            <td>
-                <input type="date" id="fecha" name="fecha" value="${item.fecha_entrega ? new Date(item.fecha_entrega).toISOString().split('T')[0] : ''}">
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
+        
         
     </tbody>
 </table>
@@ -234,10 +67,51 @@
 </style>
 <script>
     $(document).ready(function() {
-
-     
         $('.btn-editar').on('click', function() {
             $('.checkbox-center').css('display', 'block');
+            // Cambiar todos los select de repartidor a label
+            $('label[id="repartidor"]').each(function() {
+                var $repartidor = $(this);
+                var textoRepartidor = $repartidor.find('option:selected').text();
+                var $labelRepartidor = $('<select>', {
+                    id: 'repartidor'
+                });
+                $labelRepartidor.append($('<option>', {
+                    value: textoRepartidor,
+                    text: textoRepartidor
+                }));
+                $labelRepartidor.append($('<option>', {
+                    value: 'opcion1',
+                    text: 'Texto opción 1'
+                }));
+                $labelRepartidor.append($('<option>', {
+                    value: 'opcion2',
+                    text: 'Texto opción 2'
+                }));
+                $labelRepartidor.append($('<option>', {
+                    value: 'opcion3',
+                    text: 'Texto opción 3'
+                }));
+                $repartidor.replaceWith($labelRepartidor);
+            });
+    
+            // Cambiar todos los input de fecha a label
+            $('label[id="fecha"]').each(function() {
+                var $fecha = $(this);
+                var textoFecha = $fecha.val();
+                var $labelFecha = $('<input>', {
+                    id: 'fecha',
+                    type: 'date',
+                    name: 'fecha',
+                    value: textoFecha
+                });
+                $fecha.replaceWith($labelFecha);
+            });
+        });
+
+        //
+        $('.btn-salir-editar').on('click', function() {
+            $('.checkbox-center').css('display', 'none');
             // Cambiar todos los select de repartidor a label
             $('select[id="repartidor"]').each(function() {
                 var $repartidor = $(this);
@@ -260,6 +134,33 @@
                 $fecha.replaceWith($labelFecha);
             });
         });
+
     });
     </script>
+     <style>
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: none;
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            background-color: #f2f2f2;
+            
+        }
+        input[type="date"]{
+            background-color: #f2f2f2;
+            border: none;
+        }
+        #fechatd{
+        
+            min-width: 150px;
+        }
+        #select {
+            min-width: 130px;
+            max-width: 130px;
+        }
+
+    </style>
     
