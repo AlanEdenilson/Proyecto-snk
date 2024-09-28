@@ -90,10 +90,29 @@ $(document).ready(function(){
                 var total = response.reduce((acc, item) => acc + item.subtotal_total, 0);
                 $('.total').html(`Total: $${total}`)
                 $('.invoice-title').html(`Factura`)
-                $('.invoice-date').html(`Fecha de entrega: ${fecha}`)   
+
+                moment.locale('es');
+               
                 $('#logo').attr('src',img)
                 $('.company-name').html(nombre)
                 $('.company-slogan').html(`Cliente: ${nombreu}`)
+
+                var fecha = moment(fecha);
+                
+    // Obtener el día de la semana
+                    let diaSemana = fecha.format('dddd');
+
+                    // Obtener el mes
+                    let mes = fecha.format('MMMM');
+
+                    // Obtener el año
+                    let anio = fecha.format('YYYY');
+
+                    let diaMes = fecha.format('D');
+
+                    $('.invoice-date').html(`Fecha de entrega: ${diaSemana} ${diaMes} ${mes} ${anio}`)   
+
+
 
 
                 
