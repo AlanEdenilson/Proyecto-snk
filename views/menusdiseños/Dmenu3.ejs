@@ -1,5 +1,7 @@
 
 <link rel="stylesheet" href="/stylesheet/gestionDpedido/Dmenu3.css">
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
 
@@ -12,7 +14,7 @@
     <div class="invoice-info">
         <h2 class="invoice-title">Factura</h2>
         <p class="invoice-date">Fecha de entrega: 28/09/2023</p>
-        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><
         <span id="logout" class="cil--account-logout"></span>
     </div>
    
@@ -41,20 +43,10 @@
 
     <script >
         $(function() {
-            $(".bx").on("click", function() {
-                $(".container").load("/gestion/pagina1", function(response, status, xhr) {
-                    Modulo1.cargarDatos()
-            if (status == "error") {
-                var msg = "Lo siento, ocurrió un error: ";
-                $(".container").html(msg + xhr.status + " " + xhr.statusText);
-            }
-        });
-            });
+          
+       
 
-            $("#logout").on("click", function() {
-                alert("¿Estás seguro de que deseas cerrar sesión?");
-            
-        })
+           
         });
 
         

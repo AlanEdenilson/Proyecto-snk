@@ -50,6 +50,8 @@ GROUP BY
         const sql = `
             SELECT 
                 c.nombre AS cliente_nombre,
+                u.usuario AS repartidor_nombre,
+                pa.repartidor_id,
                 c.apellido AS cliente_apellido,
                 t.imagen AS tienda_imagen,
                 t.nombre AS tienda_nombre,
@@ -70,10 +72,11 @@ GROUP BY
                 JOIN tiendas t ON pa.tienda_id = t.id
                 JOIN clientes c ON pa.cliente_id = c.id
                 JOIN marcas m ON p.marca_id = m.id 
+                JOIN usuarios u ON pa.repartidor_id = u.id
             WHERE 
                 pa.id IN (?)
             GROUP BY 
-                p.id, dp.precio_unitario, pa.id, pa.estado 
+                p.id,pa.id, pa.estado 
             ORDER BY 
                 pa.id, p.nombre
         `;

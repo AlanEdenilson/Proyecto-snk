@@ -48,86 +48,22 @@ $(document).ready(function(){
     })
 
     //cargar detalles
-
-    $(document).on('click','.detalles-btn',function(){
+    $(`table`).off('click','.detalles-btn').on('click','.detalles-btn',function(){
         var id=$(this).data('id')
+        Dmenu3.cargar(id)
         console.log(id)
         $(".contenedor-productos").load("/gestion/detall", function(response, status, xhr) {
-
+    
+    
         if (status == "error") {
             var msg = "Lo siento, ocurrió un error: ";
             $(".container").html(msg + xhr.status + " " + xhr.statusText);
         }
-
-        $.ajax({
-            url: '/gestion/detalles?id=' + id,
-            type: 'GET',
-            success: function(response) {
-                console.log('Detalles cargados para el pedido:', id);
-                console.log(response);
-
-                var img=response[0].tienda_imagen
-                var nombre=response[0].tienda_nombre
-                var fecha=response[0].fecha
-                var nombreu=response[0].cliente_nombre
-        
-
-                $('.table-container').empty()
-
-                for(let item of response){
-                    var html=`
-                    <tr>
-                    <td ><img style="width: 100px; height: 100px;" src="${item.producto_imagen}" alt=""></td>
-                    <td>${item.producto_nombre}</td>
-                    <td>${item.cantidad_total}</td>
-                    <td>$${item.producto_precio}</td>
-                    <td>$${item.subtotal_total}</td>
-                    </tr>
-                    `
-                    $('.table-container').append(html)
-                    
-                }
-                var total = response.reduce((acc, item) => acc + item.subtotal_total, 0);
-                $('.total').html(`Total: $${total}`)
-                $('.invoice-title').html(`Factura`)
-
-                moment.locale('es');
-               
-                $('#logo').attr('src',img)
-                $('.company-name').html(nombre)
-                $('.company-slogan').html(`Cliente: ${nombreu}`)
-
-                var fecha = moment(fecha);
-                
-    // Obtener el día de la semana
-                    let diaSemana = fecha.format('dddd');
-
-                    // Obtener el mes
-                    let mes = fecha.format('MMMM');
-
-                    // Obtener el año
-                    let anio = fecha.format('YYYY');
-
-                    let diaMes = fecha.format('D');
-
-                    $('.invoice-date').html(`Fecha de entrega: ${diaSemana} ${diaMes} ${mes} ${anio}`)   
-
-
-
-
-                
-               
     
-               
-        },
-            error: function(xhr, status, error) {
-                console.error('Error al cargar los detalles:', error);
-            }
         });
-    
-    });
-    })
-    
-
+})
 
 })
+    
+
+
