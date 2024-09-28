@@ -79,6 +79,7 @@ router.get('/89', function(req, res, next) {
             res.render('gestionDpedido/menu4')
            }
             })
+    router.get('/datos/:id',controller.cargarcontenido)
 
         
       

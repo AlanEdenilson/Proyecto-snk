@@ -129,5 +129,35 @@ verRepart: async (req,res)=>{
     }catch(error){
         console.log(error);
     }
-}
-}
+},
+cargarcontenido:async function(req,res){
+    console.log(req.params.id)
+    var r;
+    if(req.params.id==1){
+        r='e';
+    }
+    if(req.params.id==2){
+        r=2;
+    }
+    if(req.params.id==3){
+        r='activado';
+    }
+    if(req.params.id==4){
+        r=4;
+    }
+    console.log(r)
+    try {
+        model.loadContent(conexion,r,function(err,results){
+            if(err){
+                throw err;
+            }else{
+                res.send(results);
+            }
+        });
+
+
+    } catch {
+
+    }
+
+}}

@@ -2,13 +2,13 @@
 <table >
     <thead>
         <tr>
-            <th>Estado</th>
+            <th >Estado</th>
             
             <th>fecha</th>
             <th>items</th>
             <th>total</th>
             <th>asignado a</th>
-            <th>Fecha de entrega</th>
+            <th style="min-width: 150px; max-width: 150px;">Fecha de entrega</th>
             <th class="checkbox-center" >.</th>
             <th>detalles</th>
         </tr>
@@ -72,7 +72,7 @@
             // Cambiar todos los select de repartidor a label
             $('label[id="repartidor"]').each(function() {
                 var $repartidor = $(this);
-                var textoRepartidor = $repartidor.find('option:selected').text();
+                var textoRepartidor = $repartidor.text();
                 var $labelRepartidor = $('<select>', {
                     id: 'repartidor'
                 });
@@ -98,7 +98,8 @@
             // Cambiar todos los input de fecha a label
             $('label[id="fecha"]').each(function() {
                 var $fecha = $(this);
-                var textoFecha = $fecha.val();
+                var textoFecha = $fecha.text();
+                console.log(textoFecha);
                 var $labelFecha = $('<input>', {
                     id: 'fecha',
                     type: 'date',
@@ -127,6 +128,7 @@
             $('input[id="fecha"]').each(function() {
                 var $fecha = $(this);
                 var textoFecha = $fecha.val();
+                
                 var $labelFecha = $('<label>', {
                     id: 'fecha',
                     text: textoFecha
@@ -146,11 +148,11 @@
             padding: 8px;
             font-size: 16px;
             border: none;
-            background-color: #f2f2f2;
+            background-color: #ececec;
             
         }
         input[type="date"]{
-            background-color: #f2f2f2;
+            background-color: #ececec;
             border: none;
         }
         #fechatd{

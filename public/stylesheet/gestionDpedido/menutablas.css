@@ -12,10 +12,10 @@ th, td {
     padding: 12px;
     text-align: left;
     border: none; /* Quitar bordes de las celdas */
-    background-color: #f2f2f2;
+    background-color: #ececec;
 }
 th {
-    background-color: #f2f2f2;
+    background-color: #ececec;
     font-weight: bold;
 }
 .estado-icon {
@@ -31,14 +31,14 @@ th {
 select, input[type="date"] {
     width: 100%;
     padding: 6px;
-    border: 1px solid #ddd;
+    border: 1px solid #ececec;
     border-radius: 4px;
 }
 .checkbox-center {
     text-align: center;
 }
 .detalles-btn {
-    background-color: #f0f0f0;
+    background-color: #ececec;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
