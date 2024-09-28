@@ -5,7 +5,7 @@ $(document).ready(function(){
         daata.forEach(element => {
             html+=`
             <tr >
-            <td ><span class="eos-icons--hourglass"></span></td>
+            <td ><span class="eos-icons--hourglass"></span>Pendiente</td>
         
             <td style="min-width: 200px; max-width: 200px;">${element.fecha_hora_pedido}</td>
 
