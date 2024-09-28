@@ -5,7 +5,7 @@ $(document).ready(function(){
         daata.forEach(element => {
             html+=`
             <tr >
-            <td class="estado-icon " data-estado=""><i class="fas fa-exclamation-circle "style="color:blue;"></i>${element.estados}</td>
+            <td ><span class="eos-icons--hourglass"></span></td>
         
             <td style="min-width: 200px; max-width: 200px;">${element.fecha_hora_pedido}</td>
 
