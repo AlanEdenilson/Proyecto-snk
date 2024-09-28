@@ -14,7 +14,7 @@
     <div class="invoice-info">
         <h2 class="invoice-title">Factura</h2>
         <p class="invoice-date">Fecha de entrega: 28/09/2023</p>
-        <br><br><br><br><br><br><br><
+        <br><br><br><br><br><br><br>
         <span id="logout" class="cil--account-logout"></span>
     </div>
    
@@ -43,6 +43,17 @@
 
     <script >
         $(function() {
+            $("#logout").on("click", function() {
+                $("#contenedor-productos").load("/gestion/menus?n=" + 3, function(response, status, xhr) {
+        if (status == "error") {
+            console.log("Error al cargar la página: " + xhr.status + " " + xhr.statusText);
+            $("#contenedor-productos").html("<p>Error al cargar el contenido. Por favor, intente de nuevo.</p>");
+        }
+    });
+    
+    
+
+})
           
        
 
