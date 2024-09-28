@@ -1,0 +1,61 @@
+
+<link rel="stylesheet" href="/stylesheet/gestionDpedido/Dmenu3.css">
+
+<div class="invoice-header">
+    <div class="company-info">
+        <img id="logo" style="width: 150px; height: 150px;" src="https://via.placeholder.com/100" alt="Logo de la empresa" class="company-logo">
+        <h1 class="company-name">Nombre de la Empresa</h1>
+        <p class="company-slogan">Slogan o descripción</p>
+    </div>
+    <div class="invoice-info">
+        <h2 class="invoice-title">Factura</h2>
+        <p class="invoice-date">Fecha de entrega: 28/09/2023</p>
+        <br><br><br><br><br><br><br><br><br><br>
+        <span id="logout" class="cil--account-logout"></span>
+    </div>
+   
+</div>
+
+<table >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Total</th>
+        
+        </tr>
+            
+    </thead>
+    <tbody class="table-container">
+    </tbody>
+</table>
+
+
+
+<p class="total">Total: $325.00</p>
+
+
+    <script >
+        $(function() {
+            $(".bx").on("click", function() {
+                $(".container").load("/gestion/pagina1", function(response, status, xhr) {
+                    Modulo1.cargarDatos()
+            if (status == "error") {
+                var msg = "Lo siento, ocurrió un error: ";
+                $(".container").html(msg + xhr.status + " " + xhr.statusText);
+            }
+        });
+            });
+
+            $("#logout").on("click", function() {
+                alert("¿Estás seguro de que deseas cerrar sesión?");
+            
+        })
+        });
+
+        
+        
+
+    </script>

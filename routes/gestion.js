@@ -81,6 +81,10 @@ router.get('/89', function(req, res, next) {
             })
     router.get('/datos/:id',controller.cargarcontenido)
 
+    router.get('/detall',(req,res)=>{
+        res.render('menusdiseños/Dmenu3')
+    })
+
         
       
     

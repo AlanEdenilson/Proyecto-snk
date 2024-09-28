@@ -155,6 +155,7 @@ GROUP BY
             SELECT 
         m.id AS marca_id,
         u.usuario AS nombre_repartidor,
+        pa.estado_vendedor,
         
     
 
