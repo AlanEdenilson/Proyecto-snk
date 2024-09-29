@@ -39,7 +39,7 @@ var Dmenu3 = (function($){
 
             moment.locale('es');
            
-            $('#logo').attr('src',img)
+           
             $('.company-name').html(nombre)
             $('.company-slogan').html(`Cliente: ${nombreu}`)
 

@@ -51,19 +51,48 @@ $(document).ready(function(){
     //cargar detalles
     $(`table`).off('click','.detalles-btn').on('click','.detalles-btn',function(){
         var id=$(this).data('id')
-
-        $(".contenedor-productos").load("/gestion/detall", function(response, status, xhr) {
-    
-            Dmenu3.cargar(id)
-        if (status == "error") {
-            var msg = "Lo siento, ocurrió un error: ";
-            $(".container").html(msg + xhr.status + " " + xhr.statusText);
-        }
-    
-        });
+        // Añadir clase para iniciar la transición
+     
+        
+        // Esperar a que termine la animación de salida
+        setTimeout(function() {
+            $(".contenedor-productos").load("/gestion/detall", function(response, status, xhr) {
+                if (status == "error") {
+                    var msg = "Lo siento, ocurrió un error: ";
+                    $(".container").html(msg + xhr.status + " " + xhr.statusText);
+                } else {
+                    Dmenu3.cargar(id);
+                    // Añadir clase para la animación de entrada
+                   
+                    
+                }
+            });
+        }, 500); // Ajusta este tiempo según la duración de tu animación
 })
 
-
+    /*
+    * 
+      $('.detalles-btn').on('click', '.detalles-btn', function() {
+        var id = $(this).data('id');
+        
+        // Inicia la transición de salida
+        $(".contenedor-productos").addClass("slide-out");
+        
+        // Espera a que se complete la animación de salida
+        setTimeout(function() {
+          $(".contenedor-productos").load("/gestion/detall", function(response, status, xhr) {
+            if (status == "error") {
+              var msg = "Lo siento, ocurrió un error: ";
+              $(".container").html(msg + xhr.status + " " + xhr.statusText);
+            } else {
+              Dmenu3.cargar(id);
+              // Inicia la transición de entrada
+              $(".contenedor-productos").removeClass("slide-out").addClass("slide-in");
+            }
+          });
+        }, 500); // Ajuste este tiempo según la duración de su animación
+      });
+    */
 
 
 })
