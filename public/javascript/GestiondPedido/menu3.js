@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    console.log('menu3')
 
     function loadContent(daata){
        
@@ -34,7 +35,7 @@ $(document).ready(function(){
     }
 
 
-    console.log('menu3')
+   
     $.ajax({
         url:'/gestion/datos/3',
         type:'GET',
@@ -50,11 +51,10 @@ $(document).ready(function(){
     //cargar detalles
     $(`table`).off('click','.detalles-btn').on('click','.detalles-btn',function(){
         var id=$(this).data('id')
-        Dmenu3.cargar(id)
-        console.log(id)
+
         $(".contenedor-productos").load("/gestion/detall", function(response, status, xhr) {
     
-    
+            Dmenu3.cargar(id)
         if (status == "error") {
             var msg = "Lo siento, ocurrió un error: ";
             $(".container").html(msg + xhr.status + " " + xhr.statusText);

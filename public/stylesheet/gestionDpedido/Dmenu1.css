@@ -1,0 +1,88 @@
+.invoice-header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 10px;
+    max-height: 300px;
+}
+.company-info {
+    text-align: center;
+    margin-top: 10px;
+}
+.company-logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+.company-name {
+    font-size: 20px;
+    font-weight: bold;
+    
+    margin: 0;
+    margin-left: 10px;
+}
+.company-slogan {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0;
+}
+.invoice-info {
+   
+    margin-top: 250px;
+    margin-left: -140px;
+    
+    max-width: 200px;
+    min-width: 200px;
+
+}
+.invoice-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+.invoice-date {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0;
+}
+.cil--account-logout {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='black' d='M77.155 272.034H351.75v-32.001H77.155l75.053-75.053v-.001l-22.628-22.626l-113.681 113.68l.001.001h-.001L129.58 369.715l22.628-22.627v-.001z'/%3E%3Cpath fill='black' d='M160 16v32h304v416H160v32h336V16z'/%3E%3C/svg%3E");
+  }
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+  
+    margin-left: 100px;
+}
+th ,td{
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+th ,td{
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+.text-right {
+    text-align: right;
+}
+.total {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+@media (max-width: 600px) {
+    .invoice-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .invoice-info {
+        text-align: center;
+        margin-top: 20px;
+    }}

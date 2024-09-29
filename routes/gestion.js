@@ -87,6 +87,10 @@ router.get('/89', function(req, res, next) {
         res.render('menusdiseños/Dmenu3')
     })
 
+    router.get('/detall1',(req,res)=>{
+        res.render('menusdiseños/Dmenu1')
+    })
+
         
       
     

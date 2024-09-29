@@ -87,12 +87,6 @@
 
     <script>
     $(document).ready(function () {
-        $("#contenedor-productos").load("/gestion/menus?n=" + 1, function (response, status, xhr) {
-                if (status == "error") {
-                    console.log("Error al cargar la página: " + xhr.status + " " + xhr.statusText);
-                    $("#contenedor-productos").html("<p>Error al cargar el contenido. Por favor, intente de nuevo.</p>");
-                }
-            });
         $(".boton-categoria").on("click", function (e) {
             $(".boton-categoria").removeClass("active");
             $(this).addClass("active");
@@ -108,8 +102,6 @@
             });
         });
     });
-
-
     </script>
 </body>
 </html>

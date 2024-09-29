@@ -1,0 +1,56 @@
+
+<link rel="stylesheet" href="/stylesheet/gestionDpedido/Dmenu1.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+
+<div class="invoice-header">
+    <div class="company-info">
+        <img id="logo" style="width: 150px; height: 150px;" src="https://via.placeholder.com/100" alt="Logo de la empresa" class="company-logo">
+        <h1 class="company-name">Nombre de la Empresa</h1>
+        <p class="company-slogan">Slogan o descripción</p>
+    </div>
+    <div class="invoice-info">
+        <h2 class="invoice-title">Factura</h2>
+        <p class="invoice-date">Fecha de entrega: 28/09/2023</p>
+        <br><br><br><br><br><br><br>
+        <span id="logout" class="cil--account-logout"></span>
+    </div>
+   
+</div>
+
+<table >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Total</th>
+        
+        </tr>
+            
+    </thead>
+    <tbody class="table-container">
+    </tbody>
+</table>
+
+
+
+<p class="total">Total: $325.00</p>
+
+
+    <script >
+        $(function() {
+            $("#logout").on("click", function() {
+                $("#contenedor-productos").load("/gestion/menus?n=" + 1, function(response, status, xhr) {
+        if (status == "error") {
+            console.log("Error al cargar la página: " + xhr.status + " " + xhr.statusText);
+            $("#contenedor-productos").html("<p>Error al cargar el contenido. Por favor, intente de nuevo.</p>");
+        }
+    });
+})
+        });
+
+    </script>
