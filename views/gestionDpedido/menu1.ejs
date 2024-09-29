@@ -1,168 +1,22 @@
 
-<table >
+<link rel="stylesheet" href="/stylesheet/gestionDpedido/menu1.css">
+<table id="tabla">
     <thead>
         <tr>
             <th >Estado</th>
-            
-            <th>fecha</th>
             <th>items</th>
             <th>total</th>
-            <th>asignado a</th>
-            <th style="min-width: 150px; max-width: 150px;">Fecha de entrega</th>
-            <th class="checkbox-center" >.</th>
+            <th>Entregado por</th>
+            <th >Fecha de entrega</th>
             <th>detalles</th>
         </tr>
     </thead>
     <tbody>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-        
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td id="select">
-            
-                <label id='repartidor'>
-                       marta1
-                </label>
-            </td>
-            <td id="fechatd">
-                <label type="date" id="fecha" name="fecha" >12/34/2024 </label>
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td id="select">
-                <label id='repartidor'>
-                    marta1
-             </label>
-            </td>
-            <td id="fechatd">
-                <label type="date" id="fecha" name="fecha" >12/34/2024 </label>
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
-        
         
     </tbody>
 </table>
-<!-- ... código existente ... -->
-<style>
-    .checkbox-center {
-        display: none;
-    }
-</style>
-<script>
-    $(document).ready(function() {
-        $('.btn-editar').on('click', function() {
-            $('.checkbox-center').css('display', 'block');
-            // Cambiar todos los select de repartidor a label
-            $('label[id="repartidor"]').each(function() {
-                var $repartidor = $(this);
-                var textoRepartidor = $repartidor.text();
-                var $labelRepartidor = $('<select>', {
-                    id: 'repartidor'
-                });
-                $labelRepartidor.append($('<option>', {
-                    value: textoRepartidor,
-                    text: textoRepartidor
-                }));
-                $labelRepartidor.append($('<option>', {
-                    value: 'opcion1',
-                    text: 'Texto opción 1'
-                }));
-                $labelRepartidor.append($('<option>', {
-                    value: 'opcion2',
-                    text: 'Texto opción 2'
-                }));
-                $labelRepartidor.append($('<option>', {
-                    value: 'opcion3',
-                    text: 'Texto opción 3'
-                }));
-                $repartidor.replaceWith($labelRepartidor);
-            });
-    
-            // Cambiar todos los input de fecha a label
-            $('label[id="fecha"]').each(function() {
-                var $fecha = $(this);
-                var textoFecha = $fecha.text();
-                console.log(textoFecha);
-                var $labelFecha = $('<input>', {
-                    id: 'fecha',
-                    type: 'date',
-                    name: 'fecha',
-                    value: textoFecha
-                });
-                $fecha.replaceWith($labelFecha);
-            });
-        });
+<script src="/javascript/GestiondPedido/menu1.js"></script>
 
-        //
-        $('.btn-salir-editar').on('click', function() {
-            $('.checkbox-center').css('display', 'none');
-            // Cambiar todos los select de repartidor a label
-            $('select[id="repartidor"]').each(function() {
-                var $repartidor = $(this);
-                var textoRepartidor = $repartidor.find('option:selected').text();
-                var $labelRepartidor = $('<label>', {
-                    id: 'repartidor',
-                    text: textoRepartidor
-                });
-                $repartidor.replaceWith($labelRepartidor);
-            });
-    
-            // Cambiar todos los input de fecha a label
-            $('input[id="fecha"]').each(function() {
-                var $fecha = $(this);
-                var textoFecha = $fecha.val();
-                
-                var $labelFecha = $('<label>', {
-                    id: 'fecha',
-                    text: textoFecha
-                });
-                $fecha.replaceWith($labelFecha);
-            });
-        });
 
-    });
-    </script>
-     <style>
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background: none;
-            padding: 8px;
-            font-size: 16px;
-            border: none;
-            background-color: #ececec;
-            
-        }
-        input[type="date"]{
-            background-color: #ececec;
-            border: none;
-        }
-        #fechatd{
-        
-            min-width: 150px;
-        }
-        #select {
-            min-width: 130px;
-            max-width: 130px;
-        }
 
-    </style>
     

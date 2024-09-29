@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/stylesheet/gestionDpedido/menu.css">
     <link rel="stylesheet" href="/stylesheet/gestionDpedido/menutablas.css">
    
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
    
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -57,6 +58,7 @@
         </aside>
         <main>
             <h2 class="titulo-principal" id="titulo-principal">Administrador de pedidos</h2>
+            <!--- boton para editar -->
             <div class="boton-editar">
                 <button class="btn-editar">
                     <i class="bi bi-pencil"></i> 
@@ -69,100 +71,13 @@
                     <span class="tooltip">Salir de edición</span>
                 </button>
             </div>
-            <style>
-                .boton-salir-editar {
-                    position: absolute;
-                    top: 50px;
-                    right: 120px;
-                }
-                .btn-salir-editar {
-                    background-color: #e6ebf0;
-                    color: rgb(224, 65, 65);
-                    border: none;
-                    padding: 2px 16px;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                }
-                .btn-salir-editar:hover {
-                    background-color: #f0e6e6;
-                }
-                .btn-salir-editar .tooltip {
-                    width: 120px;
-                    background-color: #dc3545;
-                    margin-left: -60px;
-                }
-                .btn-salir-editar:hover .tooltip {
-                    visibility: visible;
-                    opacity: 1;
-                }
-            </style>
-            <style>
-                .boton-editar {
-                    position: relative;
-                }
-                .btn-editar {
-                    background-color: transparent;
-                    color: rgb(65, 81, 224);
-                    border: none;
-                    padding: 2px 16px;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                }
-                .btn-editar:hover {
-                    background-color: #e6ebf0;
-                }
-                .tooltip {
-                    visibility: hidden;
-                    width: 60px;
-                    background-color: #007bff;
-                    color: #fff;
-                    text-align: center;
-                    border-radius: 6px;
-                    padding: 5px 0;
-                    position: absolute;
-                    z-index: 1;
-                    bottom: 125%;
-                    left: 50%;
-                    margin-left: -30px;
-                    opacity: 0;
-                    transition: opacity 0.3s;
-                }
-                .btn-editar:hover .tooltip {
-                    visibility: visible;
-                    opacity: 1;
-                }
-            </style>
-            <style>
-                .boton-editar {
-                    position: absolute;
-                    top: 50px;
-                    right: 60px;
-                }
-                .btn-editar {
-                    background-color: #e6ebf0;
-                    color: rgb(65, 81, 224);
-                    border: none;
-                    padding: 2px 16px;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                }
-                .btn-editar:hover {
-                   
-                    color: black;
-                }
-            </style>
+           
+            <!--fin de boton para editar-->
+
             <div id="contenedor-productos" class="contenedor-productos">
                
             </div>
+            
         </main>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -171,22 +86,28 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <script>
-$(document).ready(function() {
-    $(".boton-categoria").on("click", function(e) {
-        $(".boton-categoria").removeClass("active");
-        $(this).addClass("active");
-        var valor = $(this).val();
-        console.log("Valor del botón clickeado:", valor);
+    $(document).ready(function () {
+        $("#contenedor-productos").load("/gestion/menus?n=" + 1, function (response, status, xhr) {
+                if (status == "error") {
+                    console.log("Error al cargar la página: " + xhr.status + " " + xhr.statusText);
+                    $("#contenedor-productos").html("<p>Error al cargar el contenido. Por favor, intente de nuevo.</p>");
+                }
+            });
+        $(".boton-categoria").on("click", function (e) {
+            $(".boton-categoria").removeClass("active");
+            $(this).addClass("active");
+            var valor = $(this).val();
+            console.log("Valor del botón clickeado:", valor);
 
-    // Cargar la página correspondiente en el div
-    $("#contenedor-productos").load("/gestion/menus?n=" + valor, function(response, status, xhr) {
-        if (status == "error") {
-            console.log("Error al cargar la página: " + xhr.status + " " + xhr.statusText);
-            $("#contenedor-productos").html("<p>Error al cargar el contenido. Por favor, intente de nuevo.</p>");
-        }
+            // Cargar la página correspondiente en el div
+            $("#contenedor-productos").load("/gestion/menus?n=" + valor, function (response, status, xhr) {
+                if (status == "error") {
+                    console.log("Error al cargar la página: " + xhr.status + " " + xhr.statusText);
+                    $("#contenedor-productos").html("<p>Error al cargar el contenido. Por favor, intente de nuevo.</p>");
+                }
+            });
+        });
     });
-    });
-});
 
 
     </script>

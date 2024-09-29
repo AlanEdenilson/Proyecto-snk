@@ -1,7 +1,7 @@
 module.exports = {
-    verpedidos: function(conexion,funcion){
+    verpedidos: function (conexion, funcion) {
         /*
-        */ 
+        */
 
         // El error se debe a que la cláusula WHERE está en el lugar incorrecto.
         // Debe ir antes de GROUP BY. Aquí está la consulta corregida:
@@ -39,12 +39,12 @@ GROUP BY
 
     m.nombre, fecha_hora_pedido DESC;
      `;
-        conexion.query(sql,funcion)
+        conexion.query(sql, funcion)
     },
-    detalles: function(conexion,id,funcion){
+    detalles: function (conexion, id, funcion) {
         // Convertir el id a un entero y almacenarlo en una variable
-      
-        
+
+
 
         // Modificamos la consulta SQL para manejar múltiples IDs
         const sql = `
@@ -92,9 +92,9 @@ GROUP BY
 
         conexion.query(sql, [id], funcion)
     },
-  
-    verpedidosnuevos: function(conexion, ultimoIdLocal, funcion){
-            const sql = `
+
+    verpedidosnuevos: function (conexion, ultimoIdLocal, funcion) {
+        const sql = `
             SELECT 
 
                 m.id AS marca_id,
@@ -127,21 +127,21 @@ GROUP BY
             ORDER BY 
                 m.nombre, fecha_hora_pedido DESC;
             `;
-            
-            conexion.query(sql,[ultimoIdLocal],funcion);
-        },
-        // ... resto del código ...
-        AplicationChange: function(conexion,datos,funcion){
-            const sql = `
+
+        conexion.query(sql, [ultimoIdLocal], funcion);
+    },
+    // ... resto del código ...
+    AplicationChange: function (conexion, datos, funcion) {
+        const sql = `
             UPDATE pedidos_activos 
             SET repartidor_id = ?, 
                 estado = ?, 
                 fecha_estimada_entrega = ?
             WHERE id = ?
         `;
-        conexion.query(sql,datos,funcion);
+        conexion.query(sql, datos, funcion);
     },
-    verRepart: function(conexion,funcion,id){
+    verRepart: function (conexion, funcion, id) {
         const sql = `SELECT 
             pa.id,
             u.usuario
@@ -151,9 +151,9 @@ GROUP BY
             AND u.rol = 'repartidor'
             `;
 
-        conexion.query(sql,funcion);
+        conexion.query(sql, funcion);
     },
-    loadContent:async function (conexion,param1,funcion){
+    loadContent: async function (conexion, param1, funcion) {
         const sql = `
             SELECT 
         m.id AS marca_id,
@@ -191,9 +191,52 @@ GROUP BY
 
     m.nombre, fecha_hora_pedido DESC;
      `;
-        conexion.query(sql,[param1],funcion)
+        conexion.query(sql, [param1], funcion)
+
+    },
+
+    loadContent2: async function (conexion, funcion) {
+        const sql = `
+            SELECT 
+        m.id AS marca_id,
+        u.usuario AS nombre_repartidor,
+        pa.estado_vendedor,
+        
+    
+
+        GROUP_CONCAT(DISTINCT pa.estado) AS estados,
+        DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s') AS fecha_hora_pedido,
+        GROUP_CONCAT(DISTINCT pa.id) AS pedidos_ids,
+        pa.repartidor_id AS repartidor,
+        DATE_FORMAT(pa.fecha_estimada_entrega, '%Y-%m-%d %H:%i:%s') AS fecha_entrega,
+    
+        SUM(dp.subtotal) AS total_pedido,
+        GROUP_CONCAT(DISTINCT CONCAT(
+            'producto_id:', dp.producto_id, 
+            ',precio:', dp.precio_unitario, 
+            ',cantidad:', dp.cantidad
+        ) SEPARATOR '||') AS detalles_productos,
+        SUM(dp.cantidad) AS total_cantidad
+        
+
+        
+    FROM 
+        marcas m
+    JOIN productos p ON m.id = p.marca_id
+    JOIN detalles_pedido dp ON p.id = dp.producto_id
+    JOIN pedidos_activos pa ON dp.pedido_id = pa.id
+    JOIN usuarios u ON pa.repartidor_id = u.id
+
+    WHERE 
+        m.id = 4 AND pa.estado_vendedor = 'entregado'
+    GROUP BY 
+
+    m.nombre, fecha_hora_pedido DESC;
+     `;
+        conexion.query(sql, funcion)
 
     }
+
 
 
 }

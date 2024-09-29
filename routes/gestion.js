@@ -57,29 +57,31 @@ router.get('/89', function(req, res, next) {
 
   router.get('/repartidores',controller.verRepart)
 
-  router.get('/decidir',(re,res)=>{
+  router.get('/decidir',(req,res)=>{
     res.render('gestionDpedido/decidir')
     })
 
-    router.get('/menu',(re,res)=>{
+    router.get('/menu',(req,res)=>{
         res.render('gestionDpedido/menuGestion')
         })
 
-        router.get('/menus',(req,res)=>{
-           if(req.query.n===1 || req.query.n==='1'){
-            res.render('gestionDpedido/menu1')
-           }
-           if(req.query.n===2 || req.query.n==='2'){
-            res.render('gestionDpedido/menu2')
-           }
-           if(req.query.n===3 || req.query.n==='3'){
-            res.render('gestionDpedido/menu3')
-           }
-           if(req.query.n===4 || req.query.n==='4'){
-            res.render('gestionDpedido/menu4')
-           }
-            })
+            router.get('/menus',(req,res)=>{
+            if(req.query.n===1 || req.query.n==='1'){
+                res.render('gestionDpedido/menu1')
+            }
+            if(req.query.n===2 || req.query.n==='2'){
+                res.render('gestionDpedido/menu2')
+            }
+            if(req.query.n===3 || req.query.n==='3'){
+                res.render('gestionDpedido/menu3')
+            }
+            if(req.query.n===4 || req.query.n==='4'){
+                res.render('gestionDpedido/menu4')
+            }
+                })
     router.get('/datos/:id',controller.cargarcontenido)
+    
+    router.get('/datos2',controller.cargarcontenido2)
 
     router.get('/detall',(req,res)=>{
         res.render('menusdiseños/Dmenu3')

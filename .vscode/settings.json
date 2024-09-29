@@ -33,6 +33,7 @@
     "editor.suggest.showStatusBar": true,
     "vscode_custom_css.statusbar": true,
     "vscode-pets.throwBallWithMouse": true,
-    "vscode-pets.petType": "chicken"
+    "vscode-pets.petType": "chicken",
+    "editor.stickyScroll.scrollWithEditor": false
 }
 

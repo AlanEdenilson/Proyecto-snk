@@ -1,0 +1,10 @@
+creando la pagina para editar los pedido a media 
+
+pasos 
+
+1-crear la ruta asia clau va aser el pedido 
+2 - luego esoso datos almacenarlos el el local storage 
+3 - luego esos datos mostrarlos en el html 
+4- cuando le de en editar crear un array en el local storage de lo modificado
+5-  opcion para cancelar 
+

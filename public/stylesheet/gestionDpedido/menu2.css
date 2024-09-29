@@ -1,0 +1,26 @@
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    background-color: #ececec;
+    
+}
+input[type="date"]{
+    background-color: #ececec;
+    border: none;
+}
+#fechatd{
+
+    min-width: 150px;
+}
+#select {
+    min-width: 130px;
+    max-width: 130px;
+}
+.checkbox-center {
+    display: none;
+}

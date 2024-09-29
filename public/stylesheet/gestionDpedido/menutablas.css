@@ -44,3 +44,90 @@ select, input[type="date"] {
     cursor: pointer;
     font-weight: bold;
 }
+.boton-salir-editar {
+    position: absolute;
+    top: 50px;
+    right: 120px;
+}
+.btn-salir-editar {
+    background-color: #e6ebf0;
+    color: rgb(224, 65, 65);
+    border: none;
+    padding: 2px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.btn-salir-editar:hover {
+    background-color: #f0e6e6;
+}
+.btn-salir-editar .tooltip {
+    width: 120px;
+    background-color: #dc3545;
+    margin-left: -60px;
+}
+.btn-salir-editar:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.boton-editar {
+    position: relative;
+}
+.btn-editar {
+    background-color: transparent;
+    color: rgb(65, 81, 224);
+    border: none;
+    padding: 2px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.btn-editar:hover {
+    background-color: #e6ebf0;
+}
+.tooltip {
+    visibility: hidden;
+    width: 60px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -30px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.btn-editar:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+.boton-editar {
+    position: absolute;
+    top: 50px;
+    right: 60px;
+}
+.btn-editar {
+    background-color: #e6ebf0;
+    color: rgb(65, 81, 224);
+    border: none;
+    padding: 2px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.btn-editar:hover {
+   
+    color: black;
+}

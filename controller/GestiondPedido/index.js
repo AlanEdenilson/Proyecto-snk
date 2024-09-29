@@ -160,4 +160,23 @@ cargarcontenido:async function(req,res){
 
     }
 
-}}
+},
+
+cargarcontenido2:async function(req,res){
+   
+     try{
+        model.loadContent2(conexion,function(err,results){
+            if(err){
+                throw err;
+            }else{
+                res.send(results);
+                console.log(results)
+            }
+        });
+     }catch(error){
+        console.log(error);
+    }
+    
+    
+}
+}
