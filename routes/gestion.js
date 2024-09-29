@@ -79,9 +79,12 @@ router.get('/89', function(req, res, next) {
                 res.render('gestionDpedido/menu4')
             }
                 })
+                
     router.get('/datos/:id',controller.cargarcontenido)
     
     router.get('/datos2',controller.cargarcontenido2)
+
+    router.get('/pedidosProcess',controller.pedidosEnprocesos)
 
     router.get('/detall',(req,res)=>{
         res.render('menusdiseños/Dmenu3')
@@ -90,6 +93,7 @@ router.get('/89', function(req, res, next) {
     router.get('/detall1',(req,res)=>{
         res.render('menusdiseños/Dmenu1')
     })
+
 
         
       

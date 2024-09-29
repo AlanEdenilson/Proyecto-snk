@@ -13,21 +13,13 @@ th, td {
     text-align: left;
     border: none; /* Quitar bordes de las celdas */
     background-color: #ececec;
+    text-align: center;
 }
 th {
     background-color: #ececec;
     font-weight: bold;
 }
-.estado-icon {
-    font-size: 24px;
-    text-align: center;
-}
-.estado-completado {
-    color: green;
-}
-.estado-pendiente {
-    color: red;
-}
+
 select, input[type="date"] {
     width: 100%;
     padding: 6px;

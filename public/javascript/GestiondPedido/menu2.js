@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready( async function() {
     $('.btn-editar').on('click', function() {
         $('.checkbox-center').css('display', 'block');
         // Cambiar todos los select de repartidor a label
@@ -68,5 +68,41 @@ $(document).ready(function() {
             $fecha.replaceWith($labelFecha);
         });
     });
+    // codigo restante para guardar datos en la bd 
+    function ajax(){
+        $.ajax({
+            url: '/gestion/pedidosProcess', // Reemplaza con la URL de tu API
+            type: 'GET',
+            success: function(data) {
+                console.log(data); // Maneja la respuesta aquí
+            },
+            error: function(xhr, status, error) {
+                console.error('Error en la petición:', error); // Maneja el error aquí
+            }
+        });
+    }
+
+
+    try {
+
+        await BD.start()
+        console.log('base de datos iniciada' )
+        //
+       
+        if (await BD.count() !==0 ){
+            console.log('ya hay registros')
+        }else{
+            ajax()
+        }
+
+    } catch (er){
+
+    }
+
+
+
+
+
+
 
 });

@@ -178,5 +178,22 @@ cargarcontenido2:async function(req,res){
     }
     
     
+},
+pedidosEnprocesos:async function (req,res){
+    try {
+        model.pedidosEnprocesos(conexion,function (err,results) {
+            if (err) {
+                throw err
+                
+            } else {
+                res.send(results)
+            }
+        })
+
+    } catch(error) {
+        res.send('a ocurrido un error en el server')
+
+
+    }
 }
 }
