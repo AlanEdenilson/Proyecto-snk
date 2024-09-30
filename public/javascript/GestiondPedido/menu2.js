@@ -69,17 +69,21 @@ $(document).ready( async function() {
         });
     });
     // codigo restante para guardar datos en la bd 
-    function ajax(){
+    function ajaxw(){
+    return new Promise((resolve, reject) => {
         $.ajax({
             url: '/gestion/pedidosProcess', // Reemplaza con la URL de tu API
             type: 'GET',
             success: function(data) {
-                console.log(data); // Maneja la respuesta aquí
+                 // Maneja la respuesta aquí
+                resolve(data)
             },
             error: function(xhr, status, error) {
                 console.error('Error en la petición:', error); // Maneja el error aquí
+                reject('error en la peticion')
             }
         });
+    });
     }
 
 
@@ -92,10 +96,28 @@ $(document).ready( async function() {
         if (await BD.count() !==0 ){
             console.log('ya hay registros')
         }else{
-            ajax()
+            var res = await ajaxw();
+            console.log(res);
+            var array= res.map(item => ({
+                    
+                id: item.pedidos_ids,
+                fecha: item.fecha_hora_pedido,
+                repartidor: item.repartidor,
+                repartidorn: item.nombre_repartidor,
+                fecha_entrega: item.fecha_entrega,
+                estado: item.estados,
+                total: item.total_pedido,
+                cantidad: item.total_cantidad,
+                Aceptado: false
+            }));
+         
+            var ss = await BD.Save(array)
+             console.log('datos ingresados correctamente')
+           console.log(ss);
         }
 
     } catch (er){
+        console.log(er)
 
     }
 

@@ -13,19 +13,19 @@ const BD = ( function ($){
                 resolve(db);
             };
             
-            // request.onupgradeneeded = event => {
-            //     const db = event.target.result;
-            //     const objectStore = db.createObjectStore("pedidos", { keyPath: "fecha" });
-            //     objectStore.createIndex("id", "id", { unique: false });
-            //     objectStore.createIndex("estado", "estado", { unique: false });
-            //     objectStore.createIndex("total", "total", { unique: false });
-            //     objectStore.createIndex("cantidad", "cantidad", { unique: false });
+            request.onupgradeneeded = event => {
+                const db = event.target.result;
+                const objectStore = db.createObjectStore("datos", { keyPath: "fecha" });
+                objectStore.createIndex("id", "id", { unique: false });
                 
-            // };
+                
+            };
         });
     }
 
     function guardarDatos(datos) {
+        console.log('datos de la bd')
+        console.log(datos)
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(["datos"], "readwrite");
             const objectStore = transaction.objectStore("datos");
@@ -41,8 +41,8 @@ const BD = ( function ($){
 
     function contarRegistros() {
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction(["pedidos"], "readonly");
-            const objectStore = transaction.objectStore("pedidos");
+            const transaction = db.transaction(["datos"], "readonly");
+            const objectStore = transaction.objectStore("datos");
             const countRequest = objectStore.count();
             
             countRequest.onerror = () => reject("Error al contar registros");
@@ -54,10 +54,10 @@ const BD = ( function ($){
         });
     }
 
-
     return{
         start:initDB,
-        count:contarRegistros
+        count:contarRegistros,
+        Save:guardarDatos
     }
 
 })(jQuery)
