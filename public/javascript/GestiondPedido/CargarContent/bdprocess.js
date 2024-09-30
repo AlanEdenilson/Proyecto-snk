@@ -54,10 +54,27 @@ const BD = ( function ($){
         });
     }
 
+    function obtenerPedidos() {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(["datos"], "readonly");
+            const objectStore = transaction.objectStore("datos");
+            const request = objectStore.getAll();
+            
+            request.onerror = () => reject("Error al obtener pedidos");
+            request.onsuccess = () => {
+                const pedidos = request.result;
+                // Ordenar los pedidos por fecha
+                pedidos.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+                resolve(pedidos);
+            };
+        });
+    }
+
     return{
         start:initDB,
         count:contarRegistros,
-        Save:guardarDatos
+        Save:guardarDatos,
+        print:obtenerPedidos
     }
 
 })(jQuery)
