@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/stylesheet/gestionDpedido/menu2.css">
-<table >
+<table id="dataTable" >
     <thead>
         <tr>
             <th >Estado</th>
@@ -35,31 +35,13 @@
             </td>
             <td><button class="detalles-btn">≫</button></td>
         </tr>
-        <tr id="${item.id}" data-id="${item.id}">
-            <td class="estado-icon " data-estado="${item.estado}"><i class="fas fa-exclamation-circle "style="color:blue;"></i></td>
-          
-            <td>${item.fecha}</td>
-
-            <td> ${item.cantidad}</td>
-            <td> $ ${item.total}</td>
-            <td id="select">
-                <label id='repartidor'>
-                    marta1
-             </label>
-            </td>
-            <td id="fechatd">
-                <label type="date" id="fecha" name="fecha" >12/34/2024 </label>
-            </td>
-            <td class="checkbox-center">
-                 <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
-            </td>
-            <td><button class="detalles-btn">≫</button></td>
-        </tr>
+       
         
         
     </tbody>
 </table>
 
 <script src="/javascript/GestiondPedido/CargarContent/bdprocess.js"></script>
+
 
 <script src="/javascript/GestiondPedido/menu2.js"></script>
