@@ -65,6 +65,8 @@
                     <span class="tooltip">Editar</span>
                 </button>
             </div>
+
+            <!-- salir de editar  -->
             <div class="boton-salir-editar">
                 <button class="btn-salir-editar">
                     <i class="bi bi-x-circle"></i> 
@@ -73,6 +75,14 @@
             </div>
            
             <!--fin de boton para editar-->
+            <div class="delete">
+                <button id="btnc" class="delete" >
+                    <span id="span"  class="icon-park--delete-b"></span> 
+                    <span id="tool" class="tooltip">Eliminar</span>
+                </button>
+            </div>
+            
+          
 
             <div id="contenedor-productos" class="contenedor-productos">
                
@@ -104,6 +114,24 @@
         });
     });
     </script>
-           
+             <script>
+                $(document).ready(function() {
+                    $('#btnc').click(function() {
+                        $('#span').toggleClass('icon-park--delete-b icon-park--delete');
+                        $('#tool').toggleClass('tooltip tooltip2'); 
+
+                        var currentColor = $(this).css('background-color');
+                        var newColor = currentColor === 'rgb(210, 221, 224)' ? 'red' : '';
+                        $(this).css('background-color', newColor);
+                
+                        $('#tool').text(function(i, text) {
+                            return text === 'Eliminar' ? 'Activado' : 'Eliminar';
+                        });
+                        });
+                       
+                  
+                        // Cambiar el fondo a rojo
+                });
+            </script>
 </body>
 </html>

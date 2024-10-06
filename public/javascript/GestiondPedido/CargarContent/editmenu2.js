@@ -29,7 +29,7 @@ $(function () {
 
       //actualizar repartidor
       $(document).on('click', '#repartidor',async function() {
-     
+          
       $(this).on('change',async  function() {
         //nombre del repartidor
         let textoRepartidor = $(this).find('option:selected').text();
