@@ -1,4 +1,4 @@
-const BD = ( function ($){
+ const BD = ( function ($){
     let db;
     const dbName = "ProcessDB";
     
@@ -70,11 +70,38 @@ const BD = ( function ($){
         });
     }
 
+    function editarCampo(id, campo, valor) {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(["datos"], "readwrite");
+            const objectStore = transaction.objectStore("datos");
+            const index = objectStore.index("id");
+            const request = index.openCursor(IDBKeyRange.only(id));
+            
+            request.onerror = () => reject("Error al obtener el pedido para editar");
+            
+            request.onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    const pedido = cursor.value;
+                    // Actualizar el campo específico del pedido
+                    pedido[campo] = valor; // Asignar el nuevo valor al campo
+                    const updateRequest = cursor.update(pedido);
+                    
+                    updateRequest.onsuccess = () => resolve("Campo actualizado exitosamente");
+                    updateRequest.onerror = () => reject("Error al actualizar el campo");
+                } else {
+                    reject("Pedido no encontrado");
+                }
+            };
+        })
+    }
+
     return{
         start:initDB,
         count:contarRegistros,
         Save:guardarDatos,
-        print:obtenerPedidos
+        print:obtenerPedidos,
+        change:editarCampo
     }
 
 })(jQuery)
