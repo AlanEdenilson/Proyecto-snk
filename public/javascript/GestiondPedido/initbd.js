@@ -135,8 +135,6 @@ var Modulo1 = (function($) {
             };
         });
     }
-    
-    
      /// cargar datos en  el html 
      function cargarDatos(){
                  

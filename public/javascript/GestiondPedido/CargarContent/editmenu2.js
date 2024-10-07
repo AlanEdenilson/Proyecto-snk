@@ -48,6 +48,45 @@ $(function () {
     });
 
 
+$(document).off('keydown').on('keydown',async function(e) {
+    if (e.which === 13) { // 13 es el código de la tecla Enter
+
+         
+          //var filtro=write.CHange(datos)
+
+
+
+        if ($('#tool').text()==='Activado'){
+          console.log('Cancelando pedidos...')
+        }else{
+          console.log('Modificando pedidos...')
+          try {
+            var datos = await BD.print()
+            console.log('estraendo los datos de la bd ')
+            console.log(datos)
+            var changes =await write.CHange(datos);
+            var list = await write.PRepare(changes)
+            var IDS= await write.EXids(changes);
+
+           for (const id of IDS) {
+               console.log('Procesando ID:', id);
+               await BD.delete(id);
+               // Aquí puedes agregar la lógica que necesites para cada ID
+           }
+
+
+           // await Galbatron.EnviarCambios(list);
+            
+          } catch (error) {
+            console.log(error)
+            
+          }
+
+        }
+    }
+});
+
+
 
     
 })

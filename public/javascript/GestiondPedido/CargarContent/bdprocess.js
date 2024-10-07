@@ -96,12 +96,52 @@
         })
     }
 
+    function borrarRegistroPorId(id) {
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(["datos"], "readwrite");
+          const objectStore = transaction.objectStore("datos");
+          
+          // Primero, buscar el registro por el índice ID
+          const index = objectStore.index("id"); // Asumiendo que has creado un índice
+          const getRequest = index.getKey(id);
+          
+          getRequest.onsuccess = (event) => {
+            if (event.target.result) {
+              // Si encontramos el registro, lo borramos usando su clave principal
+              const deleteRequest = objectStore.delete(event.target.result);
+              
+              deleteRequest.onsuccess = () => {
+                resolve({
+                  success: true,
+                  message: `Registro con ID: ${id} ha sido borrado exitosamente`
+                });
+              };
+              
+              deleteRequest.onerror = () => {
+                reject(new Error(`Error al intentar borrar el registro con ID: ${id}`));
+              };
+            } else {
+              reject(new Error(`No se encontró ningún registro con ID: ${id}`));
+            }
+          };
+          
+          getRequest.onerror = () => {
+            reject(new Error(`Error al buscar el registro con ID: ${id}`));
+          };
+          
+          transaction.onerror = (event) => {
+            reject(new Error(`Error en la transacción: ${event.target.error}`));
+          };
+        });
+      }
+
     return{
         start:initDB,
         count:contarRegistros,
         Save:guardarDatos,
         print:obtenerPedidos,
-        change:editarCampo
+        change:editarCampo,
+        delete:borrarRegistroPorId
     }
 
 })(jQuery)

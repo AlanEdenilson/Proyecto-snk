@@ -93,7 +93,6 @@ AplicationChange: async (req,res)=>{
                 pedido.fecha_entrega,
                 pedido.id
             ];
-
             // Llamar a la función AplicationChange del modelo
             await new Promise((resolve, reject) => {
                 model.AplicationChange(conexion, datosActualizacion, function(err, results) {

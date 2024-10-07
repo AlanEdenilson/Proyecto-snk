@@ -51,11 +51,85 @@ var write = (function($){
         });
     }
 
+
+    function verificar(lista){
+        return new Promise((resolve, reject) => {
+            try {
+                const nuevaListaFiltrada = lista
+        .map(pedido => {
+          
+          if (pedido.repartidor !== null && pedido.Aceptado === true && pedido.fecha_entrega !== null) {
+            return {
+              ...pedido,
+              estado: 'Activado'
+            };
+          }
+          return null;
+        })
+        .filter(item => item !== null);
+
+                console.log("Nueva lista con estados actualizados:", nuevaListaFiltrada);
+                resolve(nuevaListaFiltrada);
+            } catch (error) {
+                console.error("Error al verificar y actualizar estados:", error);
+                reject(error);
+            }
+        });
+
+    }
+
+    function PrepararRegistros(lista) {
+        return new Promise((resolve, reject) => {
+            try {
+                const nuevaLista = lista.flatMap(pedido => {
+                    const ids = pedido.id.toString().split(',').map(id => id.trim());
+                    return ids.map(id => ({
+                        ...pedido,
+                        id: parseInt(id)
+                    }));
+                });
+                
+                console.log("Nueva lista con registros separados:", nuevaLista);
+                resolve(nuevaLista);
+            } catch (error) {
+                console.error("Error al preparar los registros:", error);
+                reject(error);
+            }
+        });
+    
+        }
+    
+    function extraerIds(lista) {
+        return new Promise((resolve, reject) => {
+            try {
+                const nuevaListaIds = lista
+                    .map(pedido => pedido.id)
+                    .filter(id => id !== null);
+
+                console.log("Nueva lista de IDs:", nuevaListaIds);
+                resolve(nuevaListaIds);
+            } catch (error) {
+                console.error("Error al extraer IDs:", error);
+                reject(error);
+            }
+        });
+    }
+
+
+
+
+
+
     
   
     return {
         PRint:renderTable,
-        tt:()=>{console.log('escribiendo...')}
+        CHange:verificar,
+        PRepare:PrepararRegistros,
+        EXids:extraerIds
+    // "Preparar" se dice "prepare" en inglés.
+
+        
     }
 
 })(jQuery)
