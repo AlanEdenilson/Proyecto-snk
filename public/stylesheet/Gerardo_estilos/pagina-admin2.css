@@ -27,7 +27,7 @@
 }
 .admin-table th, .admin-table td {
     padding: 12px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #0ef;
     color: #0ef;
 }
@@ -175,7 +175,8 @@
   position: absolute;
   color: white;
   top: 34%;
-  left: 930px;
+  left: 990px;
+  text-align: center;
 }
 /*/barra desplegable de cuenta de rol/*/
 
