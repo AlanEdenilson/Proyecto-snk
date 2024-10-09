@@ -339,13 +339,36 @@ module.exports={
 
 
         
+    },
+
+    setting:async function(req, res) {
+
+       const {marca} = req.cookies.perfil;
+
+       
+      console.log(req.body['days[]'])
+     
+
+      try {
+        var v =await model.verify(conexion, marca)
+        console.log(v)
+        if (v){
+          var update= await model.updat(conexion,req.body['days[]'], marca)
+          console.log(update)
+        }else{
+          var insert= await model.insert(conexion,marca,req.body['days[]'])
+        console.log(insert)
+
+        }
+        
+        
+
+        res.send('resibido en el servidor')
+      } catch (error) {
+        res.send('error en el servidor')
+        
+      }
     }
-   
-
-   
-
-
-
 }
 
 

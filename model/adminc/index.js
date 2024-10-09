@@ -18,7 +18,7 @@ module.exports={
                 throw error;
                 
 
-                
+            
             }
            
         });
@@ -208,6 +208,62 @@ module.exports={
 
         
     },
+    verify:function (conexion,id) {
+        const consulta = `SELECT * FROM configuracion_dias_pedido WHERE marca_id = ${id}`
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, function (error, datos) {
+                if (error) {
+                    throw error;
+                } else {
+                    if (datos.length > 0) {
+                        return resolve(true);
+                    } else {
+                        return resolve(false)
+                    }
+                }
+            });
+        });
+    },
+
+    insert:
+    function (conexion,marca,datos) {
+        console.log('insertando datos en la')
+        const consulta = `INSERT INTO configuracion_dias_pedido (marca_id, lunes, martes, miercoles, jueves, viernes, sabado, domingo) VALUES (${marca},'${datos[0]}','${datos[1]}','${datos[2]}','${datos[3]}','${datos[4]}','${datos[5]}','${datos[6]}')`
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta,function (error,dato) {
+                if (error) {
+                    throw error;
+                } else {
+                        return resolve('datos insertados corectamente');
+                   
+                }
+            });
+        });
+    },
+    updat:function (conexion,datos,id) {
+        const consulta = `
+        UPDATE configuracion_dias_pedido 
+        SET lunes = '${datos[0]}', 
+            martes = '${datos[1]}', 
+            miercoles = '${datos[2]}',
+            jueves = '${datos[3]}',
+            viernes = '${datos[4]}',
+            sabado = '${datos[5]}',
+            domingo = '${datos[6]}'
+        WHERE marca_id= ${id}
+    `;
+
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta,function (error, dato) {
+                if (error) {
+                    throw error;
+                } else {
+                    resolve('actualizado correctamente')
+                }
+            });
+        });
+    },
+    
     
     
 

@@ -37,7 +37,9 @@ router.patch('/update2/:id',upload.single('imagen'),controlador.actualizar2)
 
 
 
+router.get('/setting',(req,res)=>{res.render('admin/settings')})
 
+router.put('/setting', controlador.setting)
 
 //router.post("/addproductos",filtro.addproductos,controlador.rrr)
 

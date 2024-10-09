@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Pedidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .day {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .day.selected {
+            background-color: #4CAF50;
+        }
+        .description-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        .description-label {
+            display: block;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-height: 60px;
+        }
+        .description {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: none;
+        }
+        .edit-icon {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            cursor: pointer;
+            color: #007bff;
+        }
+        .edit-icon:hover::after {
+            content: 'Editar descripción';
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            top: 100%;
+            right: 0;
+        }
+        .apply-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .loading {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .loading i {
+            font-size: 2rem;
+            color: #007bff;
+        }
+        .exit-btn {
+            display: none;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        .exit-btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Configura los días en que se pueden realizar pedidos</h2>
+        <div class="days">
+            <button value="false" class="day">L</buttonv>
+            <button value="false" class="day">M</button>
+            <button value="false" class="day">X</button>
+            <button value="false" class="day">J</button>
+            <button value="false" class="day">V</button>
+            <button value="false" class="day">S</button>
+            <button value="false" class="day">D</button>
+        </div>
+        <div class="description-container">
+            <label class="description-label">Descripción del horario de pedidos</label>
+            <textarea class="description" placeholder="Descripción" rows="3"></textarea>
+            <i class="fas fa-pencil-alt edit-icon"></i>
+        </div>
+        <button class="apply-btn">Aplicar</button>
+        <div class="loading">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+        <div class="message"></div>
+        <button class="exit-btn"><i class="fas fa-arrow-left"></i> Salir</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/javascript/settings.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('.edit-icon').click(function() {
+                $('.description-label').toggle();
+                $('.description').toggle().focus();
+            });
+
+            $('.description').blur(function() {
+                $('.description-label').text($(this).val() || 'Descripción del horario de pedidos');
+                $('.description-label').show();
+                $('.description').hide();
+            });
+
+           
+
+            $('.exit-btn').click(function() {
+                alert('Saliendo de la configuración');
+                // Aquí puedes agregar la lógica para salir o redirigir a otra página
+            });
+        });
+    </script>
+</body>
+</html>

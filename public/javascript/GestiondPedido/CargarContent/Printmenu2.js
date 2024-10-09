@@ -50,9 +50,31 @@ var write = (function($){
             
         });
     }
-
-
     function verificar(lista){
+        return new Promise((resolve, reject) => {
+            try {
+                const nuevaListaFiltrada = lista
+        .map(pedido => {
+            return {
+              ...pedido,
+              estado: 'rechazado'
+            };
+         
+        })
+        
+
+                console.log("Nueva lista con estados actualizados:", nuevaListaFiltrada);
+                resolve(nuevaListaFiltrada);
+            } catch (error) {
+                console.error("Error al verificar y actualizar estados:", error);
+                reject(error);
+            }
+        });
+
+    }
+
+
+    function verificar1(lista){
         return new Promise((resolve, reject) => {
             try {
                 const nuevaListaFiltrada = lista
@@ -125,6 +147,7 @@ var write = (function($){
     return {
         PRint:renderTable,
         CHange:verificar,
+        CHange1:verificar1,
         PRepare:PrepararRegistros,
         EXids:extraerIds
     // "Preparar" se dice "prepare" en inglés.

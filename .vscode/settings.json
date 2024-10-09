@@ -34,6 +34,10 @@
     "vscode_custom_css.statusbar": true,
     "vscode-pets.throwBallWithMouse": true,
     "vscode-pets.petType": "chicken",
-    "editor.stickyScroll.scrollWithEditor": false
+    "editor.stickyScroll.scrollWithEditor": false,
+    "cursor.aipreview.enabled": true,
+    "cursor.chat.alwaysSearchWeb": true,
+    "cursor.chat.collapseInputBoxPills": true,
+    "cursor.chat.defaultNoContext": true
 }
 
