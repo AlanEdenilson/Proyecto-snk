@@ -26,5 +26,28 @@ module.exports={
             
         }
 
-    }
+    },
+    verpedido: async function (req,res) {
+        const token = req.cookies.refreshToken;
+        if (!token) {
+            res.send('no tienes token')
+            
+        } 
+        
+        try {
+            var validar = await Gtoken.validarToken2(token)
+            console.log('este es el token: ')
+            console.log(validar)
+
+            var result = await model.verpedido(conexion,validar.id)
+            console.log(result)
+            res.send(result)
+
+        } catch (error) {
+            console.error(error)
+            res.send(error)
+            
+        }
+
+    },
 }

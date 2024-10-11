@@ -9,4 +9,6 @@ router.get('/l2', function(req, res, next) {
 
 router.get('/vermarcas',controlller.vermarca)
 
+router.get('/verpedido',controlller.verpedido)
+
 module.exports = router;
