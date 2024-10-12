@@ -112,30 +112,22 @@ module.exports={
                 details: 'mas detalles'
               });
             }
-            
-       
-
 
     },
 
     mostar:async function(req, res){
-      const token = req.cookies.authToken;
-      var vtoken = await Gtoken.validarToken2(token);
-              console.log("El token es válido:", vtoken);
-              
-              const {marca } = vtoken
+      try {
 
-        model.mostar(conexion,marca)
-        .then((datos)=>{
-            res.json(datos)
-        })
-
-        
-        .catch((error)=>{
-
-        })
-
-
+        const token = req.cookies.authToken;
+        var vtoken = await Gtoken.validarToken2(token);
+                console.log("El token es válido:", vtoken);
+                
+                const { marca } = vtoken
+        var datos = await model.mostar(conexion,marca)
+        res.json(datos)
+      } catch{
+        console.log('no tienes marca entonces no tienes productos')
+      }
     },
     delete: async  function(req, res){
 

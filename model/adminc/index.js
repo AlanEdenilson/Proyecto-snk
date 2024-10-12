@@ -132,12 +132,14 @@ module.exports={
         return new Promise((resolve, reject) => {
             conexion.query(consulta, function (error, datos) {
                 if (error) {
-                    throw error;
+                   
+                    return reject(error)
                 } else {
                     if (datos.length > 0) {
                         return resolve(datos);
                     } else {
                         return resolve(false)
+                       
                     }
                 }
             });
