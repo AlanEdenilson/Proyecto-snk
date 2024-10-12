@@ -628,8 +628,8 @@ body{
   }
   /*/logo verde/*/
 .card {
-  width: 330px;
-  height: 80px;
+  width: 360px;
+  height:100px;
   border-radius: 8px;
   box-sizing: border-box;
   padding: 10px 15px;
@@ -641,6 +641,8 @@ body{
   align-items: center;
   justify-content: space-around;
   gap: 15px;
+  margin-top: 24%;
+  margin-left: 30%;
 }
 .wave {
   position: absolute;
