@@ -255,6 +255,7 @@ GROUP BY
             GROUP_CONCAT(DISTINCT CONCAT(
                 'producto_id:', dp.producto_id, 
                 ',precio:', dp.precio_unitario, 
+                
                 ',cantidad:', dp.cantidad
             ) SEPARATOR '||') AS detalles_productos,
             SUM(dp.cantidad) AS total_cantidad
@@ -278,7 +279,5 @@ GROUP BY
     
         
     }
-
-
-
 }
+

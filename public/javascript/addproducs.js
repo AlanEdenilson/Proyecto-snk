@@ -2,6 +2,9 @@ $(function() {
 
     $("#Produc").on('submit', function(e) {
         e.preventDefault();
+        $('#Produc').css({'display':'none'})
+      
+         $('.pl').css({'display':'block'})
 
         console.log('clcik')
         var form = this;
@@ -17,9 +20,21 @@ $(function() {
             processData: false,  // Importante cuando se usa FormData
             contentType: false,
             success: function(response) {
+
+              $('.pl').css({'display':'none'})
+
+              setTimeout(() => {
+                $('.check-container').css({'display':'block'})
+              }, 3000);
+
+                setTimeout(()=>{
+                  
+                  window.location.href='/ventanaAdmin'
+                  }, 6000)
+              
                 console.log(response);
-                $('#myModal').css({'display':'none'})
-                 window.location.href='/ventanaAdmin'
+               
+                //  window.location.href='/ventanaAdmin'
                
             },
             error: function(jqXHR, textStatus, errorThrown) {

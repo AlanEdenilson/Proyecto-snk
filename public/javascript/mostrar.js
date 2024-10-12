@@ -8,17 +8,19 @@ $(function(){
         
 
         var jsonData = data;
+        console.log(jsonData)
         
         for (var i = 0; i < jsonData.length; i++) {
           
             $('.admin-table').append(`
-                  <tr id="${jsonData[i].id}" class="fila" >
+                <tr id="${jsonData[i].id}" class="fila" >
                      <td><img src="${jsonData[i].imagen}" alt="Profile Picture" class="profile-pic"></td>
-                     <td>${jsonData[i].nombre}</td>
-                     <td>${jsonData[i].precio}</td>
-                     <td>${jsonData[i].stock}</td>
+                         <td>${jsonData[i].nombre}</td>
+                         <td>${jsonData[i].precio}</td>
+                         <td>${jsonData[i].stock}</td>
                      <td>
-                         <button class="btn-edit"  id="openModal1"
+                        <div class="actions">
+                        <button class="btn-edit"  id="openModal1"
                         data-id="${jsonData[i].id}"
                         data-nombre="${jsonData[i].nombre}"
                         data-precio="${jsonData[i].precio}"
@@ -32,11 +34,10 @@ $(function(){
                           data-id="${jsonData[i].id}"
                           data-nombre="${jsonData[i].nombre}"
                          >Borrar</button>
-                     </td>
-                 </tr>
+                           </div>
+                        </td>
+                </tr>
                  `)
-
-                 
     // Asegúrate de que las funciones se establecen solo una vez
     $('.admin-table').off('click', '.btn-edit').on('click', '.btn-edit', function() {
         
