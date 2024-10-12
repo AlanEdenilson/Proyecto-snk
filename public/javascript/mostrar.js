@@ -36,10 +36,8 @@ $(function(){
                          >Borrar</button>
                            </div>
                         </td>
-                    </tr>
+                </tr>
                  `)
-
-                 
     // Asegúrate de que las funciones se establecen solo una vez
     $('.admin-table').off('click', '.btn-edit').on('click', '.btn-edit', function() {
         
