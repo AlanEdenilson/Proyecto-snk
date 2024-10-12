@@ -112,15 +112,10 @@ module.exports={
                 details: 'mas detalles'
               });
             }
-            
-       
-
 
     },
 
     mostar:async function(req, res){
-
-
       try {
 
         const token = req.cookies.authToken;
@@ -132,22 +127,7 @@ module.exports={
         res.json(datos)
       } catch{
         console.log('no tienes marca entonces no tienes productos')
-       
-
       }
-     
-
-        // model.mostar(conexion,marca)
-        // .then((datos)=>{
-        //     res.json(datos)
-        // })
-
-        
-        // .catch((error)=>{
-
-        // })
-
-
     },
     delete: async  function(req, res){
 
