@@ -48,8 +48,17 @@ module.exports={
                 res.clearCookie('authToken');
                 res.clearCookie('refreshToken');
 
+
                 //const uddates= await model.isertIdadmin(conexion,gcodigo,id_admin);
                 //borrar cokies y crealas de nuevo con la informacion de marca
+              
+                  
+                  var play={
+                    marca:principalId,
+                  
+                   
+                  }
+                  res.cookie('perfil',play,{ httpOnly: true,secure: true });
                 const tokennew = Gtoken.generarToken({id, rol, email, marca:principalId });
                 res.cookie('authToken', tokennew, { httpOnly: true,secure: true });
 
@@ -280,41 +289,6 @@ module.exports={
 
                   res.send('actualizado con exito')
 
-
-
-
-
-              /*  if(datos[0].imagen===imagen){
-                  console.log('la imagen que has roporcionado es la misma asi que no se puede actualizar ')
-
-                }else{
-                  console.log('Intentando borrar:', imgPath);
-
-                  const r=await model.updateimagen(conexion,imagen,userId)
-                  console.log('imagen guardada ?'+r)*/
-  
-                 /* 
-
-                }
-            //----------
-                if (updatedData1 ==='{}') {
-                  console.log('no hay cambios de texto ')
-                  res.send('no hay cambios que aser')
-          
-            
-                }else{
-                  for (const [key, value] of Object.entries(updatedData)) {
-                    
-                    i=await model.updateproduct(conexion,key,value,userId)
-                    console.log(i)
-                    console.log(`${key}: ${value}`);
-                  }
-
-                  res.send('actualizado con exito')
-        
-                  
-        
-                }*/
  
             } catch (error) {
               console.log(error)
@@ -334,13 +308,8 @@ module.exports={
     },
 
     setting:async function(req, res) {
-
        const {marca} = req.cookies.perfil;
-
-       
       console.log(req.body['days[]'])
-     
-
       try {
         var v =await model.verify(conexion, marca)
         console.log(v)
