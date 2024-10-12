@@ -50,4 +50,26 @@ module.exports={
         }
 
     },
+actualizarEstadoPedido: async function (req, res) {
+    const token = req.cookies.refreshToken;
+    if (!token) {
+        return res.send('no tienes token');
+    }
+
+    const { idPedido, nuevoEstado } = req.body;
+
+    try {
+        var validar = await Gtoken.validarToken2(token);
+        console.log('este es el token: ');
+        console.log(validar);
+
+        var result = await model.actualizarEstadoPedido(conexion, idPedido, nuevoEstado);
+        console.log(result);
+        res.send(result);
+
+    } catch (error) {
+        console.error(error);
+        res.send(error);
+    }
+}
 }

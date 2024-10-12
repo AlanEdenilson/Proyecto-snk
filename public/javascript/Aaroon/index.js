@@ -20,25 +20,41 @@ $.ajax({
     method: 'GET',
     success: function(data) {
         console.log('Datos 2 recibidos:', data);
-        $('#pedido').text(data[0].pedido_id)
-        $('#Ntienda').text(data[0].tienda_nombre)
-        $('#Nombre').text(data[0].nombre)
-        $('#fechaE').text(data[0].fecha_hora_pedido)
-        $('#fechaEn').text(data[0].fecha_entrega)
-        $('#total').text(data[0].total_pedido)
+        
+        data.forEach(function(item) {
 
-        $('#pedido1').text(data[1].pedido_id)
-        $('#Ntienda1').text(data[1].tienda_nombre)
-        $('#Nombre1').text(data[1].nombre)
-        $('#fechaE1').text(data[1].fecha_hora_pedido)
-        $('#fechaEn1').text(data[1].fecha_entrega)
-        $('#total1').text(data[1].total_pedido)
+            var html = `
+                <tr>
+                    <td id="pedido">${item.pedido_id}</td>
+                    <td id="Nombre">${item.nombre}</td>
+                    <td id="Ntienda" >${item.tienda_nombre}</td>
+                    <td id="fechaE">${item.fecha_hora_pedido}</td>
+                    <td id="fechaEn">${item.fecha_entrega}</td>
+                    <td><button class="boton">Entregado</button>
+                        <button class="boton2">No Entregado</button></td></td>
+                        <td><button id="openModal">Pedido</button></td>         
+                    <td id="total">${item.total_pedido}</td>
+                </tr>
+            `;
+            $('#tabla').append(html);
 
-
+        });
+        
     },
     error: function(jqXHR, textStatus, errorThrown) {
         console.error('Error en la petición:', textStatus, errorThrown);
     }
 });
+
+
+
+$('#tabla').off('click', '.boton').on('click', '.boton', function() {
+    alert('Entregadooo');
+});
+
+$('#tabla').off('click', '.boton2').on('click', '.boton2', function() {
+    alert('No Entregadooo');
+});
+
 
 })

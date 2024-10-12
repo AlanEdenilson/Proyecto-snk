@@ -11,4 +11,6 @@ router.get('/vermarcas',controlller.vermarca)
 
 router.get('/verpedido',controlller.verpedido)
 
+router.get('/updateEstado',controlller.actualizarEstadoPedido)
+
 module.exports = router;
