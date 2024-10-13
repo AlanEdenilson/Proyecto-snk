@@ -81,18 +81,31 @@ var Modulo1 = (function($) {
     }
     
     
-    function contarRegistros() {
+   function contarRegistros() {
         return new Promise((resolve, reject) => {
-            const transaction = db.transaction(["pedidos"], "readonly");
-            const objectStore = transaction.objectStore("pedidos");
-            const countRequest = objectStore.count();
-            
-            countRequest.onerror = () => reject("Error al contar registros");
-            countRequest.onsuccess = () => {
-                const count = countRequest.result;
-                console.log(`Número de registros en la base de datos: ${count}`);
-                resolve(count);
-            };
+
+            try {
+                const transaction =  db.transaction(["pedidos"], "readonly");
+                const objectStore = transaction.objectStore("pedidos");
+                const countRequest = objectStore.count();
+                
+                countRequest.onerror = () => reject("Error al contar registros");
+                countRequest.onsuccess = () => {
+                    const count = countRequest.result;
+                    if(count==0){
+                        console.log('ese cero')
+                        $('.activar-btn').css({'display':'none'})
+                       
+                    }
+                    console.log(`Número de registros en la base de datos: ${count}`);
+                    resolve(count);
+                };
+                
+            } catch (error) {
+                reject(error)
+                
+            }
+           
         });
     }
     
