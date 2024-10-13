@@ -11,31 +11,33 @@ $(function(){
      
       var jsonData = data;
         console.log(jsonData)
-        $('#img').attr('src',jsonData.img.imagen)
+        $('#img').attr('src',jsonData.img.imagen);
+        var datos=data.data;
+        console.log(datos)
         
-        for (var i = 0; i < jsonData.length; i++) {
+        for (var i = 0; i < datos.length; i++) {
           
             $('.admin-table').append(`
-                <tr id="${jsonData[i].id}" class="fila" >
-                     <td><img src="${jsonData[i].imagen}" alt="Profile Picture" class="profile-pic"></td>
-                         <td>${jsonData[i].nombre}</td>
-                         <td>${jsonData[i].precio}</td>
-                         <td>${jsonData[i].stock}</td>
+                <tr id="${datos[i].id}" class="fila" >
+                     <td><img src="${datos[i].imagen}" alt="Profile Picture" class="profile-pic"></td>
+                         <td>${datos[i].nombre}</td>
+                         <td>${datos[i].precio}</td>
+                         <td>${datos[i].stock}</td>
                      <td>
                         <div class="actions">
                         <button class="btn-edit"  id="openModal1"
-                        data-id="${jsonData[i].id}"
-                        data-nombre="${jsonData[i].nombre}"
-                        data-precio="${jsonData[i].precio}"
-                        data-stock="${jsonData[i].stock}"
-                         data-descripcion="${jsonData[i].descripcion}"
-                        data-imagen="${jsonData[i].imagen}"
+                        data-id="${datos[i].id}"
+                        data-nombre="${datos[i].nombre}"
+                        data-precio="${datos[i].precio}"
+                        data-stock="${datos[i].stock}"
+                         data-descripcion="${datos[i].descripcion}"
+                        data-imagen="${datos[i].imagen}"
                      
                          >
                          Editar</button>
                          <button class="btn-delete" id="openModall"
-                          data-id="${jsonData[i].id}"
-                          data-nombre="${jsonData[i].nombre}"
+                          data-id="${datos[i].id}"
+                          data-nombre="${datos[i].nombre}"
                          >Borrar</button>
                            </div>
                         </td>
