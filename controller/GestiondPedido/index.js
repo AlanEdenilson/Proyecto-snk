@@ -1,12 +1,18 @@
 
 var model = require('../../model/GestiondPedido/index');
 var conexion=require('../../config/conexion');
+const Gtoken = require('../login/Gtoken');
 
 
 module.exports = {
     verpedidos: async (req,res)=>{
+
+        const token = req.cookies.authToken;
         try{
-            model.verpedidos(conexion,function(err,results){
+            
+            var vtoken = await Gtoken.validarToken2(token);
+            
+            model.verpedidos(conexion,vtoken.marca,function(err,results){
                 if(err){
                    throw err;
                 }else{
@@ -114,8 +120,13 @@ AplicationChange: async (req,res)=>{
 
 },
 verRepart: async (req,res)=>{
+
+
     try{
-        model.verRepart(conexion,function(err,results){
+        const token = req.cookies.authToken;
+    
+        var vtoken = await Gtoken.validarToken2(token);
+        model.verRepart(conexion,vtoken.marca,function(err,results){
             if(err){
                 throw err;
             }else if(results.length > 0){
@@ -188,11 +199,8 @@ pedidosEnprocesos:async function (req,res){
                 res.send(results)
             }
         })
-
     } catch(error) {
         res.send('a ocurrido un error en el server')
-
-
     }
 }
 }

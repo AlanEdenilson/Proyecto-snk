@@ -1,5 +1,5 @@
 module.exports = {
-    verpedidos: function (conexion, funcion) {
+    verpedidos: function (conexion,marca, funcion) {
         /*
         */
 
@@ -34,7 +34,7 @@ module.exports = {
             JOIN pedidos_activos pa ON dp.pedido_id = pa.id
 
             WHERE 
-                m.id = 4 AND pa.estado = 'En_espera' || pa.estado = ''
+                m.id = ${marca} AND pa.estado = 'En_espera' || pa.estado = ''
             GROUP BY 
 
                 m.nombre, fecha_hora_pedido DESC;
@@ -138,13 +138,13 @@ module.exports = {
         `;
         conexion.query(sql, datos, funcion);
     },
-    verRepart: function (conexion, funcion, id) {
+    verRepart: function (conexion,marca, funcion, id) {
         const sql = `SELECT 
             pa.id,
             u.usuario
             FROM repartidores pa
             JOIN usuarios u ON u.id = pa.id
-            WHERE pa.marca_id = 4
+            WHERE pa.marca_id = ${marca}
             AND u.rol = 'repartidor'
             `;
 
