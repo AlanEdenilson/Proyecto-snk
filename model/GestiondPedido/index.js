@@ -234,7 +234,7 @@ module.exports = {
         conexion.query(sql, funcion)
 
     },
-    pedidosEnprocesos:function(conexion,funcion){
+    pedidosEnprocesos:function(conexion,marca,funcion){
             const sql = `
                 SELECT 
             m.id AS marca_id,
@@ -268,7 +268,7 @@ module.exports = {
         LEFT JOIN usuarios u ON pa.repartidor_id = u.id
     
         WHERE 
-            m.id = 4 AND pa.estado = 'en_proceso'
+            m.id = ${marca} AND pa.estado = 'en_proceso'
         GROUP BY 
     
         m.nombre, fecha_hora_pedido DESC;

@@ -183,7 +183,10 @@ cargarcontenido2:async function(req,res){
 },
 pedidosEnprocesos:async function (req,res){
     try {
-        model.pedidosEnprocesos(conexion,function (err,results) {
+        const token = req.cookies.authToken;
+    
+        var vtoken = await Gtoken.validarToken2(token);
+        model.pedidosEnprocesos(conexion,vtoken.marca,function (err,results) {
             if (err) {
                 throw err
                 
