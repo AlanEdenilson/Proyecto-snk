@@ -65,14 +65,15 @@ $( async function () {
 
         
         $(".container").load("/gestion/pagina1", function(response, status, xhr) {
-           Modulo1.cargarDatos()
+            console.log('tabla cragada exitosamente')
+    
             if (status == "error") {
                 var msg = "Lo siento, ocurrió un error: ";
                 $(".container").html(msg + xhr.status + " " + xhr.statusText);
             }
         });
 
-
+       
 
 
 
@@ -169,8 +170,21 @@ $(document).on('click', '#repartidor',async function() {
     setTimeout(function() {
         $('.check-success').hide();
         $('.overlay').css({'display':'none'});
+        $('.animacion-extraccion').hide();
         $('.modal').css({'display':'none'});
+
+        $(".container").load("/gestion/pagina1", function(response, status, xhr) {
+            console.log('tabla cragada exitosamente')
+            if (status == "error") {
+                var msg = "Lo siento, ocurrió un error: ";
+                $(".container").html(msg + xhr.status + " " + xhr.statusText);
+            }
+        });
     }, 4000);
+
+   
+
+  
   });
 
     
