@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --clr-main: #4b33a8;
+    --clr-main: #081b29;
     --clr-main-light: #785ce9;
-    --clr-white: #ececec;
+    --clr-white: #838282b6;
     --clr-gray: #e2e2e2;
     --clr-red: #961818;
 }
@@ -34,6 +34,7 @@ a {
     background-color: var(--clr-main);
 }
 
+/* barra lateral */
 aside {
     padding: 2rem;
     padding-right: 0;
@@ -46,21 +47,28 @@ aside {
     justify-content: space-between;
 }
 
+/* logo empresa */
 .logo {
-    font-weight: 400;
-    font-size: 1.3rem;
+    position: absolute;
+    height: 240px;
+    width: 290px;
+    top: -50px;
+    right: -3px;
+    filter: drop-shadow(2px 2px 1px rgb(255, 0, 0));
 }
 
 .menu {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    margin-top: 60px;
 }
 
+/* botones de menu */
 .boton-menu {
     background-color: transparent;
     border: 0;
-    color: var(--clr-white);
+    color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -73,10 +81,11 @@ aside {
 
 .boton-menu.active {
     background-color: var(--clr-white);
-    color: var(--clr-main);
+    color: rgb(184, 3, 3);
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     position: relative;
+    border: 1px solid red;
 }
 
 .boton-menu.active::before {
@@ -117,6 +126,7 @@ aside {
     color: var(--clr-main);
     padding: .15rem .25rem;
     border-radius: .25rem;
+    color: red;
 }
 
 .boton-carrito.active .numerito {
@@ -135,11 +145,12 @@ main {
     margin-left: 0;
     border-radius: 2rem;
     padding: 3rem;
+    border: 1px solid red;
 }
 
 .titulo-principal {
-    color: var(--clr-main);
-    margin-bottom: 2rem;
+    color: black;
+    font-size: 27px;
 }
 
 .contenedor-productos {
