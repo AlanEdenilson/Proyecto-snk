@@ -154,10 +154,23 @@ $(document).on('click', '#repartidor',async function() {
   //capturar el boton de aceptar
   $(document).on('click', '#btn-aceptar', async function() {
     $('.text-spinner').text('Enviando datos..')
+    $('.modal-contenido').css({'display':'none'})
 
     $('.overlay').show();
     $('.animacion-extraccion').show();
     Megatron.transformar();
+
+    setTimeout(function() {
+        $('.spinner').hide();
+        $('.text-spinner').hide();
+        $('.check-success').show();
+    }, 2000);
+
+    setTimeout(function() {
+        $('.check-success').hide();
+        $('.overlay').css({'display':'none'});
+        $('.modal').css({'display':'none'});
+    }, 4000);
   });
 
     

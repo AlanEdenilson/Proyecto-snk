@@ -34,11 +34,17 @@ class Megatron {
             await Galbatron.EnviarCambios(lista);
              var r = await   Modulo1.borrarTodosLosRegistros();
              console.log("Registros borrados:", r);
+          
+            
 
             
         } catch (error) {
             console.error("Error al actualizar el estado del checkbox:", error);
+          
+        
         }
+
+     
     }
 
     atacar() {
