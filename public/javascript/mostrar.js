@@ -3,9 +3,6 @@ $(function(){
   $.ajax({
     url: '/adminr/te53eer353r',
     type: 'GET',
-     
-
-   
     success: function(data) {
       $('#marcar').css({'display':'none'})
      
@@ -69,16 +66,6 @@ $(function(){
 
     }})
 
-
-    
-
-    // $.getJSON('/adminr/te53eer353r', function(data) {
-        
-        
-
-        
-    // })
-
     $('.admin-table').off('click', '.btn-edit').on('click', '.btn-edit', function() {
         
       var id = $(this).data('id');
@@ -117,7 +104,19 @@ $(function(){
   
           }*/
 
-          const initialValues = {
+         
+    });
+
+
+    $('#edit-product-form').on('submit', function(event) {
+      console.log('editando..')
+      event.preventDefault();
+
+
+
+      var id=$(' #product-id').val();
+      var url;
+     const initialValues = {
               nombre: $('#nombre').val(),
               precio:$('#precio-unidad').val(),
               stock: $('#precio-stock').val(),
@@ -126,15 +125,6 @@ $(function(){
     
           };
           console.log(initialValues);
-    });
-
-
-    $('#edit-product-form').on('submit', function(event) {
-      event.preventDefault();
-
-      var id=$(' #product-id').val();
-      var url;
-    
       
 
       const currentValues = {
