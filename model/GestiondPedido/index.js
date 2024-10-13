@@ -67,12 +67,12 @@ module.exports = {
                 pa.estado 
             FROM 
                 productos p
-                JOIN detalles_pedido dp ON p.id = dp.producto_id 
-                JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
-                JOIN tiendas t ON pa.tienda_id = t.id
-                JOIN clientes c ON pa.cliente_id = c.id
-                JOIN marcas m ON p.marca_id = m.id 
-                JOIN usuarios u ON pa.repartidor_id = u.id
+                LEFT JOIN detalles_pedido dp ON p.id = dp.producto_id 
+                LEFT JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
+                LEFT JOIN tiendas t ON pa.tienda_id = t.id
+                LEFT JOIN clientes c ON pa.cliente_id = c.id
+                LEFT JOIN marcas m ON p.marca_id = m.id 
+                LEFT JOIN usuarios u ON pa.repartidor_id = u.id
             WHERE 
                 pa.id IN (?)
             GROUP BY 

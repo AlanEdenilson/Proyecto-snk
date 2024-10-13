@@ -22,16 +22,9 @@ $(function(){
 
     $('#tabla-container').on('click', '.detalles-btn', function() {
 
-        $(".container").load("/gestion/l1", function(response, status, xhr) {
-            Modulo1.cargarDatos()
-           
-        if (status == "error") {
-            var msg = "Lo siento, ocurrió un error: ";
-            $(".container").html(msg + xhr.status + " " + xhr.statusText);
-        }
+       
     // Obtener el ID del tr de la fila
-    let filaId = fila.attr('id');
-    console.log('ID de la fila:', filaId);
+    
 
     // Aquí puedes usar el filaId para hacer algo con él, por ejemplo:
     // Enviarlo al servidor o usarlo para cargar más detalles
@@ -55,7 +48,7 @@ $(function(){
             console.error('Error al cargar los detalles:', error);
         }
     });
-    });
+  
         
         let fila = $(this).closest('tr');
         let estadoIcons = fila.find('.ver i');

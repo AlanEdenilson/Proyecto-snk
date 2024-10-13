@@ -197,6 +197,16 @@ $( async function () {
   
   });
 
+
+  $('#tabla-container').on('click', '.detalles-btn', function() {
+
+    let filaId = $(this).data('id');
+    console.log('ID de la fila:', filaId);
+
+     window.location.href='/gestion/l1?id='+filaId
+
+  })
+
     
     
 

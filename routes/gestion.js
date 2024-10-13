@@ -9,7 +9,8 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/l1',(req,res)=>{
-    res.render('gestionDpedido/estado');
+    console.log(req.query.id)
+    res.render('gestionDpedido/estado',{id:req.query.id});
 
 })
 

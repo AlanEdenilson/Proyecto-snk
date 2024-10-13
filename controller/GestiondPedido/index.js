@@ -36,7 +36,7 @@ module.exports = {
                 if(err){
                    throw err;
                 }else{
-                    console.log(results[0]);
+                    console.log(results);
                     res.send(results);
                 }
             });

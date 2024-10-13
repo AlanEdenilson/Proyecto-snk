@@ -173,7 +173,7 @@ var Modulo1 = (function($) {
                         <td class="checkbox-center">
                              <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
                         </td>
-                        <td><button class="detalles-btn">≫</button></td>
+                        <td><button data-id="${item.id}" class="detalles-btn">≫</button></td>
                     </tr>
                 `;
             });
