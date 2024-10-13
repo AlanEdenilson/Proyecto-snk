@@ -130,7 +130,11 @@
 <script>
     $(document).ready(function() {
     $('.container').off('click','#openModal').on('click','#openModal',function(){
-     window.location.href='/tabla';
+
+        var ids=$(this).data('id')
+        console.log(ids)
+
+    window.location.href='/users/verdetalleAaron?id='+ids;
     })
 })
 </script>

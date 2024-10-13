@@ -56,6 +56,31 @@
     <i class='bx bx-log-out'></i>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="/javascript/Aaroon/index2.js"></script>
+
+    <script>
+        
+        $(function(){
+
+            const fila = '<%= typeof id !== "undefined" ? id : "" %>';
+            console.log('el id es igual : '+fila)
+
+            $.ajax({
+    url: '/gestion/detalles?id=' + fila,
+    type: 'GET',
+    success: function(response) {
+        console.log('Detalles cargados para el pedido:', fila);
+        console.log(response);
+       
+
+},
+    error: function(xhr, status, error) {
+        console.error('Error al cargar los detalles:', error);
+    }
+  }
+)
+
+        })
+        
+    </script>
 </body>
 </html>

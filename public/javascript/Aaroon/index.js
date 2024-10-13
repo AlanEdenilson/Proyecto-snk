@@ -32,7 +32,7 @@ $.ajax({
                     <td id="fechaEn">${item.fecha_entrega}</td>
                     <td><button class="boton">Entregado</button>
                         <button class="boton2">No Entregado</button></td></td>
-                        <td><button id="openModal">Pedido</button></td>         
+                        <td><button id="openModal" data-id = ${item.pedidos_ids}>Pedido</button></td>      
                     <td id="total">${item.total_pedido}</td>
                 </tr>
             `;
