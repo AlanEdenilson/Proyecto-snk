@@ -24,6 +24,43 @@ var Modulo1 = (function($) {
             };
         });
     }
+    function cargarDatoss(){
+        $.ajax({
+            url: "/gestion/verpedidos",
+            type: "GET",
+            success: function(response) {
+                console.log(response);
+                var arrayRecuperado = response;
+            // Inicializar la base de datos
+            Modulo1.initDB().then(() => {
+                // Guardar los pedidos en la base de datos
+                let contador = 0;
+                return Modulo1.guardarPedidos(arrayRecuperado.map(item => ({
+                    
+                    id: item.pedidos_ids,
+                    fecha: item.fecha_hora_pedido,
+                    repartidor: item.repartidor,
+                    repartidorn: item.repartidor_nombre,
+                    fecha_entrega: item.fecha_entrega,
+                    estado: item.estados,
+                    total: item.total_pedido,
+                    cantidad: item.total_cantidad,
+                    Aceptado: false
+                })));
+            }).then(() => {
+                console.log("Pedidos guardados exitosamente en IndexedDB");
+            }).catch(error => {
+                console.error("Error al guardar los pedidos en IndexedDB:", error);
+            });
+            
+            },
+
+            //eror
+            error: function(xhr, status, error) {
+                console.error("Error al cargar el contenido:", error);
+            }
+        });
+            }   
     
     function guardarPedidos(pedidos) {
         return new Promise((resolve, reject) => {
@@ -59,6 +96,7 @@ var Modulo1 = (function($) {
         return new Promise((resolve, reject) => {
             // El error se debe a que no existe un índice llamado "fecha" en el almacén de objetos.
             // Vamos a modificar el código para usar la clave primaria "fecha"
+           try{
             const transaction = db.transaction(["pedidos"], "readonly");
             const objectStore = transaction.objectStore("pedidos");
             const request = objectStore.openCursor(null, 'prev');
@@ -77,6 +115,13 @@ var Modulo1 = (function($) {
                     resolve(null); // Si no hay registros, devuelve null
                 }
             };
+            
+           } catch {
+            console.error("Error al obtener el último registro");
+            reject(null);
+  
+
+           }
         });
     }
     
@@ -95,6 +140,7 @@ var Modulo1 = (function($) {
                     if(count==0){
                         console.log('ese cero')
                         $('.activar-btn').css({'display':'none'})
+                        cargarDatoss();
                        
                     }
                     console.log(`Número de registros en la base de datos: ${count}`);
