@@ -15,4 +15,6 @@ router.get('/updateEstado',controlller.actualizarEstadoPedido)
 
 router.get('/verpedidos2',controlller.verpedido)
 
+router.get('/verdetalleAaron', function(req, res){res.render('gestionDpedido/tablavista',{id:req.query.id})})
+
 module.exports = router;

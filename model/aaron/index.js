@@ -87,4 +87,51 @@ module.exports={
             });
         });
     },
+    obtenerPedidosPorRepartidor: function(conexion, id) {
+        return new Promise((resolve, reject) => {
+            const sql = `
+            SELECT 
+                c.nombre AS cliente_nombre,
+                u.usuario AS repartidor_nombre,
+                pa.repartidor_id,
+                c.apellido AS cliente_apellido,
+                t.imagen AS tienda_imagen,
+                t.nombre AS tienda_nombre,
+                p.id AS producto_id, 
+                p.imagen AS producto_imagen,
+                p.precio AS producto_precio,
+                p.nombre AS producto_nombre, 
+                SUM(dp.cantidad) AS cantidad_total, 
+                dp.precio_unitario, 
+                SUM(dp.subtotal) AS subtotal_total, 
+                pa.id,
+                DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s') AS fecha,
+                pa.estado 
+            FROM 
+                productos p
+                LEFT JOIN detalles_pedido dp ON p.id = dp.producto_id 
+                LEFT JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
+                LEFT JOIN tiendas t ON pa.tienda_id = t.id
+                LEFT JOIN clientes c ON pa.cliente_id = c.id
+                LEFT JOIN marcas m ON p.marca_id = m.id 
+                LEFT JOIN usuarios u ON pa.repartidor_id = u.id
+            WHERE 
+                pa.id IN (?)
+            GROUP BY 
+                p.id,pa.id, pa.estado 
+            ORDER BY 
+                pa.id, p.nombre
+        `;r
+            conexion.query(sql,[id], (error, results) => {
+                if (error) {
+                    return reject(error);
+                } else if (results.length > 0) {
+                    return resolve(results);
+                } else {
+                    return resolve('no hay datos');
+                }
+            });
+        });
+    },
+
 }
