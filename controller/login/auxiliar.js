@@ -3,7 +3,7 @@ function sino(res,ruta,imagen,nombre) {
     if(ruta==="admin" ){
         res.render('login/ventanaAdmin',{imagen:imagen,nombre:nombre});
     }else if(ruta==="repartidor" ){
-        res.render('gestionDpedido/diseño2');
+        res.render('repartidor/ventas_repartido');
     }     
 }
 //hola
