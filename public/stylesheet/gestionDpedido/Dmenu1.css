@@ -13,13 +13,15 @@
     width: 100px;
     height: 100px;
     margin-bottom: 10px;
+    border: 1px solid red;
+    box-shadow: 0 0 10px #0ef;
 }
 .company-name {
     font-size: 20px;
     font-weight: bold;
-    
     margin: 0;
     margin-left: 10px;
+    color: black;
 }
 .company-slogan {
     font-size: 14px;
