@@ -130,7 +130,9 @@ module.exports={
         console.log("El token es válido:", vtoken);
         const { marca } = vtoken
         var datos = await model.mostar(conexion,marca)
-        res.json(datos)
+        var imagen= await model.imagen(conexion,marca)
+        console.log('imagenes',imagen)
+        res.json({data:datos,img:imagen})
       } catch(error) {
               res.status(400).json({
                 success: false,

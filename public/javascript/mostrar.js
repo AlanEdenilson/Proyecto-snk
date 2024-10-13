@@ -3,12 +3,15 @@ $(function(){
   $.ajax({
     url: '/adminr/te53eer353r',
     type: 'GET',
+     
 
    
     success: function(data) {
       $('#marcar').css({'display':'none'})
+     
       var jsonData = data;
         console.log(jsonData)
+        $('#img').attr('src',jsonData.img.imagen)
         
         for (var i = 0; i < jsonData.length; i++) {
           
