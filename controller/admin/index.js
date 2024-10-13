@@ -120,7 +120,6 @@ module.exports={
                 details: 'mas detalles'
               });
             }
-
     },
 
     mostar:async function(req, res){
