@@ -43,9 +43,6 @@ module.exports = {
     },
     detalles: function (conexion, id, funcion) {
         // Convertir el id a un entero y almacenarlo en una variable
-
-
-
         // Modificamos la consulta SQL para manejar múltiples IDs
         const sql = `
             SELECT 

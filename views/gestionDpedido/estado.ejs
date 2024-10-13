@@ -64,11 +64,15 @@
             var propietario = '';
             var img = '';
             var fecha = '';
+            var total=0;
             function cargarDetalles(item){
+
                 tienda_nombre = item.tienda_nombre;
                 propietario = item.cliente_apellido;
                 img = item.tienda_imagen;
                 fecha = item.fecha;
+                total+=item.subtotal_total;
+                console.log(total)
                     let fila = `<tr>
                                     <td><img src="${item.producto_imagen}" alt="Producto" width="50" height="80" ></td>
                                     <td>${item.producto_nombre}</td>
@@ -100,6 +104,8 @@
             $('#propietario').text( "Propietario: " + propietario);
             $('#img').attr('src', img);
             $('#fecha').text("Fecha: " + fecha);
+            $('.subtotal').text("Total: $" + total);
+    
     },
         error: function(xhr, status, error) {
             console.error('Error al cargar los detalles:', error);
