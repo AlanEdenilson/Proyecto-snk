@@ -150,7 +150,7 @@ module.exports = {
 
         conexion.query(sql, funcion);
     },
-    loadContent: async function (conexion, param1, funcion) {
+    loadContent: async function (conexion,marca,param1, funcion) {
         const sql = `
             SELECT 
         m.id AS marca_id,
@@ -183,7 +183,8 @@ module.exports = {
     JOIN usuarios u ON pa.repartidor_id = u.id
 
     WHERE 
-        m.id = 4 AND pa.estado = ?
+        m.id = ${marca} AND pa.estado = ? AND pa.estado_vendedor != 'entregado'
+
     GROUP BY 
 
     m.nombre, fecha_hora_pedido DESC;

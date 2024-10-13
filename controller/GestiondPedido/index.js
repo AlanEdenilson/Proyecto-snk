@@ -143,21 +143,13 @@ verRepart: async (req,res)=>{
 cargarcontenido:async function(req,res){
     console.log(req.params.id)
     var r;
-    if(req.params.id==1){
-        r='e';
-    }
-    if(req.params.id==2){
-        r=2;
-    }
-    if(req.params.id==3){
         r='activado';
-    }
-    if(req.params.id==4){
-        r=4;
-    }
     console.log(r)
     try {
-        model.loadContent(conexion,r,function(err,results){
+
+        const token = req.cookies.authToken;
+        var vtoken = await Gtoken.validarToken2(token);
+        model.loadContent(conexion,vtoken.marca,r,function(err,results){
             if(err){
                 throw err;
             }else{
