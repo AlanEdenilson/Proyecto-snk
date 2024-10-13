@@ -1,3 +1,5 @@
+
+
 module.exports = {
     verpedidos: function (conexion,marca, funcion) {
         /*
@@ -275,6 +277,58 @@ module.exports = {
          `;
             conexion.query(sql, funcion)
     
+        
+    },
+    borarr:function(conexion,ids) {
+   const consulta =  `DELETE FROM detalles_pedido WHERE pedido_id IN (?)`
+       
+        return new Promise((resolve, reject) => {
+                conexion.query(consulta,[ids],function (error,result) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        console.log('borrado corectamente')
+                        resolve(true);
+                    }
+                });
+                
+           
+        });
+        
+    },
+    borar1:function(conexion,ids) {
+        const consulta =  `DELETE FROM pedidos_activos WHERE id  IN (?)`;
+        return new Promise((resolve, reject) => {
+                conexion.query(consulta,[ids],function (error,result) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        console.log('borrado corectamente')
+                        resolve(true);
+                    }
+                });
+                
+           
+        });
+     },
+     insercancelado:function(conexion,productos) {
+        const consulta = `INSERT INTO pedidos_cancelados (pedidos_ids , motivo) VALUES ?`;
+        const valores = productos.map(producto => [producto.id,producto.motivo]);
+        return new Promise((resolve, reject) => {
+           
+                conexion.query(consulta,[valores], function (error,result) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        
+                        resolve(result);
+
+                    }
+                });
+                
+        
+           
+        });
         
     }
 }

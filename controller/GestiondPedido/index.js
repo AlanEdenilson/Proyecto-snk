@@ -197,5 +197,88 @@ pedidosEnprocesos:async function (req,res){
     } catch(error) {
         res.send('a ocurrido un error en el server')
     }
+},
+borar: async function (req,res){
+    function convertirListaAObjetos(listaNumeros) {
+        return listaNumeros.map(numero => ({
+            id: numero,
+            motivo: "motivo desconocido"
+        }));
+    }
+
+    var t = req.body.ids;
+    console.log(t);
+    
+    var nuevaLista = [];
+    
+    for (let i = 0; i < t.length; i++) {
+        let elemento = t[i];
+        if (typeof elemento === 'string') {
+            let numeros = elemento.split(',');
+            for (let j = 0; j < numeros.length; j++) {
+                let numero = parseInt(numeros[j].trim(), 10);
+                if (!isNaN(numero)) {
+                    nuevaLista.push(numero);
+                }
+            }
+        } else if (typeof elemento === 'number') {
+            nuevaLista.push(elemento);
+        }
+    }
+    
+    console.log(nuevaLista);
+
+    try {
+        await model.borarr(conexion,nuevaLista);
+        await model.borar1(conexion,nuevaLista);
+
+        const listaDeObjetos = convertirListaAObjetos(nuevaLista);
+
+         console.log(listaDeObjetos);
+
+//       
+
+        await model.insercancelado(conexion,lista)
+        res.send('capturado');
+    } catch(error) {
+        res.send('a ocurrido un error en el server')
+    }
+    
 }
 }
+
+
+            
+
+    // [  { id: 163, motivo: 'motivo desconocido ' },
+    //   { id: 164, motivo: 'motivo desconocido ' },
+    //   { id: 165, motivo: 'motivo desconocido ' },
+    //   { id: 166, motivo: 'motivo desconocido ' },
+    //   { id: 167, motivo: 'motivo desconocido ' },
+    //   { id: 156, motivo: 'motivo desconocido ' },
+    //   { id: 157, motivo: 'motivo desconocido ' },
+    //   { id: 152, motivo: 'motivo desconocido ' },
+    //   { id: 153, motivo: 'motivo desconocido ' },
+    //   { id: 148, motivo: 'motivo desconocido ' },
+    //   { id: 149, motivo: 'motivo desconocido ' },
+    //   { id: 146, motivo: 'motivo desconocido ' },
+    //   { id: 147, motivo: 'motivo desconocido ' },
+    //   { id: 143, motivo: 'motivo desconocido ' },
+    //   { id: 144, motivo: 'motivo desconocido ' },
+    //   { id: 145, motivo: 'motivo desconocido ' },
+    //   { id: 131, motivo: 'motivo desconocido ' },
+    //   { id: 132, motivo: 'motivo desconocido ' },
+    //   { id: 133, motivo: 'motivo desconocido ' },
+    //   { id: 129, motivo: 'motivo desconocido ' },
+    //   { id: 130, motivo: 'motivo desconocido ' },
+    //   { id: 127, motivo: 'motivo desconocido ' },
+    //   { id: 128, motivo: 'motivo desconocido ' },
+    //   { id: 47, motivo: 'motivo desconocido ' },
+    //   { id: 48, motivo: 'motivo desconocido ' },
+    //   { id: 40, motivo: 'motivo desconocido ' },
+    //   { id: 39, motivo: 'motivo desconocido ' },
+    //   { id: 34, motivo: 'motivo desconocido ' },
+    //   { id: 35, motivo: 'motivo desconocido ' },
+    //   { id: 31, motivo: 'motivo desconocido ' },
+    //   { id: 32, motivo: 'motivo desconocido ' }
+    //         ]

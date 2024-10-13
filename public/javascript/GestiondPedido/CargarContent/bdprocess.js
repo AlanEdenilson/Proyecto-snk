@@ -135,13 +135,28 @@
         });
       }
 
+      function borrarTodosLosRegistros() {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(["datos"], "readwrite");
+            const objectStore = transaction.objectStore("datos");
+            const request = objectStore.clear();
+            
+            request.onerror = () => reject("Error al borrar todos los registros");
+            request.onsuccess = () => {
+                console.log("Todos los registros han sido borrados exitosamente");
+                resolve("Todos los registros han sido borrados");
+            };
+        });
+    }
+
     return{
         start:initDB,
         count:contarRegistros,
         Save:guardarDatos,
         print:obtenerPedidos,
         change:editarCampo,
-        delete:borrarRegistroPorId
+        delete:borrarRegistroPorId,
+        deleteAll: borrarTodosLosRegistros
     }
 
 })(jQuery)
