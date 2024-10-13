@@ -51,12 +51,13 @@ $( async function () {
             });
                 }   
                  try {
-                    await Modulo1.initDB();
+                   await Modulo1.initDB();
                    var numero = await Modulo1.contarRegistros()
                    console.log('numero de registros inicio', numero)
                    if(numero == 0){
-                    cargarDatos()
+                    return cargarDatos()
                    }
+                   Modulo1.cargarDatos()
                     
                 } catch (error) {
                     
@@ -65,13 +66,13 @@ $( async function () {
               
     
             
-            $(".container").load("/gestion/pagina1", function(response, status, xhr) {
-               Modulo1.cargarDatos()
-                if (status == "error") {
-                    var msg = "Lo siento, ocurrió un error: ";
-                    $(".container").html(msg + xhr.status + " " + xhr.statusText);
-                }
-            });
+            // $(".container").load("/gestion/pagina1", function(response, status, xhr) {
+            //    Modulo1.cargarDatos()
+            //     if (status == "error") {
+            //         var msg = "Lo siento, ocurrió un error: ";
+            //         $(".container").html(msg + xhr.status + " " + xhr.statusText);
+            //     }
+            // });
     
     
     
@@ -177,13 +178,13 @@ $( async function () {
         $('.animacion-extraccion').hide();
         $('.modal').css({'display':'none'});
 
-        $(".container").load("/gestion/pagina1", function(response, status, xhr) {
-            console.log('tabla cragada exitosamente')
-            if (status == "error") {
-                var msg = "Lo siento, ocurrió un error: ";
-                $(".container").html(msg + xhr.status + " " + xhr.statusText);
-            }
-        });
+        // $(".container").load("/gestion/pagina1", function(response, status, xhr) {
+        //     console.log('tabla cragada exitosamente')
+        //     if (status == "error") {
+        //         var msg = "Lo siento, ocurrió un error: ";
+        //         $(".container").html(msg + xhr.status + " " + xhr.statusText);
+        //     }
+        // });
     }, 4000);
 
    
