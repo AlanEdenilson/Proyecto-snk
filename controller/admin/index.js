@@ -279,7 +279,7 @@ module.exports={
 
                   if (updatedData1 ==='{}') {
                     console.log('no hay cambios de texto ')
-                    res.send('no hay cambios que aser')
+                  return  res.send('no hay cambios que aser')
             
               
                   }else{
@@ -291,7 +291,7 @@ module.exports={
                     }
                   }
 
-                  res.send('actualizado con exito')
+                  return res.send('actualizado con exito')
 
  
             } catch (error) {
