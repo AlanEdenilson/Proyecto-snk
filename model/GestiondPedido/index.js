@@ -192,7 +192,7 @@ module.exports = {
 
     },
 
-    loadContent2: async function (conexion, funcion) {
+    loadContent2: async function (conexion,marca, funcion) {
         const sql = `
             SELECT 
         m.id AS marca_id,
@@ -217,19 +217,19 @@ module.exports = {
         
 
         
-    FROM 
-        marcas m
-    JOIN productos p ON m.id = p.marca_id
-    JOIN detalles_pedido dp ON p.id = dp.producto_id
-    JOIN pedidos_activos pa ON dp.pedido_id = pa.id
-    JOIN usuarios u ON pa.repartidor_id = u.id
+            FROM 
+                marcas m
+            JOIN productos p ON m.id = p.marca_id
+            JOIN detalles_pedido dp ON p.id = dp.producto_id
+            JOIN pedidos_activos pa ON dp.pedido_id = pa.id
+            JOIN usuarios u ON pa.repartidor_id = u.id
 
-    WHERE 
-        m.id = 4 AND pa.estado_vendedor = 'entregado'
-    GROUP BY 
+            WHERE 
+                m.id = ${marca} AND pa.estado_vendedor = 'entregado'
+            GROUP BY 
 
-    m.nombre, fecha_hora_pedido DESC;
-     `;
+            m.nombre, fecha_hora_pedido DESC;
+            `;
         conexion.query(sql, funcion)
 
     },

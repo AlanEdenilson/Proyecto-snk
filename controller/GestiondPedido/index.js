@@ -173,9 +173,13 @@ cargarcontenido:async function(req,res){
 },
 
 cargarcontenido2:async function(req,res){
-   
+
+    
      try{
-        model.loadContent2(conexion,function(err,results){
+        const token = req.cookies.authToken;
+    
+        var vtoken = await Gtoken.validarToken2(token);
+        model.loadContent2(conexion,vtoken.marca,function(err,results){
             if(err){
                 throw err;
             }else{
