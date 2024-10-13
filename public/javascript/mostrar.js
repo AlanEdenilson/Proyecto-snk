@@ -50,7 +50,7 @@ $(function(){
           
     },
     error: function(jqXHR, textStatus, errorThrown) {
-        
+      $('#setting').css({'display':'none'})
           let errorMessage = 'Ocurrió un error: ';
 
         if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
