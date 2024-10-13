@@ -35,7 +35,7 @@ var Dmenu3 = (function($){
             });
             var total = response.reduce((acc, item) => acc + item.subtotal_total, 0);
             $('.total').html(`Total: $${total}`)
-            $('.invoice-title').html(`Factura`)
+            $('.invoice-title').text(`Detalles`)
 
             moment.locale('es');
            
@@ -97,7 +97,7 @@ var Dmenu3 = (function($){
                 });
                 var total = response.reduce((acc, item) => acc + item.subtotal_total, 0);
                 $('.total').html(`Total: $${total}`)
-                $('.invoice-title').html(`Factura`)
+                $('.invoice-title').html(`Detalles`)
     
                 moment.locale('es');
                
