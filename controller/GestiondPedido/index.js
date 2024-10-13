@@ -173,8 +173,6 @@ cargarcontenido:async function(req,res){
 },
 
 cargarcontenido2:async function(req,res){
-
-    
      try{
         const token = req.cookies.authToken;
     
@@ -189,9 +187,7 @@ cargarcontenido2:async function(req,res){
         });
      }catch(error){
         console.log(error);
-    }
-    
-    
+    }  
 },
 pedidosEnprocesos:async function (req,res){
     try {
