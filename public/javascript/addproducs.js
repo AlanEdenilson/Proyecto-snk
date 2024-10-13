@@ -24,13 +24,13 @@ $(function() {
               $('.pl').css({'display':'none'})
 
               setTimeout(() => {
-                $('.check-container').css({'display':'block'})
-              }, 3000);
+                $('#check').css({'display':'block'})
+              }, 2000);
 
                 setTimeout(()=>{
-                  
+                  $('#check').css({'display':'none'})
                   window.location.href='/ventanaAdmin'
-                  }, 6000)
+                  }, 4000)
               
                 console.log(response);
                

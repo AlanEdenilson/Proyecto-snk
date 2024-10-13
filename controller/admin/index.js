@@ -54,9 +54,8 @@ module.exports={
               
                   
                   var play={
+                    id:id_admin,
                     marca:principalId,
-                  
-                   
                   }
                   res.cookie('perfil',play,{ httpOnly: true,secure: true });
                 const tokennew = Gtoken.generarToken({id, rol, email, marca:principalId });
@@ -129,12 +128,16 @@ module.exports={
 
         const token = req.cookies.authToken;
         var vtoken = await Gtoken.validarToken2(token);
-                console.log("El token es válido:", vtoken);
-                
-                const { marca } = vtoken
+        console.log("El token es válido:", vtoken);
+        const { marca } = vtoken
         var datos = await model.mostar(conexion,marca)
         res.json(datos)
-      } catch{
+      } catch(error) {
+              res.status(400).json({
+                success: false,
+                error: error,
+                details: 'mas detalles'
+              });
         console.log('no tienes marca entonces no tienes productos')
       }
     },
