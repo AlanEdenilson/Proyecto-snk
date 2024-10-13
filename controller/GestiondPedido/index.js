@@ -238,7 +238,7 @@ borar: async function (req,res){
 
 //       
 
-        await model.insercancelado(conexion,lista)
+        await model.insercancelado(conexion,listaDeObjetos)
         res.send('capturado');
     } catch(error) {
         res.send('a ocurrido un error en el server')
