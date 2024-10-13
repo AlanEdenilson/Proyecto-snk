@@ -7,7 +7,7 @@ module.exports={
             m.nombre
             FROM marcas m
             JOIN repartidores r ON m.id = r.marca_id
-            WHERE r.marca_id = 9 AND r.id = ${id}`;
+            WHERE r.marca_id = 4 AND r.id = ${id}`;
         
         conexion.query(query, (error, results) => {
             if (error) {
@@ -66,5 +66,23 @@ module.exports={
                 }
             });
         });
-    }
+    },
+    actualizarEstadoPedido: function(conexion, idPedido, nuevoEstado) {
+        return new Promise((resolve, reject) => {
+            const sql = `
+                UPDATE pedidos_activos 
+                SET estado_vendedor = ? 
+                WHERE id = ${idPedido}
+            `;
+            conexion.query(sql, [nuevoEstado], (error, results) => {
+                if (error) {
+                    return reject(error);
+                } else if (results.affectedRows > 0) {
+                    return resolve('Estado de vendedor actualizado con éxito');
+                } else {
+                    return resolve('No se encontró el pedido');
+                }
+            });
+        });
+    },
 }
