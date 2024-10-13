@@ -90,6 +90,9 @@ var Modulo1 = (function($) {
             countRequest.onerror = () => reject("Error al contar registros");
             countRequest.onsuccess = () => {
                 const count = countRequest.result;
+                if(count === 0){
+                    $('.activar-btn').css({'display':'none'})
+                }
                 console.log(`Número de registros en la base de datos: ${count}`);
                 resolve(count);
             };
