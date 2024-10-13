@@ -1,7 +1,15 @@
 var Dmenu3 = (function($){
 
+    $('.boton-editar').css({'display':'none'})
+    $('.boton-salir-editar').css({'display':'none'})
+
+    $('.delete').css({'display':'none'})
+
     function cargarDetalles(valor){
         console.log('cargando detalles',valor)
+
+
+        
  
     
     $.ajax({

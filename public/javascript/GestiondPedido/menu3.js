@@ -1,5 +1,9 @@
 $(document).ready(function(){
     console.log('menu3')
+    $('.boton-editar').css({'display':'none'})
+    $('.boton-salir-editar').css({'display':'none'})
+
+    $('.delete').css({'display':'none'})
 
     function loadContent(daata){
        

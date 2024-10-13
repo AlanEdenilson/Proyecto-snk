@@ -1,5 +1,9 @@
 $(document).ready(function() {
     console.log('pagina uno cargada')
+    $('.boton-editar').css({'display':'none'})
+    $('.boton-salir-editar').css({'display':'none'})
+
+    $('.delete').css({'display':'none'})
 
     $.ajax({
         url: '/gestion/datos2',
