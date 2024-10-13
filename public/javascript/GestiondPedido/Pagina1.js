@@ -153,7 +153,10 @@ $(document).on('click', '#repartidor',async function() {
 
   //capturar el boton de aceptar
   $(document).on('click', '#btn-aceptar', async function() {
-    alert('Aceptar');
+    $('.text-spinner').text('Enviando datos..')
+
+    $('.overlay').show();
+    $('.animacion-extraccion').show();
     Megatron.transformar();
   });
 
