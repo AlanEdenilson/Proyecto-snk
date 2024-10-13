@@ -55,7 +55,7 @@ $( async function () {
                    var numero = await Modulo1.contarRegistros()
                    console.log('numero de registros inicio', numero)
                    if(numero == 0){
-                    return cargarDatos()
+                    cargarDatos();
                    }
                    Modulo1.cargarDatos()
                     
