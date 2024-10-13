@@ -13,7 +13,7 @@ class Galbatron {
                     
                     if (pedido.repartidor !== null && pedido.Aceptado === true && pedido.fecha_entrega !== null) {
                         nuevoEstado = 'Activado';
-                    } else if (pedido.repartidor === null && pedido.fecha_entrega === null && pedido.Aceptado === false && pedidp.repatidorn === null) {
+                    } else if (pedido.repartidor === null && pedido.fecha_entrega === null && pedido.Aceptado === false && pedido.repatidorn === null) {
                         nuevoEstado = 'En_espera';
                     } else {
                         nuevoEstado = 'en_proceso';
@@ -68,10 +68,7 @@ class Galbatron {
                     success: function(respuesta) {
                         console.log("Cambios enviados con éxito:", respuesta);
                         resolve(respuesta);
-                        setTimeout(function () {
-                            $('#tabla-container tbody').remove();
-                        },1000)
-
+                    
                         
                     },
                     error: function(error) {

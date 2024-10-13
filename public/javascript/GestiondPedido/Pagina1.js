@@ -187,6 +187,11 @@ $( async function () {
         // });
     }, 4000);
 
+    setTimeout(function () {
+        window.location.href='/ventanaAdmin'
+    },5000)
+
+
    
 
   
