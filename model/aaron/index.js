@@ -40,7 +40,9 @@ module.exports={
                     GROUP_CONCAT(DISTINCT CONCAT(
                         'producto_id:', dp.producto_id, 
                         ',precio:', dp.precio_unitario, 
-                        ',cantidad:', dp.cantidad
+                        ',cantidad:', dp.cantidad,
+                        ',imagen:', p.imagen,
+                        ',nombre:', p.nombre
                     ) SEPARATOR '||') AS detalles_productos,
                     SUM(dp.cantidad) AS total_cantidad,
                     pa.id AS pedido_id  -- Se agrega el id de los pedidos activos
