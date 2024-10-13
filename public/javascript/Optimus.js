@@ -14,6 +14,7 @@ var Modulo2 = (function($){
                         resolve(response);
                     },
                     error: function(xhr, status, error) {
+                        console.log(error)
                         reject(error);
                     }
                 });
@@ -33,9 +34,11 @@ var Modulo2 = (function($){
                     
                     // Mostrar el span
                     if(nuevosRegistros == 0){
+                       
                         notificacionSpan.hide();
                     }else{
                         notificacionSpan.show();
+                       
                     }
                     
                     // Modificar el número a 1
