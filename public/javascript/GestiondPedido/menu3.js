@@ -1,11 +1,15 @@
 $(document).ready(function(){
     console.log('menu3')
+    $('.boton-editar').css({'display':'none'})
+    $('.boton-salir-editar').css({'display':'none'})
+
+    $('.delete').css({'display':'none'})
 
     function loadContent(daata){
        
         var html=';'
         daata.forEach(element => {
-             var type=element.estado_vendedor==='en_camino'?'mdi--truck-fast': element.estado_vendedor=== 'pospuesto'?'svg-spinners--bars-fade':'eos-icons--hourglass'
+             var type=element.estado_vendedor==='en_camino'?'mdi--truck-fast': element.estado_vendedor === 'pospuesto'?'svg-spinners--bars-fade':'eos-icons--hourglass'
             html+=`
             <tr >
             <td ><span class="${type}"></span>${element.estado_vendedor}</td>

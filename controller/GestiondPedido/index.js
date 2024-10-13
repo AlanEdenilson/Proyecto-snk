@@ -1,12 +1,18 @@
 
 var model = require('../../model/GestiondPedido/index');
 var conexion=require('../../config/conexion');
+const Gtoken = require('../login/Gtoken');
 
 
 module.exports = {
     verpedidos: async (req,res)=>{
+
+        const token = req.cookies.authToken;
         try{
-            model.verpedidos(conexion,function(err,results){
+            
+            var vtoken = await Gtoken.validarToken2(token);
+            
+            model.verpedidos(conexion,vtoken.marca,function(err,results){
                 if(err){
                    throw err;
                 }else{
@@ -36,7 +42,7 @@ module.exports = {
                 if(err){
                    throw err;
                 }else{
-                    console.log(results[0]);
+                    console.log(results);
                     res.send(results);
                 }
             });
@@ -114,8 +120,13 @@ AplicationChange: async (req,res)=>{
 
 },
 verRepart: async (req,res)=>{
+
+
     try{
-        model.verRepart(conexion,function(err,results){
+        const token = req.cookies.authToken;
+    
+        var vtoken = await Gtoken.validarToken2(token);
+        model.verRepart(conexion,vtoken.marca,function(err,results){
             if(err){
                 throw err;
             }else if(results.length > 0){
@@ -132,21 +143,13 @@ verRepart: async (req,res)=>{
 cargarcontenido:async function(req,res){
     console.log(req.params.id)
     var r;
-    if(req.params.id==1){
-        r='e';
-    }
-    if(req.params.id==2){
-        r=2;
-    }
-    if(req.params.id==3){
         r='activado';
-    }
-    if(req.params.id==4){
-        r=4;
-    }
     console.log(r)
     try {
-        model.loadContent(conexion,r,function(err,results){
+
+        const token = req.cookies.authToken;
+        var vtoken = await Gtoken.validarToken2(token);
+        model.loadContent(conexion,vtoken.marca,r,function(err,results){
             if(err){
                 throw err;
             }else{
@@ -162,9 +165,11 @@ cargarcontenido:async function(req,res){
 },
 
 cargarcontenido2:async function(req,res){
-   
      try{
-        model.loadContent2(conexion,function(err,results){
+        const token = req.cookies.authToken;
+    
+        var vtoken = await Gtoken.validarToken2(token);
+        model.loadContent2(conexion,vtoken.marca,function(err,results){
             if(err){
                 throw err;
             }else{
@@ -174,13 +179,14 @@ cargarcontenido2:async function(req,res){
         });
      }catch(error){
         console.log(error);
-    }
-    
-    
+    }  
 },
 pedidosEnprocesos:async function (req,res){
     try {
-        model.pedidosEnprocesos(conexion,function (err,results) {
+        const token = req.cookies.authToken;
+    
+        var vtoken = await Gtoken.validarToken2(token);
+        model.pedidosEnprocesos(conexion,vtoken.marca,function (err,results) {
             if (err) {
                 throw err
                 
@@ -188,11 +194,90 @@ pedidosEnprocesos:async function (req,res){
                 res.send(results)
             }
         })
-
     } catch(error) {
         res.send('a ocurrido un error en el server')
-
-
     }
+},
+borar: async function (req,res){
+    function convertirListaAObjetos(listaNumeros) {
+        return listaNumeros.map(numero => ({
+            id: numero,
+            motivo: "motivo desconocido"
+        }));
+    }
+
+    var t = req.body.ids;
+    console.log(t);
+    
+    var nuevaLista = [];
+    
+    for (let i = 0; i < t.length; i++) {
+        let elemento = t[i];
+        if (typeof elemento === 'string') {
+            let numeros = elemento.split(',');
+            for (let j = 0; j < numeros.length; j++) {
+                let numero = parseInt(numeros[j].trim(), 10);
+                if (!isNaN(numero)) {
+                    nuevaLista.push(numero);
+                }
+            }
+        } else if (typeof elemento === 'number') {
+            nuevaLista.push(elemento);
+        }
+    }
+    
+    console.log(nuevaLista);
+
+    try {
+        await model.borarr(conexion,nuevaLista);
+        await model.borar1(conexion,nuevaLista);
+
+        const listaDeObjetos = convertirListaAObjetos(nuevaLista);
+
+         console.log(listaDeObjetos);
+
+//   
+        await model.insercancelado(conexion,listaDeObjetos)
+        res.send('capturado');
+    } catch(error) {
+        res.send('a ocurrido un error en el server')
+    }
+    
 }
 }
+
+
+            
+
+    // [  { id: 163, motivo: 'motivo desconocido ' },
+    //   { id: 164, motivo: 'motivo desconocido ' },
+    //   { id: 165, motivo: 'motivo desconocido ' },
+    //   { id: 166, motivo: 'motivo desconocido ' },
+    //   { id: 167, motivo: 'motivo desconocido ' },
+    //   { id: 156, motivo: 'motivo desconocido ' },
+    //   { id: 157, motivo: 'motivo desconocido ' },
+    //   { id: 152, motivo: 'motivo desconocido ' },
+    //   { id: 153, motivo: 'motivo desconocido ' },
+    //   { id: 148, motivo: 'motivo desconocido ' },
+    //   { id: 149, motivo: 'motivo desconocido ' },
+    //   { id: 146, motivo: 'motivo desconocido ' },
+    //   { id: 147, motivo: 'motivo desconocido ' },
+    //   { id: 143, motivo: 'motivo desconocido ' },
+    //   { id: 144, motivo: 'motivo desconocido ' },
+    //   { id: 145, motivo: 'motivo desconocido ' },
+    //   { id: 131, motivo: 'motivo desconocido ' },
+    //   { id: 132, motivo: 'motivo desconocido ' },
+    //   { id: 133, motivo: 'motivo desconocido ' },
+    //   { id: 129, motivo: 'motivo desconocido ' },
+    //   { id: 130, motivo: 'motivo desconocido ' },
+    //   { id: 127, motivo: 'motivo desconocido ' },
+    //   { id: 128, motivo: 'motivo desconocido ' },
+    //   { id: 47, motivo: 'motivo desconocido ' },
+    //   { id: 48, motivo: 'motivo desconocido ' },
+    //   { id: 40, motivo: 'motivo desconocido ' },
+    //   { id: 39, motivo: 'motivo desconocido ' },
+    //   { id: 34, motivo: 'motivo desconocido ' },
+    //   { id: 35, motivo: 'motivo desconocido ' },
+    //   { id: 31, motivo: 'motivo desconocido ' },
+    //   { id: 32, motivo: 'motivo desconocido ' }
+    //         ]

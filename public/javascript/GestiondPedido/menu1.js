@@ -1,5 +1,9 @@
 $(document).ready(function() {
     console.log('pagina uno cargada')
+    $('.boton-editar').css({'display':'none'})
+    $('.boton-salir-editar').css({'display':'none'})
+
+    $('.delete').css({'display':'none'})
 
     $.ajax({
         url: '/gestion/datos2',
@@ -28,6 +32,7 @@ $(document).ready(function() {
         }
     });
 
+
     $('#tabla1').on('click', '.detalles-btn', function() {
         var id = $(this).closest('tr').data('id');
         console.log('ID del pedido:', id);
@@ -35,7 +40,6 @@ $(document).ready(function() {
 
         $("#contenedor-productos").load("/gestion/detall1", function(response, status, xhr) {
             Dmenu3.cargar1(id)
-            
             if (status == "error") {
                 console.log("Error al cargar la página: " + xhr.status + " " + xhr.statusText);
                 $("#contenedor-productos").html("<p>Error al cargar el contenido. Por favor, intente de nuevo.</p>");

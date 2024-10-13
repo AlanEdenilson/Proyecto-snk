@@ -9,7 +9,8 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/l1',(req,res)=>{
-    res.render('gestionDpedido/estado');
+    console.log(req.query.id)
+    res.render('gestionDpedido/estado',{id:req.query.id});
 
 })
 
@@ -93,6 +94,8 @@ router.get('/89', function(req, res, next) {
     router.get('/detall1',(req,res)=>{
         res.render('menusdiseños/Dmenu1')
     })
+
+    router.delete('/borar',controller.borar)
 
 
         

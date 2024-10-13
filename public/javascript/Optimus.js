@@ -35,10 +35,11 @@ var Modulo2 = (function($){
                     // Mostrar el span
                     if(nuevosRegistros == 0){
                        
+                       
                         notificacionSpan.hide();
                     }else{
                         notificacionSpan.show();
-                       
+                        $('#boton-extraer').css({'display':'block'})
                     }
                     
                     // Modificar el número a 1

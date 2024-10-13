@@ -128,13 +128,36 @@ var write = (function($){
                     .map(pedido => pedido.id)
                     .filter(id => id !== null);
 
-                console.log("Nueva lista de IDs:", nuevaListaIds);
+                
                 resolve(nuevaListaIds);
             } catch (error) {
                 console.error("Error al extraer IDs:", error);
                 reject(error);
             }
         });
+    }
+
+    function mandar(ids){
+
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: '/gestion/borar',
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify({ ids: ids }),
+                    
+                success: function(response) {
+                resolve(response)
+                    
+                },
+                error: function(xhr, status, error) {
+                    reject(console.error('Error al cargar la página:', error));
+                }
+            });
+        });
+
+        
+
     }
 
 
@@ -149,7 +172,9 @@ var write = (function($){
         CHange:verificar,
         CHange1:verificar1,
         PRepare:PrepararRegistros,
-        EXids:extraerIds
+        EXids:extraerIds,
+        mandar:mandar
+
     // "Preparar" se dice "prepare" en inglés.
 
         

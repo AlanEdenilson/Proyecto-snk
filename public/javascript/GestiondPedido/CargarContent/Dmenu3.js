@@ -1,7 +1,15 @@
 var Dmenu3 = (function($){
 
+    $('.boton-editar').css({'display':'none'})
+    $('.boton-salir-editar').css({'display':'none'})
+
+    $('.delete').css({'display':'none'})
+
     function cargarDetalles(valor){
         console.log('cargando detalles',valor)
+
+
+        
  
     
     $.ajax({
@@ -35,7 +43,7 @@ var Dmenu3 = (function($){
             });
             var total = response.reduce((acc, item) => acc + item.subtotal_total, 0);
             $('.total').html(`Total: $${total}`)
-            $('.invoice-title').html(`Factura`)
+            $('.invoice-title').text(`Detalles`)
 
             moment.locale('es');
            
@@ -97,7 +105,7 @@ var Dmenu3 = (function($){
                 });
                 var total = response.reduce((acc, item) => acc + item.subtotal_total, 0);
                 $('.total').html(`Total: $${total}`)
-                $('.invoice-title').html(`Factura`)
+                $('.invoice-title').html(`Detalles`)
     
                 moment.locale('es');
                

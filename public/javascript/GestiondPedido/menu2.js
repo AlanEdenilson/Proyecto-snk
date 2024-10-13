@@ -1,5 +1,14 @@
 $(document).ready( async function() {
+
+    console.log('menu 2 cargado...')
+    $('.boton-editar').css({'display':'block'})
+    $('.boton-salir-editar').css({'display':'block'})
+
+    $('.delete').css({'display':'block'})
+
+
     $('.btn-editar').on('click', function() {
+        
         $('.checkbox-center').css('display', 'block');
         // Cambiar todos los select de repartidor a label
         $('label[id="repartidor"]').each(function() {

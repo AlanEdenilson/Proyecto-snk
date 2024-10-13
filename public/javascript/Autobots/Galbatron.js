@@ -13,8 +13,8 @@ class Galbatron {
                     
                     if (pedido.repartidor !== null && pedido.Aceptado === true && pedido.fecha_entrega !== null) {
                         nuevoEstado = 'Activado';
-                    } else if (pedido.repartidor === null && pedido.fecha_entrega === null && pedido.Aceptado === false) {
-                        nuevoEstado = 'Cancelado';
+                    } else if (pedido.repartidor === null && pedido.fecha_entrega === null && pedido.Aceptado === false && pedido.repatidorn === null) {
+                        nuevoEstado = 'En_espera';
                     } else {
                         nuevoEstado = 'en_proceso';
                     } 
@@ -68,6 +68,8 @@ class Galbatron {
                     success: function(respuesta) {
                         console.log("Cambios enviados con éxito:", respuesta);
                         resolve(respuesta);
+                    
+                        
                     },
                     error: function(error) {
                         console.error("Error al enviar los cambios:", error);

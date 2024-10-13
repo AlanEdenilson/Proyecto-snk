@@ -53,12 +53,6 @@ $(function () {
 $(document).off('keydown').on('keydown',async function(e) {
     if (e.which === 13) { // 13 es el código de la tecla Enter
 
-        
-
-
-
-
-
         if ($('#tool').text()==='Activado'){
           console.log('Cancelando pedidos...')
           var datos = await BD.print()
@@ -67,45 +61,9 @@ $(document).off('keydown').on('keydown',async function(e) {
             var change= await write.CHange(datos);
             var list = await write.PRepare(change);
             var IDS= await write.EXids(change);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+            var respuesta = await write.mandar(IDS);
+            console.log('respuesta del envio', respuesta)
+            await BD.deleteAll();
 
         }else{
           console.log('Modificando pedidos...')

@@ -1,5 +1,7 @@
+
+
 module.exports = {
-    verpedidos: function (conexion, funcion) {
+    verpedidos: function (conexion,marca, funcion) {
         /*
         */
 
@@ -34,7 +36,7 @@ module.exports = {
             JOIN pedidos_activos pa ON dp.pedido_id = pa.id
 
             WHERE 
-                m.id = 4 AND pa.estado = 'En_espera' || pa.estado = ''
+                m.id = ${marca} AND pa.estado = 'En_espera' || pa.estado = ''
             GROUP BY 
 
                 m.nombre, fecha_hora_pedido DESC;
@@ -43,9 +45,6 @@ module.exports = {
     },
     detalles: function (conexion, id, funcion) {
         // Convertir el id a un entero y almacenarlo en una variable
-
-
-
         // Modificamos la consulta SQL para manejar múltiples IDs
         const sql = `
             SELECT 
@@ -67,12 +66,12 @@ module.exports = {
                 pa.estado 
             FROM 
                 productos p
-                JOIN detalles_pedido dp ON p.id = dp.producto_id 
-                JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
-                JOIN tiendas t ON pa.tienda_id = t.id
-                JOIN clientes c ON pa.cliente_id = c.id
-                JOIN marcas m ON p.marca_id = m.id 
-                JOIN usuarios u ON pa.repartidor_id = u.id
+                LEFT JOIN detalles_pedido dp ON p.id = dp.producto_id 
+                LEFT JOIN pedidos_activos pa ON dp.pedido_id = pa.id 
+                LEFT JOIN tiendas t ON pa.tienda_id = t.id
+                LEFT JOIN clientes c ON pa.cliente_id = c.id
+                LEFT JOIN marcas m ON p.marca_id = m.id 
+                LEFT JOIN usuarios u ON pa.repartidor_id = u.id
             WHERE 
                 pa.id IN (?)
             GROUP BY 
@@ -141,19 +140,19 @@ module.exports = {
         `;
         conexion.query(sql, datos, funcion);
     },
-    verRepart: function (conexion, funcion, id) {
+    verRepart: function (conexion,marca, funcion, id) {
         const sql = `SELECT 
             pa.id,
             u.usuario
             FROM repartidores pa
             JOIN usuarios u ON u.id = pa.id
-            WHERE pa.marca_id = 4
+            WHERE pa.marca_id = ${marca}
             AND u.rol = 'repartidor'
             `;
 
         conexion.query(sql, funcion);
     },
-    loadContent: async function (conexion, param1, funcion) {
+    loadContent: async function (conexion,marca,param1, funcion) {
         const sql = `
             SELECT 
         m.id AS marca_id,
@@ -186,7 +185,8 @@ module.exports = {
     JOIN usuarios u ON pa.repartidor_id = u.id
 
     WHERE 
-        m.id = 4 AND pa.estado = ?
+        m.id = ${marca} AND pa.estado = ? AND pa.estado_vendedor != 'entregado'
+
     GROUP BY 
 
     m.nombre, fecha_hora_pedido DESC;
@@ -195,7 +195,7 @@ module.exports = {
 
     },
 
-    loadContent2: async function (conexion, funcion) {
+    loadContent2: async function (conexion,marca, funcion) {
         const sql = `
             SELECT 
         m.id AS marca_id,
@@ -220,23 +220,23 @@ module.exports = {
         
 
         
-    FROM 
-        marcas m
-    JOIN productos p ON m.id = p.marca_id
-    JOIN detalles_pedido dp ON p.id = dp.producto_id
-    JOIN pedidos_activos pa ON dp.pedido_id = pa.id
-    JOIN usuarios u ON pa.repartidor_id = u.id
+            FROM 
+                marcas m
+            JOIN productos p ON m.id = p.marca_id
+            JOIN detalles_pedido dp ON p.id = dp.producto_id
+            JOIN pedidos_activos pa ON dp.pedido_id = pa.id
+            JOIN usuarios u ON pa.repartidor_id = u.id
 
-    WHERE 
-        m.id = 4 AND pa.estado_vendedor = 'entregado'
-    GROUP BY 
+            WHERE 
+                m.id = ${marca} AND pa.estado_vendedor = 'entregado'
+            GROUP BY 
 
-    m.nombre, fecha_hora_pedido DESC;
-     `;
+            m.nombre, fecha_hora_pedido DESC;
+            `;
         conexion.query(sql, funcion)
 
     },
-    pedidosEnprocesos:function(conexion,funcion){
+    pedidosEnprocesos:function(conexion,marca,funcion){
             const sql = `
                 SELECT 
             m.id AS marca_id,
@@ -270,13 +270,65 @@ module.exports = {
         LEFT JOIN usuarios u ON pa.repartidor_id = u.id
     
         WHERE 
-            m.id = 4 AND pa.estado = 'en_proceso'
+            m.id = ${marca} AND pa.estado = 'en_proceso'
         GROUP BY 
     
         m.nombre, fecha_hora_pedido DESC;
          `;
             conexion.query(sql, funcion)
     
+        
+    },
+    borarr:function(conexion,ids) {
+   const consulta =  `DELETE FROM detalles_pedido WHERE pedido_id IN (?)`
+       
+        return new Promise((resolve, reject) => {
+                conexion.query(consulta,[ids],function (error,result) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        console.log('borrado corectamente')
+                        resolve(true);
+                    }
+                });
+                
+           
+        });
+        
+    },
+    borar1:function(conexion,ids) {
+        const consulta =  `DELETE FROM pedidos_activos WHERE id  IN (?)`;
+        return new Promise((resolve, reject) => {
+                conexion.query(consulta,[ids],function (error,result) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        console.log('borrado corectamente')
+                        resolve(true);
+                    }
+                });
+                
+           
+        });
+     },
+     insercancelado:function(conexion,productos) {
+        const consulta = `INSERT INTO pedidos_cancelados (pedidos_ids , motivo) VALUES ?`;
+        const valores = productos.map(producto => [producto.id,producto.motivo]);
+        return new Promise((resolve, reject) => {
+           
+                conexion.query(consulta,[valores], function (error,result) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        
+                        resolve(result);
+
+                    }
+                });
+                
+        
+           
+        });
         
     }
 }

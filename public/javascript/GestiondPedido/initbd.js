@@ -90,6 +90,9 @@ var Modulo1 = (function($) {
             countRequest.onerror = () => reject("Error al contar registros");
             countRequest.onsuccess = () => {
                 const count = countRequest.result;
+                if(count === 0){
+                    $('.activar-btn').css({'display':'none'})
+                }
                 console.log(`Número de registros en la base de datos: ${count}`);
                 resolve(count);
             };
@@ -170,7 +173,7 @@ var Modulo1 = (function($) {
                         <td class="checkbox-center">
                              <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
                         </td>
-                        <td><button class="detalles-btn">≫</button></td>
+                        <td><button data-id="${item.id}" class="detalles-btn">≫</button></td>
                     </tr>
                 `;
             });
@@ -233,7 +236,7 @@ var Modulo1 = (function($) {
                         <td class="checkbox-center">
                             <input id='aceptado' type="checkbox" ${item.Aceptado === true ? 'checked' : ''}>
                         </td>
-                        <td><button class="detalles-btn">≫</button></td>
+                        <td><button data-id="${item.id}" class="detalles-btn">≫</button></td>
                     </tr>
                 `;
             };
