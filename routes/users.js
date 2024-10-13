@@ -13,4 +13,6 @@ router.get('/verpedido',controlller.verpedido)
 
 router.get('/updateEstado',controlller.actualizarEstadoPedido)
 
+router.get('/verpedidos2',controlller.verpedido)
+
 module.exports = router;
