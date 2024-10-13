@@ -24,43 +24,6 @@ var Modulo1 = (function($) {
             };
         });
     }
-    function cargarDatoss(){
-        $.ajax({
-            url: "/gestion/verpedidos",
-            type: "GET",
-            success: function(response) {
-                console.log(response);
-                var arrayRecuperado = response;
-            // Inicializar la base de datos
-            Modulo1.initDB().then(() => {
-                // Guardar los pedidos en la base de datos
-                let contador = 0;
-                return Modulo1.guardarPedidos(arrayRecuperado.map(item => ({
-                    
-                    id: item.pedidos_ids,
-                    fecha: item.fecha_hora_pedido,
-                    repartidor: item.repartidor,
-                    repartidorn: item.repartidor_nombre,
-                    fecha_entrega: item.fecha_entrega,
-                    estado: item.estados,
-                    total: item.total_pedido,
-                    cantidad: item.total_cantidad,
-                    Aceptado: false
-                })));
-            }).then(() => {
-                console.log("Pedidos guardados exitosamente en IndexedDB");
-            }).catch(error => {
-                console.error("Error al guardar los pedidos en IndexedDB:", error);
-            });
-            
-            },
-
-            //eror
-            error: function(xhr, status, error) {
-                console.error("Error al cargar el contenido:", error);
-            }
-        });
-            }   
     
     function guardarPedidos(pedidos) {
         return new Promise((resolve, reject) => {
@@ -96,7 +59,6 @@ var Modulo1 = (function($) {
         return new Promise((resolve, reject) => {
             // El error se debe a que no existe un índice llamado "fecha" en el almacén de objetos.
             // Vamos a modificar el código para usar la clave primaria "fecha"
-           try{
             const transaction = db.transaction(["pedidos"], "readonly");
             const objectStore = transaction.objectStore("pedidos");
             const request = objectStore.openCursor(null, 'prev');
@@ -115,43 +77,22 @@ var Modulo1 = (function($) {
                     resolve(null); // Si no hay registros, devuelve null
                 }
             };
-            
-           } catch {
-            console.error("Error al obtener el último registro");
-            reject(null);
-  
-
-           }
         });
     }
     
     
-   function contarRegistros() {
+    function contarRegistros() {
         return new Promise((resolve, reject) => {
-
-            try {
-                const transaction =  db.transaction(["pedidos"], "readonly");
-                const objectStore = transaction.objectStore("pedidos");
-                const countRequest = objectStore.count();
-                
-                countRequest.onerror = () => reject("Error al contar registros");
-                countRequest.onsuccess = () => {
-                    const count = countRequest.result;
-                    if(count==0){
-                        console.log('ese cero')
-                        $('.activar-btn').css({'display':'none'})
-                        cargarDatoss();
-                       
-                    }
-                    console.log(`Número de registros en la base de datos: ${count}`);
-                    resolve(count);
-                };
-                
-            } catch (error) {
-                reject(error)
-                
-            }
-           
+            const transaction = db.transaction(["pedidos"], "readonly");
+            const objectStore = transaction.objectStore("pedidos");
+            const countRequest = objectStore.count();
+            
+            countRequest.onerror = () => reject("Error al contar registros");
+            countRequest.onsuccess = () => {
+                const count = countRequest.result;
+                console.log(`Número de registros en la base de datos: ${count}`);
+                resolve(count);
+            };
         });
     }
     
@@ -194,6 +135,8 @@ var Modulo1 = (function($) {
             };
         });
     }
+    
+    
      /// cargar datos en  el html 
      function cargarDatos(){
                  
@@ -314,4 +257,3 @@ var Modulo1 = (function($) {
     
     
     })(jQuery);
-
