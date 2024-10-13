@@ -67,6 +67,7 @@ $(function(){
     }})
 
     $('.admin-table').off('click', '.btn-edit').on('click', '.btn-edit', function() {
+      console.log('editando')
         
       var id = $(this).data('id');
       var nombre = $(this).data('nombre');
@@ -93,140 +94,137 @@ $(function(){
       }
       $('#myModal1').css({
           'display':'block',
-          })
-         // var $myDiv=$('#myModal1')
-         
+      })
 
+      const initialValues = {
+        nombre: $('#nombre').val(),
+        precio:$('#precio-unidad').val(),
+        stock: $('#precio-stock').val(),
+        descripcion:$('#descripcion').val(),
+        imagen: $('#imagen2')[0].files[0] // Obtener el archivo inicial
+
+    };
+    console.log(initialValues)
+          
+          $('#edit-product-form').on('submit', function(event) {
+            console.log('editando..')
+            event.preventDefault();
       
-         
-         /* if ($myDiv.css('display') === 'block') {
-              console.log('El div se ha ocultado');
-  
-          }*/
-
+      
+      
+            var id=$(' #product-id').val();
+            var url;
+          
+            
+      
+            const currentValues = {
+                
+                nombre: $('#nombre').val(),
+                precio:$('#precio-unidad').val(),
+                stock: $('#precio-stock').val(),
+                descripcion:$('#descripcion').val(),
+                imagen: $('#imagen2')[0].files[0] // Obtener el archivo actual
+              };
+      
+              var imagen = $('#imagen2')[0].files[0]
+              var type=false;
+              var d;
+      
+              console.log(currentValues)
+      
+              const updatedFields = {};
+      
+              for (const key in currentValues) {
+                if (currentValues[key] !== initialValues[key]) {
+                  updatedFields[key] = currentValues[key];
+                  
+                }
+              }
+          
+            
+              const formData = new FormData();
+          
+              /*const files = $('#myForm input[type="file"]')[0].files;
+              for (let i = 0; i < files.length; i++) {
+                formData.append(`archivo`, files[i]);
+                console.log(files[i])*
+              }*/
+          
+              for (const key in updatedFields) {
+                formData.append(key, updatedFields[key]);
+              }
+      
+              console.log(updatedFields)
+      
+              if (typeof imagen === 'undefined'){
+                url='/update1/'
+                type='application/json'
+                d=JSON.stringify(updatedFields)
+                console.log('no se a cambiado la imagen ')
+              }else{
+                url='/update2/'
+                console.log('enviando imagen ')
+                d=formData;
+      
+              }
+          
+      
+                          
+            $.ajax({
+              url: `/adminr${url}${id}`,
+              type: 'PATCH',
+              data:d,
+              contentType: type, // Evita que jQuery establezca el tipo de contenido
+              processData: false, // Evita que jQuery procese los datos
+              success: function(data) {
+              console.log(data)
+              window.location.href='/ventanaAdmin'
+              
+              
+      
+                // Aquí puedes agregar código para manejar la respuesta exitosa
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+            
+                let errorMessage = 'Ocurrió un error: ';
+      
+        if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
+          // Si el servidor envió un mensaje de error estructurado
+          errorMessage += jqXHR.responseJSON.error;
+        } else if (errorThrown) {
+          // Si hay un mensaje de error genérico
+          errorMessage += errorThrown;
+        } else {
+          // Si no hay información específica sobre el error
+          errorMessage += 'No se pudo completar la operación.';
+        }
+        $('.contenido76').text(errorMessage)
+        $('#myModal1').css({'display':'none'})
+        $('.contenido1').css({'display':'none'})
+        $('.advertencia').css({'display':'block'})
+      
+              }
+            });
+      
+      
+      
+      
+          
+      
+      
+          
+        
+        
+      
+        
+      
+          })
+      
          
     });
 
 
-    $('#edit-product-form').on('submit', function(event) {
-      console.log('editando..')
-      event.preventDefault();
-
-
-
-      var id=$(' #product-id').val();
-      var url;
-     const initialValues = {
-              nombre: $('#nombre').val(),
-              precio:$('#precio-unidad').val(),
-              stock: $('#precio-stock').val(),
-              descripcion:$('#descripcion').val(),
-              imagen: $('#imagen2')[0].files[0] // Obtener el archivo inicial
-    
-          };
-          console.log(initialValues);
-      
-
-      const currentValues = {
-          
-          nombre: $('#nombre').val(),
-          precio:$('#precio-unidad').val(),
-          stock: $('#precio-stock').val(),
-          descripcion:$('#descripcion').val(),
-          imagen: $('#imagen2')[0].files[0] // Obtener el archivo actual
-        };
-
-        var imagen = $('#imagen2')[0].files[0]
-        var type=false;
-        var d;
-
-        console.log(currentValues)
-
-        const updatedFields = {};
-        for (const key in currentValues) {
-          if (currentValues[key] !== initialValues[key]) {
-            updatedFields[key] = currentValues[key];
-            
-          }
-        }
-    
-        console.log(updatedFields)
-        const formData = new FormData();
-    
-        /*const files = $('#myForm input[type="file"]')[0].files;
-        for (let i = 0; i < files.length; i++) {
-          formData.append(`archivo`, files[i]);
-          console.log(files[i])*
-        }*/
-    
-        for (const key in updatedFields) {
-          formData.append(key, updatedFields[key]);
-        }
-
-        if (typeof imagen === 'undefined'){
-          url='/update1/'
-          type='application/json'
-          d=JSON.stringify(updatedFields)
-          console.log('no se a cambiado la imagen ')
-        }else{
-          url='/update2/'
-          console.log('enviando imagen ')
-          d=formData;
-
-        }
-    
-
-                    
-      $.ajax({
-        url: `/adminr${url}${id}`,
-        type: 'PATCH',
-        data:d,
-        contentType: type, // Evita que jQuery establezca el tipo de contenido
-        processData: false, // Evita que jQuery procese los datos
-        success: function(data) {
-        console.log(data)
-        window.location.href='/ventanaAdmin'
-        
-        
-
-          // Aquí puedes agregar código para manejar la respuesta exitosa
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-      
-          let errorMessage = 'Ocurrió un error: ';
-
-  if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
-    // Si el servidor envió un mensaje de error estructurado
-    errorMessage += jqXHR.responseJSON.error;
-  } else if (errorThrown) {
-    // Si hay un mensaje de error genérico
-    errorMessage += errorThrown;
-  } else {
-    // Si no hay información específica sobre el error
-    errorMessage += 'No se pudo completar la operación.';
-  }
-  $('.contenido76').text(errorMessage)
-  $('#myModal1').css({'display':'none'})
-  $('.contenido1').css({'display':'none'})
-  $('.advertencia').css({'display':'block'})
-
-        }
-      });
-
-
-
-
-    
-
-
-    
-  
-  
-
-  
-
-    })
-
+   
 
     $('.admin-table').off('click', '#openModall').on('click', '#openModall', function() {
       var id = $(this).data('id');
