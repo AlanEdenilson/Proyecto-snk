@@ -186,6 +186,7 @@ pedidosEnprocesos:async function (req,res){
         const token = req.cookies.authToken;
     
         var vtoken = await Gtoken.validarToken2(token);
+        console.log( vtoken)
         model.pedidosEnprocesos(conexion,vtoken.marca,function (err,results) {
             if (err) {
                 throw err
@@ -251,7 +252,7 @@ rechazados:async function (req,res){
         
     
         var vtoken = await Gtoken.validarToken2(token);
-        console.log('token'+ vtoken)
+        console.log( vtoken)
 
 
         model.loadContent4(conexion,vtoken.marca,function (err,results) {
