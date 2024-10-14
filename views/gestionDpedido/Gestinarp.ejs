@@ -20,17 +20,31 @@
     <!-- Enlace a jQuery 3.7 -->
 </head>
 <body>
-    <h1>Gestionar pedidos</h1>
+    <h1 class="titulo1">Gestionar Pedidos</h1>
     <style>
+        body{
+            background-color: #081b29;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .titulo1{
+            color: white;
+            font-size: 35px;
+            top: 20px;
+            position: relative;
+        }
         .boton-extraer {
             position: relative;
-            background-color: blue;
+            background-color: rgb(0, 110, 255);
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-bottom: 10px;
+        }
+
+        .boton-extraer:hover{
+            background-color: rgb(255, 0, 98);
         }
 
         .boton-extraer:hover .tooltip {
@@ -125,7 +139,7 @@
 
 
     <div id="tabla-container">
-        <table >
+        <table  >
             <thead>
                 <tr>
                     <th>Estado</th>

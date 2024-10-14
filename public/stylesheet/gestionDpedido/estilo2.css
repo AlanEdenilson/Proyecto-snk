@@ -1,18 +1,15 @@
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #d3d3d3;
 }
 table {
     width: 100%;
-   
-    
-    border: none
 }
 th {
     padding: 12px;
     text-align: left;
-    color: #666;
+    color: #000000;
     border: none
 }
 .empty-state {
