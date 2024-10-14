@@ -13,7 +13,7 @@ $(document).ready(function() {
           
             response.forEach(function(item) {
                 var html = `
-                <tr id="${item.pedidos_ids}" data-id="${item.pedidos_ids}">
+             <tr id="${item.pedidos_ids}" data-id="${item.pedidos_ids}">
                <td><span class="mdi--account-multiple-check"></span></td>
                 <td> ${item.total_cantidad}</td>
                 <td> $ ${item.total_pedido}</td>
@@ -34,6 +34,8 @@ $(document).ready(function() {
 
 
     $('#tabla1').on('click', '.detalles-btn', function() {
+        // var ids=$(this).data('id')
+
         var id = $(this).closest('tr').data('id');
         console.log('ID del pedido:', id);
         // Agrega aquí la lógica para mostrar los detalles
