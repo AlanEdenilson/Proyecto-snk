@@ -149,7 +149,7 @@ cargarcontenido:async function(req,res){
 
         const token = req.cookies.authToken;
         var vtoken = await Gtoken.validarToken2(token);
-        model.loadContent(conexion,vtoken.marca,r,function(err,results){
+        model.loadContent(conexion,vtoken.marca,function(err,results){
             if(err){
                 throw err;
             }else{
@@ -159,6 +159,7 @@ cargarcontenido:async function(req,res){
 
 
     } catch {
+        res.send('error en el servidor')
 
     }
 
