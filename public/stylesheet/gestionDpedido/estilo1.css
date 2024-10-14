@@ -6,9 +6,6 @@ h1 {
 }
 table {
     width: 100%;
-    
-  
-    border: none; /* Quitar bordes de la tabla */
 }
 th, td {
     padding: 12px;

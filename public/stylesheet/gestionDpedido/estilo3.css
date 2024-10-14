@@ -8,14 +8,16 @@
             border-collapse: collapse;
             margin-bottom: 20px;
         }
-        th, td {
+        td{
             
             padding: 12px;
             text-align: left;
+            color: rgb(255, 255, 255);
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #000000;
             font-weight: bold;
+
         }
         .estado-icon {
             color: red;
