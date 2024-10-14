@@ -187,7 +187,7 @@ module.exports = {
     },
 
     loadContent2: async function (conexion,marca, funcion) {
-        console.log('activados buscando...' + marca)
+        console.log('buscando pediddos entregados desde el modelo...' + marca)
         const sql = `
             SELECT 
         m.id AS marca_id,
