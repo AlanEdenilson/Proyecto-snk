@@ -1,5 +1,7 @@
 $(document).ready( async function() {
 
+
+
     console.log('menu 2 cargado...')
     $('.boton-editar').css({'display':'block'})
     $('.boton-salir-editar').css({'display':'block'})
@@ -52,6 +54,11 @@ $(document).ready( async function() {
             $fecha.replaceWith($labelFecha);
         });
     });
+    
+
+
+
+
 
     //
     $('.btn-salir-editar').on('click', function() {

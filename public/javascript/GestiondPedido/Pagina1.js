@@ -12,6 +12,7 @@ $( async function () {
                 alert('errror al cargar los repartidores')
             }
         })
+        
     
             function cargarDatos(){
             $.ajax({
