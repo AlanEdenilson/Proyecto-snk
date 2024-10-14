@@ -42,15 +42,6 @@
                 <th>subtotal</th>
             </tr>
         </thead>
-            <tbody>
-                <tr>
-                    <td><img src="" alt="Producto 1" width="50" height="50"></td>
-                    <td>Producto 1</td>
-                    <td>2</td>
-                    <td>$10.00</td>
-                    <td>$20.00</td>
-                </tr>
-            </tbody>
     </table>
     </div>
     <i class='bx bx-log-out'></i>
@@ -70,6 +61,25 @@
     success: function(response) {
         console.log('Detalles cargados para el pedido:', fila);
         console.log(response);
+
+        response.forEach(function(item) {
+            $('#imagen').attr('src',item.tienda_imagen)
+            $('.nombre').text('Nombre: ' + item.cliente_nombre);
+            $('.tienda').text('Tienda: ' + item.tienda_nombre);
+            $('.pedido').text('Pedido # ' + item.id)
+
+        var html = `
+            <tr>
+                    <td><img src="${item.producto_imagen}" alt="Producto 1" width="50" height="50"></td>
+                    <td>${item.producto_nombre}</td>
+                    <td>${item.cantidad_total}</td>
+                    <td>${item.producto_precio}</td>
+                    <td>${item.subtotal_total}</td>
+                </tr>
+        `;
+        $('#tabla').append(html);
+
+    });
        
 
 },
