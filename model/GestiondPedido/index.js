@@ -239,7 +239,7 @@ module.exports = {
     },
 
     pedidosEnprocesos:function(conexion,marca,funcion){
-        console.log('buscando pedidos  en proceso...')
+        console.log('buscando pedidos  en proceso desde el modelo...')
             const sql = `
                 SELECT 
             m.id AS marca_id,
@@ -270,7 +270,7 @@ module.exports = {
         LEFT JOIN usuarios u ON pa.repartidor_id = u.id
     
         WHERE 
-            m.id = ${marca} AND pa.estado !== 'entregado'
+            m.id = ${marca} 
         GROUP BY 
     
         m.nombre, fecha_hora_pedido DESC;
