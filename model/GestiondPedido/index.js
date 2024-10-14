@@ -92,7 +92,7 @@ module.exports = {
         conexion.query(sql, [id], funcion)
     },
 
-    verpedidosnuevos: function (conexion, ultimoIdLocal, funcion) {
+    verpedidosnuevos: function (conexion,marca, ultimoIdLocal, funcion) {
         const sql = `
             SELECT 
 
@@ -119,7 +119,7 @@ module.exports = {
             JOIN pedidos_activos pa ON dp.pedido_id = pa.id
             LEFT JOIN usuarios r ON pa.repartidor_id = r.id
             WHERE 
-                m.id = 4
+                m.id = ${marca}
                 AND pa.id > ? AND pa.estado = 'En_espera' 
             GROUP BY 
                 m.id, DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s')
@@ -153,7 +153,7 @@ module.exports = {
         conexion.query(sql, funcion);
     },
     loadContent: async function (conexion,marca, funcion) {
-        console.log('activados buscando...'+marca)
+        console.log('buscando pedidos exitosos...'+marca)
         const sql = `
         SELECT
             m.id AS marca_id,

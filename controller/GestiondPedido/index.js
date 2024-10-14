@@ -7,6 +7,8 @@ const Gtoken = require('../login/Gtoken');
 module.exports = {
     verpedidos: async (req,res)=>{
 
+        console.log('buscando pedidos para administrar')
+
         const token = req.cookies.authToken;
         try{
             
@@ -51,13 +53,14 @@ module.exports = {
         }
     },
     vernuevosregistros: async (req,res)=>{
+        console.log('buscando pedidos para extraer')
 
         // Extraer la cookie 'perfil'
-        const perfilCookie = req.cookies.perfil;
         
-         console.log(perfilCookie.marca);
          try{
-            model.verpedidosnuevos(conexion,req.query.rango,function(err,results){
+            const token = req.cookies.authToken;
+            var vtoken = await Gtoken.validarToken2(token);
+            model.verpedidosnuevos(conexion,vtoken.marca,req.query.rango,function(err,results){
                 if(err){
                    throw err;
                 }else{
@@ -145,6 +148,7 @@ cargarcontenido:async function(req,res){
     var r;
         r='activado';
     console.log(r)
+
     try {
 
         const token = req.cookies.authToken;
@@ -166,6 +170,7 @@ cargarcontenido:async function(req,res){
 },
 
 cargarcontenido2:async function(req,res){
+    console.log('buscando pedidos extosos click 1')
      try{
         const token = req.cookies.authToken;
     
