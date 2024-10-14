@@ -279,7 +279,49 @@ module.exports = {
     
         
     },
-    borarr:function(conexion,ids) {
+    loadContent4: async function (conexion,marca, funcion) {
+        console.log('buscando pedidos rechazaos..')
+        const sql = `
+            SELECT 
+            m.id AS marca_id,
+            u.usuario AS nombre_repartidor,
+            pa.estado_vendedor,
+            
+        
+
+            GROUP_CONCAT(DISTINCT pa.estado) AS estados,
+            DATE_FORMAT(pa.fecha_pedido, '%Y-%m-%d %H:%i:%s') AS fecha_hora_pedido,
+            GROUP_CONCAT(DISTINCT pa.id) AS pedidos_ids,
+            pa.repartidor_id AS repartidor,
+            DATE_FORMAT(pa.fecha_estimada_entrega, '%Y-%m-%d %H:%i:%s') AS fecha_entrega,
+        
+            SUM(dp.subtotal) AS total_pedido,
+            GROUP_CONCAT(DISTINCT CONCAT(
+                'producto_id:', dp.producto_id, 
+                ',precio:', dp.precio_unitario, 
+                ',cantidad:', dp.cantidad
+            ) SEPARATOR '||') AS detalles_productos,
+            SUM(dp.cantidad) AS total_cantidad
+            
+
+            
+                FROM 
+                    marcas m
+                JOIN productos p ON m.id = p.marca_id
+                JOIN detalles_pedido dp ON p.id = dp.producto_id
+                JOIN pedidos_activos pa ON dp.pedido_id = pa.id
+                JOIN usuarios u ON pa.repartidor_id = u.id
+
+            WHERE 
+                m.id = ${marca} AND pa.estado_vendedor = 'entregado'
+            GROUP BY 
+
+            m.nombre, fecha_hora_pedido DESC;
+            `;
+        conexion.query(sql,funcion)
+
+    },
+borarr:function(conexion,ids) {
    const consulta =  `DELETE FROM detalles_pedido WHERE pedido_id IN (?)`
        
         return new Promise((resolve, reject) => {

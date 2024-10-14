@@ -16,11 +16,7 @@ module.exports={
                 
             } catch (error) {
                 throw error;
-                
-
-            
             }
-           
         });
         
     },
@@ -267,7 +263,21 @@ module.exports={
     },
 
     imagen:function (conexion,id) {
-        const consulta = `SELECT imagen FROM marcas WHERE id=${id}`;
+        const consulta = `SELECT imagen FROM marcas WHERE id = ${id}`;
+
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta,function (error, dato) {
+                if (error) {
+                    reject( error);
+                } else {
+                    resolve(dato[0])
+                }
+            });
+        });
+    },
+
+    repartidor:function (conexion,id) {
+        const consulta = `SELECT imagen FROM marcas WHERE id = ${id}`;
 
         return new Promise((resolve, reject) => {
             conexion.query(consulta,function (error, dato) {

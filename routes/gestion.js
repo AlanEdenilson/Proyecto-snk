@@ -95,6 +95,8 @@ router.get('/89', function(req, res, next) {
         res.render('menusdiseños/Dmenu1')
     })
 
+    router.get('/cancelados',controller.rechazados)
+
     router.delete('/borar',controller.borar)
 
 

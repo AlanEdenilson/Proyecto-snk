@@ -243,7 +243,29 @@ borar: async function (req,res){
         res.send('a ocurrido un error en el server')
     }
     
-}
+},
+rechazados:async function (req,res){
+    try {
+        const token = req.cookies.authToken;
+        
+        
+    
+        var vtoken = await Gtoken.validarToken2(token);
+        console.log('token'+ vtoken)
+
+
+        model.loadContent4(conexion,vtoken.marca,function (err,results) {
+            if (err) {
+                throw err
+            } else {
+                console.log(results)
+                res.send(results)
+            }
+        })
+    } catch(error) {
+        res.send('a ocurrido un error en el server')
+    }
+},
 }
 
 

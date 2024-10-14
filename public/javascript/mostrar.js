@@ -1,5 +1,7 @@
 $(function(){
 
+  
+
   $.ajax({
     url: '/adminr/te53eer353r',
     type: 'GET',
